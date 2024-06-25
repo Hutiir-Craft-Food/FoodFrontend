@@ -1,0 +1,16 @@
+
+.notFoundPage{
+    flex: 9;
+    height: 100vh;
+    background-color: antiquewhite;
+    text-align: center;
+    font-size: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    i{
+        font-size: 35px;
+    }
+}

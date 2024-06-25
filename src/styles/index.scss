@@ -1,0 +1,20 @@
+@import "./normalize.scss";
+@import "./var.scss";
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+  font-family: $mainFont;
+
+  h1 {
+    color: $brandColor;
+    font-family: $brandFont;
+    font-size: 60px;
+    font-weight: 700;
+    text-align: center;
+  }
+}
