@@ -1,14 +1,14 @@
-import styles from './SingInForm.module.scss';
+import styles from './SingUpForm.module.scss';
 
 
-export default function SingInForm() {
+export default function SingUpForm() {
     return (
         <div className={styles.signInContainer}>
             <div>
                 <img src={`${process.env.PUBLIC_URL}/images/sign-in.png`} alt="food" className={styles.imgFood} />
             </div>
             <div className={styles.formContainer} >
-                <h2>Вхід</h2>
+                <h2>Реєстрація</h2>
                 <form action="/login" method="POST">
                     <label for="username">E-mail</label>
                     <br />
