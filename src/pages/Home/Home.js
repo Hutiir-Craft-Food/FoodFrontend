@@ -1,36 +1,44 @@
 import { useState } from 'react';
 import ModalWindow from '../../components/ModalWindow/ModalWindow';
 import SingInForm from '../../components/SingInForm/SingInForm';
-import SingUpForm from '../../components/SignUpForm/SingUpForm';
+import SingUpBuyerForm from '../../components/SignUpBuyerForm/SingUpBuyerForm';
+import SingUpSellerForm from '../../components/SignUpSellerForm/SingUpSellerForm';
+
 // import styles from './Home.module.scss';
 
 
 
 export default function Home() {
     const [showSignInForm, setShowSignInForm] = useState(false);
-    const [showSignUpForm, setShowSignUpForm] = useState(false);
+    const [showSignUpBuyerForm, setShowSignUpBuyerForm] = useState(false);
+    const [showSignUpSellerForm, setShowSignUpSellerForm] = useState(false);
 
     const handleShowSignIn = () => setShowSignInForm(true);
-    const handleShowSignUp = () => setShowSignUpForm(true);
+    const handleShowSignUpBuyer = () => setShowSignUpBuyerForm(true);
+    const handleShowSignUpSeller = () => setShowSignUpSellerForm(true);
 
     const handleClose = () => {
         setShowSignInForm(false);
-        setShowSignUpForm(false);
-
+        setShowSignUpBuyerForm(false);
+        setShowSignUpSellerForm(false);
     }
-
-    
+ 
     return (
         <div className="container">
             <p>Home Page </p>
             <button variant="primary" onClick={handleShowSignIn}>
                 Вхід
             </button>
-            <button variant="primary" onClick={handleShowSignUp}>
-                Реєстрація
+            <button variant="primary" onClick={handleShowSignUpBuyer}>
+                Реєстрація для покупця
+            </button>
+            <button variant="primary" onClick={handleShowSignUpSeller}>
+                Реєстрація для продавця
             </button>
             <ModalWindow show={showSignInForm} handleClose={handleClose} form = {<SingInForm/>} />
-            <ModalWindow show={showSignUpForm} handleClose={handleClose} form={<SingUpForm />} />
+            <ModalWindow show={showSignUpBuyerForm} handleClose={handleClose} form={<SingUpBuyerForm />} />
+            <ModalWindow show={showSignUpSellerForm} handleClose={handleClose} form={<SingUpSellerForm />} />
+
         </div>
     )
 }

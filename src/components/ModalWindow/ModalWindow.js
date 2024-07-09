@@ -1,10 +1,11 @@
 import React from 'react';
-import SingInForm from '../SingInForm/SingInForm';
+// import SingInForm from '../SingInForm/SingInForm';
+import myIcon from '../../images/mdi_close.svg';
 import styles from './ModalWindow.module.scss';
 
 
 export default function Modal({ show, handleClose, form}) {
-    console.log(form);
+    
     return (
         <>
             {show && (
@@ -12,8 +13,8 @@ export default function Modal({ show, handleClose, form}) {
             )}
             {show && (
                 <div className={styles.modal} >
-                        {/* <span className={styles.closeButton} onClick={handleClose}>&times;</span> */}
-                        {form}
+                    <img src={myIcon} alt="icon" className={styles.closeIcon} onClick={handleClose} />
+                    {form}
                 </div>
             )}
         </>
