@@ -3,7 +3,6 @@ import ModalWindow from '../../components/ModalWindow/ModalWindow'
 import SingInForm from '../../components/SingInForm/SingInForm'
 import SingUpBuyerForm from '../../components/SignUpBuyerForm/SingUpBuyerForm'
 import SingUpSellerForm from '../../components/SignUpSellerForm/SingUpSellerForm'
-
 // import styles from './Home.module.scss';
 
 export default function Home() {
@@ -24,13 +23,13 @@ export default function Home() {
   return (
     <div className='container'>
       <p>Home Page </p>
-      <button variant='primary' onClick={handleShowSignIn}>
+      <button className='m-2' onClick={handleShowSignIn}>
         Вхід
       </button>
-      <button variant='primary' onClick={handleShowSignUpBuyer}>
+      <button className='m-2' onClick={handleShowSignUpBuyer}>
         Реєстрація для покупця
       </button>
-      <button variant='primary' onClick={handleShowSignUpSeller}>
+      <button className='m-2' onClick={handleShowSignUpSeller}>
         Реєстрація для продавця
       </button>
       <ModalWindow show={showSignInForm} handleClose={handleClose} form={<SingInForm />} />

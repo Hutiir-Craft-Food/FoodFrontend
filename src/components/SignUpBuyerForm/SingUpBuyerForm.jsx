@@ -19,14 +19,14 @@ export default function SingUpBuyerForm() {
           <button className={styles.button}> Хочу продати </button>
         </div>
         <form action='/login' method='POST'>
-          <label for='username'>Ім'я та прізвище</label>
+          <label htmlFor='username'>Ім'я та прізвище</label>
           <input type='text' id='username' name='username' required className='mb-3' />
-          <label for='email'>E-mail</label>
+          <label htmlFor='email'>E-mail</label>
           <input type='email' id='email' name='email' required className='mb-3' />
-          <label for='password'>Пароль</label>
+          <label htmlFor='password'>Пароль</label>
           {/* <input type="password" id="password" name="password" required /> */}
 
-          <div class={styles.passwordContainer}>
+          <div className={styles.passwordContainer}>
             <input type={isPasswordVisible ? 'text' : 'password'} id='password' name='password' required />
             <button
               id='togglePassword'
@@ -34,10 +34,9 @@ export default function SingUpBuyerForm() {
               onClick={handleEyeButton}
             ></button>
           </div>
-
           <p>Введіть пароль, який містить мінімум 8 символів </p>
-          <label for='passwordСonfirm'>Підтвердження паролю</label>
-          <div class={styles.passwordContainer}>
+          <label htmlFor='passwordСonfirm'>Підтвердження паролю</label>
+          <div className={styles.passwordContainer}>
             <input
               type={isPasswordVisible ? 'text' : 'password'}
               id='passwordСonfirm'
@@ -59,7 +58,6 @@ export default function SingUpBuyerForm() {
               </a>
             </span>
           </label>
-
           <span className={styles.userAgreement}>
             Підтверджуючи реєстрацію, я приймаю
             <a href='#' className={styles.userAgreementLink}>
@@ -67,7 +65,6 @@ export default function SingUpBuyerForm() {
               умови користувацької угоди
             </a>
           </span>
-
           <button className={`${styles.button} ${styles.signUpButton}`} type='submit'>
             Зареєструватись
           </button>

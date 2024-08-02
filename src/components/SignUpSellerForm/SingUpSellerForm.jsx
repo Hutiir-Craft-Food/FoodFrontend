@@ -19,15 +19,15 @@ export default function SingUpSellerrForm() {
           <button className={`${styles.button} ${styles.currentButton}`}> Хочу продати </button>
         </div>
         <form action='/login' method='POST'>
-          <label for='username'>Назва компанії/Ім'я та прізвище</label>
+          <label htmlFor='username'>Назва компанії/Ім'я та прізвище</label>
           <input type='text' id='username' name='username' required className='mb-3' />
-          <label for='email'>E-mail</label>
+          <label htmlFor='email'>E-mail</label>
           <input type='email' id='email' name='email' required className='mb-3' />
-          <label for='phone'>Номер телефона</label>
+          <label htmlFor='phone'>Номер телефона</label>
           <input type='tel' id='phone' name='phone' required className='mb-3' />
 
-          <label for='password'>Пароль</label>
-          <div class={styles.passwordContainer}>
+          <label htmlFor='password'>Пароль</label>
+          <div className={styles.passwordContainer}>
             <input type={isPasswordVisible ? 'text' : 'password'} id='password' name='password' required />
             <button
               id='togglePassword'
@@ -36,8 +36,8 @@ export default function SingUpSellerrForm() {
             ></button>
           </div>
           <p>Введіть пароль, який містить мінімум 8 символів </p>
-          <label for='passwordСonfirm'>Підтвердження паролю</label>
-          <div class={styles.passwordContainer}>
+          <label htmlFor='passwordСonfirm'>Підтвердження паролю</label>
+          <div className={styles.passwordContainer}>
             <input
               type={isPasswordVisible ? 'text' : 'password'}
               id='passwordСonfirm'

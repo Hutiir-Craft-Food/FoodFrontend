@@ -9,10 +9,10 @@ export default function SingInForm() {
       <div className={styles.formContainer}>
         <h2>Вхід</h2>
         <form action='/login' method='POST'>
-          <label for='username'>E-mail</label>
+          <label htmlFor='username'>E-mail</label>
           <br />
           <input type='text' id='username' name='username' required className='mb-3' />
-          <label for='password'>Пароль</label>
+          <label htmlFor='password'>Пароль</label>
           <br />
           <input type='password' id='password' name='password' required />
           <br />
