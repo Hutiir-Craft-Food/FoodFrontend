@@ -1,0 +1,45 @@
+{
+  "version": "0.2.0",
+  "debug.javascript.terminalOptions": {
+    "skipFiles": ["<node_internals>/**"]
+  },
+  "configurations": [
+    {
+      "name": "Attach to process",
+      "processId": "${command:PickProcess}",
+      "request": "attach",
+      "skipFiles": ["<node_internals>/**"],
+      "type": "node"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Server",
+      "cwd": "${workspaceFolder}/server",
+      "program": "server.js",
+      "restart": true,
+      "runtimeExecutable": "${workspaceFolder}/node_modules/nodemon/bin/nodemon.js",
+      "env": { "NODE_ENV": "local" },
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Client",
+      "cwd": "${workspaceFolder}/client",
+      "program": "index.js",
+      "restart": true,
+      "runtimeExecutable": "${workspaceFolder}/node_modules/nodemon/bin/nodemon.js",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Server/Client",
+      "configurations": ["Server", "Client"],
+      "stopAll": true
+    }
+  ]
+}

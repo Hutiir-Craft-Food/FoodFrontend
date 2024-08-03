@@ -1,5 +1,5 @@
 import Navbar from '../Navbar/Navbar';
-import styles from './Header.module.scss';
+// import styles from './Header.module.scss';
 
 export default function Header() {
     return (
