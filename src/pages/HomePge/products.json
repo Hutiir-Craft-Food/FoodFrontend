@@ -1,0 +1,87 @@
+[
+
+  {
+    "product_name": "Сир козиний",
+    "manufacturer": "Ферма Зелена Галявина",
+    "rating": 4.8,
+    "regular_price": 250,
+    "sale_price": 230
+  },
+  {
+    "product_name": "Мед квітковий",
+    "manufacturer": "Пасіка Весела Бджілка",
+    "rating": 4.9,
+    "regular_price": 150,
+    "sale_price": 140
+  },
+  {
+    "product_name": "Хліб житній",
+    "manufacturer": "Пекарня Старий Млин",
+    "rating": 4.7,
+    "regular_price": 80,
+    "sale_price": 70
+  },
+  {
+    "product_name": "Ковбаса домашня",
+    "manufacturer": "М'ясна Майстерня",
+    "rating": 4.6,
+    "regular_price": 300,
+    "sale_price": 280
+  },
+  {
+    "product_name": "Варення з малини",
+    "manufacturer": "Садиба Ягодина",
+    "rating": 4.9,
+    "regular_price": 120,
+    "sale_price": 110
+  },
+  {
+    "product_name": "Чай трав'яний",
+    "manufacturer": "Чайна Лавка",
+    "rating": 4.8,
+    "regular_price": 90,
+    "sale_price": 80
+  },
+  {
+    "product_name": "Сік яблучний",
+    "manufacturer": "Соковий Рай",
+    "rating": 4.7,
+    "regular_price": 60,
+    "sale_price": 55
+  },
+  {
+    "product_name": "Паштет печінковий",
+    "manufacturer": "Гастрономічна Майстерня",
+    "rating": 4.8,
+    "regular_price": 110,
+    "sale_price": 100
+  },
+  {
+    "product_name": "Соус томатний",
+    "manufacturer": "Кухня Гурмана",
+    "rating": 4.6,
+    "regular_price": 95,
+    "sale_price": 85
+  },
+  {
+    "product_name": "Олія оливкова",
+    "manufacturer": "Фермерський Дім",
+    "rating": 4.9,
+    "regular_price": 200,
+    "sale_price": 190
+  },
+  {
+    "product_name": "Цукерки з медом",
+    "manufacturer": "Солодка Майстерня",
+    "rating": 4.7,
+    "regular_price": 130,
+    "sale_price": 120
+  },
+  {
+    "product_name": "Каша вівсяна",
+    "manufacturer": "Зерновий Світ",
+    "rating": 4.8,
+    "regular_price": 70,
+    "sale_price": 65
+  }
+]
