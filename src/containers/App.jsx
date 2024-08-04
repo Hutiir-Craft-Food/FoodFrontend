@@ -1,7 +1,7 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import Header from '../components/Header/Header'
 import Footer from '../components/Footer/Footer';
-import Home from '../pages/Home/Home';
+import HomePage from '../pages/HomePge/HomePage';
 import NotFoundPage from '../components/NotFoundPage/NotFoundPage';
 import styles from './App.module.scss';
 
@@ -16,7 +16,7 @@ function App() {
     >
       <div className={styles.app}>
             <Header />
-            <Home/>
+            <HomePage/>
             <Footer />
         </div>
     </ErrorBoundary>
