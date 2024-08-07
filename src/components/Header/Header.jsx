@@ -1,5 +1,5 @@
 import Navbar from "../Navbar/Navbar";
-import HeaderNavigation from "../HeaderNavigation/HeaderNavigation";
+import SiteNavigation from "./SiteNavigation";
 import styles from "./Header.module.scss";
 
 export default function Header() {
@@ -8,7 +8,7 @@ export default function Header() {
       <div className={styles.container}>
         <p></p>
         <Navbar />
-        <HeaderNavigation />
+        <SiteNavigation />
       </div>
     </header>
   );

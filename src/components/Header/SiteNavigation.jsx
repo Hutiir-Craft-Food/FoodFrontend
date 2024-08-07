@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import styles from "./HeaderNavigation.module.scss";
+import styles from "./SiteNavigation.module.scss";
 
-const MainNavigation = () => {
+const SiteNavigation = () => {
   return (
     <nav className={styles.mainNavigation}>
       <ul>
@@ -28,4 +28,4 @@ const MainNavigation = () => {
   );
 };
 
-export default MainNavigation;
+export default SiteNavigation;
