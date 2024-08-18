@@ -2,22 +2,22 @@ import { Link } from "react-router-dom";
 import Rating from 'react-rating-stars-component';
 import styles from './SellerCard.module.scss';
 
-export default function SellerCard({ seller }) {
+export default function SellerCard({ itemCard }) {
 	// console.log(product);
 
 	return (
 		<div className={`card `}>
 			<div className="card-body">
 				<div className={`card-icon ${styles.cardImage}`}>
-					<img src={seller.image || `./images/imageNotFound.png`} alt="seller image" />
+					<img src={itemCard.image || `./images/imageNotFound.png`} alt="seller image" />
 				</div>
-				<h5 className="card-title mt-3">{seller.name}</h5>
+				<h5 className="card-title mt-3">{itemCard.name}</h5>
 				<div className="card-text">
-					<span>{seller.city}</span>
+					<span>{itemCard.city}</span>
 					<br />
 					<Rating
 						count={5}
-						value={seller.rating}
+						value={itemCard.rating}
 						size={24}
 						activeColor="#ffd700"
 						edit={false}

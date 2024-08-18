@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package foo.todoPackage;
+
+import "./todoEnum.proto";
+
+service TodoService{
+    rpc readTodo(Empty) returns (Todos);
+    rpc readTodoStream(Empty) returns (stream Todo);
+    rpc createTodoStream(stream Todo) returns (Todos);
+    rpc createTodoBidiStream(stream Todo) returns (stream Todo);
+}

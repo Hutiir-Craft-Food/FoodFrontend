@@ -1,8 +1,19 @@
+import { useState, useEffect } from 'react';
 import Carousel from 'react-multi-carousel';
-import styles from "./CustomCarousel";
+import fetchCarouselItemsFunction from '../../services/fetchCarouselItemsFunction';
+import styles from './CustomCarousel.module.scss';
 
-export default function CustomCarousel ({ title, items }) {
-	// console.log(items);
+export default function CustomCarousel({ title, carouselCategory }) {
+	const [carouselItems, setCarouselItems] = useState(null);
+
+	useEffect(() => {
+		fetchCarouselItemsFunction(setCarouselItems, carouselCategory);
+	}, []);
+
+	if (!carouselItems) {
+		return <div>Завантаження...</div>;
+	}
+
 	return (
 		<div className={styles.customCarousel}>
 			<h2>{title}</h2>
@@ -60,12 +71,14 @@ export default function CustomCarousel ({ title, items }) {
 				slidesToSlide={1}
 				swipeable
 			>
-				{items.map((item, index) => (
-					<div key={index} >
-						<img src={item.image} alt={item.name} />
-						{/* <h3>{item.name}</h3> */}
-					</div>
-				))}
+				{
+					carouselItems.map((item, index) => (
+						<div key={index} >
+							<img src={item.image} alt={item.name} />
+							<h3 className="text-center">{item.name}</h3>
+						</div>
+					))
+				}
 			</Carousel>
 		</div>
 	)

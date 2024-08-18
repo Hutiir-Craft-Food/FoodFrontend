@@ -4,7 +4,7 @@ import Rating from 'react-rating-stars-component';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import styles from './ProductCard.module.scss';
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ itemCard }) {
 	const [isFavorite, setIsFavorite] = useState(false);
 
 	const toggleFavorite = () => {
@@ -19,15 +19,15 @@ export default function ProductCard({ product }) {
 					{isFavorite ? <FaHeart color="red" /> : <FaRegHeart />}
 				</div>
 				<div className={`card-icon ${styles.cardImage}`}>
-					<img src={product.image || `./images/imageNotFound.png`} alt="product image" />
+					<img src={itemCard.image || `./images/imageNotFound.png`} alt="product image" />
 				</div>
-				<h5 className="card-title mt-3">{product.name}</h5>
+				<h5 className="card-title mt-3">{itemCard.name}</h5>
 				<div className="card-text">
-					<span>{product.manufacturer}</span>
+					<span>{itemCard.manufacturer}</span>
 					<br />
 					<Rating
 						count={5}
-						value={product.rating}
+						value={itemCard.rating}
 						size={24}
 						activeColor="#ffd700"
 						edit={false}
@@ -36,9 +36,9 @@ export default function ProductCard({ product }) {
 
 					<div className="d-flex justify-content-between">
 						<div>
-							<span>{product.sale_price} грн.</span>
+							<span>{itemCard.sale_price} грн.</span>
 							<br />
-							<span className="text-decoration-line-through" >{product.regular_price} грн.</span>
+							<span className="text-decoration-line-through" >{itemCard.regular_price} грн.</span>
 						</div>
 						<Link className={`btn btn-outline-danger`} to={`#`}>В кошик</Link>
 					</div>

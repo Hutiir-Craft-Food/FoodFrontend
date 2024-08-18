@@ -1,0 +1,40 @@
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{{#code}}
+(()=>{
+   const blogPosts = [
+		{
+			id: 1,
+			image: 'https://i.pinimg.com/564x/96/3e/7e/963e7eb66e98723f8ed386fa37988b2e.jpg',
+			name: 'Post 1'
+		},
+		{
+			id: 2,
+			image: 'https://i.pinimg.com/564x/96/3e/7e/963e7eb66e98723f8ed386fa37988b2e.jpg',
+			name: 'Post 2'
+		},
+		{
+			id: 3,
+			image: 'https://i.pinimg.com/564x/96/3e/7e/963e7eb66e98723f8ed386fa37988b2e.jpg',
+			name: 'Post 3'
+		},
+		{
+			id: 4,
+			image: 'https://i.pinimg.com/564x/96/3e/7e/963e7eb66e98723f8ed386fa37988b2e.jpg',
+			name: 'Post 4'
+		}
+	];
+
+
+    return {
+        status: 200,
+        headers: {
+            'X-Requested-By': 'blog-posts'
+        },
+        body: JSON.stringify({
+            carouselItems: blogPosts
+        })
+    };
+})();
+{{/code}}
