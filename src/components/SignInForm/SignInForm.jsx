@@ -1,92 +1,91 @@
-import { useContext, useState, useCallback } from "react";
-import styles from "./SignInForm.module.scss";
-import { AuthContext } from "../../containers/AuthContext";
+import { useContext, useState, useCallback } from 'react'
+import styles from './SignInForm.module.scss'
+import { AuthContext } from '../../containers/AuthContext'
 
 const SignInForm = () => {
-  const authContext = useContext(AuthContext);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const [errors, setErrors] = useState({});
+  const authContext = useContext(AuthContext)
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false)
+  const [errors, setErrors] = useState({})
 
   const handleEyeButtonClick = (e) => {
-    e.preventDefault();
-    setIsPasswordVisible(prevValue => !prevValue);
-  };
+    e.preventDefault()
+    setIsPasswordVisible((prevValue) => !prevValue)
+  }
 
   const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
+    setEmail(e.target.value)
+  }
 
   const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
+    setPassword(e.target.value)
+  }
 
   const validateEmail = useCallback(() => {
-    const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!pattern.test(email)) {
       setErrors((prevErrors) => ({
         ...prevErrors,
-        email: { valid: false, message: "Не правильна адреса" },
-      }));
-      return;
+        email: { valid: false, message: 'Не правильна адреса' },
+      }))
+      return
     }
     setErrors((prevErrors) => ({
       ...prevErrors,
       email: { valid: true },
-    }));
-  }, [email]);
+    }))
+  }, [email])
 
   const validatePassword = useCallback(() => {
-    const pattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{9,}$/;
+    const pattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{9,}$/
     if (!pattern.test(password)) {
       setErrors((prevErrors) => ({
         ...prevErrors,
         password: {
           valid: false,
-          message:
-            "Не менше 8 буквенних та 1 числовий символи",
+          message: 'Не менше 8 буквенних та 1 числовий символи',
         },
-      }));
-      return;
+      }))
+      return
     }
     setErrors((prevErrors) => ({
       ...prevErrors,
       password: { valid: true },
-    }));
-  }, [password]);
+    }))
+  }, [password])
 
   const handleSignIn = async (event) => {
-    event.preventDefault();
-    const hasErrors = Object.values(errors).some(({ valid }) => valid === false);
+    event.preventDefault()
+    const hasErrors = Object.values(errors).some(({ valid }) => valid === false)
     if (hasErrors) {
-      return;
+      return
     }
     try {
-      const response = await fetch("/api/v1/user/login", {
-        method: "POST",
+      const response = await fetch('/api/v1/user/login', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({ email, password }),
-      });
-      const data = await response.json();
+      })
+      const data = await response.json()
 
       if (response.ok) {
-        authContext.setToken(data.jwt);
-        setEmail("");
-        setPassword("");
-        setErrors({});
+        authContext.setToken(data.jwt)
+        setEmail('')
+        setPassword('')
+        setErrors({})
       } else {
         const errorMessage =
           data.message ||
-          "Такого користувача не існує, перевірте правильність введених даних";
-        throw new Error(errorMessage);
+          'Такого користувача не існує, перевірте правильність введених даних'
+        throw new Error(errorMessage)
       }
     } catch (error) {
-      console.error("Failed:", error);
+      console.error('Failed:', error)
     }
-  };
+  }
 
   return (
     <div className={styles.signInContainer}>
@@ -101,7 +100,8 @@ const SignInForm = () => {
             <br />
             <input
               style={{
-                border: errors.email?.valid === false ? "1px solid #E02D3C" : "",
+                border:
+                  errors.email?.valid === false ? '1px solid #E02D3C' : '',
               }}
               type="email"
               id="email"
@@ -113,16 +113,19 @@ const SignInForm = () => {
               autoFocus
             />
             {errors.email?.valid === false && (
-              <p className={styles.incorrectInputMessage}>{errors.email.message}</p>
+              <p className={styles.incorrectInputMessage}>
+                {errors.email.message}
+              </p>
             )}
           </div>
           <div className={styles.passwordContainer}>
             <label htmlFor="password">Пароль</label>
             <input
               style={{
-                border: errors.password?.valid === false ? "1px solid #E02D3C" : "",
+                border:
+                  errors.password?.valid === false ? '1px solid #E02D3C' : '',
               }}
-              type={isPasswordVisible ? "text" : "password"}
+              type={isPasswordVisible ? 'text' : 'password'}
               id="password"
               name="password"
               value={password}
@@ -132,21 +135,26 @@ const SignInForm = () => {
             />
             <button
               id="togglePassword"
-              className={`${styles.toggleEye} ${isPasswordVisible ? styles.openEye : styles.closeEye}`}
-              aria-label={isPasswordVisible ? "Приховати пароль" : "Показати пароль"}
+              className={`${styles.toggleEye} ${
+                isPasswordVisible ? styles.openEye : styles.closeEye
+              }`}
+              aria-label={
+                isPasswordVisible ? 'Приховати пароль' : 'Показати пароль'
+              }
               onClick={handleEyeButtonClick}
             ></button>
-            {errors.password?.valid === false && (<p className={styles.incorrectInputMessage}>{errors.password.message}</p>)}
+            {errors.password?.valid === false && (
+              <p className={styles.incorrectInputMessage}>
+                {errors.password.message}
+              </p>
+            )}
           </div>
           <br />
           <a className={styles.fogetPasswordLink} href="#">
             Забули пароль?
           </a>
           <br />
-          <button
-            className={styles.signInButton}
-            type="submit"
-          >
+          <button className={styles.signInButton} type="submit">
             Увійти
           </button>
           <br />
@@ -156,7 +164,7 @@ const SignInForm = () => {
         </a>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SignInForm;
+export default SignInForm

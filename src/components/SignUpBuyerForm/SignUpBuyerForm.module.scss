@@ -1,0 +1,104 @@
+@import "../../styles/var.scss";
+
+.formContainer {
+  width: 296px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  opacity: 0px;
+  color: $darkGrey;
+  gap: 1.5rem;
+  font-family: Circe;
+  .inputsWrapper {
+    width: 296px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    label {
+      font-size: 1rem;
+      line-height: 19.2px;
+      font-family: Circe;
+      font-weight: 400;
+      text-align: left;
+    }
+    input {
+      height: 40px;
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid #b6cec2;
+      font-size: 1rem;
+      //styleName: Paragraph 3;
+      font-family: Circe;
+      font-size: 1.125rem;
+      font-weight: 400;
+      line-height: 1.35rem;
+      text-align: left;
+      // input:invalid ~ span {
+      //   display: block;
+      // }
+    }
+    input:valid {
+      height: 40px;
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid #b6cec2;
+      font-size: 1rem;
+      //styleName: Paragraph 3;
+      font-family: Circe;
+      font-size: 1.125rem;
+      font-weight: 400;
+      // line-height: 1.35rem;
+      text-align: left;
+    }
+    input:invalid {
+      height: 40px;
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid #f78181;
+      font-size: 1rem;
+      //styleName: Paragraph 3;
+      font-family: Circe;
+      font-size: 1.125rem;
+      font-weight: 400;
+      // line-height: 1.35rem;
+      text-align: left;
+    }
+    .errors {
+      position: absolute;
+      color: #f78181;
+      bottom: 0;
+      font-size: 0.8125rem;
+    }
+  }
+  .passwordContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    .password-eye {
+      position: absolute;
+      right: 37rem;
+      top: 32.2rem;
+      color: black;
+      font-size: 1.5rem;
+      line-height: 2rem;
+    }
+    .toggleEye {
+      position: absolute;
+      right: 5px;
+      top: 20px;
+      width: 40px;
+      height: 40px;
+      border: none;
+      &.openEye {
+        background: url(src/images/EyeLine.svg) no-repeat scroll 7px 7px;
+      }
+
+      &.closeEye {
+        background: url(src/images/EyeCloseLine.svg) no-repeat scroll 7px 7px;
+      }
+    }
+  }
+}

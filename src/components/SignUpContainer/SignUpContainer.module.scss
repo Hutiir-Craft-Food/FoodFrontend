@@ -1,0 +1,161 @@
+@import "../../styles/var.scss";
+
+.signUpContainer {
+  width: 1056px;
+  height: 800px;
+  gap: 0px;
+  border-radius: 20px;
+  box-sizing: border-box;
+  opacity: 0px;
+  display: flex;
+  align-self: center;
+  flex-flow: column wrap;
+
+  .imgContainer {
+    width: 520px;
+    height: 800px;
+    img {
+      width: 488px;
+      height: 768px;
+      border-radius: 20px;
+      margin: 16px;
+    }
+  }
+
+  .contentContainer {
+    width: 536px;
+    height: 800px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: baseline;
+    flex-direction: column;
+    padding: 20px 0px 20px 0px;
+    align-items: center;
+    row-gap: 16px;
+    h4 {
+      height: 36px;
+      display: flex;
+      justify-content: center;
+      height: 36px;
+      color: #111815;
+      top: 16px;
+      text-align: center;
+      line-height: 1.8rem;
+      font-family: Circe;
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+
+    .formContentContainer {
+      width: 296px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      .rolesButtons {
+        width: 296px;
+        height: 36px;
+        margin-bottom: 16px;
+        justify-content: space-between;
+        button {
+          width: 148px;
+          height: 35px;
+          gap: 8px;
+          padding: 8px;
+          border: none;
+          background-color: #ffffff;
+          color: #537a67;
+          cursor: pointer;
+          font-size: 1rem;
+          line-height: 1.2rem;
+          opacity: 0px;
+          font-family: Circe;
+          font-weight: 400;
+          text-align: center;
+        }
+        .active {
+          border: 1px solid #537a67;
+          border-radius: 8px;
+        }
+      }
+    }
+
+    .checkboxLabel {
+      width: 296px;
+      height: 34px;
+      display: flex;
+      justify-content: center;
+      font-size: 0.875rem;
+      line-height: 1.05rem;
+      font-family: Circe;
+      font-weight: 400;
+      cursor: pointer;
+      input[type="checkbox"] {
+        height: 24px;
+        width: 24px;
+        accent-color: #537a67;
+        border: 2px solid #537a67;
+        outline: none;
+        margin-right: 5px;
+      }
+      .checked {
+        accent-color: #537a67;
+        height: 24px;
+        width: 24px;
+        border: 2px solid #537a67;
+      }
+      .unchecked {
+        -webkit-appearance: none;
+        appearance: none;
+        height: 24px;
+        width: 24px;
+        accent-color: #537a67;
+        border: 2px solid #537a67;
+        outline: none;
+        margin-right: 5px;
+      }
+    }
+    .signUpButton {
+      height: 44px;
+      width: 296px;
+      display: flex;
+      align-self: center;
+      justify-content: center;
+      flex-direction: column;
+      background-color: #537a67;
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      font-family: Circe;
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.5rem;
+    }
+    .signUpEnabled {
+      cursor: pointer;
+    }
+    .signUpDisabled {
+      opacity: 0.2;
+      cursor: not-allowed;
+    }
+
+    .signInLink {
+      width: 296px;
+      height: 44px;
+      align-self: center;
+      text-align: center;
+      color: #537a67;
+      font-family: Circe;
+      font-weight: 700;
+      font-size: 1.25rem;
+    }
+
+    .userAgreement {
+      display: flex;
+      font-size: 0.75rem;
+      justify-content: center;
+      .userAgreementLink {
+        color: $green;
+      }
+    }
+  }
+}
