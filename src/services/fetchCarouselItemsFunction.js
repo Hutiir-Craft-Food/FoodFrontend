@@ -1,11 +1,15 @@
-const API_BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
-async function fetchCarouselItemsFunction (setCarouselItems, carouselCategory) {
-	await fetch(`${API_BASE_URL}/${carouselCategory}`)
-		.then(res => res.json())
-		.then(data => setCarouselItems(data.carouselItems))
-		.catch(err => console.log('error: ', err)
-		);
+async function fetchCarouselItemsFunction(setCarouselItems, carouselCategory) {
+	try {
+		const response = await fetch(`/api/v1/${carouselCategory}`);
+		if (!response.ok) {
+			throw new Error(`HTTP error! Status: ${response.status}`);
+		}
+		const data = await response.json();
+		setCarouselItems(data.carouselItems);
+	} catch (err) {
+		console.log('Error: ', err.message);
+	}
 }
 
 export default fetchCarouselItemsFunction;

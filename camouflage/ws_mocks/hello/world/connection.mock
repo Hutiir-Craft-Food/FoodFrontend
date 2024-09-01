@@ -1,4 +1,0 @@
-{
-    "broadcast": "{{now}}",
-    "emit": "{{randomValue type='UUID'}}"
-}

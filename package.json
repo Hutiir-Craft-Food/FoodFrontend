@@ -5,7 +5,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite --open --port 3000 --mode dev",
+    "dev": "vite --open --port 3000 --mode local-mode",
     "start": "vite start",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",

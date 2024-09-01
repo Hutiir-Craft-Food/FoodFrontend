@@ -1,6 +1,0 @@
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "phone": {{#inject}}(()=>{ return Math.round(Math.random() * 10000000000); })();{{/inject}}
-}

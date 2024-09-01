@@ -1,12 +1,22 @@
-const API_BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
-const fetchProductsFunction = (offset, setOffset, filteredCategory, setFilteredCategory, filter) => {
-	fetch(`${API_BASE_URL}/products?filter=${filter}&offset=${offset}&limit=4`)
-		.then(res => res.json())
-		.then(data => filteredCategory ? setFilteredCategory(filteredCategory => [...filteredCategory, ...data.products]) : setFilteredCategory(data.products))
-		.catch(err => console.log('error: ', err)
-		);
-	setOffset(offset + 4);
-}
+const fetchProductsFunction = async (offset, setOffset, filteredCategory, setFilteredCategory, filter) => {
+	try {
+		const response = await fetch(`/api/v1/products?filter=${filter}&offset=${offset}&limit=4`);
+		if (!response.ok) {
+			throw new Error(`HTTP error! Status: ${response.status}`);
+		}
+		const data = await response.json();
+
+		if (filteredCategory) {
+			setFilteredCategory(filteredCategory => [...filteredCategory, ...data.products]);
+		} else {
+			setFilteredCategory(data.products);
+		}
+		setOffset(offset + 4);
+
+	} catch (err) {
+		console.log('Error: ', err.message);
+	}
+};
 
 export default fetchProductsFunction;

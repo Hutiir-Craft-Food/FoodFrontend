@@ -9,12 +9,21 @@ export default function SellersContainer() {
 		setVisibleCount((prevCount) => prevCount + 4);
 	};
 
+	async function fetchSellersItemsFunction() {
+		try {
+			const response = await fetch(`/api/v1/sellers`);
+			if (!response.ok) {
+				throw new Error(`HTTP error! Status: ${response.status}`);
+			}
+			const data = await response.json();
+			setSellers(data.sellers);
+		} catch (err) {
+			console.log('Error: ', err.message);
+		}
+	}
+
 	useEffect(() => {
-		fetch('http://localhost:8080/sellers')
-			.then(res => res.json())
-			.then(data => setSellers(data.sellers))
-			.catch(err => console.log('error: ', err)
-			);
+		fetchSellersItemsFunction()
 	}, []);
 
 	return (
