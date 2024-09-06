@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import ProductCard from "../ProductCard/ProductCard";
-import fetchProductsFunction from '../../services/fetchProductsFunction';
+import fetchProducts from '../../services/fetchProducts';
 import styles from './OffersContainer.module.scss';
 
 export default function OffersContainer() {
@@ -9,11 +9,11 @@ export default function OffersContainer() {
 	const filterString = "is_offer";
 
 	const showMoreProducts = () => {
-		fetchProductsFunction(offset, setOffset, offers, setOffers, filterString);
+		fetchProducts(offset, setOffset, offers, setOffers, filterString);
 	};
 
 	useEffect(() => {
-		fetchProductsFunction(offset, setOffset, offers, setOffers, filterString);
+		fetchProducts(offset, setOffset, offers, setOffers, filterString);
 	}, []);
 
 

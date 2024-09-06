@@ -9,7 +9,7 @@ export default function SellersContainer() {
 		setVisibleCount((prevCount) => prevCount + 4);
 	};
 
-	async function fetchSellersItemsFunction() {
+	async function fetchSellers() {
 		try {
 			const response = await fetch(`/api/v1/sellers`);
 			if (!response.ok) {
@@ -23,7 +23,7 @@ export default function SellersContainer() {
 	}
 
 	useEffect(() => {
-		fetchSellersItemsFunction()
+		fetchSellers()
 	}, []);
 
 	return (

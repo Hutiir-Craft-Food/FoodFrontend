@@ -3,8 +3,8 @@ import react from '@vitejs/plugin-react'
 
 export default ({ mode }) => {
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) }
-  const serverPort = process.env.SERVER_PORT || 8080
-  const serverAddress = process.env.SERVER_ADDRESS || 'localhost'
+  const serverPort = process.env.VITE_SERVER_PORT || 8080
+  const serverAddress = process.env.VITE_SERVER_ADDR || 'localhost'
 
   return defineConfig({
     plugins: [react()],

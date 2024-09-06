@@ -1,5 +1,5 @@
 
-async function fetchCarouselItemsFunction(setCarouselItems, carouselCategory) {
+async function fetchCarousel(setCarouselItems, carouselCategory) {
 	try {
 		const response = await fetch(`/api/v1/${carouselCategory}`);
 		if (!response.ok) {
@@ -12,4 +12,4 @@ async function fetchCarouselItemsFunction(setCarouselItems, carouselCategory) {
 	}
 }
 
-export default fetchCarouselItemsFunction;
+export default fetchCarousel;

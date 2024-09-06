@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import ProductCard from "../ProductCard/ProductCard";
-import fetchProductsFunction from "../../services/fetchProductsFunction";
+import fetchProducts from "../../services/fetchProducts";
 import styles from './RecommendContainer.module.scss';
 
 export default function RecommendContainer() {
@@ -9,13 +9,13 @@ export default function RecommendContainer() {
 	const filterString = "is_recommend";
 
 	const showMoreProducts = () => {
-		fetchProductsFunction(offset, setOffset, recommendProducts, setRecommendProducts, filterString);
+		fetchProducts(offset, setOffset, recommendProducts, setRecommendProducts, filterString);
 	};
 
 	useEffect(() => {
-		fetchProductsFunction(offset, setOffset, recommendProducts, setRecommendProducts, filterString);
+		fetchProducts(offset, setOffset, recommendProducts, setRecommendProducts, filterString);
 	}, []);
-	
+
 	return (
 		<div className="container">
 			<h2>Рекомендуємо спробувати </h2>

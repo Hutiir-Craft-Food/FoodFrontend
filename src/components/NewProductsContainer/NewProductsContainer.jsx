@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import ProductCard from "../ProductCard/ProductCard";
-import fetchProductsFunction from "../../services/fetchProductsFunction";
+import fetchProducts from "../../services/fetchProducts";
 import styles from './NewProductsContainer.module.scss';
 
 export default function NewProductsContainer() {
@@ -9,11 +9,11 @@ export default function NewProductsContainer() {
 	const filterString = "is_new";
 
 	const showMoreProducts = () => {
-		fetchProductsFunction(offset, setOffset, newProducts, setNewProducts, filterString);
+		fetchProducts(offset, setOffset, newProducts, setNewProducts, filterString);
 	};
 
 	useEffect(() => {
-		fetchProductsFunction(offset, setOffset, newProducts, setNewProducts, filterString);
+		fetchProducts(offset, setOffset, newProducts, setNewProducts, filterString);
 	}, []);
 
 

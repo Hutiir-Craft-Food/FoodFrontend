@@ -1,5 +1,5 @@
 
-const fetchProductsFunction = async (offset, setOffset, filteredCategory, setFilteredCategory, filter) => {
+const fetchProducts = async (offset, setOffset, filteredCategory, setFilteredCategory, filter) => {
 	try {
 		const response = await fetch(`/api/v1/products?filter=${filter}&offset=${offset}&limit=4`);
 		if (!response.ok) {
@@ -19,4 +19,4 @@ const fetchProductsFunction = async (offset, setOffset, filteredCategory, setFil
 	}
 };
 
-export default fetchProductsFunction;
+export default fetchProducts;

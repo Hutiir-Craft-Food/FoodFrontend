@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import Carousel from 'react-multi-carousel';
-import fetchCarouselItemsFunction from '../../services/fetchCarouselItemsFunction';
+import fetchCarousel from '../../services/fetchCarousel';
 import styles from './CustomCarousel.module.scss';
 
 export default function CustomCarousel({ title, carouselCategory }) {
 	const [carouselItems, setCarouselItems] = useState(null);
 
 	useEffect(() => {
-		fetchCarouselItemsFunction(setCarouselItems, carouselCategory);
+		fetchCarousel(setCarouselItems, carouselCategory);
 	}, []);
 
 	if (!carouselItems) {
