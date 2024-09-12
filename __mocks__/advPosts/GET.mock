@@ -1,0 +1,40 @@
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{{#code}}
+(()=>{
+   const advPosts = [
+		{
+			id: 1,
+			image: 'https://vanelja.com/wp-content/uploads/2021/10/vanilladreamcrepes-823x1024-1.jpg',
+			name: 'Post 1'
+		},
+		{
+			id: 2,
+			image: 'https://vanelja.com/wp-content/uploads/2021/10/vanilladreamcrepes-823x1024-1.jpg',
+			name: 'Post 2'
+		},
+		{
+			id: 3,
+			image: 'https://vanelja.com/wp-content/uploads/2021/10/vanilladreamcrepes-823x1024-1.jpg',
+			name: 'Post 3'
+		},
+		{
+			id: 4,
+			image: 'https://vanelja.com/wp-content/uploads/2021/10/vanilladreamcrepes-823x1024-1.jpg',
+			name: 'Post 4'
+		}
+	];
+
+
+    return {
+        status: 200,
+        headers: {
+            'X-Requested-By': 'adv-posts'
+        },
+        body: JSON.stringify({
+            carouselItems: advPosts
+        })
+    };
+})();
+{{/code}}

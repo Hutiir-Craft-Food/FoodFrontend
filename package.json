@@ -5,7 +5,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite --open --port 3000 --mode dev",
+    "dev": "vite --open --port 3000",
     "start": "vite start",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
@@ -13,14 +13,19 @@
     "test": "jest"
   },
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-error-boundary": "^4.0.13",
-    "react-router-dom": "^6.22.3",
     "bootstrap": "^5.3.3",
     "lodash": "^4.17.21",
+    "react": "^18.2.0",
+    "react-carousel": "^4.3.0",
+    "react-dom": "^18.2.0",
+    "react-error-boundary": "^4.0.13",
+    "react-icons": "^5.2.1",
+    "react-multi-carousel": "^2.8.5",
+    "react-rating-stars-component": "^2.2.0",
+    "react-router-dom": "^6.22.3",
     "sass": "^1.71.0",
-    "scss": "^0.2.4"
+    "scss": "^0.2.4",
+    "swiper": "^11.1.9"
   },
   "devDependencies": {
     "@babel/core": "^7.24.6",
@@ -30,18 +35,18 @@
     "@testing-library/jest-dom": "^6.4.5",
     "@testing-library/react": "^16.0.0",
     "@testing-library/user-event": "^14.5.2",
+    "@types/jest": "~29.5.12",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
-    "@types/jest": "~29.5.12",
-    "jest": "~29.7.0",
-    "jest-environment-jsdom": "~29.7.0",
-    "jest-scss-transform": "~1.0.3",
-    "jest-transformer-svg": "^2.0.2",
+    "@vitejs/plugin-react": "^4.3.1",
     "eslint": "^8.57.0",
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.9",
-    "@vitejs/plugin-react": "^4.3.1",
+    "jest": "~29.7.0",
+    "jest-environment-jsdom": "~29.7.0",
+    "jest-scss-transform": "~1.0.3",
+    "jest-transformer-svg": "^2.0.2",
     "vite": "^5.3.5"
   }
 }
