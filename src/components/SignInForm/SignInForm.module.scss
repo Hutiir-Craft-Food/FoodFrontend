@@ -1,0 +1,106 @@
+@import "../../styles/var.scss";
+
+.signInContainer {
+  width: 1024px;
+  height: 638px;
+  display: flex;
+  border-radius: 20px;
+  align-self: center;
+  align-items: center;
+  flex-flow: column wrap;
+
+  .imgFood {
+    width: 520px;
+    height: 638px;
+    padding: 16px;
+    gap: 10px;
+    opacity: 0px;
+  }
+
+  .formContainer {
+    width: 504px;
+    height: 638px;
+    padding: 20px 104px 20px 104px;
+    gap: 24px;
+    opacity: 0px;
+    display: flex;
+    align-items: center;
+    flex-flow: column wrap;
+
+    .passwordContainer {
+      margin-top: 0.5rem;
+      position: relative;
+      .toggleEye {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        width: 40px;
+        height: 40px;
+        border: none;
+        &.openEye {
+          background: url(src/images/EyeLine.svg) no-repeat scroll 7px 7px;
+        }
+
+        &.closeEye {
+          background: url(src/images/EyeCloseLine.svg) no-repeat scroll 7px 7px;
+        }
+      }
+    }
+
+    h2 {
+      text-align: center;
+      width: 296px;
+      height: 36px;
+      gap: 80px;
+      opacity: 0px;
+      color: #343d39;
+      margin: 40px 0 20px 0;
+      font-size: 1.5rem;
+    }
+
+    label {
+      font-size: 16px;
+      line-height: 20px;
+      width: 296px;
+      height: 36px;
+      gap: 8px;
+      opacity: 0px;
+    }
+
+    input {
+      height: 40px;
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid $lightGrey;
+    }
+
+    .fogetPasswordLink {
+      display: block;
+      text-align: right;
+      font-size: 14px;
+      line-height: 24px;
+      color: $green;
+    }
+
+    .signInButton {
+      height: 44px;
+      width: 340px;
+      border-radius: 8px;
+      border: none;
+      background-color: $darkGreen;
+      color: #ffffff;
+    }
+  }
+
+  .signUpLink {
+    width: 296px;
+    height: 44px;
+    padding: 0px, 8px, 0px, 8px;
+    margin-top: 20px;
+    gap: 8px;
+    display: block;
+    text-align: center;
+    color: $green;
+    font-size: 1.25rem;
+  }
+}
