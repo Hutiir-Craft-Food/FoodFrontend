@@ -38,7 +38,6 @@ const Navbar = () => {
           </button>
         </div>
       </nav>
-
       <ModalWindow
         show={showSignInForm}
         handleClose={handleClose}
