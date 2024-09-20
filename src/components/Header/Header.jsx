@@ -1,13 +1,17 @@
-import Navbar from "../Navbar/Navbar";
+import { useContext } from "react";
+import Navbar from '../Navbar/Navbar';
+import { AuthContext } from "../../containers/AuthContext";
 // import styles from './Header.module.scss';
 
 export default function Header() {
-  return (
-    <header>
-      <div className="container">
-        <p>Header </p>
-        <Navbar />
-      </div>
-    </header>
-  );
+    const authContext = useContext(AuthContext);
+    console.log(authContext.token);
+    return (
+        <header>
+            <div className="container">
+                <p>Header </p>
+                <Navbar/>
+            </div>
+        </header>
+    )
 }
