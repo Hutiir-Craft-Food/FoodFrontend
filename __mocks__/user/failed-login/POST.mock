@@ -1,0 +1,16 @@
+HTTP/1.1 401 Unauthorized
+Content-Type: application/json
+
+{{#code}}
+(() => {
+    return {
+        status: 401,
+        headers: {
+            'X-Requested-By': 'login/user',
+        },
+        body: JSON.stringify({
+            message: "Неправильний email або пароль"
+        })
+    };
+})();
+{{/code}}

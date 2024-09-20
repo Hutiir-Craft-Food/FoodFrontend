@@ -6,11 +6,13 @@ import { AuthContext } from "../../containers/AuthContext";
 const SignInForm = () => {
   // const navigate = useNavigate();
   const authContext = useContext(AuthContext);
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSignIn = async () => {
+  const handleSignIn = async (event) => {
+    event.preventDefault();
+    setIsSubmitting(true);
     try {
       const response = await fetch("/api/v1/user/login", {
         method: "POST",
@@ -19,47 +21,28 @@ const SignInForm = () => {
         },
         body: JSON.stringify({ email, password }),
       });
+      const data = await response.json();
 
       if (response.ok) {
-        const data = response.json();
         authContext.setToken(data.jwt);
-        // return res
-        //   .status(200)
-        //   .json({ status: "logged in", message: "success" });
+        setEmail("");
+        setPassword("")
+
       } else {
-        const erroMessage =
+        const errorMessage =
           data.message ||
           "Такого користувача не існує, перевірте правильність введених даних";
-        throw new Error(erroMessage);
+        throw new Error(errorMessage);
       }
     } catch (error) {
-      console.error("Failed");
+      console.error("Failed:", error);
     }
+    setIsSubmitting(false);
   };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    await signIn();
-
-    if (postSignIn) {
-      postSignIn();
-    }
-  };
-  // const [state, setState] = useState({
-  //   username: " ",
-  //   password: "",
-  // });
-
-  // const handleInputChange = (event) => {
-  //   const { name, value } = event.target;
-  //   setState((prevProps) => ({
-  //     ...prevProps,
-  //     [name]: value,
-  //   }));
-  // };
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const handleEyeButton = () => {
+  const handleEyeButton = (e) => {
+    e.preventDefault();
     setIsPasswordVisible(!isPasswordVisible);
   };
 
@@ -70,10 +53,9 @@ const SignInForm = () => {
       </div>
       <div className={styles.formContainer}>
         <h2>Вхід</h2>
-        <form metod="POST" onSubmit={handleSignIn}>
+        <form onSubmit={handleSignIn}>
           <label htmlFor="username">E-mail</label>
           <br />
-
           <input
             type="text"
             id="username"
@@ -81,9 +63,8 @@ const SignInForm = () => {
             required
             className="mb-3"
             value={email}
-            onChange={(ev) => setEmail(ev.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
             autoFocus
-            // onChange={handleInputChange}
           />
           <label htmlFor="password">Пароль</label>
           <br />
@@ -95,34 +76,26 @@ const SignInForm = () => {
               name="password"
               value={password}
               required
-              onChange={(ev) => setPassword(ev.target.value)}
-              // onChange={handleInputChange}
+              onChange={(e) => setPassword(e.target.value)}
             />
             <button
               id="togglePassword"
-              className={`${styles.toggleEye} ${
-                isPasswordVisible ? styles.openEye : styles.closeEye
-              }`}
+              className={`${styles.toggleEye} ${isPasswordVisible ? styles.openEye : styles.closeEye
+                }`}
               onClick={handleEyeButton}
             ></button>
           </div>
-
           <br />
           <a className={styles.fogetPasswordLink} href="#">
             Забули пароль?
           </a>
           <br />
-          <button className={styles.signInButton} type="submit">
-            Увійти
+          <button className={styles.signInButton} type="submit" disabled={isSubmitting}>
+            {isSubmitting ? 'Увійти...' : 'Увійти'}
           </button>
           <br />
         </form>
-        <button type="submit">
-          <a className={styles.signUpLink} href="#">
-            Зареєструватись
-          </a>
-          {/* <Link to={'/register'}>Create an account</Link> */}
-        </button>
+        <a className={styles.signUpLink} href="#">Зареєструватись</a>
       </div>
     </div>
   );
