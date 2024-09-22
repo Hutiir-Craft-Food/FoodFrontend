@@ -18,7 +18,6 @@ const SignInForm = () => {
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      // alert('Введіть коректну електронну адресу')
       setIsVisibleMessage(true);
       return false;
     }
@@ -79,6 +78,7 @@ const SignInForm = () => {
             <label htmlFor="username">E-mail</label>
             <br />
             <input
+              style={{ border: isVisibleMessage ? '1px solid #E02D3C' : ''}}
               type="text"
               id="username"
               name="username"
