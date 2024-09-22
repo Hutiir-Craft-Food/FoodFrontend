@@ -4,14 +4,13 @@ Content-Type: application/json
 {{#code}}
 (() => {
     const jwtToken = "mocked_jwt_token";
-
     return {
         status: 200,
         headers: {
             'X-Requested-By': 'login/user'
         },
         body: JSON.stringify({
-            jwt: jwtToken
+            jwt: jwtToken,
         })
     };
 })();
