@@ -23,7 +23,7 @@ export default function RecommendContainer() {
 				{recommendProducts && recommendProducts.length > 0 ? recommendProducts.map(function (recommendProduct) {
 					return (
 						<div className="col-lg-3 col-md-4 col-sm-6 col-12 mb-4" key={recommendProduct.id}>
-							<div className="p-3 rounded bg-warning-subtle flex-column h-100">
+							<div className="rounded flex-column h-100">
 								<ProductCard itemCard={recommendProduct}/>
 							</div>
 						</div>

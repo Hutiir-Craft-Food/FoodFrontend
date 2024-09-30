@@ -24,7 +24,7 @@ export default function OffersContainer() {
 				{offers && offers.length > 0 ? offers.map(function (offer) {
 					return (
 						<div className="col-lg-3 col-md-4 col-sm-6 col-12 mb-4" key={offer.id}>
-							<div className="p-3 rounded bg-warning-subtle flex-column h-100">
+							<div className="rounded flex-column h-100">
 								<ProductCard itemCard= {offer}/>
 							</div>
 						</div>
