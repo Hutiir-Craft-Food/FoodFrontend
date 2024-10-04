@@ -8,6 +8,8 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "prettier.enable": true,
   "prettier.useEditorConfig": false,
+  "prettier.singleQuote": true,
+  "prettier.semi": false,
   "search.exclude": {
     "**/node_modules": true,
     "cli/target/**": true,

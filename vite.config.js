@@ -1,6 +1,8 @@
 import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
 
+// vite.config documentation: https://vitejs.dev/config/
+
 export default ({ mode }) => {
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) }
   const serverPort = process.env.VITE_SERVER_PORT || 8080
@@ -13,7 +15,7 @@ export default ({ mode }) => {
         '/api': {
           target: `http://${serverAddress}:${serverPort}`,
           changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api\/v1/, ''),
+          rewrite: (path) => path.replace(/^\/api\//, ''),
         },
       },
     },
