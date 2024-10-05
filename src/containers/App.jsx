@@ -1,39 +1,59 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import Header from "../components/Header/Header";
+import Footer from "../components/Footer/Footer";
+import HomePage from "../pages/HomePge/HomePage";
 import NotFoundPage from "../components/NotFoundPage/NotFoundPage";
-import Navbar from "../components/Navbar/Navbar";
 import styles from "./App.module.scss";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: (
+      <>
+        <Header />
+        <Outlet />
+        <Footer />
+      </>
+    ),
+
+    children: [
+      {
+        path: "/",
+        element: <HomePage />,
+      },
+      {
+        path: "/delivery-and-payment",
+        element: <h1>Доставка і оплата</h1>,
+      },
+      {
+        path: "/manufacturers",
+        element: <h1>Виробники</h1>,
+      },
+      {
+        path: "/cooperation",
+        element: <h1>Співпраця</h1>,
+      },
+      {
+        path: "/blog",
+        element: <h1>Блог</h1>,
+      },
+      {
+        path: "/about",
+        element: <h1>Про нас</h1>,
+      },
+      {
+        path: "*",
+        element: <NotFoundPage />,
+      },
+    ],
+  },
+]);
 
 const App = () => {
   return (
-    <>
-      <ErrorBoundary fallback={<NotFoundPage />}>
-        <div className={styles.app}>
-          <Header />
-          <HomePage />
-          <Footer />
-        </div>
-      </ErrorBoundary>
-
-      <div className={styles.app}>
-        <Navbar />
-        <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route
-              path="/delivery-and-payment"
-              element={<DeliveryAndPayment />}
-            />
-            <Route path="/manufacturers" element={<div>Manufacturers</div>} />
-            <Route path="/cooperation" element={<div>Cooperation</div>} />
-            <Route path="/blog" element={<div>Blog</div>} />
-            <Route path="/about" element={<div>About</div>} />
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </>
+    <div className={styles.app}>
+      <RouterProvider router={router} />
+    </div>
   );
 };
 
