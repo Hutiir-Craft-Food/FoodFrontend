@@ -10,7 +10,7 @@ const SignInForm = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isVisibleMessage, setIsVisibleMessage] = useState(false);
 
-  const handleEyeButton = (e) => {
+  const handleEyeButtonClick = (e) => {
     e.preventDefault();
     setIsPasswordVisible(!isPasswordVisible);
   };
@@ -103,7 +103,7 @@ const SignInForm = () => {
               id="togglePassword"
               className={`${styles.toggleEye} ${isPasswordVisible ? styles.openEye : styles.closeEye
                 }`}
-              onClick={handleEyeButton}
+              onClick={handleEyeButtonClick}
             ></button>
           </div>
           <br />

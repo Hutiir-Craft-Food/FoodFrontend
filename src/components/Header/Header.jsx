@@ -10,7 +10,6 @@ export default function Header() {
         <header>
             <div className="container">
                 <p>Header </p>
-                {(authContext.token)?<p>Hello, {authContext.token}</p>:''}
                 <Navbar/>
             </div>
         </header>
