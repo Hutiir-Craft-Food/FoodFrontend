@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import ProductCard from "../ProductCard/ProductCard";
+import ProductCard from "../../components/ProductCard/ProductCard";
 import fetchProducts from "../../services/fetchProducts";
-import styles from './NewProductsContainer.module.scss';
+import styles from './NewProducts.module.scss';
 
-export default function NewProductsContainer() {
+export default function NewProducts() {
 	const [newProducts, setNewProducts] = useState(null);
 	const [offset, setOffset] = useState(0);
 	const filterString = "is_new";
@@ -29,7 +29,7 @@ export default function NewProductsContainer() {
 							</div>
 						</div>
 					);
-				}) : "is loaded..."
+				}) : "is loading..."
 				}
 			</div>
 			<div className="d-flex justify-content-end">

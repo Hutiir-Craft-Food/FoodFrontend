@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import ProductCard from "../ProductCard/ProductCard";
+import ProductCard from "../../components/ProductCard/ProductCard";
 import fetchProducts from "../../services/fetchProducts";
-import styles from './RecommendContainer.module.scss';
+import styles from './RecommendProducts.module.scss';
 
-export default function RecommendContainer() {
+export default function RecommendProducts() {
 	const [recommendProducts, setRecommendProducts] = useState(null);
 	const [offset, setOffset] = useState(0);
 	const filterString = "is_recommend";
@@ -28,7 +28,7 @@ export default function RecommendContainer() {
 							</div>
 						</div>
 					);
-				}) : "is loaded..."
+				}) : "is loading..."
 				}
 			</div>
 			<div className="d-flex justify-content-end">

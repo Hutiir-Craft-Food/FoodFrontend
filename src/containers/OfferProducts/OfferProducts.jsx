@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import ProductCard from "../ProductCard/ProductCard";
+import ProductCard from "../../components/ProductCard/ProductCard";
 import fetchProducts from '../../services/fetchProducts';
-import styles from './OffersContainer.module.scss';
+import styles from './OfferProducts.module.scss';
 
-export default function OffersContainer() {
+export default function OfferProducts() {
 	const [offers, setOffers] = useState(null);
 	const [offset, setOffset] = useState(0);
 	const filterString = "is_offer";
@@ -29,7 +29,7 @@ export default function OffersContainer() {
 							</div>
 						</div>
 					);
-				}) : "is loaded..."
+				}) : "is loading..."
 				}
 			</div>
 			<div className="d-flex justify-content-end">

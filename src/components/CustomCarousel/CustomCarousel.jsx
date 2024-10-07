@@ -11,7 +11,7 @@ export default function CustomCarousel({ title, carouselCategory }) {
 	}, []);
 
 	if (!carouselItems) {
-		return <div>Завантаження...</div>;
+		return <div>is loading...</div>;
 	}
 
 	return (

@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import SellerCard from "../SellerCard/SellerCard";
-import styles from './SellersContainer.module.scss';
+import SellerCard from "../../components/SellerCard/SellerCard";
+import styles from './Sellers.module.scss';
 
-export default function SellersContainer() {
+export default function Sellers() {
 	const [sellers, setSellers] = useState(null);
 	const [visibleCount, setVisibleCount] = useState(4);
 	const showMoreProducts = () => {
@@ -38,7 +38,7 @@ export default function SellersContainer() {
 							</div>
 						</div>
 					);
-				}) : "is loaded..."
+				}) : "is loading..."
 				}
 			</div>
 			<div className="d-flex justify-content-end">
