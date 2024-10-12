@@ -1,4 +1,4 @@
-@import "../../styles/var.scss";
+@import '../../styles/var.scss';
 
 .signInContainer {
   width: 1024px;
@@ -50,10 +50,6 @@
 
     .emailContainer {
       margin-bottom: 20px;
-      .wrongEmailMessage {
-        margin-top: 5px;
-        color: $danger-50;
-      }
     }
 
     .passwordContainer {
@@ -74,6 +70,11 @@
           background: url(src/images/EyeCloseLine.svg) no-repeat scroll 7px 7px;
         }
       }
+    }
+
+    .incorrectInputMessage {
+      margin-top: 5px;
+      color: $danger-50;
     }
 
     h2 {
@@ -103,10 +104,10 @@
       background-color: $primary-50;
       color: #ffffff;
 
-      &:hover{
+      &:hover {
         background-color: $primary-40;
       }
-      &:active{
+      &:active {
         background-color: $primary-60;
       }
     }
@@ -123,11 +124,11 @@
     color: $primary-50;
     font-size: 1.25rem;
 
-      &:hover{
-        color: $primary-40;
-      }
-      &:active{
-        color: $primary-60;
-      }
+    &:hover {
+      color: $primary-40;
+    }
+    &:active {
+      color: $primary-60;
+    }
   }
 }

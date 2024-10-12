@@ -9,7 +9,7 @@ ssl:
 protocols:
   http:
     enable: true
-    mocks_dir: "./v1/"
+    mocks_dir: "./"
     port: 8080
 
 injection:
