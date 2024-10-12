@@ -8,34 +8,62 @@ const SignInForm = () => {
   const [password, setPassword] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const [isVisibleMessage, setIsVisibleMessage] = useState(false);
+  const [errors, setErrors] = useState({});
 
   const handleEyeButtonClick = (e) => {
     e.preventDefault();
     setIsPasswordVisible(!isPasswordVisible);
   };
 
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+    setErrors((prevErrors) => ({ ...prevErrors, email: null }));
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+    setErrors((prevErrors) => ({ ...prevErrors, password: null }));
+  };
+
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      setIsVisibleMessage(true);
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        email: { valid: false, message: "Не правильна адреса" },
+      }));
       return false;
     }
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      email: { valid: true },
+    }));
     return true;
-  }
+  };
 
   const validatePassword = (password) => {
-    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
-    if (!regex.test(password)) {
-      alert('Пароль повинен містити принаймні 8 символів, хоч би 1 велику та 1 маленьку літери латинського алфавіту, хоч би 1 цифру і 1 спеціальний символ')
+    if (password.length < 8) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        password: {
+          valid: false,
+          message:
+            "Не меньше 8 символів",
+        },
+      }));
       return false;
     }
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      password: { valid: true },
+    }));
     return true;
-  }
+  };
 
   const handleSignIn = async (event) => {
     event.preventDefault();
     setIsSubmitting(true);
+
     if (validateEmail(email) && validatePassword(password)) {
       try {
         const response = await fetch("/api/v1/user/login", {
@@ -48,11 +76,10 @@ const SignInForm = () => {
         const data = await response.json();
 
         if (response.ok) {
-          authContext.setToken(data.jwt);
+          authContext.loginCurrentUser(data.jwt);
           setEmail("");
-          setPassword("")
-          setIsVisibleMessage(false);
-
+          setPassword("");
+          setErrors({});
         } else {
           const errorMessage =
             data.message ||
@@ -75,50 +102,67 @@ const SignInForm = () => {
         <h2>Вхід</h2>
         <form onSubmit={handleSignIn}>
           <div className={styles.emailContainer}>
-            <label htmlFor="username">E-mail</label>
+            <label htmlFor="email">E-mail</label>
             <br />
             <input
-              style={{ border: isVisibleMessage ? '1px solid #E02D3C' : ''}}
-              type="text"
-              id="username"
-              name="username"
+              style={{
+                border: errors.email?.valid === false ? "1px solid #E02D3C" : "",
+              }}
+              type="email"
+              id="email"
+              name="email"
               required
               value={email}
-              onChange={(e) => { setEmail(e.target.value); setIsVisibleMessage(false); }}
+              onChange={handleEmailChange}
+              onBlur={() => validateEmail(email)}
               autoFocus
             />
-            <p className={styles.wrongEmailMessage} style={{ visibility: isVisibleMessage ? 'visible' : 'hidden' }}>Не правильна адреса</p>
+            {errors.email?.valid === false && (
+              <p className={styles.incorrectInputMessage}>{errors.email.message}</p>
+            )}
           </div>
           <div className={styles.passwordContainer}>
             <label htmlFor="password">Пароль</label>
             <input
+              style={{
+                border: errors.password?.valid === false ? "1px solid #E02D3C" : "",
+              }}
               type={isPasswordVisible ? "text" : "password"}
               id="password"
               name="password"
               value={password}
               required
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={handlePasswordChange}
+              onBlur={() => validatePassword(password)}
             />
             <button
               id="togglePassword"
-              className={`${styles.toggleEye} ${isPasswordVisible ? styles.openEye : styles.closeEye
-                }`}
+              className={`${styles.toggleEye} ${isPasswordVisible ? styles.openEye : styles.closeEye}`}
+              aria-label={isPasswordVisible ? "Приховати пароль" : "Показати пароль"}
               onClick={handleEyeButtonClick}
             ></button>
+            {errors.password?.valid === false && (<p className={styles.incorrectInputMessage}>{errors.password.message}</p>)}
           </div>
           <br />
           <a className={styles.fogetPasswordLink} href="#">
             Забули пароль?
           </a>
           <br />
-          <button className={styles.signInButton} type="submit" disabled={isSubmitting}>
+          <button
+            className={styles.signInButton}
+            type="submit"
+            disabled={isSubmitting}
+          >
             Увійти
           </button>
           <br />
         </form>
-        <a className={styles.signUpLink} href="#">Зареєструватись</a>
+        <a className={styles.signUpLink} href="#">
+          Зареєструватись
+        </a>
       </div>
     </div>
   );
 };
+
 export default SignInForm;
