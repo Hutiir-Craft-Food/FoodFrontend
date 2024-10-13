@@ -56,13 +56,10 @@ const router = createBrowserRouter([
 
 const App = () => {
   const [token, setToken] = useState(null);
-  const loginCurrentUser = (newUserData) => {
-    setToken(newUserData);
-  };
 
   return (
     <ErrorBoundary fallback={<NotFoundPage />}>
-      <AuthContext.Provider value={{ token, loginCurrentUser }}>
+      <AuthContext.Provider value={{ token, setToken }}>
       <div className={styles.app}>
         <RouterProvider router={router} />
       </div>

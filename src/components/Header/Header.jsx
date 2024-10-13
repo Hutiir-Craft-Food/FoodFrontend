@@ -5,7 +5,6 @@ import { AuthContext } from "../../containers/AuthContext";
 
 export default function Header() {
     const authContext = useContext(AuthContext);
-    console.log(authContext.token);
     return (
         <header>
             <div className="container">
