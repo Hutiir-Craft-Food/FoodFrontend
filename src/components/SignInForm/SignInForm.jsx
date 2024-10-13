@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useCallback } from "react";
 import styles from "./SignInForm.module.scss";
 import { AuthContext } from "../../containers/AuthContext";
 
@@ -25,9 +25,9 @@ const SignInForm = () => {
     setErrors((prevErrors) => ({ ...prevErrors, password: null }));
   };
 
-  const validateEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+  const validateEmail = useCallback(() => {
+    const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!pattern.test(email)) {
       setErrors((prevErrors) => ({
         ...prevErrors,
         email: { valid: false, message: "Не правильна адреса" },
@@ -39,16 +39,17 @@ const SignInForm = () => {
       email: { valid: true },
     }));
     return true;
-  };
+  }, [email]);
 
-  const validatePassword = (password) => {
-    if (password.length < 8) {
+  const validatePassword = useCallback(() => {
+    const pattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{9,}$/;
+    if (!pattern.test(password)) {
       setErrors((prevErrors) => ({
         ...prevErrors,
         password: {
           valid: false,
           message:
-            "Не меньше 8 символів",
+            "Не менше 8 буквенних та 1 числовий символи",
         },
       }));
       return false;
@@ -58,37 +59,38 @@ const SignInForm = () => {
       password: { valid: true },
     }));
     return true;
-  };
+  }, [password]);
 
   const handleSignIn = async (event) => {
     event.preventDefault();
     setIsSubmitting(true);
+    if (errors.email?.valid === false || errors.password?.valid === false) {
+      setIsSubmitting(false);
+      return;
+    }
+    try {
+      const response = await fetch("/api/v1/user/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+      const data = await response.json();
 
-    if (validateEmail(email) && validatePassword(password)) {
-      try {
-        const response = await fetch("/api/v1/user/login", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email, password }),
-        });
-        const data = await response.json();
-
-        if (response.ok) {
-          authContext.loginCurrentUser(data.jwt);
-          setEmail("");
-          setPassword("");
-          setErrors({});
-        } else {
-          const errorMessage =
-            data.message ||
-            "Такого користувача не існує, перевірте правильність введених даних";
-          throw new Error(errorMessage);
-        }
-      } catch (error) {
-        console.error("Failed:", error);
+      if (response.ok) {
+        authContext.setToken(data.jwt);
+        setEmail("");
+        setPassword("");
+        setErrors({});
+      } else {
+        const errorMessage =
+          data.message ||
+          "Такого користувача не існує, перевірте правильність введених даних";
+        throw new Error(errorMessage);
       }
+    } catch (error) {
+      console.error("Failed:", error);
     }
     setIsSubmitting(false);
   };
@@ -114,7 +116,7 @@ const SignInForm = () => {
               required
               value={email}
               onChange={handleEmailChange}
-              onBlur={() => validateEmail(email)}
+              onBlur={validateEmail}
               autoFocus
             />
             {errors.email?.valid === false && (
@@ -133,7 +135,7 @@ const SignInForm = () => {
               value={password}
               required
               onChange={handlePasswordChange}
-              onBlur={() => validatePassword(password)}
+              onBlur={validatePassword}
             />
             <button
               id="togglePassword"
