@@ -38,7 +38,7 @@ export default function Sellers() {
 							</div>
 						</div>
 					);
-				}) : "is loading..."
+				}) : "Завантаження..."
 				}
 			</div>
 			<div className="d-flex justify-content-end">

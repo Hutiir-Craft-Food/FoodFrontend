@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import fetchProducts from "../../services/fetchProducts";
-import styles from './RecommendProducts.module.scss';
+import styles from './RecommendedProducts.module.scss';
 
-export default function RecommendProducts() {
+export default function RecommendedProducts() {
 	const [recommendProducts, setRecommendProducts] = useState(null);
 	const [offset, setOffset] = useState(0);
 	const filterString = "is_recommend";
@@ -28,7 +28,7 @@ export default function RecommendProducts() {
 							</div>
 						</div>
 					);
-				}) : "is loading..."
+				}) : "Завантаження..."
 				}
 			</div>
 			<div className="d-flex justify-content-end">

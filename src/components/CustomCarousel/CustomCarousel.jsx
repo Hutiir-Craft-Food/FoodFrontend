@@ -11,7 +11,7 @@ export default function CustomCarousel({ title, carouselCategory }) {
 	}, []);
 
 	if (!carouselItems) {
-		return <div>is loading...</div>;
+		return <div>Завантаження...</div>;
 	}
 
 	return (
@@ -23,7 +23,6 @@ export default function CustomCarousel({ title, carouselCategory }) {
 				autoPlaySpeed={3000}
 				centerMode={false}
 				className=""
-				// containerClass={`w-full`}
 				containerClass="container-with-dots"
 				dotListClass=""
 				draggable
