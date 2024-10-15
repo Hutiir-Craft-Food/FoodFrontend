@@ -1,9 +1,9 @@
 import CustomCarousel from "../../components/CustomCarousel/CustomCarousel";
 import styles from './HomePage.module.scss';
-import NewProductsContainer from "../../components/NewProductsContainer/NewProductsContainer";
-import SellersContainer from "../../components/SellersContainer/SellersContainer";
-import OffersContainer from "../../components/OffersContainer/OffersContainer";
-import RecommendContainer from "../../components/RecommendContainer/RecommendContainer";
+import NewProducts from "../../containers/NewProducts/NewProducts";
+import Sellers from "../../containers/Sellers/Sellers";
+import RecommendedProducts from "../../containers/RecommendedProducts/RecommendedProducts";
+import ProductsOffers from "../../containers/ProductOffers/ProductOffers";
 
 export default function HomePage() {
 
@@ -11,9 +11,9 @@ export default function HomePage() {
 		<div className="container">
 			<h1>Khutir Craftu</h1>
 			<CustomCarousel carouselCategory = "advPosts" />
-			<NewProductsContainer/>
-			<OffersContainer/>
-			<RecommendContainer />
+			<NewProducts/>
+			<ProductsOffers/>
+			<RecommendedProducts />
 
 			<section>
 				<h2>Чомy ми?</h2>
@@ -32,7 +32,7 @@ export default function HomePage() {
 					</div>
 				</div>
 			</section>
-			<SellersContainer />
+			<Sellers />
 			<CustomCarousel title='Блог' carouselCategory="blogPosts" />
 		</div>
 	)

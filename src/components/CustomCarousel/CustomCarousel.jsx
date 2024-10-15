@@ -23,7 +23,6 @@ export default function CustomCarousel({ title, carouselCategory }) {
 				autoPlaySpeed={3000}
 				centerMode={false}
 				className=""
-				// containerClass={`w-full`}
 				containerClass="container-with-dots"
 				dotListClass=""
 				draggable
