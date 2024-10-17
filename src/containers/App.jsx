@@ -1,10 +1,12 @@
-import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
-import { ErrorBoundary } from 'react-error-boundary';
-import Header from '../components/Header/Header';
-import Footer from '../components/Footer/Footer';
-import HomePage from '../pages/HomePage/HomePage';
-import NotFoundPage from '../components/NotFoundPage/NotFoundPage';
-import styles from './App.module.scss';
+import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'
+import { ErrorBoundary } from 'react-error-boundary'
+import { useState } from 'react'
+import { AuthContext } from './AuthContext'
+import Header from '../components/Header/Header'
+import Footer from '../components/Footer/Footer'
+import HomePage from '../pages/HomePage/HomePage'
+import NotFoundPage from '../components/NotFoundPage/NotFoundPage'
+import styles from './App.module.scss'
 
 const router = createBrowserRouter([
   {
@@ -48,16 +50,20 @@ const router = createBrowserRouter([
       },
     ],
   },
-]);
+])
 
-const App = () => {
+function App() {
+  const [token, setToken] = useState(null)
+
   return (
     <ErrorBoundary fallback={<NotFoundPage />}>
-      <div className={styles.app}>
-        <RouterProvider router={router} />
-      </div>
+      <AuthContext.Provider value={{ token, setToken }}>
+        <div className={styles.app}>
+          <RouterProvider router={router} />
+        </div>
+      </AuthContext.Provider>
     </ErrorBoundary>
-  );
-};
+  )
+}
 
-export default App;
+export default App
