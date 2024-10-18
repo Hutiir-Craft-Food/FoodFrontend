@@ -1,4 +1,4 @@
-@import "../../styles/var.scss";
+@import '../../styles/var.scss';
 
 .formContainer {
   width: 296px;
@@ -29,12 +29,10 @@
       width: 100%;
       border-radius: 8px;
       border: 1px solid #b6cec2;
-      font-size: 1rem;
+      font-size: 1.125rem / 1.35rem;
       //styleName: Paragraph 3;
       font-family: Circe;
-      font-size: 1.125rem;
       font-weight: 400;
-      // line-height: 1.35rem;
       text-align: left;
     }
     input:invalid {

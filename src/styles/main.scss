@@ -1,11 +1,11 @@
-@import "./normalize.scss";
-@import "./var.scss";
+@import './normalize.scss';
+@import './var.scss';
 
-
-body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 
 body {
@@ -19,13 +19,12 @@ body {
     text-align: center;
   }
 
-  h2{
+  h2 {
     color: $brandColor;
     font-family: $brandFont;
     font-size: 30px;
     font-weight: 700;
     text-align: center;
     margin: 50px 0;
-
   }
 }

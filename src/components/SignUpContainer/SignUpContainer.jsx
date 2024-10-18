@@ -49,13 +49,33 @@ export default function SignUpContainer({ setShowSignUpContainer }) {
 
   return (
     <div className={styles.signUpContainer}>
-      <div className={styles.imgContainer}>
-        <img src="/images/sign-in.png" alt="food" />
-      </div>
+      {role === 'BUYER' && (
+        <div className={styles.imgContainer}>
+          <img
+            src="/images/sign-in.png"
+            alt="imgForBuyerRegistration"
+            className={styles.imgBuyer}
+          />
+        </div>
+      )}
+      {role === 'SELLER' && (
+        <div className={styles.imgContainer}>
+          <img
+            src="/images/sign-in.png"
+            alt="imgForBuyerRegistration"
+            className={styles.imgSeller}
+          />
+
+          <div className={styles.steps}>
+            <p>
+              <span className={styles.steps}>1-2-3</span>
+            </p>
+          </div>
+        </div>
+      )}
 
       <div className={styles.contentContainer}>
         <h4>Реєстрація</h4>
-
         <form onSubmit={handleSubmit}>
           <div className={styles.formContentContainer}>
             <div className={styles.rolesButtons}>
@@ -97,18 +117,21 @@ export default function SignUpContainer({ setShowSignUpContainer }) {
             )}
           </div>
 
-          <div className={styles.checkboxLabel}>
-            <input
-              type="checkbox"
-              id="subscription"
-              className={styles.checkbox}
-              value={subscription}
-              onChange={handleCheckbox}
-            />
-            <label htmlFor="subscription">
-              Бажаю отримувати новини та спеціальні пропозиції
-            </label>
-          </div>
+          {role === 'BUYER' && (
+            <div className={styles.checkboxLabel}>
+              <input
+                type="checkbox"
+                id="subscription"
+                className={styles.checkbox}
+                value={subscription}
+                onChange={handleCheckbox}
+              />
+
+              <label htmlFor="subscription">
+                Бажаю отримувати новини та спеціальні пропозиції
+              </label>
+            </div>
+          )}
           <br></br>
 
           <button

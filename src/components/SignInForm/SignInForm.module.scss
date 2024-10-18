@@ -1,4 +1,4 @@
-@import "../../styles/var.scss";
+@import '../../styles/var.scss';
 
 .signInContainer {
   height: 640px;
@@ -9,7 +9,7 @@
 
   .imgFood {
     max-width: 460px;
-    max-width: 940px;
+
     padding: 4px 0 6px;
   }
 
@@ -21,7 +21,6 @@
       color: $black;
       margin-bottom: 32px;
       text-align: center;
-      font-size: 5rem;
     }
 
     label {
