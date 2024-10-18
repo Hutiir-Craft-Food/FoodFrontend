@@ -1,79 +1,127 @@
-@import "../../styles/var.scss";
+@import '../../styles/var.scss';
+@import '../../styles/mixins.scss';
+@import '../../styles/base/typography.scss';
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+@mixin buttonL() {
+  height: 44px;
+  width: 296px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Circe';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 120%;
+  border-radius: 8px;
+  border: none;
+  gap: 8px;
+}
+
+@mixin buttonM() {
+  width: 296px;
+  height: 36px;
+  display: flex;
+  padding: 8px 0px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  font-family: Circe;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%;
+  background-color: $white;
+  color: $primary;
+  border: none;
+}
 
 .signUpContainer {
   width: 1056px;
   height: 800px;
-  gap: 0px;
+  // the next three lines are used when a layout will be applied
+  // position: relative;
+  // top: 112.5px;
+  // left: 192px;
   border-radius: 20px;
-  box-sizing: border-box;
-  opacity: 0px;
   display: flex;
-  align-self: center;
-  flex-flow: column wrap;
+  justify-content: space-between;
 
   .imgContainer {
     width: 520px;
     height: 800px;
-    img {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+
+    .imgBuyer {
       width: 488px;
       height: 768px;
       border-radius: 20px;
-      margin: 16px;
+    }
+    .imgSeller {
+      width: 488px;
+      height: 664px;
+      border-radius: 20px;
+    }
+    /*Temporary used*/
+    .steps {
+      display: flex;
+      height: 104px;
+      justify-content: center;
+      align-items: center;
+      font-family: Circe;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 120%;
     }
   }
-
   .contentContainer {
     width: 536px;
     height: 800px;
-    box-sizing: border-box;
+    padding: 60px 0px 20px 0px;
     display: flex;
-    justify-content: baseline;
     flex-direction: column;
-    padding: 20px 0px 20px 0px;
     align-items: center;
-    row-gap: 16px;
+    flex-shrink: 0;
+    row-gap: 1.5rem;
+
     h4 {
       height: 36px;
       display: flex;
       justify-content: center;
-      height: 36px;
-      color: #111815;
-      top: 16px;
       text-align: center;
-      line-height: 1.8rem;
-      font-family: Circe;
-      font-weight: 700;
-      font-size: 1.5rem;
+      color: darken($primary, 40%);
+      @extend h4;
+      // margin-bottom: 32px;
     }
 
     .formContentContainer {
       width: 296px;
       display: flex;
-      justify-content: center;
       flex-direction: column;
+      align-items: flex-start;
+      row-gap: 1.5rem;
       .rolesButtons {
-        width: 296px;
         height: 36px;
-        margin-bottom: 16px;
+        display: flex;
         justify-content: space-between;
+        align-items: flex-start;
+        align-self: stretch;
+
         button {
-          width: 148px;
-          height: 35px;
-          gap: 8px;
-          padding: 8px;
-          border: none;
-          background-color: #ffffff;
-          color: #537a67;
-          cursor: pointer;
-          font-size: 1rem;
-          line-height: 1.2rem;
-          opacity: 0px;
-          font-family: Circe;
-          font-weight: 400;
-          text-align: center;
+          @include buttonM();
         }
         .active {
-          border: 1px solid #537a67;
+          border: 1px solid $primary;
           border-radius: 8px;
         }
       }
@@ -84,77 +132,90 @@
       height: 34px;
       display: flex;
       justify-content: center;
-      font-size: 0.875rem;
-      line-height: 1.05rem;
-      font-family: Circe;
-      font-weight: 400;
+      vertical-align: middle;
+      margin: 16px 0 24px 0;
       cursor: pointer;
-      input[type="checkbox"] {
-        height: 24px;
-        width: 24px;
-        accent-color: #537a67;
-        border: 2px solid #537a67;
-        outline: none;
-        margin-right: 5px;
-      }
-      .checked {
-        accent-color: #537a67;
-        height: 24px;
-        width: 24px;
-        border: 2px solid #537a67;
-      }
-      .unchecked {
-        -webkit-appearance: none;
-        appearance: none;
-        height: 24px;
-        width: 24px;
-        accent-color: #537a67;
-        border: 2px solid #537a67;
-        outline: none;
-        margin-right: 5px;
+      .checkboxContainer {
+        display: block;
+        @extend p5;
+        color: darken($primary, 40%);
+        position: relative;
+        padding-left: 30px;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        input[type='checkbox'] {
+          position: absolute;
+          z-index: -1;
+          opacity: 0;
+        }
+        .checkmark {
+          position: absolute;
+          top: 5px;
+          left: 0;
+          height: 16.5px;
+          width: 16.5px;
+          background-color: $white;
+          border: 1.5px solid $primary;
+        }
+
+        input:checked ~ .checkmark {
+          background-color: $white;
+        }
+
+        .checkmark:after {
+          content: '';
+          position: absolute;
+          display: none;
+        }
+
+        input:checked ~ .checkmark:after {
+          display: block;
+        }
+
+        .checkmark:after {
+          left: 5px;
+          width: 6px;
+          height: 10px;
+          border: 1px solid $primary;
+          border-width: 0 1.5px 1.5px 0;
+          -webkit-transform: rotate(45deg);
+          -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+        }
       }
     }
+
     .signUpButton {
-      height: 44px;
-      width: 296px;
-      display: flex;
-      align-self: center;
-      justify-content: center;
-      flex-direction: column;
-      background-color: #537a67;
-      color: #ffffff;
-      border: none;
-      border-radius: 8px;
-      font-family: Circe;
-      font-size: 1.25rem;
-      font-weight: 700;
-      line-height: 1.5rem;
+      @include buttonL();
+      background-color: $primary;
+      color: $white;
     }
     .signUpEnabled {
       cursor: pointer;
     }
     .signUpDisabled {
-      opacity: 0.2;
+      background-color: lighten($natural, 30%);
       cursor: not-allowed;
     }
 
     .signInLink {
-      width: 296px;
-      height: 44px;
-      align-self: center;
-      text-align: center;
-      color: #537a67;
-      font-family: Circe;
-      font-weight: 700;
-      font-size: 1.25rem;
+      @include buttonL();
+      color: $primary;
     }
 
     .userAgreement {
-      display: flex;
+      position: absolute;
+      bottom: 20px;
       font-size: 0.75rem;
-      justify-content: center;
+      font-family: Circe;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 120%;
       .userAgreementLink {
-        color: $green;
+        color: $primary;
       }
     }
   }

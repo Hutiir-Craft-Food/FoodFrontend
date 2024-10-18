@@ -47,6 +47,6 @@
     "jest-environment-jsdom": "~29.7.0",
     "jest-scss-transform": "~1.0.3",
     "jest-transformer-svg": "^2.0.2",
-    "vite": "^5.3.5"
+    "vite": "^5.4.9"
   }
 }

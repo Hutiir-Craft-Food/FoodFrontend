@@ -1,0 +1,99 @@
+.Display1 {
+  font-family: Circe;
+  font-size: 4.5rem;
+  font-weight: 700;
+  line-height: 120%;
+}
+
+/**
+ * Headings
+ */
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: Circe;
+  font-weight: 700;
+}
+
+/*Heading 1*/
+h1 .h1 {
+  font-size: 3.5rem;
+}
+/*Heading 2*/
+h2 .h2 {
+  font-size: 3rem;
+}
+/*Heading 3*/
+h3 .h3 {
+  font-size: 2rem;
+}
+/*Heading 4*/
+h4 .h4 {
+  font-size: 1.5rem;
+}
+/*Heading 5*/
+h5 .h5 {
+  font-size: 1.25rem;
+}
+
+p1,
+p2,
+p3,
+p4,
+p5 {
+  font-family: Circe;
+  font-weight: 400;
+}
+
+/*Paragraph 1*/
+p1 .paragraph1 {
+  font-size: 2rem;
+}
+/*Paragraph 2*/
+p2 .paragraph2 {
+  font-size: 1.5rem;
+}
+/*Paragraph 3*/
+p3 .paragraph3 {
+  font-size: 1.125rem;
+}
+/*Paragraph 4*/
+p4 .paragraph4 {
+  font-size: 1rem;
+}
+/*Paragraph 5*/
+p5 {
+  font-size: 0.875rem;
+}
+
+/*Paragraph 6*/
+p6.paragraph6 {
+  font-size: 0.75rem;
+}
+.Paragraph7Striketrough {
+  font-family: Circe;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 120%;
+}
+
+.ButtonL-text {
+  font-family: Circe;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.ButtonM-S-text {
+  font-family: Circe;
+  font-size: 1.125rem;
+  font-weight: 400;
+}
+
+.Hyperlink {
+  font-family: Circe;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 120%;
+}
