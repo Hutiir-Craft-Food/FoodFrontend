@@ -6,23 +6,20 @@ const SignInForm = () => {
   const authContext = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [errors, setErrors] = useState({});
 
   const handleEyeButtonClick = (e) => {
     e.preventDefault();
-    setIsPasswordVisible(!isPasswordVisible);
+    setIsPasswordVisible(prevValue => !prevValue);
   };
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
-    setErrors((prevErrors) => ({ ...prevErrors, email: null }));
   };
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
-    setErrors((prevErrors) => ({ ...prevErrors, password: null }));
   };
 
   const validateEmail = useCallback(() => {
@@ -32,13 +29,12 @@ const SignInForm = () => {
         ...prevErrors,
         email: { valid: false, message: "Не правильна адреса" },
       }));
-      return false;
+      return;
     }
     setErrors((prevErrors) => ({
       ...prevErrors,
       email: { valid: true },
     }));
-    return true;
   }, [email]);
 
   const validatePassword = useCallback(() => {
@@ -52,20 +48,18 @@ const SignInForm = () => {
             "Не менше 8 буквенних та 1 числовий символи",
         },
       }));
-      return false;
+      return;
     }
     setErrors((prevErrors) => ({
       ...prevErrors,
       password: { valid: true },
     }));
-    return true;
   }, [password]);
 
   const handleSignIn = async (event) => {
     event.preventDefault();
-    setIsSubmitting(true);
-    if (errors.email?.valid === false || errors.password?.valid === false) {
-      setIsSubmitting(false);
+    const hasErrors = Object.values(errors).some(({ valid }) => valid === false);
+    if (hasErrors) {
       return;
     }
     try {
@@ -92,7 +86,6 @@ const SignInForm = () => {
     } catch (error) {
       console.error("Failed:", error);
     }
-    setIsSubmitting(false);
   };
 
   return (
@@ -153,7 +146,6 @@ const SignInForm = () => {
           <button
             className={styles.signInButton}
             type="submit"
-            disabled={isSubmitting}
           >
             Увійти
           </button>
