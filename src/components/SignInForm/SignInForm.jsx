@@ -6,13 +6,12 @@ const SignInForm = () => {
   const authContext = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [errors, setErrors] = useState({});
 
   const handleEyeButtonClick = (e) => {
     e.preventDefault();
-    setIsPasswordVisible(!isPasswordVisible);
+    setIsPasswordVisible(prevValue => !prevValue);
   };
 
   const handleEmailChange = (e) => {
@@ -61,10 +60,8 @@ const SignInForm = () => {
     event.preventDefault();
     const hasErrors = Object.values(errors).some(({ valid }) => valid === false);
     if (hasErrors) {
-      setIsSubmitting(false);
       return;
     }
-    setIsSubmitting(true);
     try {
       const response = await fetch("/api/v1/user/login", {
         method: "POST",
@@ -89,7 +86,6 @@ const SignInForm = () => {
     } catch (error) {
       console.error("Failed:", error);
     }
-    setIsSubmitting(false);
   };
 
   return (
@@ -150,7 +146,6 @@ const SignInForm = () => {
           <button
             className={styles.signInButton}
             type="submit"
-            disabled={isSubmitting}
           >
             Увійти
           </button>
