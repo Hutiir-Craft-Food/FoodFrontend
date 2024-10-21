@@ -17,12 +17,10 @@ const SignInForm = () => {
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
-    setErrors((prevErrors) => ({ ...prevErrors, email: null }));
   };
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
-    setErrors((prevErrors) => ({ ...prevErrors, password: null }));
   };
 
   const validateEmail = useCallback(() => {
@@ -32,13 +30,12 @@ const SignInForm = () => {
         ...prevErrors,
         email: { valid: false, message: "Не правильна адреса" },
       }));
-      return false;
+      return;
     }
     setErrors((prevErrors) => ({
       ...prevErrors,
       email: { valid: true },
     }));
-    return true;
   }, [email]);
 
   const validatePassword = useCallback(() => {
@@ -52,22 +49,22 @@ const SignInForm = () => {
             "Не менше 8 буквенних та 1 числовий символи",
         },
       }));
-      return false;
+      return;
     }
     setErrors((prevErrors) => ({
       ...prevErrors,
       password: { valid: true },
     }));
-    return true;
   }, [password]);
 
   const handleSignIn = async (event) => {
     event.preventDefault();
-    setIsSubmitting(true);
-    if (errors.email?.valid === false || errors.password?.valid === false) {
+    const hasErrors = Object.values(errors).some(({ valid }) => valid === false);
+    if (hasErrors) {
       setIsSubmitting(false);
       return;
     }
+    setIsSubmitting(true);
     try {
       const response = await fetch("/api/v1/user/login", {
         method: "POST",

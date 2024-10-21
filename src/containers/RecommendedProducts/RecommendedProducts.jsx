@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import ProductCard from "../ProductCard/ProductCard";
+import ProductCard from "../../components/ProductCard/ProductCard";
 import fetchProducts from "../../services/fetchProducts";
-import styles from './RecommendContainer.module.scss';
+import styles from './RecommendedProducts.module.scss';
 
-export default function RecommendContainer() {
+export default function RecommendedProducts() {
 	const [recommendProducts, setRecommendProducts] = useState(null);
 	const [offset, setOffset] = useState(0);
 	const filterString = "is_recommend";
@@ -23,12 +23,12 @@ export default function RecommendContainer() {
 				{recommendProducts && recommendProducts.length > 0 ? recommendProducts.map(function (recommendProduct) {
 					return (
 						<div className="col-lg-3 col-md-4 col-sm-6 col-12 mb-4" key={recommendProduct.id}>
-							<div className="p-3 rounded bg-warning-subtle flex-column h-100">
+							<div className="rounded flex-column h-100">
 								<ProductCard itemCard={recommendProduct}/>
 							</div>
 						</div>
 					);
-				}) : "is loaded..."
+				}) : "Завантаження..."
 				}
 			</div>
 			<div className="d-flex justify-content-end">
