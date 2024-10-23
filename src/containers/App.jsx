@@ -1,5 +1,9 @@
+import { useState } from "react";
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import { ErrorBoundary } from 'react-error-boundary';
+import { AuthContext } from "./AuthContext";
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'react-multi-carousel/lib/styles.css';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import HomePage from '../pages/HomePage/HomePage';
@@ -51,11 +55,15 @@ const router = createBrowserRouter([
 ]);
 
 const App = () => {
+  const [token, setToken] = useState(null);
+
   return (
     <ErrorBoundary fallback={<NotFoundPage />}>
+      <AuthContext.Provider value={{ token, setToken }}>
       <div className={styles.app}>
         <RouterProvider router={router} />
       </div>
+      </AuthContext.Provider>
     </ErrorBoundary>
   );
 };

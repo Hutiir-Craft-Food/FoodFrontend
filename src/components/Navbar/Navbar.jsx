@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ModalWindow from '../ModalWindow/ModalWindow';
-import SingInForm from '../SingInForm/SingInForm';
+import SingInForm from '../SignInForm/SignInForm';
 import SingUpBuyerForm from '../SignUpBuyerForm/SingUpBuyerForm';
 import SingUpSellerForm from '../SignUpSellerForm/SingUpSellerForm';
 import styles from './Navbar.module.scss';
@@ -38,7 +38,6 @@ const Navbar = () => {
           </button>
         </div>
       </nav>
-
       <ModalWindow
         show={showSignInForm}
         handleClose={handleClose}
