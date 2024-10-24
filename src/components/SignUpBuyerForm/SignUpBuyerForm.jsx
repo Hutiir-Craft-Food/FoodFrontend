@@ -1,88 +1,87 @@
-import { useState, useEffect, useCallback, use } from "react";
-import styles from "./SignUpBuyerForm.module.scss";
+import { useState, useEffect, useCallback, use } from 'react'
+import styles from './SignUpBuyerForm.module.scss'
+import { values } from 'lodash'
 
 export default function SignUpBuyerForm({ setFormData }) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({})
 
   const validateEmail = useCallback(() => {
-    const pattern = /^[A-Za-z0-9\._%+\-]+@[A-Za-z0-9\.\-]+\.[A-Za-z]{2,}$/;
+    const pattern = /^[A-Za-z0-9\._%+\-]+@[A-Za-z0-9\.\-]+\.[A-Za-z]{2,}$/
 
     if (pattern.test(email)) {
       setErrors((errors) => ({
         ...errors,
         email: { valid: true },
-      }));
+      }))
 
-      return;
+      return
     }
 
     setErrors((errors) => ({
       ...errors,
       email: {
         valid: false,
-        errorMessage: "Вкажіть коректний email",
+        errorMessage: 'Вкажіть коректний email',
       },
-    }));
-  }, [email]);
+    }))
+  }, [email])
 
   const validatePassword = useCallback(() => {
-    const pattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{9,}$/;
+    const pattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{9,}$/
     if (pattern.test(password)) {
       setErrors((errors) => ({
         ...errors,
         password: { valid: true },
-      }));
+      }))
 
-      return;
+      return
     }
 
     setErrors((errors) => ({
       ...errors,
       password: {
         valid: false,
-        errorMessage: "Не менше 8 буквенних та 1 числовий символи",
+        errorMessage: 'Від 8 буквенних та 1 числовий символи',
       },
-    }));
-  }, [password]);
+    }))
+  }, [password])
 
   const handleEmailChange = (event) => {
-    const newEmail = event.target.value;
-    setEmail(newEmail);
+    const newEmail = event.target.value
+    setEmail(newEmail)
 
     setFormData((prevFormData) => ({
       ...prevFormData,
       email: newEmail,
-    }));
-  };
+    }))
+  }
 
   const handlePasswordChange = (event) => {
-    const newPassword = event.target.value;
-    setPassword(newPassword);
+    const newPassword = event.target.value
+    setPassword(newPassword)
 
     setFormData((prevFormData) => ({
       ...prevFormData,
       password: newPassword,
-    }));
-  };
+    }))
+  }
 
-  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false)
   const handleEyeButton = () => {
-    setIsPasswordVisible(!isPasswordVisible);
-  };
+    setIsPasswordVisible(!isPasswordVisible)
+  }
 
   useEffect(() => {
-    const hasErrors = Object.values(errors).some(
-      ({ valid }) => valid === false
-    );
+    const hasErrors = Object.values(errors).some(({ valid }) => valid === false)
 
     setFormData((prevFormData) => ({
       ...prevFormData,
       hasErrors,
-    }));
-  }, [errors]);
+    }))
+  }, [errors])
 
   return (
     <div className={styles.formContainer}>
@@ -95,7 +94,7 @@ export default function SignUpBuyerForm({ setFormData }) {
           placeholder="e.g.example@gmail.com"
           // pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
           required
-          className="mb-3"
+          className={styles.formControl}
           value={email}
           onChange={handleEmailChange}
           onBlur={validateEmail}
@@ -108,7 +107,7 @@ export default function SignUpBuyerForm({ setFormData }) {
       <div className={`${styles.passwordContainer} ${styles.inputsWrapper}`}>
         <label htmlFor="password">Пароль</label>
         <input
-          type={isPasswordVisible ? "text" : "password"}
+          type={isPasswordVisible ? 'text' : 'password'}
           id="password"
           name="password"
           required
@@ -131,5 +130,5 @@ export default function SignUpBuyerForm({ setFormData }) {
         )}
       </div>
     </div>
-  );
+  )
 }

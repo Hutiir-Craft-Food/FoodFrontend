@@ -112,23 +112,21 @@ export default function SignUpContainer({ setShowSignUpContainer }) {
               <SignUpSellerForm
                 handleSubmit={handleSubmit}
                 setFormData={setFormData}
-                setSubscription={handleCheckbox}
               />
             )}
           </div>
 
           {role === 'BUYER' && (
             <div className={styles.checkboxLabel}>
-              <input
-                type="checkbox"
-                id="subscription"
-                className={styles.checkbox}
-                value={subscription}
-                onChange={handleCheckbox}
-              />
-
-              <label htmlFor="subscription">
+              <label className={styles.checkboxContainer}>
                 Бажаю отримувати новини та спеціальні пропозиції
+                <input
+                  type="checkbox"
+                  id="subscription"
+                  value={subscription}
+                  onChange={handleCheckbox}
+                />
+                <span className={styles.checkmark}></span>
               </label>
             </div>
           )}

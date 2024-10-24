@@ -1,4 +1,6 @@
 @import '../../styles/var.scss';
+@import '../../styles/mixins.scss';
+@import '../../styles/base/typography.scss';
 
 @mixin flex-between {
   display: flex;
@@ -39,18 +41,10 @@
   border: none;
 }
 
-@mixin Heading4() {
-  font-family: Circe;
-  font-size: 1.5rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 120%;
-}
-
 .signUpContainer {
   width: 1056px;
   height: 800px;
-  // the next three lines are used when a layout is applied
+  // the next three lines are used when a layout will be applied
   // position: relative;
   // top: 112.5px;
   // left: 192px;
@@ -77,6 +71,7 @@
       height: 664px;
       border-radius: 20px;
     }
+    /*Temporary used*/
     .steps {
       display: flex;
       height: 104px;
@@ -93,12 +88,11 @@
     width: 536px;
     height: 800px;
     padding: 60px 0px 20px 0px;
-    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
-    row-gap: 24px;
     flex-shrink: 0;
+    row-gap: 1.5rem;
 
     h4 {
       height: 36px;
@@ -106,7 +100,8 @@
       justify-content: center;
       text-align: center;
       color: darken($primary, 40%);
-      @include Heading4();
+      @extend h4;
+      // margin-bottom: 32px;
     }
 
     .formContentContainer {
@@ -114,7 +109,7 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      row-gap: 16px;
+      row-gap: 1.5rem;
       .rolesButtons {
         height: 36px;
         display: flex;
@@ -137,31 +132,62 @@
       height: 34px;
       display: flex;
       justify-content: center;
-      font-size: 0.875rem;
-      line-height: 1.05rem;
-      font-family: Circe;
-      font-weight: 400;
+      vertical-align: middle;
+      margin: 16px 0 24px 0;
       cursor: pointer;
-      input[type='checkbox'] {
-        height: 24px;
-        width: 24px;
-        accent-color: $primary;
-        border: 2px solid $primary;
-        outline: none;
-        margin-right: 5px;
-      }
-      .checked {
-        accent-color: $primary;
-        border: 2px solid $primary;
-      }
-      .unchecked {
-        -webkit-appearance: none;
-        appearance: none;
-        accent-color: $primary;
-        border: 2px solid $primary;
-        outline: none;
+      .checkboxContainer {
+        display: block;
+        @extend p5;
+        color: darken($primary, 40%);
+        position: relative;
+        padding-left: 30px;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        input[type='checkbox'] {
+          position: absolute;
+          z-index: -1;
+          opacity: 0;
+        }
+        .checkmark {
+          position: absolute;
+          top: 5px;
+          left: 0;
+          height: 16.5px;
+          width: 16.5px;
+          background-color: $white;
+          border: 1.5px solid $primary;
+        }
+
+        input:checked ~ .checkmark {
+          background-color: $white;
+        }
+
+        .checkmark:after {
+          content: '';
+          position: absolute;
+          display: none;
+        }
+
+        input:checked ~ .checkmark:after {
+          display: block;
+        }
+
+        .checkmark:after {
+          left: 5px;
+          width: 6px;
+          height: 10px;
+          border: 1px solid $primary;
+          border-width: 0 1.5px 1.5px 0;
+          -webkit-transform: rotate(45deg);
+          -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+        }
       }
     }
+
     .signUpButton {
       @include buttonL();
       background-color: $primary;

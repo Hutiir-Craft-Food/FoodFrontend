@@ -1,0 +1,28 @@
+@mixin bordered($width: 1px, $color: $primary) {
+  border: $width solid $color;
+}
+
+@mixin inputs {
+  height: 40px;
+  width: 296px;
+  padding: 0 9px;
+  border-radius: 8px;
+  text-align: left;
+  outline: none;
+  color: darken($natural, 40%);
+  border: 1px solid $primary;
+
+  &:valid {
+    @include bordered(1px, lighten($primary, 20%));
+  }
+  &:focus {
+    outline: none;
+    @include bordered(2px, lighten($primary, 30%));
+  }
+  &:not(placeholder-shown):invalid {
+    @include bordered(2px, lighten($primary, 30%));
+  }
+  &:invalid {
+    @include bordered(1px, lighten($danger, 20%));
+  }
+}
