@@ -54,9 +54,6 @@ const router = createBrowserRouter([
   },
 ])
 
-function App() {
-  const [token, setToken] = useState(null)
-
 const App = () => {
   const [token, setToken] = useState(null)
 
@@ -66,11 +63,6 @@ const App = () => {
         <div className={styles.app}>
           <RouterProvider router={router} />
         </div>
-      </AuthContext.Provider>
-      <AuthContext.Provider value={{ token, setToken }}>
-      <div className={styles.app}>
-        <RouterProvider router={router} />
-      </div>
       </AuthContext.Provider>
     </ErrorBoundary>
   )

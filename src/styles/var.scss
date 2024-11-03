@@ -26,7 +26,7 @@ $black: #343d39;
 $green: #47ae8c;
 $darkGreen: #269470;
 
-$primary: #537a67; //this is a basic color - Primary/50
+$primary: #537a67 !default; //this is a basic color - Primary/50
 // Example how to Use: darken($primary, 10%) - will look like Primary/60(#426252), lighten($primary, 20%) - - will look like Primary/30( #92b5a4),
 
 $secondary: #6c1144;

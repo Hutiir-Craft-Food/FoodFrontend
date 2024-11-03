@@ -16,6 +16,7 @@
     flex-direction: column;
     position: relative;
     row-gap: 4px;
+    quotes: auto;
     label {
       @extend .paragraph4;
       text-align: left;
@@ -24,14 +25,14 @@
 
     input[type='text'],
     input[type='email'],
-    input[type='phone'],
+    input[type='tel'],
     input[type='password'] {
       @include inputs;
       @extend .paragraph3;
+    }
 
-      &:placeholder-shown {
-        color: lighten($natural, 20%);
-      }
+    &:placeholder-shown {
+      color: lighten($natural, 20%);
     }
 
     .errors {
@@ -39,6 +40,7 @@
       color: lighten($danger, 20%);
       bottom: -2px;
       font-size: 0.8125rem;
+      overflow: hidden;
     }
   }
   .passwordContainer {

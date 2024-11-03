@@ -2,27 +2,6 @@
 @import '../../styles/mixins.scss';
 @import '../../styles/base/typography.scss';
 
-@mixin flex-between {
-  display: flex;
-  justify-content: space-between;
-}
-
-@mixin buttonL() {
-  height: 44px;
-  width: 296px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Circe';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 1.25rem;
-  line-height: 120%;
-  border-radius: 8px;
-  border: none;
-  gap: 8px;
-}
-
 @mixin buttonM() {
   width: 296px;
   height: 36px;
@@ -44,9 +23,10 @@
 .signUpContainer {
   width: 1056px;
   height: 800px;
+  // TODO
   // the next three lines are used when a layout will be applied
   // position: relative;
-  // top: 112.5px;
+  // top: 112px;
   // left: 192px;
   border-radius: 20px;
   display: flex;
@@ -101,7 +81,6 @@
       text-align: center;
       color: darken($primary, 40%);
       @extend h4;
-      // margin-bottom: 32px;
     }
 
     .formContentContainer {
@@ -190,8 +169,7 @@
 
     .signUpButton {
       @include buttonL();
-      background-color: $primary;
-      color: $white;
+      @include buttonPrimaryColor();
     }
     .signUpEnabled {
       cursor: pointer;

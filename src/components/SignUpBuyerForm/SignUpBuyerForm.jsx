@@ -1,6 +1,5 @@
 import { useState, useEffect, useCallback, use } from 'react'
 import styles from './SignUpBuyerForm.module.scss'
-import { values } from 'lodash'
 
 export default function SignUpBuyerForm({ setFormData }) {
   const [email, setEmail] = useState('')
@@ -92,7 +91,6 @@ export default function SignUpBuyerForm({ setFormData }) {
           id="email"
           name="email"
           placeholder="e.g.example@gmail.com"
-          // pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
           required
           className={styles.formControl}
           value={email}

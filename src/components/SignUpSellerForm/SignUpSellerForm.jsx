@@ -201,12 +201,11 @@ export default function SignUpSellerForm({ setFormData }) {
         <label htmlFor="fullName">ПІБ</label>
         <input
           type="text"
-          // id="fullName"
+          id="fullName"
           name="fullName"
           placeholder="Василь Іванович Глушко"
-          // minLength="3"
-          // maxLength="50"
-          required="required"
+          minLength="3"
+          required
           value={fullName}
           onChange={handleFullNameChange}
           onBlur={validateFullName}
@@ -222,8 +221,9 @@ export default function SignUpSellerForm({ setFormData }) {
           type="text"
           id="companyName"
           name="companyName"
-          placeholder="ТОВ Фермер"
-          // maxLength="50"
+          placeholder='ТОВ "Галушки"'
+          required
+          minLength="3"
           value={companyName}
           onChange={handleCompanyNameChange}
           onBlur={validateCompanyName}
@@ -255,11 +255,11 @@ export default function SignUpSellerForm({ setFormData }) {
       <div className={styles.inputsWrapper}>
         <label htmlFor="phone">Номер телефону</label>
         <input
-          type="phone"
+          type="tel"
           id="phone"
           name="phone"
           placeholder="+38(___)___-__-__"
-          // maxLength={13}
+          minLength="10"
           required
           value={phone}
           onChange={handlePhoneChange}
@@ -276,7 +276,7 @@ export default function SignUpSellerForm({ setFormData }) {
           type={isPasswordVisible ? 'text' : 'password'}
           id="password"
           name="password"
-          minLength={9}
+          minLength="9"
           required
           value={password}
           placeholder="Створіть пароль"
