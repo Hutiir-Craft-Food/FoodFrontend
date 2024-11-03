@@ -1,0 +1,90 @@
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+// @mixin placeholder {
+//   color: lighten($natural, 20%);
+// }
+
+@mixin buttonL() {
+  height: 44px;
+  width: 296px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @extend h5;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  gap: 8px;
+}
+
+@mixin buttonM() {
+  height: 44px;
+  width: 296px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @extend .paragraph4;
+  padding: 8px 24px;
+  border-radius: 8px;
+  border: none;
+  gap: 8px;
+}
+
+@mixin buttonS() {
+  height: 44px;
+  width: 296px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @extend .paragraph4;
+  padding: 4px 12px;
+  border-radius: 8px;
+  border: none;
+  gap: 8px;
+}
+
+@mixin buttonPrimaryColor($background-color: $primary, $color: $white) {
+  background-color: $background-color;
+  color: $color;
+}
+
+@mixin buttonSecondaryColor($background-color: $white, $color: $primary) {
+  background-color: $background-color;
+  color: $color;
+}
+
+@mixin bordered($width: 1px, $color: $primary) {
+  border: $width solid $color;
+}
+
+@mixin inputs {
+  height: 40px;
+  width: 296px;
+  padding: 0 9px;
+  border-radius: 8px;
+  text-align: left;
+  outline: none;
+  @include bordered(1px, lighten($primary, 30%));
+
+  &:valid:hover {
+    outline: none;
+    @include bordered(2px, lighten($primary, 20%));
+  }
+
+  &:valid:focus {
+    outline: none;
+    @include bordered(2px, lighten($primary, 10%));
+  }
+
+  &:invalid {
+    outline: none;
+    @include bordered(1px, lighten($primary, 30%));
+
+    &:not(:placeholder-shown) {
+      @include bordered(2px, lighten($danger, 20%));
+    }
+  }
+}

@@ -1,60 +1,62 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import ModalWindow from '../ModalWindow/ModalWindow';
-import SingInForm from '../SignInForm/SignInForm';
-import SingUpBuyerForm from '../SignUpBuyerForm/SingUpBuyerForm';
-import SingUpSellerForm from '../SignUpSellerForm/SingUpSellerForm';
-import styles from './Navbar.module.scss';
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import ModalWindow from '../ModalWindow/ModalWindow'
+import SignInForm from '../SignInForm/SignInForm'
+import SignUpContainer from '../SignUpContainer/SignUpContainer'
+import styles from './Navbar.module.scss'
 
-const Navbar = () => {
-  const [showSignInForm, setShowSignInForm] = useState(false);
-  const [showSignUpBuyerForm, setShowSignUpBuyerForm] = useState(false);
-  const [showSignUpSellerForm, setShowSignUpSellerForm] = useState(false);
+export default function Navbar() {
+  const [showSignInForm, setShowSignInForm] = useState(false)
+  const [showSignUpContainer, setShowSignUpContainer] = useState(false)
 
   const handleClose = () => {
-    setShowSignInForm(false);
-    setShowSignUpBuyerForm(false);
-    setShowSignUpSellerForm(false);
-  };
+    setShowSignInForm(false)
+    setShowSignUpContainer(false)
+  }
 
   return (
     <>
       <nav className={styles.navbar}>
-        <div id='navbar-container'>
-          <Link to='/' className='me-5'>Головна сторінка</Link>
-          <Link to='/delivery-and-payment' className='me-5'>Доставка і оплата</Link>
-          <Link to='/manufacturers' className='me-5'>Виробники</Link>
-          <Link to='/cooperation' className='me-5'>Співпраця</Link>
-          <Link to='/blog' className='me-5'>Блог</Link>
-          <Link to='/about' className='me-5'>Про нас</Link>
-          <button className='m-2' onClick={() => setShowSignInForm(true)}>
+        <div id="navbar-container">
+          <Link to="/" className="me-5">
+            Головна сторінка
+          </Link>
+          <Link to="/delivery-and-payment" className="me-5">
+            Доставка і оплата
+          </Link>
+          <Link to="/manufacturers" className="me-5">
+            Виробники
+          </Link>
+          <Link to="/cooperation" className="me-5">
+            Співпраця
+          </Link>
+          <Link to="/blog" className="me-5">
+            Блог
+          </Link>
+          <Link to="/about" className="me-5">
+            Про нас
+          </Link>
+          <button className="m-2" onClick={() => setShowSignInForm(true)}>
             Вхід
           </button>
-          <button className='m-2' onClick={() => setShowSignUpBuyerForm(true)}>
-            Реєстрація для покупця
-          </button>
-          <button className='m-2' onClick={() => setShowSignUpSellerForm(true)}>
-            Реєстрація для продавця
+          <button className="m-2" onClick={() => setShowSignUpContainer(true)}>
+            Реєстрація
           </button>
         </div>
       </nav>
+
       <ModalWindow
         show={showSignInForm}
         handleClose={handleClose}
-        form={<SingInForm />}
+        form={<SignInForm />}
       />
       <ModalWindow
-        show={showSignUpBuyerForm}
+        show={showSignUpContainer}
         handleClose={handleClose}
-        form={<SingUpBuyerForm />}
-      />
-      <ModalWindow
-        show={showSignUpSellerForm}
-        handleClose={handleClose}
-        form={<SingUpSellerForm />}
+        form={
+          <SignUpContainer setShowSignUpContainer={setShowSignUpContainer} />
+        }
       />
     </>
-  );
-};
-
-export default Navbar;
+  )
+}
