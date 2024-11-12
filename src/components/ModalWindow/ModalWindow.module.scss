@@ -21,12 +21,18 @@
   // width: 980px;
   border-radius: 20px;
   // padding: 0;
-}
 
-.closeIcon {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 24px;
-  cursor: pointer;
+  .arrow_icon {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+  }
+
+  .closeIcon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+  }
 }
