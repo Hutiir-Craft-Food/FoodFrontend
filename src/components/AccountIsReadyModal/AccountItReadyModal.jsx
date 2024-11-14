@@ -8,9 +8,9 @@ export default function AccountIsReadyModal({ onConfirm }) {
     <div className={styles.modal_content}>
       <img src={balloons} alt='balloons-icon' className={styles.balloons_icon}/>
       <h3>Ваш акаунт створено!</h3>
-      <p>Ви можете підтвердити пошту пізніше
+      <p className={styles.text}>Ви можете підтвердити пошту пізніше
         у налаштуваннях вашого профілю</p>
-      <button onClick={onConfirm}>Зрозуміло</button>
+      <button className={styles.button} onClick={onConfirm}>Зрозуміло</button>
     </div>
   )
 }

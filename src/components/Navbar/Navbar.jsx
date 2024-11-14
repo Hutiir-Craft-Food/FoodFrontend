@@ -20,14 +20,9 @@ export default function Navbar() {
     setStep(0);
   }
 
-  const handlePreviousStep = () => {
-    if (step > 1){
-      setStep((prevStep) => prevStep - 1);
-    }
-    if(step === 1){
+  const handleBack = () => {
       setShowSignUpContainer(true);
       setStep(0);
-    }
   };
 
   const handleRegister = () => {
@@ -70,7 +65,7 @@ export default function Navbar() {
   const renderCodeModal = () => {
     switch (step) {
       case 1:
-        return <CodeRegistrationModal onVerify={handleVerify} onSkip={handleSkip} />
+        return <CodeRegistrationModal onVerify={handleVerify} onSkip={handleSkip} handleBack={handleBack} />
       case 2:
         return <CodeSuccessModal onConfirm={handleConfirm} />
       case 3:
@@ -128,7 +123,6 @@ export default function Navbar() {
       <ModalWindow
         show={step}
         handleClose={handleClose}
-        handleBack={handlePreviousStep}
         content={renderCodeModal()}
       />
     </>
