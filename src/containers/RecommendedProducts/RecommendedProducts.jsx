@@ -18,7 +18,7 @@ export default function RecommendedProducts() {
         ...previousProducts,
         ...data.products,
       ])
-      setOffset(offset + 4)
+      setOffset((previousOffset) => previousOffset + 4)
     } catch (error) {
       console.error('Error: ', error.message)
     }
@@ -27,14 +27,6 @@ export default function RecommendedProducts() {
   useEffect(() => {
     showMoreProducts()
   }, [])
-
-  // const showMoreProducts = () => {
-  // 	fetchProducts(offset, setOffset, recommendProducts, setRecommendProducts, filterString);
-  // };
-
-  // useEffect(() => {
-  // 	fetchProducts(offset, setOffset, recommendProducts, setRecommendProducts, filterString);
-  // }, []);
 
   return (
     <div className="container">

@@ -33,7 +33,7 @@ export default function NewProducts() {
       <h2>Новинки </h2>
       <div className="row">
         {newProducts && newProducts.length > 0
-          ? newProducts.map(function (newProduct) {
+          ? newProducts.map((newProduct) => {
               return (
                 <div
                   className="col-lg-3 col-md-4 col-sm-6 col-12 mb-4"

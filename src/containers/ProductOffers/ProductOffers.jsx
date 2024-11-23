@@ -18,7 +18,7 @@ export default function ProductsOffers() {
         ...previousOffersProducts,
         ...data.products,
       ])
-      setOffset(offset + 4)
+      setOffset((previousOffset) => previousOffset + 4)
     } catch (error) {
       console.error('Error: ', error.message)
     }
