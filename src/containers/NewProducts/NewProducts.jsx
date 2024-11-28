@@ -1,54 +1,76 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import ApiClient from '../../services/apiClient'
 import ProductCard from '../../components/ProductCard/ProductCard'
 import styles from './NewProducts.module.scss'
 
 export default function NewProducts() {
-  const [newProducts, setNewProducts] = useState([])
+  const [products, setProducts] = useState([])
   const [offset, setOffset] = useState(0)
+  const [loading, setLoading] = useState(false)
   const filter = 'is_new'
   const limit = 4
+  const productsRef = useRef(false)
 
-  const showMoreProducts = async () => {
+  const fetchProducts = async () => {
     const params = { filter, offset, limit }
     const uri = '/v1/products'
     try {
+      setLoading(true)
       const { data } = await ApiClient.get(uri, { params })
-      setNewProducts((previousProducts) => [
-        ...previousProducts,
-        ...data.products,
-      ])
-      setOffset((previousOffset) => previousOffset + 4)
+      setProducts((previousProducts) => [...previousProducts, ...data.products])
+      setOffset((previousOffset) => previousOffset + limit)
     } catch (error) {
       console.error('Error: ', error.message)
+    } finally {
+      setLoading(false)
     }
   }
 
   useEffect(() => {
-    showMoreProducts()
+    if (!loading & (productsRef.current === false)) {
+      fetchProducts()
+      return () => {
+        productsRef.current = true
+      }
+    }
   }, [])
 
   return (
     <div className="container">
       <h2>Новинки </h2>
       <div className="row">
-        {newProducts && newProducts.length > 0
-          ? newProducts.map((newProduct) => {
+        {products?.length > 0 &&
+          products.map((newProduct) => {
+            return (
+              <div
+                className="col-lg-3 col-md-4 col-sm-6 col-12 mb-4"
+                key={newProduct.id}
+              >
+                <div className="rounded flex-column h-100">
+                  <ProductCard itemCard={newProduct} />
+                </div>
+              </div>
+            )
+          })}
+        {loading && 'Завантаження...'}
+
+        {/* {products && products.length > 0
+          ? products.map(function (product) {
               return (
                 <div
                   className="col-lg-3 col-md-4 col-sm-6 col-12 mb-4"
-                  key={newProduct.id}
+                  key={product.id}
                 >
                   <div className="rounded flex-column h-100">
-                    <ProductCard itemCard={newProduct} />
+                    <ProductCard itemCard={product} />
                   </div>
                 </div>
               )
             })
-          : 'Завантаження...'}
+          : loading && 'Завантаження...'} */}
       </div>
       <div className="d-flex justify-content-end">
-        <button onClick={showMoreProducts} className={styles.buttonShowMore}>
+        <button onClick={fetchProducts} className={styles.buttonShowMore}>
           Показати ще
         </button>
       </div>

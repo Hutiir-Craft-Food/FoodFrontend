@@ -1,54 +1,61 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import ApiClient from '../../services/apiClient'
 import ProductCard from '../../components/ProductCard/ProductCard'
 import styles from './RecommendedProducts.module.scss'
 
 export default function RecommendedProducts() {
-  const [recommendProducts, setRecommendProducts] = useState([])
+  const [products, setProducts] = useState([])
   const [offset, setOffset] = useState(0)
+  const [loading, setLoading] = useState(false)
   const filter = 'is_recommend'
   const limit = 4
+  const productsRef = useRef(false)
 
-  const showMoreProducts = async () => {
+  const fetchProducts = async () => {
     const params = { filter, offset, limit }
     const uri = '/v1/products'
     try {
+      setLoading(true)
       const { data } = await ApiClient.get(uri, { params })
-      setRecommendProducts((previousProducts) => [
-        ...previousProducts,
-        ...data.products,
-      ])
-      setOffset((previousOffset) => previousOffset + 4)
+      setProducts((previousProducts) => [...previousProducts, ...data.products])
+      setOffset((previousOffset) => previousOffset + limit)
     } catch (error) {
       console.error('Error: ', error.message)
+    } finally {
+      setLoading(false)
     }
   }
 
   useEffect(() => {
-    showMoreProducts()
+    if (!loading & (productsRef.current === false)) {
+      fetchProducts()
+      return () => {
+        productsRef.current = true
+      }
+    }
   }, [])
 
   return (
     <div className="container">
-      <h2>Рекомендуємо спробувати </h2>
+      <h2>Новинки </h2>
       <div className="row">
-        {recommendProducts && recommendProducts.length > 0
-          ? recommendProducts.map(function (recommendProduct) {
-              return (
-                <div
-                  className="col-lg-3 col-md-4 col-sm-6 col-12 mb-4"
-                  key={recommendProduct.id}
-                >
-                  <div className="rounded flex-column h-100">
-                    <ProductCard itemCard={recommendProduct} />
-                  </div>
+        {products?.length > 0 &&
+          products.map((recommendedProduct) => {
+            return (
+              <div
+                className="col-lg-3 col-md-4 col-sm-6 col-12 mb-4"
+                key={recommendedProduct.id}
+              >
+                <div className="rounded flex-column h-100">
+                  <ProductCard itemCard={recommendedProduct} />
                 </div>
-              )
-            })
-          : 'Завантаження...'}
+              </div>
+            )
+          })}
+        {loading && 'Завантаження...'}
       </div>
       <div className="d-flex justify-content-end">
-        <button onClick={showMoreProducts} className={styles.buttonShowMore}>
+        <button onClick={fetchProducts} className={styles.buttonShowMore}>
           Показати ще
         </button>
       </div>
