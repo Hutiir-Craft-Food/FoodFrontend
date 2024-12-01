@@ -4,7 +4,7 @@ import Rating from 'react-rating-stars-component'
 import { FaHeart, FaRegHeart } from 'react-icons/fa'
 import styles from './ProductCard.module.scss'
 
-export default function ProductCard({ itemCard }) {
+export default function ProductCard({ product }) {
   const [isFavorite, setIsFavorite] = useState(false)
 
   const toggleFavorite = () => {
@@ -22,38 +22,38 @@ export default function ProductCard({ itemCard }) {
           {isFavorite ? <FaHeart color="red" /> : <FaRegHeart color="grey" />}
         </div>
         <img
-          src={itemCard.image || `./images/imageNotFound.png`}
+          src={product.image || `./images/imageNotFound.png`}
           alt="product image"
         />
       </div>
       <div className="card-body">
-        <h5 className={`card-title mt-3 ${styles.title}`}>{itemCard.name}</h5>
+        <h5 className={`card-title mt-3 ${styles.title}`}>{product.name}</h5>
         <div className={`card-text ${styles.text}`}>
           <a className={styles.manufacturerLink} href="#">
-            {itemCard.manufacturer}
+            {product.manufacturer}
           </a>
           <br />
           <div className="d-flex justify-content-between mt-3">
             <span className={styles.isAvailable}>
-              {itemCard.is_available ? 'В наявності' : 'Товар відсутній'}
+              {product.is_available ? 'В наявності' : 'Товар відсутній'}
             </span>
             <Rating
               count={5}
-              value={itemCard.rating}
+              value={product.rating}
               size={24}
               activeColor="#ffd700"
               edit={false}
               isHalf={true}
             />
-            <span>({itemCard.reviews})</span>
+            <span>({product.reviews})</span>
           </div>
           <div className="d-flex justify-content-between">
             <div>
               <span className={styles.regularPrice}>
-                {itemCard.regular_price} ₴
+                {product.regular_price} ₴
               </span>
               <br />
-              <span className={styles.salePrice}>{itemCard.sale_price} ₴</span>
+              <span className={styles.salePrice}>{product.sale_price} ₴</span>
             </div>
             <Link className={styles.btn} to={`#`}>
               В кошик
