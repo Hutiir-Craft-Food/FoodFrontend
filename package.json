@@ -13,7 +13,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "axios": "^1.7.7",
+    "axios": "^1.7.9",
     "bootstrap": "^5.3.3",
     "lodash": "^4.17.21",
     "react": "^18.2.0",
@@ -24,6 +24,7 @@
     "react-multi-carousel": "^2.8.5",
     "react-rating-stars-component": "^2.2.0",
     "react-router-dom": "^6.22.3",
+    "react-scroll": "^1.9.0",
     "sass": "^1.71.0",
     "scss": "^0.2.4",
     "swiper": "^11.1.9"
