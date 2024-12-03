@@ -4,7 +4,7 @@ import Footer from '../Footer/Footer'
 import HomePage from '../../pages/HomePage/HomePage'
 import NotFoundPage from '../NotFoundPage/NotFoundPage'
 
-const AppRoutes = createBrowserRouter([
+const router = createBrowserRouter([
   {
     path: '/',
     element: (
@@ -48,4 +48,4 @@ const AppRoutes = createBrowserRouter([
   },
 ])
 
-export default AppRoutes
+export default router
