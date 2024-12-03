@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { RouterProvider } from 'react-router-dom'
 import { ErrorBoundary } from 'react-error-boundary'
 import { AuthContext } from './AuthContext'
-import router from '../components/AppRoutes/AppRoutes'
+import AppRoutes from '../components/AppRoutes/AppRoutes'
 import NotFoundPage from '../components/NotFoundPage/NotFoundPage'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'react-multi-carousel/lib/styles.css'
@@ -15,7 +15,7 @@ const App = () => {
     <ErrorBoundary fallback={<NotFoundPage />}>
       <AuthContext.Provider value={{ token, setToken }}>
         <div className={styles.app}>
-          <RouterProvider router={router} />
+          <RouterProvider router={AppRoutes} />
         </div>
       </AuthContext.Provider>
     </ErrorBoundary>
