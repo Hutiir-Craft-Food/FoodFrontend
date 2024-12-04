@@ -1,0 +1,17 @@
+@import '../../styles/mixins';
+@import '../../styles/var.scss';
+
+.modal_content {
+  @include modalContent;
+
+  .buttonActiv {
+    background-color: $primary-50;
+
+    &:hover {
+      background-color: $primary-40;
+    }
+    &:active {
+      background-color: $primary-60;
+    }
+  }
+}
