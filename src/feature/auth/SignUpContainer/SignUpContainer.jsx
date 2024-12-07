@@ -1,8 +1,8 @@
 import { useState, useContext } from 'react'
 import styles from './SignUpContainer.module.scss'
-import SignUpBuyerForm from '../SignUpBuyerForm/SignUpBuyerForm'
+import SignUpBuyerForm from '../SignUpBuyerForm/SignUpBuyerForm.jsx'
 import SignUpSellerForm from '../SignUpSellerForm/SignUpSellerForm'
-import { AuthContext } from '../../containers/AuthContext'
+import { AuthContext } from '../../../contexts/AuthContext.js'
 
 export default function SignUpContainer({ setShowSignUpContainer }) {
   const authContext = useContext(AuthContext)

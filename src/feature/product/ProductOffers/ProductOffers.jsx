@@ -1,8 +1,8 @@
-import ProductCard from '../../components/ProductCard/ProductCard'
-import useProducts from '../../hooks/useProducts'
-import styles from './NewProducts.module.scss'
+import ProductCard from '../ProductCard/ProductCard'
+import useProducts from '../../../hooks/useProducts'
+import styles from './ProductOffers.module.scss'
 
-const filter = 'is_new'
+const filter = 'is_offer'
 const limit = 4
 
 export default function NewProducts() {
@@ -16,14 +16,14 @@ export default function NewProducts() {
       <h2>Новинки </h2>
       <div className="row">
         {allProducts.length > 0 &&
-          allProducts.map((newProduct) => {
+          allProducts.map((offerProduct) => {
             return (
               <div
                 className="col-lg-3 col-md-4 col-sm-6 col-12 mb-4"
-                key={newProduct.id}
+                key={offerProduct.id}
               >
                 <div className="rounded flex-column h-100">
-                  <ProductCard product={newProduct} />
+                  <ProductCard product={offerProduct} />
                 </div>
               </div>
             )

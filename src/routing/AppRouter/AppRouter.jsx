@@ -1,8 +1,8 @@
 import { createBrowserRouter, Outlet } from 'react-router-dom'
-import Header from '../Header/Header'
-import Footer from '../Footer/Footer'
-import HomePage from '../../pages/HomePage/HomePage'
-import NotFoundPage from '../NotFoundPage/NotFoundPage'
+import Footer from '../../components/Footer/Footer'
+import Header from '../../components/Header/Header'
+import HomePage from '../../routing/HomePage/HomePage'
+import NotFoundPage from '../../routing/NotFoundPage/NotFoundPage'
 
 const router = createBrowserRouter([
   {

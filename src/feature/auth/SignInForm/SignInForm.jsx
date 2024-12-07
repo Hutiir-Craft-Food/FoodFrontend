@@ -2,7 +2,7 @@ import { useContext, useState, useCallback } from 'react'
 import SignUpContainer from '../SignUpContainer/SignUpContainer'
 import ModalWindow from '../ModalWindow/ModalWindow'
 import styles from './SignInForm.module.scss'
-import { AuthContext } from '../../containers/AuthContext'
+import { AuthContext } from '../../../contexts/AuthContext.js'
 
 const SignInForm = () => {
   const authContext = useContext(AuthContext)
