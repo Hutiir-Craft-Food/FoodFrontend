@@ -1,3 +1,6 @@
+@import './base/typography';
+
+
 @mixin flex-between {
   display: flex;
   justify-content: space-between;
@@ -87,4 +90,30 @@
       @include bordered(2px, lighten($danger, 20%));
     }
   }
+}
+
+
+@mixin modalContent{
+  padding: 72px;
+	max-width: 518px;
+
+	.button{
+		margin: 32px auto;
+		@include buttonM;
+		color: #ffffff;
+		text-align: center;
+		background-color: $natural-20;
+		font-size: 20px;
+		font-weight: 700;
+	}
+
+	.buttonLikeText{
+		background-color: transparent;
+		border: none;
+		color: $primary-50;
+	}
+
+	.text{
+		font-size: 14px;
+	}
 }
