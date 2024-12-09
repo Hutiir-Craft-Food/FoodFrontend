@@ -16,7 +16,6 @@ export default function CodeRegistrationModal({ onVerify, onSkip, handleBack }) 
     if (pattern.test(code)) {
       onVerify(code)
     } else {
-      setCode("");
       console.log('код повинен складатись з 6 цифр')
     }
   }
@@ -44,7 +43,7 @@ export default function CodeRegistrationModal({ onVerify, onSkip, handleBack }) 
         renderSeparator={<span style={{ width: "8px" }}></span>}
         isInputNum={true}
         shouldAutoFocus={true}
-        renderInput={(props) => <input {...props} />}
+        renderInput={(props) => <input {...props} type="number"/>}
         inputStyle={{
           border: "1px solid grey",
           borderRadius: "8px",
