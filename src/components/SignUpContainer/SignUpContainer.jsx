@@ -4,7 +4,7 @@ import SignUpBuyerForm from '../SignUpBuyerForm/SignUpBuyerForm'
 import SignUpSellerForm from '../SignUpSellerForm/SignUpSellerForm'
 import { AuthContext } from '../../containers/AuthContext'
 
-export default function SignUpContainer({ setShowSignUpContainer }) {
+export default function SignUpContainer({ setShowSignUpContainer, onRegisterOTP }) {
   const authContext = useContext(AuthContext)
 
   const [role, setRole] = useState('BUYER')
@@ -13,7 +13,6 @@ export default function SignUpContainer({ setShowSignUpContainer }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-
     const requestBody = { ...formData, subscription, role }
     if (!formData.hasErrors) {
       try {
@@ -31,6 +30,7 @@ export default function SignUpContainer({ setShowSignUpContainer }) {
           setFormData({})
           setSubscription(false)
           setShowSignUpContainer(false)
+          onRegisterOTP();
         }
         // else {
         //   const errorMessage =

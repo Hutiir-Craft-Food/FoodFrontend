@@ -1,4 +1,6 @@
 @import '../../styles/var.scss';
+
+
 .overlay {
   position: fixed;
   top: 0;
@@ -15,18 +17,35 @@
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
-
   background: $white;
-  // height: 640px;
-  // width: 980px;
   border-radius: 20px;
-  // padding: 0;
-}
 
-.closeIcon {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 24px;
-  cursor: pointer;
+
+  h3{
+    text-align: center;
+    color: $primary-60;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 120%;
+    margin-bottom: 32px;
+  }
+
+  .arrowIcon {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+  }
+
+  .closeIcon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  p{
+    text-align: left;
+    margin-bottom: 32px;
+  }
 }
