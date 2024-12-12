@@ -3,7 +3,9 @@
 
 .modal_content {
   @include modalContent;
-  text-align: center;
+  & {
+    text-align: center;
+  }
 
   .balloons_icon {
     margin-bottom: 32px;

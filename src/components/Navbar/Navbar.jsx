@@ -32,7 +32,7 @@ export default function Navbar() {
   const handleVerify = async (code) => {
     console.log (code);
     try {
-      const response = await fetch('/api/v1/user/confirm', {
+      const response = await fetch('/api/v1/auth/confirm', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ code }),
