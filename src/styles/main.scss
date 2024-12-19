@@ -9,19 +9,15 @@ html {
 }
 
 body {
-  font-family: $mainFont;
+  font-family: $brandFont;
 
   h1 {
-    color: $brandColor;
-    font-family: $brandFont;
     font-size: 60px;
     font-weight: 700;
     text-align: center;
   }
 
   h2 {
-    color: $brandColor;
-    font-family: $brandFont;
     font-size: 30px;
     font-weight: 700;
     text-align: center;
