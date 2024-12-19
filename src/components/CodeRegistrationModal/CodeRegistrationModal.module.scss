@@ -4,6 +4,38 @@
 .modal_content {
   @include modalContent;
 
+  .arrowIcon{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  .message{
+    span{
+      color:$primary-50;
+    }
+  }
+
+  .inputStyle {
+    border: 1px solid $primary-20;
+    border-radius: 8px;
+    height: 54px;
+    width: 54px !important;
+    color: $primary-90;
+    margin: 0 auto;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+
+    &:focus {
+      border: 1px solid #537A67;
+      outline: none;
+    }
+  }
+
   .buttonActiv {
     background-color: $primary-50;
 

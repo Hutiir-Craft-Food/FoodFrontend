@@ -36,28 +36,20 @@ export default function CodeRegistrationModal({ onVerify, onSkip, handleBack }) 
         Код підтвердження
         <img src={iconQuestion} alt="icon question" />
       </span>
+
       <OtpInput
         value={code}
         onChange={handleChange}
         numInputs={6}
-        renderSeparator={<span style={{ width: "8px" }}></span>}
         isInputNum={true}
         shouldAutoFocus={true}
-        renderInput={(props) => <input {...props} type="number"/>}
-        inputStyle={{
-          border: "1px solid grey",
-          borderRadius: "8px",
-          width: "54px",
-          height: "54px",
-          fontSize: "18px",
-          color: "#111815",
-          fontWeight: "700",
-          margin: "0 auto",
-        }}
-        focusStyle={{
-          border: "1px solid #537A67",
-          outline: "none"
-        }}
+        renderInput={(props) => (
+          <input
+            {...props}
+            type="number"
+            className={styles.inputStyle}
+          />
+        )}
       />
 
       {
