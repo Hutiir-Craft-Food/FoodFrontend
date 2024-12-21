@@ -6,15 +6,14 @@ import { AuthContext } from '../../containers/AuthContext'
 
 export default function SignUpContainer({ setShowSignUpContainer }) {
   const authContext = useContext(AuthContext)
-
   const [role, setRole] = useState('BUYER')
-  const [subscription, setSubscription] = useState(false)
-  const [formData, setFormData] = useState({})
+  const [isReceiveAdvertising, setIsReceiveAdvertising] = useState(false)
+  const [formData, setFormData] = useState({});
 
   const handleSubmit = async (event) => {
     event.preventDefault()
 
-    const requestBody = { ...formData, subscription, role }
+    const requestBody = { ...formData, isReceiveAdvertising, role }
     if (!formData.hasErrors) {
       try {
         const response = await fetch('/api/v1/auth/register', {
@@ -29,7 +28,7 @@ export default function SignUpContainer({ setShowSignUpContainer }) {
           const data = await response.json()
           authContext.setToken(data.jwt)
           setFormData({})
-          setSubscription(false)
+          setIsReceiveAdvertising(false)
           setShowSignUpContainer(false)
         }
         // else {
@@ -44,7 +43,7 @@ export default function SignUpContainer({ setShowSignUpContainer }) {
   }
 
   const handleCheckbox = () => {
-    setSubscription(!subscription)
+    setIsReceiveAdvertising(!isReceiveAdvertising)
   }
 
   return (
@@ -123,7 +122,7 @@ export default function SignUpContainer({ setShowSignUpContainer }) {
                 <input
                   type="checkbox"
                   id="subscription"
-                  value={subscription}
+                  value={isReceiveAdvertising}
                   onChange={handleCheckbox}
                 />
                 <span className={styles.checkmark}></span>

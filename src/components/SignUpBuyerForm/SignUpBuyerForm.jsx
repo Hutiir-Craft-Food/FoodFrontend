@@ -53,7 +53,7 @@ export default function SignUpBuyerForm({ setFormData }) {
     setEmail(newEmail)
 
     setFormData((prevFormData) => ({
-      ...prevFormData,
+      ...prevFormData, 
       email: newEmail,
     }))
   }
@@ -76,10 +76,10 @@ export default function SignUpBuyerForm({ setFormData }) {
   useEffect(() => {
     const hasErrors = Object.values(errors).some(({ valid }) => valid === false)
 
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      hasErrors,
-    }))
+    // setFormData((prevFormData) => ({
+    //   ...prevFormData,
+    //   hasErrors,
+    // }))
   }, [errors])
 
   return (

@@ -2,33 +2,39 @@ import { useState, useEffect, useCallback } from 'react'
 import styles from './SignUpSellerForm.module.scss'
 
 export default function SignUpSellerForm({ setFormData }) {
-  const [fullName, setFullName] = useState('')
+  const [sellerName, setSellerName] = useState('')
   const [companyName, setCompanyName] = useState('')
   const [email, setEmail] = useState('')
-  const [phone, setPhone] = useState('')
+  const [phoneNumber, setPhoneNumber] = useState('')
   const [password, setPassword] = useState('')
-
   const [errors, setErrors] = useState({})
 
-  const validateFullName = useCallback(() => {
+  useEffect(() => {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      details: {},
+    }));
+  }, []);
+
+
+  const validateSellerName = useCallback(() => {
     const pattern = /^[A-Z a-z а-я А-Я іїєґІЇЄҐ]{3,50}$/
-    if (pattern.test(fullName)) {
+    if (pattern.test(sellerName)) {
       setErrors((errors) => ({
         ...errors,
-        fullName: { valid: true },
+        sellerName: { valid: true },
       }))
-
       return
     }
 
     setErrors((errors) => ({
       ...errors,
-      fullName: {
+      sellerName: {
         valid: false,
         errorMessage: 'Від 3 до 50 літер у розкладці UA чи EN',
       },
     }))
-  }, [fullName])
+  }, [sellerName])
 
   const validateCompanyName = useCallback(() => {
     const pattern = /^[A-Z a-z а-я А-Я іїєґІЇЄҐ]{3,50}$/
@@ -73,10 +79,10 @@ export default function SignUpSellerForm({ setFormData }) {
   const validatePhone = useCallback(() => {
     const pattern =
       /^((\+38)?\(?\d{3}\)?[\s\.-]?(\d{7}|\d{3}[\s\.-]\d{2}[\s\.-]\d{2}|\d{3}-\d{4}))$/
-    if (pattern.test(phone)) {
+    if (pattern.test(phoneNumber)) {
       setErrors((errors) => ({
         ...errors,
-        phone: { valid: true },
+        phoneNumber: { valid: true },
       }))
 
       return
@@ -84,15 +90,15 @@ export default function SignUpSellerForm({ setFormData }) {
 
     setErrors((errors) => ({
       ...errors,
-      phone: {
+      phoneNumber: {
         valid: false,
         errorMessage: 'Вкажіть у форматі ХХХ ХХХ ХХ ХХ',
       },
     }))
-  }, [phone])
+  }, [phoneNumber])
 
-  function formatPhoneNumber(phone) {
-    const cleanNum = ('' + phone.toString()).replace(/\D/g, '')
+  function formatPhoneNumber(phoneNumber) {
+    const cleanNum = ('' + phoneNumber.toString()).replace(/\D/g, '')
     const match = cleanNum.match(/^(\d{3})(\d{3})(\d{2})(\d{2})$/)
     if (match) {
       return [
@@ -131,12 +137,15 @@ export default function SignUpSellerForm({ setFormData }) {
   }, [password])
 
   const handleFullNameChange = (event) => {
-    const newFullName = event.target.value
-    setFullName(newFullName)
+    const newSellerName = event.target.value
+    setSellerName(newSellerName)
 
     setFormData((prevFormData) => ({
       ...prevFormData,
-      fullName: newFullName,
+      details: {
+        ...prevFormData.details,
+        sellerName: newSellerName,
+      },
     }))
   }
 
@@ -146,7 +155,10 @@ export default function SignUpSellerForm({ setFormData }) {
 
     setFormData((prevFormData) => ({
       ...prevFormData,
-      companyName: newCompanyName,
+      details: {
+        ...prevFormData.details,
+        companyName: newCompanyName,
+      },
     }))
   }
 
@@ -161,12 +173,15 @@ export default function SignUpSellerForm({ setFormData }) {
   }
 
   const handlePhoneChange = (event) => {
-    const newPhone = event.target.value
-    setPhone(newPhone)
+    const newPhoneNumber = event.target.value
+    setPhoneNumber(newPhoneNumber)
 
     setFormData((prevFormData) => ({
       ...prevFormData,
-      phone: formatPhoneNumber(newPhone),
+      details: {
+        ...prevFormData.details,
+        phoneNumber: formatPhoneNumber(newPhoneNumber)
+      }
     }))
   }
 
@@ -188,10 +203,10 @@ export default function SignUpSellerForm({ setFormData }) {
   useEffect(() => {
     const hasErrors = Object.values(errors).some(({ valid }) => valid === false)
 
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      hasErrors,
-    }))
+    // setFormData((prevFormData) => ({
+    //   ...prevFormData,
+    //   hasErrors,
+    // }))
   }, [errors])
 
   return (
@@ -206,9 +221,9 @@ export default function SignUpSellerForm({ setFormData }) {
           placeholder="Василь Іванович Глушко"
           minLength="3"
           required
-          value={fullName}
+          value={sellerName}
           onChange={handleFullNameChange}
-          onBlur={validateFullName}
+          onBlur={validateSellerName}
         />
         {!errors.fullName?.valid && (
           <span className={styles.errors}>{errors.fullName?.errorMessage}</span>
@@ -261,7 +276,7 @@ export default function SignUpSellerForm({ setFormData }) {
           placeholder="+38(___)___-__-__"
           minLength="10"
           required
-          value={phone}
+          value={phoneNumber}
           onChange={handlePhoneChange}
           onBlur={validatePhone}
         />
