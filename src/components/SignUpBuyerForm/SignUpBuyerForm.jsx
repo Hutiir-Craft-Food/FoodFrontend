@@ -1,24 +1,19 @@
-import { useState, useEffect, useCallback, use } from 'react'
+import { useState, useCallback } from 'react'
 import styles from './SignUpBuyerForm.module.scss'
 
-export default function SignUpBuyerForm({ setFormData }) {
+export default function SignUpBuyerForm({ errors, setErrors, setFormData }) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const [errors, setErrors] = useState({})
-
   const validateEmail = useCallback(() => {
     const pattern = /^[A-Za-z0-9\._%+\-]+@[A-Za-z0-9\.\-]+\.[A-Za-z]{2,}$/
-
     if (pattern.test(email)) {
       setErrors((errors) => ({
         ...errors,
         email: { valid: true },
       }))
-
       return
     }
-
     setErrors((errors) => ({
       ...errors,
       email: {
@@ -35,10 +30,8 @@ export default function SignUpBuyerForm({ setFormData }) {
         ...errors,
         password: { valid: true },
       }))
-
       return
     }
-
     setErrors((errors) => ({
       ...errors,
       password: {
@@ -51,7 +44,6 @@ export default function SignUpBuyerForm({ setFormData }) {
   const handleEmailChange = (event) => {
     const newEmail = event.target.value
     setEmail(newEmail)
-
     setFormData((prevFormData) => ({
       ...prevFormData, 
       email: newEmail,
@@ -61,7 +53,6 @@ export default function SignUpBuyerForm({ setFormData }) {
   const handlePasswordChange = (event) => {
     const newPassword = event.target.value
     setPassword(newPassword)
-
     setFormData((prevFormData) => ({
       ...prevFormData,
       password: newPassword,
@@ -72,15 +63,6 @@ export default function SignUpBuyerForm({ setFormData }) {
   const handleEyeButton = () => {
     setIsPasswordVisible(!isPasswordVisible)
   }
-
-  useEffect(() => {
-    const hasErrors = Object.values(errors).some(({ valid }) => valid === false)
-
-    // setFormData((prevFormData) => ({
-    //   ...prevFormData,
-    //   hasErrors,
-    // }))
-  }, [errors])
 
   return (
     <div className={styles.formContainer}>
