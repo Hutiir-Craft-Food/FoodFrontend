@@ -1,5 +1,5 @@
-import ProductCard from '../../components/ProductCard/ProductCard'
-import useProducts from '../../hooks/useProducts'
+import ProductCard from '../product-card/ProductCard'
+import useProducts from '../useProducts'
 import styles from './RecommendedProducts.module.scss'
 
 const filter = 'is_recommend'
@@ -12,17 +12,14 @@ export default function NewProducts() {
   })
 
   return (
-    <div className="container">
+    <div className='container'>
       <h2>Новинки </h2>
-      <div className="row">
+      <div className='row'>
         {allProducts.length > 0 &&
-          allProducts.map((recommendProduct) => {
+          allProducts.map(recommendProduct => {
             return (
-              <div
-                className="col-lg-3 col-md-4 col-sm-6 col-12 mb-4"
-                key={recommendProduct.id}
-              >
-                <div className="rounded flex-column h-100">
+              <div className='col-lg-3 col-md-4 col-sm-6 col-12 mb-4' key={recommendProduct.id}>
+                <div className='rounded flex-column h-100'>
                   <ProductCard product={recommendProduct} />
                 </div>
               </div>
@@ -30,11 +27,8 @@ export default function NewProducts() {
           })}
         {loading && 'Завантаження...'}
       </div>
-      <div className="d-flex justify-content-end">
-        <button
-          onClick={() => loadMoreProducts()}
-          className={styles.buttonShowMore}
-        >
+      <div className='d-flex justify-content-end'>
+        <button onClick={() => loadMoreProducts()} className={styles.buttonShowMore}>
           Показати ще
         </button>
       </div>
