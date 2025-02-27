@@ -37,16 +37,18 @@ export default function Header() {
 
   return (
     <>
-      <header>
+      <header className="container">
         <div
           className={`${styles.headerContainer}
            ${isScrolled ? styles.scrolledHeader : ''}
           }`}
         >
           <div className={styles.rowOne}>
-            <div className={styles.logo}>
-              <img src="/images/logoHK-36@4x.svg" alt="logo" />
-            </div>
+            <Link to="/">
+              <div className={styles.logo}>
+                <img src="/images/logoHK-36@4x.svg" alt="logo" />
+              </div>
+            </Link>
 
             <div className={styles.nav}>
               <Navbar />

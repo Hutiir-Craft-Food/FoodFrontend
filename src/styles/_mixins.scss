@@ -3,9 +3,9 @@
   justify-content: space-between;
 }
 
-// @mixin placeholder {
-//   color: lighten($natural, 20%);
-// }
+@mixin placeholder {
+  color: $natural-30;
+}
 
 @mixin buttonL() {
   height: 44px;

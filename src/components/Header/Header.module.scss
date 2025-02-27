@@ -5,7 +5,6 @@
 .headerContainer {
   width: 100%;
   height: 172px;
-  transition: height 2s;
   background: $white;
   display: flex;
   justify-content: center;
@@ -13,7 +12,6 @@
   align-items: center;
   padding-top: 32px;
   gap: 24px;
-  transition: all 100ms;
   &.scrolledHeader {
     height: 104px;
   }
@@ -36,14 +34,15 @@
   }
 
   .rowTwo {
-    width: 92vw;
+    width: 100%;
+    gap: 20px;
     height: 60px;
-    margin: 0 4vw 0 4vw;
+    display: flex;
+    justify-content: center;
     background: $white;
-    padding-bottom: 16px;
+    padding: 0 4vw 16px 4vw;
     display: flex;
     border-bottom: 1px solid $primary-20;
-    justify-content: space-between;
     &.stickyRowTwo {
       height: 104px;
       padding-top: 32px;
@@ -72,16 +71,17 @@
     }
 
     .searchContainer {
+      width: 100%;
+      height: 44px;
       display: flex;
       flex-direction: row;
-      width: 816px;
-      height: 44px;
       padding: 0px 8px 0px 16px;
       outline: none;
       border-radius: 8px;
       @include bordered(1px, $primary-20);
 
       input[type='search'] {
+        outline: none;
         width: 95%;
         gap: 8px;
         border: none;
