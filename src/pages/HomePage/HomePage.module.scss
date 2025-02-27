@@ -1,12 +1,12 @@
 @import '../../styles/var.scss';
 
-.plus{
-	display:flex;
-	justify-content:space-evenly;
-	font-size: 20px;
+.plus {
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 20px;
 
-	i{
-		font-size: 30px;
-		color: $brandColor;
-	}
+  i {
+    font-size: 30px;
+    color: $primary-50;
+  }
 }

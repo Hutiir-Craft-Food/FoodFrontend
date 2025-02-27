@@ -39,12 +39,12 @@
     input {
       height: 40px;
       width: 100%;
-      outline: 1px solid #b6cec2;
+      outline: 1px solid $primary-30;
       border: none;
       border-radius: 8px;
 
       &:focus-visible {
-        border: 2px solid #77a28d;
+        border: 2px solid $primary-40;
       }
     }
 
@@ -83,7 +83,7 @@
       height: 36px;
       gap: 80px;
       opacity: 0px;
-      color: $black;
+      color: $primary-90;
       margin: 40px 0 20px 0;
       font-size: 1.5rem;
     }
@@ -102,7 +102,7 @@
       border-radius: 8px;
       border: none;
       background-color: $primary-50;
-      color: #ffffff;
+      color: $white;
 
       &:hover {
         background-color: $primary-40;

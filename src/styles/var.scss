@@ -14,45 +14,26 @@ $brandFont: 'Circe', cursive;
   font-style: normal;
 }
 
-$brandColor: rgb(231, 199, 134);
-$blackColor: rgb(12, 11, 16);
-$redColor: #dc3545;
 $box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.2);
 
-$lightGrey: #cccece;
-$grey: #999e9c;
-$darkGrey: #676d6b;
-$black: #343d39;
-$green: #47ae8c;
-$darkGreen: #269470;
-
-$primary: #537a67 !default;
-$secondary: #6c1144;
-
-$third: #f5e2ce;
-
-$natural: #575c5a;
-
-$danger: #e02d3c;
-
-$success: #47ae8c;
-
-$yellow: #f0a106;
-
 $white: #ffffff;
-
 $black: #000000;
 
 $primary-20: #b6cec2;
 $primary-30: #92b5a4;
+$primary-20: #b6cec2;
+$primary-30: #92b5a4;
 $primary-40: #77a28d;
-$primary-50: #537a67;
+$primary-50: #537a67 !default;
 $primary-60: #426252;
 $primary-90: #111815;
+
+$secondary-50: #6c1144;
+
 $natural-20: #bbbfbd;
 $natural-30: #999e9c;
 $natural-50: #575c5a;
-$natural-30: #999e9c;
+
 $danger-20: #f3abb1;
 $danger-30: #ec818a;
 $danger-40: #e65763;

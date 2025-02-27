@@ -22,12 +22,12 @@
       font-weight: 400;
       line-height: 27px;
       text-align: center;
-      color: darken($primary, 40%);
+      color: $primary-90;
       text-decoration: none;
 
       &:hover {
         text-decoration: none;
-        color: lighten($primary, 10%);
+        color: $primary-40;
       }
     }
   }
