@@ -19,7 +19,7 @@
     label {
       @extend .paragraph4;
       text-align: left;
-      color: $natural;
+      color: $natural-50;
     }
     input[type='email'],
     input[type='password'] {
@@ -27,14 +27,14 @@
       @extend .paragraph3;
 
       &:placeholder-shown {
-        color: lighten($natural, 20%);
+        color: $natural-30;
       }
     }
   }
 
   .errors {
     position: absolute;
-    color: lighten($danger, 20%);
+    color: $danger-30;
     bottom: 0;
     font-size: 0.8125rem;
   }
