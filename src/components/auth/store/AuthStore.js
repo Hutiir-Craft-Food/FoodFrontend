@@ -1,20 +1,31 @@
 ﻿import { create } from 'zustand'
 
-const roles = ['GUEST', 'BUYER', 'SELLER', 'ADMIN']
-const actions = {
-  LOGIN: 'login',
-  REGISTER: 'register',
+const roles = {
+  GUEST: 'GUEST',
+  BUYER: 'BUYER',
+  SELLER: 'SELLER',
+  ADMIN: 'ADMIN',
 }
 
-const useAuthStore = create((set) => ({
-  role: 'GUEST',
+const actions = {
+  LOGIN: 'LOGIN',
+  REGISTER: 'REGISTER',
+}
+
+const useAuthStore = create(set => ({
+  role: roles.BUYER,
   user: {},
+  jwtToken: '',
   showAuthWidget: false,
   action: actions.LOGIN,
-  setAction: (newAction) => set((state) => ({ action: newAction })),
-  setShowAuthWidget: (newShowAuthWidget) =>
-    set((state) => ({ showAuthWidget: newShowAuthWidget })),
-  setUserRole: (newRole) => set((state) => ({ role: newRole })),
+  setAction: newAction => set(state => ({ action: newAction })),
+  setShowAuthWidget: newShowAuthWidget => set(state => ({ showAuthWidget: newShowAuthWidget })),
+  setUserRole: newRole => set(state => ({ role: newRole })),
+  setJwtToken: newToken =>
+    set(state => {
+      state.showAuthWidget = false
+      return { jwtToken: newToken }
+    }),
 }))
 
 export { useAuthStore, roles, actions }

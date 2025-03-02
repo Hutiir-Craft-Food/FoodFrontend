@@ -1,16 +1,21 @@
-import { useState, useContext } from 'react'
-import styles from './SignUpContainer.module.scss'
+import { useState } from 'react'
 import SignUpBuyerForm from './buyer-form/SignUpBuyerForm'
 import SignUpSellerForm from './seller-form/SignUpSellerForm'
-import { AuthContext } from '../../../containers/AuthContext'
+import { actions, roles, useAuthStore } from '../store/AuthStore'
+import styles from './SignUpContainer.module.scss'
 
 export default function SignUpContainer() {
-  const authContext = useContext(AuthContext)
-
-  const [role, setRole] = useState('BUYER')
   const [subscription, setSubscription] = useState(false)
+
+  // TODO: do we keep it as local state
+  //  or externalize to GSM (global state management) ?
   const [formData, setFormData] = useState({})
 
+  const setAction = useAuthStore(state => state.setAction)
+  const role = useAuthStore(state => state.role)
+  const setRole = useAuthStore(state => state.setRole)
+
+  // TODO: can we externalize this handler?
   const handleSubmit = async event => {
     event.preventDefault()
 
@@ -27,7 +32,8 @@ export default function SignUpContainer() {
 
         if (response.ok) {
           const data = await response.json()
-          authContext.setToken(data.jwt)
+          // TODO:
+          // write JWT token into AuthStore or localStorage? or both?
           setFormData({})
           setSubscription(false)
         }
@@ -46,6 +52,10 @@ export default function SignUpContainer() {
     setSubscription(!subscription)
   }
 
+  const switchToSignIn = () => {
+    setAction(actions.LOGIN)
+  }
+
   return (
     <div className={styles.signUpContainer}>
       <div className={styles.contentContainer}>
@@ -54,26 +64,26 @@ export default function SignUpContainer() {
           <div className={styles.formContentContainer}>
             <div className={styles.rolesButtons}>
               <button
-                className={role === 'BUYER' ? `${styles.button} ${styles.active}` : `${styles.button}`}
+                className={role === roles.BUYER ? `${styles.button} ${styles.active}` : `${styles.button}`}
                 onClick={() => setRole('BUYER')}
               >
                 Хочу купувати
               </button>
               <button
-                className={role === 'SELLER' ? `${styles.button} ${styles.active}` : `${styles.button}`}
+                className={role === roles.SELLER ? `${styles.button} ${styles.active}` : `${styles.button}`}
                 onClick={() => setRole('SELLER')}
               >
                 Хочу продавати
               </button>
             </div>
 
-            {role === 'BUYER' && (
+            {role === roles.BUYER && (
               <SignUpBuyerForm handleSubmit={handleSubmit} setFormData={setFormData} setSubscription={handleCheckbox} />
             )}
             {role === 'SELLER' && <SignUpSellerForm handleSubmit={handleSubmit} setFormData={setFormData} />}
           </div>
 
-          {role === 'BUYER' && (
+          {role === roles.SELLER && (
             <div className={styles.checkboxLabel}>
               <label className={styles.checkboxContainer}>
                 Бажаю отримувати новини та спеціальні пропозиції
@@ -97,9 +107,18 @@ export default function SignUpContainer() {
         </form>
 
         <div className={styles.signInLink}>
+          <button
+            className={styles.signUpLink}
+            // TODO
+            onClick={() => switchToSignIn()}
+          >
+            {' '}
+            Вже маю акаунт
+          </button>
+          {/* TODO:
           <a className={styles.signInLink} href='#'>
             Вже маю акаунт
-          </a>
+          </a> */}
         </div>
 
         <div className={styles.userAgreement}>
