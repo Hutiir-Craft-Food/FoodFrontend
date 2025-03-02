@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import SellerCard from '../SellerCard/SellerCard'
-import styles from './Sellers.module.scss'
+import SellerCard from '../seller-card/SellerCard'
+import styles from './SellersContainer.module.scss'
 
 export default function Sellers() {
   const [sellers, setSellers] = useState(null)
