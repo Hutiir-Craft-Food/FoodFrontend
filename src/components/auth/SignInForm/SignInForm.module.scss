@@ -63,11 +63,11 @@
         height: 40px;
         border: none;
         &.openEye {
-          background: url(src/images/EyeLine.svg) no-repeat scroll 7px 7px;
+          background: url(/images/EyeLine.svg) no-repeat scroll 7px 7px;
         }
 
         &.closeEye {
-          background: url(src/images/EyeCloseLine.svg) no-repeat scroll 7px 7px;
+          background: url(/images/EyeCloseLine.svg) no-repeat scroll 7px 7px;
         }
       }
     }

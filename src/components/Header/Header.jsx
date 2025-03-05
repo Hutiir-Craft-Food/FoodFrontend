@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Navbar from '../Navbar/Navbar'
-import ModalWindow from '../ModalWindow/ModalWindow'
-import SignInForm from '../SignInForm/SignInForm'
+import ModalWindow from '../modal-window/ModalWindow'
+import SignInForm from '../auth/SignInForm/SignInForm'
 import styles from './Header.module.scss'
 
 export default function Header() {
