@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import Carousel from 'react-multi-carousel'
-import fetchCarousel from '../../services/fetchCarousel'
+import fetchCarousel from '/src/services/fetchCarousel'
 import styles from './CustomCarousel.module.scss'
 
 export default function CustomCarousel({ title, carouselCategory }) {
@@ -22,13 +22,13 @@ export default function CustomCarousel({ title, carouselCategory }) {
         arrows
         autoPlaySpeed={3000}
         centerMode={false}
-        className=""
-        containerClass="container-with-dots"
-        dotListClass=""
+        className=''
+        containerClass='container-with-dots'
+        dotListClass=''
         draggable
         focusOnSelect={false}
         infinite
-        itemClass=""
+        itemClass=''
         keyBoardControl
         minimumTouchDrag={80}
         pauseOnHover
@@ -66,14 +66,14 @@ export default function CustomCarousel({ title, carouselCategory }) {
         rtl={false}
         shouldResetAutoplay
         showDots={false}
-        sliderClass=""
+        sliderClass=''
         slidesToSlide={1}
         swipeable
       >
         {carouselItems.map((item, index) => (
           <div key={index}>
             <img src={item.image} alt={item.name} />
-            <h3 className="text-center">{item.name}</h3>
+            <h3 className='text-center'>{item.name}</h3>
           </div>
         ))}
       </Carousel>

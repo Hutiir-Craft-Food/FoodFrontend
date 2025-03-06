@@ -1,6 +1,6 @@
-@import '../../../styles/var.scss';
-@import '../../../styles/_mixins.scss';
-@import '../../../styles/base/typography';
+@import '/src/styles/var.scss';
+@import '/src/styles/_mixins.scss';
+@import '/src/styles/base/typography';
 
 .formContainer {
   width: 296px;
@@ -56,10 +56,10 @@
       height: 40px;
       border: none;
       &.openEye {
-        background: url(src/images/EyeLine.svg) no-repeat scroll 7px 7px;
+        background: url('/src/icons/eyeLine.svg') no-repeat scroll 7px 7px;
       }
       &.closeEye {
-        background: url(src/images/EyeCloseLine.svg) no-repeat scroll 7px 7px;
+        background: url('/src/icons/eyeClosedLine.svg') no-repeat scroll 7px 7px;
       }
     }
   }
