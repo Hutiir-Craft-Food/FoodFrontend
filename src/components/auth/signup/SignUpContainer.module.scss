@@ -1,0 +1,195 @@
+@import '/src/styles/var.scss';
+@import '/src/styles/mixins.scss';
+@import '/src/styles/base/typography.scss';
+
+@mixin buttonM() {
+  width: 296px;
+  height: 36px;
+  display: flex;
+  padding: 8px 0px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  font-family: Circe;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%;
+  background-color: $white;
+  color: $primary-50;
+  border: none;
+}
+
+.signUpContainer {
+  width: 1056px;
+  height: 800px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+
+  .imgContainer {
+    width: 520px;
+    height: 800px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+
+    .imgBuyer {
+      width: 488px;
+      height: 768px;
+      border-radius: 20px;
+    }
+    .imgSeller {
+      width: 488px;
+      height: 664px;
+      border-radius: 20px;
+    }
+    /*Temporary used*/
+    .steps {
+      display: flex;
+      height: 104px;
+      justify-content: center;
+      align-items: center;
+      font-family: Circe;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 120%;
+    }
+  }
+  .contentContainer {
+    width: 536px;
+    height: 800px;
+    padding: 60px 0px 20px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    row-gap: 1.5rem;
+
+    h4 {
+      height: 36px;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      color: $primary-90;
+      @extend h4;
+    }
+
+    .formContentContainer {
+      width: 296px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      row-gap: 1.5rem;
+      .rolesButtons {
+        height: 36px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        align-self: stretch;
+
+        button {
+          @include buttonM();
+        }
+        .active {
+          border: 1px solid $primary-50;
+          border-radius: 8px;
+        }
+      }
+    }
+
+    .checkboxLabel {
+      width: 296px;
+      height: 34px;
+      display: flex;
+      justify-content: center;
+      vertical-align: middle;
+      margin: 16px 0 24px 0;
+      cursor: pointer;
+      .checkboxContainer {
+        display: block;
+        @extend p5;
+        color: $primary-90;
+        position: relative;
+        padding-left: 30px;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        input[type='checkbox'] {
+          position: absolute;
+          z-index: -1;
+          opacity: 0;
+        }
+        .checkmark {
+          position: absolute;
+          top: 5px;
+          left: 0;
+          height: 16.5px;
+          width: 16.5px;
+          background-color: $white;
+          border: 1.5px solid $primary-50;
+        }
+
+        input:checked ~ .checkmark {
+          background-color: $white;
+        }
+
+        .checkmark:after {
+          content: '';
+          position: absolute;
+          display: none;
+        }
+
+        input:checked ~ .checkmark:after {
+          display: block;
+        }
+
+        .checkmark:after {
+          left: 5px;
+          width: 6px;
+          height: 10px;
+          border: 1px solid $primary-50;
+          border-width: 0 1.5px 1.5px 0;
+          -webkit-transform: rotate(45deg);
+          -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+        }
+      }
+    }
+
+    .signUpButton {
+      @include buttonL();
+      @include buttonPrimaryColor();
+    }
+    .signUpEnabled {
+      cursor: pointer;
+    }
+    .signUpDisabled {
+      background-color: $natural-20;
+      cursor: not-allowed;
+    }
+
+    .signInLink {
+      @include buttonL();
+      color: $primary-50;
+    }
+
+    .userAgreement {
+      position: absolute;
+      bottom: 20px;
+      font-size: 0.75rem;
+      font-family: Circe;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 120%;
+      .userAgreementLink {
+        color: $primary-50;
+      }
+    }
+  }
+}
