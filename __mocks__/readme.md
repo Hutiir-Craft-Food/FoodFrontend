@@ -1,11 +1,15 @@
-## How to get started
+## Get started with mock server
 
-### Install Camouflage by running:
-```
+### Install Camouflage:
+
+```sh
 npm install -g camouflage-server
 ```
 
-### Start the Camouflage server by initializing it with a config.yml file (Ensure that you are in the __mocks__ directory before running the command):
-```
+### Start Camouflage:
+
+```sh
 camouflage -c ./config.yml
 ```
+
+**Note**: Ensure you are in the `__mocks__` directory before running that command.
