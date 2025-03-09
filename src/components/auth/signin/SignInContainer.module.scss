@@ -1,28 +1,11 @@
 @import '/src/styles/var.scss';
 
 .signInContainer {
-  width: 1024px;
-  height: 638px;
-  display: flex;
-  border-radius: 20px;
-  align-self: center;
-  align-items: center;
-  flex-flow: column wrap;
-
-  .imgFood {
-    width: 520px;
-    height: 638px;
-    padding: 16px;
-    gap: 10px;
-    opacity: 0px;
-  }
-
   .formContainer {
     width: 504px;
     height: 638px;
     padding: 20px 104px 20px 104px;
     gap: 24px;
-    opacity: 0px;
     display: flex;
     align-items: center;
     flex-flow: column wrap;
@@ -33,7 +16,6 @@
       width: 296px;
       height: 36px;
       gap: 8px;
-      opacity: 0px;
     }
 
     input {

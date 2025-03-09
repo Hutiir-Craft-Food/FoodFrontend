@@ -1,17 +1,21 @@
-import { useState, useContext } from 'react'
+import { useState } from 'react'
 import SignUpBuyerForm from './buyer-form/SignUpBuyerForm'
 import SignUpSellerForm from './seller-form/SignUpSellerForm'
-import { AuthContext } from '/src/context/AuthContext'
+import { actions, roles, useAuthStore } from '../store/AuthStore'
 import styles from './SignUpContainer.module.scss'
 
-export default function SignUpContainer({ setShowSignUpContainer }) {
-  const authContext = useContext(AuthContext)
+export default function SignUpContainer() {
+  const { subscription, setSubscription } = useAuthStore()
 
-  const [role, setRole] = useState('BUYER')
-  const [subscription, setSubscription] = useState(false)
+  // TODO: do we keep it as local state
+  //  or externalize to GSM (global state management) ?
   const [formData, setFormData] = useState({})
 
-  const handleSubmit = async event => {
+  const { setAction } = useAuthStore()
+  const { role, setRole } = useAuthStore()
+
+  // TODO: can we externalize this handler?
+  const handleSubmit = async (event) => {
     event.preventDefault()
 
     const requestBody = { ...formData, subscription, role }
@@ -27,10 +31,10 @@ export default function SignUpContainer({ setShowSignUpContainer }) {
 
         if (response.ok) {
           const data = await response.json()
-          authContext.setToken(data.jwt)
+          // TODO:
+          // write JWT token into AuthStore or localStorage? or both?
           setFormData({})
           setSubscription(false)
-          setShowSignUpContainer(false)
         }
         // else {
         //   const errorMessage =
@@ -47,55 +51,64 @@ export default function SignUpContainer({ setShowSignUpContainer }) {
     setSubscription(!subscription)
   }
 
+  const switchToSignIn = () => {
+    setAction(actions.LOGIN)
+  }
+
   return (
     <div className={styles.signUpContainer}>
-      {role === 'BUYER' && (
-        <div className={styles.imgContainer}>
-          <img src='/images/sign-in.png' alt='imgForBuyerRegistration' className={styles.imgBuyer} />
-        </div>
-      )}
-      {role === 'SELLER' && (
-        <div className={styles.imgContainer}>
-          <img src='/images/sign-in.png' alt='imgForBuyerRegistration' className={styles.imgSeller} />
-
-          <div className={styles.steps}>
-            <p>
-              <span className={styles.steps}>1-2-3</span>
-            </p>
-          </div>
-        </div>
-      )}
-
       <div className={styles.contentContainer}>
         <h4>Реєстрація</h4>
         <form onSubmit={handleSubmit}>
           <div className={styles.formContentContainer}>
             <div className={styles.rolesButtons}>
               <button
-                className={role === 'BUYER' ? `${styles.button} ${styles.active}` : `${styles.button}`}
-                onClick={() => setRole('BUYER')}
+                className={
+                  role === roles.BUYER
+                    ? `${styles.button} ${styles.active}`
+                    : `${styles.button}`
+                }
+                onClick={() => setRole(roles.BUYER)}
               >
                 Хочу купувати
               </button>
               <button
-                className={role === 'SELLER' ? `${styles.button} ${styles.active}` : `${styles.button}`}
-                onClick={() => setRole('SELLER')}
+                className={
+                  role === roles.SELLER
+                    ? `${styles.button} ${styles.active}`
+                    : `${styles.button}`
+                }
+                onClick={() => setRole(roles.SELLER)}
               >
                 Хочу продавати
               </button>
             </div>
 
-            {role === 'BUYER' && (
-              <SignUpBuyerForm handleSubmit={handleSubmit} setFormData={setFormData} setSubscription={handleCheckbox} />
+            {role === roles.BUYER && (
+              <SignUpBuyerForm
+                handleSubmit={handleSubmit}
+                setFormData={setFormData}
+                setSubscription={handleCheckbox}
+              />
             )}
-            {role === 'SELLER' && <SignUpSellerForm handleSubmit={handleSubmit} setFormData={setFormData} />}
+            {role === roles.SELLER && (
+              <SignUpSellerForm
+                handleSubmit={handleSubmit}
+                setFormData={setFormData}
+              />
+            )}
           </div>
 
-          {role === 'BUYER' && (
+          {role === roles.SELLER && (
             <div className={styles.checkboxLabel}>
               <label className={styles.checkboxContainer}>
                 Бажаю отримувати новини та спеціальні пропозиції
-                <input type='checkbox' id='subscription' value={subscription} onChange={handleCheckbox} />
+                <input
+                  type="checkbox"
+                  id="subscription"
+                  value={subscription}
+                  onChange={handleCheckbox}
+                />
                 <span className={styles.checkmark}></span>
               </label>
             </div>
@@ -114,17 +127,21 @@ export default function SignUpContainer({ setShowSignUpContainer }) {
           </button>
         </form>
 
-        <div className={styles.signInLink}>
-          <a className={styles.signInLink} href='#'>
+        <div>
+          <button
+            className={styles.signInLink}
+            onClick={() => switchToSignIn()}
+          >
+            {' '}
             Вже маю акаунт
-          </a>
+          </button>
         </div>
 
         <div className={styles.userAgreement}>
           <p>
             <span>
               Підтверджуючи реєстрацію, я приймаю &nbsp;
-              <a href='#' className={styles.userAgreementLink}>
+              <a href="#" className={styles.userAgreementLink}>
                 умови користувацької угоди
               </a>
             </span>
