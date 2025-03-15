@@ -5,7 +5,6 @@ import ModalWindow from './components/modal-window/ModalWindow'
 import { useAuthStore } from './components/auth/store/AuthStore'
 import router from './pages/Router'
 import NotFoundPage from './pages/not-found/NotFoundPage'
-import 'bootstrap/dist/css/bootstrap.min.css'
 import 'react-multi-carousel/lib/styles.css'
 import styles from './App.module.scss'
 
