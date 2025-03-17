@@ -1,0 +1,5 @@
+﻿# https://git-scm.com/docs/gitattributes
+# https://docs.github.com/en/get-started/git-basics/configuring-git-to-handle-line-endings
+# https://prettier.io/docs/options
+
+* text=auto eol=lf
