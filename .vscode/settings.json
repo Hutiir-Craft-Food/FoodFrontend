@@ -3,18 +3,18 @@
     "*.jsx": "javascript"
   },
   "files.trimTrailingWhitespace": true,
+  "files.eol": "\n",
+  "files.autoSave": "onWindowChange",
+  "files.autoSaveWhenNoErrors": false,
+  "files.autoSaveWorkspaceFilesOnly": true,
   "editor.formatOnSave": true,
   "editor.insertSpaces": false,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "prettier.enable": true,
-  "prettier.useEditorConfig": false,
-  "prettier.singleQuote": true,
-  "prettier.semi": false,
   "search.exclude": {
+    "cli/target": true,
     "**/node_modules": true,
-    "cli/target/**": true,
-    ".build/**": true,
-    "**/dist/**": true
+    "**/dist": true,
+    "**/.build": true
   },
   "css.format.spaceAroundSelectorSeparator": true
 }
