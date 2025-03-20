@@ -4,7 +4,7 @@ import SignUpSellerForm from './seller-form/SignUpSellerForm'
 import { AuthContext } from '/src/context/AuthContext'
 import styles from './SignUpContainer.module.scss'
 
-export default function SignUpContainer({ setShowSignUpContainer }) {
+export default function SignUpContainer({setAction}) {
   const authContext = useContext(AuthContext)
 
   const [role, setRole] = useState('BUYER')
@@ -30,7 +30,7 @@ export default function SignUpContainer({ setShowSignUpContainer }) {
           authContext.setToken(data.jwt)
           setFormData({})
           setSubscription(false)
-          setShowSignUpContainer(false)
+          // setShowSignUpContainer(false)
         }
         // else {
         //   const errorMessage =
@@ -115,9 +115,12 @@ export default function SignUpContainer({ setShowSignUpContainer }) {
         </form>
 
         <div className={styles.signInLink}>
-          <a className={styles.signInLink} href='#'>
+          <button className={styles.signInLink} 
+            onClick={() => {
+              setAction('login')
+            }}>
             Вже маю акаунт
-          </a>
+          </button>
         </div>
 
         <div className={styles.userAgreement}>
