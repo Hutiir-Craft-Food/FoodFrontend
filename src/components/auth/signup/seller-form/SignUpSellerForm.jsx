@@ -3,9 +3,7 @@ import styles from './SignUpSellerForm.module.scss'
 
 export default function SignUpSellerForm({ setFormData }) {
   const [fullName, setFullName] = useState('')
-  // const [companyName, setCompanyName] = useState('')
   const [email, setEmail] = useState('')
-  // const [phone, setPhone] = useState('')
   const [password, setPassword] = useState('')
 
   const [errors, setErrors] = useState({})
@@ -30,26 +28,6 @@ export default function SignUpSellerForm({ setFormData }) {
     }))
   }, [fullName])
 
-  // const validateCompanyName = useCallback(() => {
-  //   const pattern = /^[A-Z a-z а-я А-Я іїєґІЇЄҐ]{3,50}$/
-  //   if (pattern.test(companyName)) {
-  //     setErrors((errors) => ({
-  //       ...errors,
-  //       companyName: { valid: true },
-  //     }))
-  //
-  //     return
-  //   }
-  //
-  //   setErrors((errors) => ({
-  //     ...errors,
-  //     companyName: {
-  //       valid: false,
-  //       errorMessage: 'Вкажіть лише буквенні символи',
-  //     },
-  //   }))
-  // }, [companyName])
-
   const validateEmail = useCallback(() => {
     const pattern = /^[A-Za-z0-9\._%+\-]+@[A-Za-z0-9\.\-]+\.[A-Za-z]{2,}$/
     if (pattern.test(email)) {
@@ -69,46 +47,6 @@ export default function SignUpSellerForm({ setFormData }) {
       },
     }))
   }, [email])
-
-  // const validatePhone = useCallback(() => {
-  //   const pattern =
-  //     /^((\+38)?\(?\d{3}\)?[\s\.-]?(\d{7}|\d{3}[\s\.-]\d{2}[\s\.-]\d{2}|\d{3}-\d{4}))$/
-  //   if (pattern.test(phone)) {
-  //     setErrors((errors) => ({
-  //       ...errors,
-  //       phone: { valid: true },
-  //     }))
-  //
-  //     return
-  //   }
-  //
-  //   setErrors((errors) => ({
-  //     ...errors,
-  //     phone: {
-  //       valid: false,
-  //       errorMessage: 'Вкажіть у форматі ХХХ ХХХ ХХ ХХ',
-  //     },
-  //   }))
-  // }, [phone])
-
-  // function formatPhoneNumber(phone) {
-  //   const cleanNum = ('' + phone.toString()).replace(/\D/g, '')
-  //   const match = cleanNum.match(/^(\d{3})(\d{3})(\d{2})(\d{2})$/)
-  //   if (match) {
-  //     return [
-  //       '+38 ',
-  //       '(',
-  //       match[1],
-  //       ') ',
-  //       match[2],
-  //       '-',
-  //       match[3],
-  //       '-',
-  //       match[4],
-  //     ].join('')
-  //   }
-  //   return cleanNum
-  // }
 
   const validatePassword = useCallback(() => {
     const pattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{9,}$/
@@ -140,16 +78,6 @@ export default function SignUpSellerForm({ setFormData }) {
     }))
   }
 
-  // const handleCompanyNameChange = (event) => {
-  //   const newCompanyName = event.target.value
-  //   setCompanyName(newCompanyName)
-  //
-  //   setFormData((prevFormData) => ({
-  //     ...prevFormData,
-  //     companyName: newCompanyName,
-  //   }))
-  // }
-
   const handleEmailChange = (event) => {
     const newEmail = event.target.value
     setEmail(newEmail)
@@ -159,16 +87,6 @@ export default function SignUpSellerForm({ setFormData }) {
       email: newEmail,
     }))
   }
-
-  // const handlePhoneChange = (event) => {
-  //   const newPhone = event.target.value
-  //   setPhone(newPhone)
-  //
-  //   setFormData((prevFormData) => ({
-  //     ...prevFormData,
-  //     phone: formatPhoneNumber(newPhone),
-  //   }))
-  // }
 
   const handlePasswordChange = (event) => {
     const newPassword = event.target.value
@@ -215,26 +133,6 @@ export default function SignUpSellerForm({ setFormData }) {
         )}
       </div>
 
-      {/* <div className={styles.inputsWrapper}>
-        <label htmlFor='companyName'>Назва компанії</label>
-        <input
-          type='text'
-          id='companyName'
-          name='companyName'
-          placeholder='ТОВ "Галушки"'
-          required
-          minLength='3'
-          value={companyName}
-          onChange={handleCompanyNameChange}
-          onBlur={validateCompanyName}
-        />
-        {!errors.companyName?.valid && (
-          <span className={styles.errors}>
-            {errors.companyName?.errorMessage}{' '}
-          </span>
-        )}
-      </div> */}
-
       <div className={styles.inputsWrapper}>
         <label htmlFor='email'>E-mail</label>
         <input
@@ -251,24 +149,6 @@ export default function SignUpSellerForm({ setFormData }) {
           <span className={styles.errors}>{errors.email?.errorMessage}</span>
         )}
       </div>
-
-      {/* <div className={styles.inputsWrapper}>
-        <label htmlFor='phone'>Номер телефону</label>
-        <input
-          type='tel'
-          id='phone'
-          name='phone'
-          placeholder='+38(___)___-__-__'
-          minLength='10'
-          required
-          value={phone}
-          onChange={handlePhoneChange}
-          onBlur={validatePhone}
-        />
-        {!errors.phone?.valid && (
-          <span className={styles.errors}>{errors.phone?.errorMessage}</span>
-        )}
-      </div> */}
 
       <div className={`${styles.passwordContainer} ${styles.inputsWrapper}`}>
         <label htmlFor='password'>Пароль</label>
