@@ -32,19 +32,15 @@ export default function SignUpContainer({ setShowSignUpContainer }) {
           setSubscription(false)
           setShowSignUpContainer(false)
         }
-        // else {
-        //   const errorMessage =
-        //     data.message || "Перевірте правильність введених даних";
-        //   throw new Error(errorMessage);
-        // }
       } catch (error) {
         console.error('Failed:', error)
       }
     }
   }
 
-  const handleCheckbox = () => {
-    setSubscription(!subscription)
+  const handleRoleChange = (newRole) => {
+    setRole(newRole)
+    setSubscription(false)
   }
 
   return (
@@ -65,7 +61,6 @@ export default function SignUpContainer({ setShowSignUpContainer }) {
             alt='imgForBuyerRegistration'
             className={styles.imgSeller}
           />
-
           <div className={styles.steps}>
             <p>
               <span className={styles.steps}>1-2-3</span>
@@ -80,22 +75,24 @@ export default function SignUpContainer({ setShowSignUpContainer }) {
           <div className={styles.formContentContainer}>
             <div className={styles.rolesButtons}>
               <button
+                type='button'
                 className={
                   role === 'BUYER'
                     ? `${styles.button} ${styles.active}`
-                    : `${styles.button}`
+                    : styles.button
                 }
-                onClick={() => setRole('BUYER')}
+                onClick={() => handleRoleChange('BUYER')}
               >
                 Хочу купувати
               </button>
               <button
+                type='button'
                 className={
                   role === 'SELLER'
                     ? `${styles.button} ${styles.active}`
-                    : `${styles.button}`
+                    : styles.button
                 }
-                onClick={() => setRole('SELLER')}
+                onClick={() => handleRoleChange('SELLER')}
               >
                 Хочу продавати
               </button>
@@ -105,7 +102,6 @@ export default function SignUpContainer({ setShowSignUpContainer }) {
               <SignUpBuyerForm
                 handleSubmit={handleSubmit}
                 setFormData={setFormData}
-                setSubscription={handleCheckbox}
               />
             )}
             {role === 'SELLER' && (
@@ -115,36 +111,20 @@ export default function SignUpContainer({ setShowSignUpContainer }) {
               />
             )}
           </div>
-          {role === 'BUYER' && (
-            <div className={styles.checkboxLabel}>
-              <label className={styles.checkboxContainer}>
-                Бажаю отримувати новини та спеціальні пропозиції
-                <input
-                  type='checkbox'
-                  id='subscription'
-                  value={subscription}
-                  onChange={handleCheckbox}
-                />
-                <span className={styles.checkmark}></span>
-              </label>
-            </div>
-          )}
 
-          {role === 'SELLER' && (
-            <div className={styles.checkboxLabel}>
-              <label className={styles.checkboxContainer}>
-                Бажаю отримувати новини та спеціальні пропозиції
-                <input
-                  type='checkbox'
-                  id='subscription'
-                  value={subscription}
-                  onChange={handleCheckbox}
-                />
-                <span className={styles.checkmark}></span>
-              </label>
-            </div>
-          )}
-          <br></br>
+          <div className={styles.checkboxLabel}>
+            <label className={styles.checkboxContainer}>
+              Бажаю отримувати новини та спеціальні пропозиції
+              <input
+                type='checkbox'
+                id='subscription'
+                checked={subscription}
+                onChange={() => setSubscription(!subscription)}
+              />
+              <span className={styles.checkmark}></span>
+            </label>
+          </div>
+
           <button
             className={
               formData.hasErrors
