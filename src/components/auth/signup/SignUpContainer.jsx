@@ -4,9 +4,8 @@ import SignUpSellerForm from './seller-form/SignUpSellerForm'
 import { AuthContext } from '/src/context/AuthContext'
 import styles from './SignUpContainer.module.scss'
 
-export default function SignUpContainer({ setShowSignUpContainer }) {
+export default function SignUpContainer() {
   const authContext = useContext(AuthContext)
-
   const [role, setRole] = useState('BUYER')
   const [subscription, setSubscription] = useState(false)
   const [formData, setFormData] = useState({})
@@ -51,12 +50,20 @@ export default function SignUpContainer({ setShowSignUpContainer }) {
     <div className={styles.signUpContainer}>
       {role === 'BUYER' && (
         <div className={styles.imgContainer}>
-          <img src='/images/sign-in.png' alt='imgForBuyerRegistration' className={styles.imgBuyer} />
+          <img
+            src="/images/sign-in.png"
+            alt="imgForBuyerRegistration"
+            className={styles.imgBuyer}
+          />
         </div>
       )}
       {role === 'SELLER' && (
         <div className={styles.imgContainer}>
-          <img src='/images/sign-in.png' alt='imgForBuyerRegistration' className={styles.imgSeller} />
+          <img
+            src="/images/sign-in.png"
+            alt="imgForBuyerRegistration"
+            className={styles.imgSeller}
+          />
 
           <div className={styles.steps}>
             <p>
@@ -72,13 +79,21 @@ export default function SignUpContainer({ setShowSignUpContainer }) {
           <div className={styles.formContentContainer}>
             <div className={styles.rolesButtons}>
               <button
-                className={role === 'BUYER' ? `${styles.button} ${styles.active}` : `${styles.button}`}
+                className={
+                  role === 'BUYER'
+                    ? `${styles.button} ${styles.active}`
+                    : `${styles.button}`
+                }
                 onClick={() => setRole('BUYER')}
               >
                 Хочу купувати
               </button>
               <button
-                className={role === 'SELLER' ? `${styles.button} ${styles.active}` : `${styles.button}`}
+                className={
+                  role === 'SELLER'
+                    ? `${styles.button} ${styles.active}`
+                    : `${styles.button}`
+                }
                 onClick={() => setRole('SELLER')}
               >
                 Хочу продавати
@@ -86,16 +101,30 @@ export default function SignUpContainer({ setShowSignUpContainer }) {
             </div>
 
             {role === 'BUYER' && (
-              <SignUpBuyerForm handleSubmit={handleSubmit} setFormData={setFormData} setSubscription={handleCheckbox} />
+              <SignUpBuyerForm
+                handleSubmit={handleSubmit}
+                setFormData={setFormData}
+                setSubscription={handleCheckbox}
+              />
             )}
-            {role === 'SELLER' && <SignUpSellerForm handleSubmit={handleSubmit} setFormData={setFormData} />}
+            {role === 'SELLER' && (
+              <SignUpSellerForm
+                handleSubmit={handleSubmit}
+                setFormData={setFormData}
+              />
+            )}
           </div>
 
           {role === 'BUYER' && (
             <div className={styles.checkboxLabel}>
               <label className={styles.checkboxContainer}>
                 Бажаю отримувати новини та спеціальні пропозиції
-                <input type='checkbox' id='subscription' value={subscription} onChange={handleCheckbox} />
+                <input
+                  type="checkbox"
+                  id="subscription"
+                  value={subscription}
+                  onChange={handleCheckbox}
+                />
                 <span className={styles.checkmark}></span>
               </label>
             </div>
@@ -115,16 +144,19 @@ export default function SignUpContainer({ setShowSignUpContainer }) {
         </form>
 
         <div className={styles.signInLink}>
-          <a className={styles.signInLink} href='#'>
+          <button
+            className={styles.signInLink}
+            // onClick={() => }
+          >
             Вже маю акаунт
-          </a>
+          </button>
         </div>
 
         <div className={styles.userAgreement}>
           <p>
             <span>
               Підтверджуючи реєстрацію, я приймаю &nbsp;
-              <a href='#' className={styles.userAgreementLink}>
+              <a href="#" className={styles.userAgreementLink}>
                 умови користувацької угоди
               </a>
             </span>

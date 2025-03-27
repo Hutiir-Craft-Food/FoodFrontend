@@ -1,15 +1,17 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Navbar from '../navbar/Navbar'
-import ModalWindow from '../modal-window/ModalWindow'
+import Modal from '../Modal/Modal'
 import SignInForm from '../auth/signin/SignInForm'
 import styles from './Header.module.scss'
 
 export default function Header() {
   const [isScrolled, setScrolled] = useState(false)
+  const [searchItem, setSearchItem] = useState('')
+  const [showSignInForm, setShowSignInForm] = useState(false)
+
   useEffect(() => {
     window.addEventListener('scroll', handleScroll, { passive: true })
-
     return () => {
       window.removeEventListener('scroll', handleScroll)
     }
@@ -23,13 +25,10 @@ export default function Header() {
     }
   }
 
-  const [searchItem, setSearchItem] = useState('')
-
   const handleInputChange = (e) => {
     const searchItem = e.target.value
     setSearchItem(searchItem)
   }
-  const [showSignInForm, setShowSignInForm] = useState(false)
 
   const handleClose = () => {
     setShowSignInForm(false)
@@ -40,7 +39,7 @@ export default function Header() {
       <header className='container'>
         <div
           className={`${styles.headerContainer}
-           ${isScrolled ? styles.scrolledHeader : ''}
+            ${isScrolled ? styles.scrolledHeader : ''}
           }`}
         >
           <div className={styles.rowOne}>
@@ -49,12 +48,10 @@ export default function Header() {
                 <img src='/images/logoHK-36@4x.svg' alt='logo' />
               </div>
             </Link>
-
             <div className={styles.nav}>
               <Navbar />
             </div>
           </div>
-
           <div
             className={`${styles.rowTwo} ${
               isScrolled ? styles.stickyRowTwo : ''
@@ -115,11 +112,9 @@ export default function Header() {
         </div>
       </header>
 
-      <ModalWindow
-        show={showSignInForm}
-        handleClose={handleClose}
-        form={<SignInForm />}
-      />
+      <Modal show={showSignInForm} handleClose={handleClose}>
+        <SignInForm />
+      </Modal>
     </>
   )
 }
