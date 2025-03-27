@@ -1,11 +1,9 @@
 import { useState, useEffect, useCallback, use } from 'react'
 import styles from './SignUpBuyerForm.module.scss'
 
-export default function SignUpBuyerForm({ setFormData }) {
+export default function SignUpBuyerForm({ errors, setErrors, setFormData }) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-
-  const [errors, setErrors] = useState({})
 
   const validateEmail = useCallback(() => {
     const pattern = /^[A-Za-z0-9\._%+\-]+@[A-Za-z0-9\.\-]+\.[A-Za-z]{2,}$/
@@ -73,24 +71,15 @@ export default function SignUpBuyerForm({ setFormData }) {
     setIsPasswordVisible(!isPasswordVisible)
   }
 
-  useEffect(() => {
-    const hasErrors = Object.values(errors).some(({ valid }) => valid === false)
-
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      hasErrors,
-    }))
-  }, [errors])
-
   return (
     <div className={styles.formContainer}>
       <div className={styles.inputsWrapper}>
-        <label htmlFor="email">E-mail</label>
+        <label htmlFor='email'>E-mail</label>
         <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="e.g.example@gmail.com"
+          type='email'
+          id='email'
+          name='email'
+          placeholder='e.g.example@gmail.com'
           required
           className={styles.formControl}
           value={email}
@@ -103,20 +92,20 @@ export default function SignUpBuyerForm({ setFormData }) {
       </div>
 
       <div className={`${styles.passwordContainer} ${styles.inputsWrapper}`}>
-        <label htmlFor="password">Пароль</label>
+        <label htmlFor='password'>Пароль</label>
         <input
           type={isPasswordVisible ? 'text' : 'password'}
-          id="password"
-          name="password"
+          id='password'
+          name='password'
           required
           value={password}
-          placeholder="Створіть пароль"
+          placeholder='Створіть пароль'
           onChange={handlePasswordChange}
           onBlur={validatePassword}
         />
 
         <div
-          id="togglePassword"
+          id='togglePassword'
           className={`${styles.toggleEye} ${
             isPasswordVisible ? styles.openEye : styles.closeEye
           }`}
