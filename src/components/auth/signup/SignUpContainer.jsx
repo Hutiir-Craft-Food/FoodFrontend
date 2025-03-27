@@ -6,16 +6,17 @@ import styles from './SignUpContainer.module.scss'
 
 export default function SignUpContainer({ setShowSignUpContainer }) {
   const authContext = useContext(AuthContext)
-
   const [role, setRole] = useState('BUYER')
-  const [subscription, setSubscription] = useState(false)
+  const [marketingConsent, setMarketingConsent] = useState(false)
   const [formData, setFormData] = useState({})
+  const [errors, setErrors] = useState({})
+
+  const hasErrors = Object.values(errors).some(({ valid }) => valid === false)
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-
-    const requestBody = { ...formData, subscription, role }
-    if (!formData.hasErrors) {
+    const requestBody = { ...formData, marketingConsent, role }
+    if (!hasErrors) {
       try {
         const response = await fetch('/api/v1/auth/register', {
           method: 'POST',
@@ -29,7 +30,7 @@ export default function SignUpContainer({ setShowSignUpContainer }) {
           const data = await response.json()
           authContext.setToken(data.jwt)
           setFormData({})
-          setSubscription(false)
+          setMarketingConsent(false)
           setShowSignUpContainer(false)
         }
       } catch (error) {
@@ -38,9 +39,8 @@ export default function SignUpContainer({ setShowSignUpContainer }) {
     }
   }
 
-  const handleRoleChange = (newRole) => {
-    setRole(newRole)
-    setSubscription(false)
+  const handleCheckbox = () => {
+    setMarketingConsent(!marketingConsent)
   }
 
   return (
@@ -81,7 +81,7 @@ export default function SignUpContainer({ setShowSignUpContainer }) {
                     ? `${styles.button} ${styles.active}`
                     : styles.button
                 }
-                onClick={() => handleRoleChange('BUYER')}
+                onClick={() => setRole('BUYER')}
               >
                 Хочу купувати
               </button>
@@ -92,7 +92,7 @@ export default function SignUpContainer({ setShowSignUpContainer }) {
                     ? `${styles.button} ${styles.active}`
                     : styles.button
                 }
-                onClick={() => handleRoleChange('SELLER')}
+                onClick={() => setRole('SELLER')}
               >
                 Хочу продавати
               </button>
@@ -100,13 +100,15 @@ export default function SignUpContainer({ setShowSignUpContainer }) {
 
             {role === 'BUYER' && (
               <SignUpBuyerForm
-                handleSubmit={handleSubmit}
+                errors={errors}
+                setErrors={setErrors}
                 setFormData={setFormData}
               />
             )}
             {role === 'SELLER' && (
               <SignUpSellerForm
-                handleSubmit={handleSubmit}
+                errors={errors}
+                setErrors={setErrors}
                 setFormData={setFormData}
               />
             )}
@@ -118,8 +120,8 @@ export default function SignUpContainer({ setShowSignUpContainer }) {
               <input
                 type='checkbox'
                 id='subscription'
-                checked={subscription}
-                onChange={() => setSubscription(!subscription)}
+                checked={marketingConsent}
+                onChange={handleCheckbox}
               />
               <span className={styles.checkmark}></span>
             </label>
@@ -127,11 +129,11 @@ export default function SignUpContainer({ setShowSignUpContainer }) {
 
           <button
             className={
-              formData.hasErrors
+              hasErrors
                 ? `${styles.signUpButton} ${styles.signUpDisabled}`
                 : `${styles.signUpButton} ${styles.signUpEnabled}`
             }
-            disabled={formData.hasErrors}
+            disabled={hasErrors}
           >
             Зареєструватись
           </button>

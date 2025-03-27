@@ -1,19 +1,24 @@
 import { useState, useEffect, useCallback } from 'react'
 import styles from './SignUpSellerForm.module.scss'
 
-export default function SignUpSellerForm({ setFormData }) {
-  const [fullName, setFullName] = useState('')
+export default function SignUpSellerForm({ errors, setErrors, setFormData }) {
+  const [sellerName, setSellerName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const [errors, setErrors] = useState({})
+  useEffect(() => {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      details: {},
+    }))
+  }, [])
 
-  const validateFullName = useCallback(() => {
-    const pattern = /^[A-Z a-z а-я А-Я іїєґІЇЄҐ]{3,50}$/
-    if (pattern.test(fullName)) {
+  const validateSellerName = useCallback(() => {
+    const pattern = /^[a-zA-Zа-яА-ЯІіЇїЄєҐґ\d&,`'\-\s"]{3,50}$/
+    if (pattern.test(sellerName)) {
       setErrors((errors) => ({
         ...errors,
-        fullName: { valid: true },
+        sellerName: { valid: true },
       }))
 
       return
@@ -21,12 +26,12 @@ export default function SignUpSellerForm({ setFormData }) {
 
     setErrors((errors) => ({
       ...errors,
-      fullName: {
+      sellerName: {
         valid: false,
         errorMessage: 'Від 3 до 50 літер у розкладці UA чи EN',
       },
     }))
-  }, [fullName])
+  }, [sellerName])
 
   const validateEmail = useCallback(() => {
     const pattern = /^[A-Za-z0-9\._%+\-]+@[A-Za-z0-9\.\-]+\.[A-Za-z]{2,}$/
@@ -68,13 +73,16 @@ export default function SignUpSellerForm({ setFormData }) {
     }))
   }, [password])
 
-  const handleFullNameChange = (event) => {
-    const newFullName = event.target.value
-    setFullName(newFullName)
+  const handleSellerNameChange = (event) => {
+    const newSellerName = event.target.value
+    setSellerName(newSellerName)
 
     setFormData((prevFormData) => ({
       ...prevFormData,
-      fullName: newFullName,
+      details: {
+        ...prevFormData.details,
+        sellerName: newSellerName,
+      },
     }))
   }
 
@@ -116,20 +124,22 @@ export default function SignUpSellerForm({ setFormData }) {
     <div className={styles.formContainer}>
       <div className={styles.inputsWrapper}>
         {' '}
-        <label htmlFor='fullName'>ПІБ</label>
+        <label htmlFor='sellerName'>Назва компанії або ПІБ</label>
         <input
           type='text'
-          id='fullName'
-          name='fullName'
-          placeholder='Василь Іванович Глушко'
+          id='sellerName'
+          name='sellerName'
+          placeholder="ТОВ 'Фермер'"
           minLength='3'
           required
-          value={fullName}
-          onChange={handleFullNameChange}
-          onBlur={validateFullName}
+          value={sellerName}
+          onChange={handleSellerNameChange}
+          onBlur={validateSellerName}
         />
-        {!errors.fullName?.valid && (
-          <span className={styles.errors}>{errors.fullName?.errorMessage}</span>
+        {!errors.sellerName?.valid && (
+          <span className={styles.errors}>
+            {errors.sellerName?.errorMessage}
+          </span>
         )}
       </div>
 
