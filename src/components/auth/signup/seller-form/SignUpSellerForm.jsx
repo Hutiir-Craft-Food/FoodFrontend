@@ -1,31 +1,25 @@
 import { useState, useEffect, useCallback } from 'react'
 import styles from './SignUpSellerForm.module.scss'
 
-export default function SignUpSellerForm({ errors, setErrors, setFormData }) {
+export default function SignUpSellerForm({ setFormData }) {
   const [sellerName, setSellerName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-
-  useEffect(() => {
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      details: {},
-    }))
-  }, [])
+  const [marketingConsent, setMarketingConsent] = useState(false)
+  const [errors, setErrors] = useState({})
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false)
 
   const validateSellerName = useCallback(() => {
     const pattern = /^[a-zA-Zа-яА-ЯІіЇїЄєҐґ\d&,`'\-\s"]{3,50}$/
     if (pattern.test(sellerName)) {
-      setErrors((errors) => ({
-        ...errors,
+      setErrors((prevErrors) => ({
+        ...prevErrors,
         sellerName: { valid: true },
       }))
-
       return
     }
-
-    setErrors((errors) => ({
-      ...errors,
+    setErrors((prevErrors) => ({
+      ...prevErrors,
       sellerName: {
         valid: false,
         errorMessage: 'Від 3 до 50 літер у розкладці UA чи EN',
@@ -36,16 +30,14 @@ export default function SignUpSellerForm({ errors, setErrors, setFormData }) {
   const validateEmail = useCallback(() => {
     const pattern = /^[A-Za-z0-9\._%+\-]+@[A-Za-z0-9\.\-]+\.[A-Za-z]{2,}$/
     if (pattern.test(email)) {
-      setErrors((errors) => ({
-        ...errors,
+      setErrors((prevErrors) => ({
+        ...prevErrors,
         email: { valid: true },
       }))
-
       return
     }
-
-    setErrors((errors) => ({
-      ...errors,
+    setErrors((prevErrors) => ({
+      ...prevErrors,
       email: {
         valid: false,
         errorMessage: 'Вкажіть корректний email',
@@ -56,16 +48,14 @@ export default function SignUpSellerForm({ errors, setErrors, setFormData }) {
   const validatePassword = useCallback(() => {
     const pattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{9,}$/
     if (pattern.test(password)) {
-      setErrors((errors) => ({
-        ...errors,
+      setErrors((prevErrors) => ({
+        ...prevErrors,
         password: { valid: true },
       }))
-
       return
     }
-
-    setErrors((errors) => ({
-      ...errors,
+    setErrors((prevErrors) => ({
+      ...prevErrors,
       password: {
         valid: false,
         errorMessage: 'Від 8 літер та 1 числовий символ',
@@ -74,56 +64,39 @@ export default function SignUpSellerForm({ errors, setErrors, setFormData }) {
   }, [password])
 
   const handleSellerNameChange = (event) => {
-    const newSellerName = event.target.value
-    setSellerName(newSellerName)
-
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      details: {
-        ...prevFormData.details,
-        sellerName: newSellerName,
-      },
-    }))
+    setSellerName(event.target.value)
   }
 
   const handleEmailChange = (event) => {
-    const newEmail = event.target.value
-    setEmail(newEmail)
-
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      email: newEmail,
-    }))
+    setEmail(event.target.value)
   }
 
   const handlePasswordChange = (event) => {
-    const newPassword = event.target.value
-    setPassword(newPassword)
-
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      password: newPassword,
-    }))
+    setPassword(event.target.value)
   }
 
-  const [isPasswordVisible, setIsPasswordVisible] = useState(false)
   const handleEyeButton = () => {
     setIsPasswordVisible(!isPasswordVisible)
   }
 
   useEffect(() => {
-    const hasErrors = Object.values(errors).some(({ valid }) => valid === false)
+    const formData = {
+      details: { sellerName },
+      email,
+      password,
+      marketingConsent,
+      role: 'SELLER',
+    }
 
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      hasErrors,
-    }))
-  }, [errors])
+    const hasErrors = Object.values(errors).some(({ valid }) => valid === false)
+    if (!hasErrors) {
+      setFormData(formData)
+    }
+  }, [sellerName, email, password, marketingConsent, errors, setFormData])
 
   return (
     <div className={styles.formContainer}>
       <div className={styles.inputsWrapper}>
-        {' '}
         <label htmlFor='sellerName'>Назва компанії або ПІБ</label>
         <input
           type='text'
@@ -180,7 +153,6 @@ export default function SignUpSellerForm({ errors, setErrors, setFormData }) {
           }`}
           onClick={handleEyeButton}
         ></button>
-        <br />
         {!errors.password?.valid && (
           <span className={styles.errors}>{errors.password?.errorMessage}</span>
         )}
