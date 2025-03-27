@@ -4,9 +4,8 @@ import SignUpSellerForm from './seller-form/SignUpSellerForm'
 import { AuthContext } from '/src/context/AuthContext'
 import styles from './SignUpContainer.module.scss'
 
-export default function SignUpContainer({ setShowSignUpContainer }) {
+export default function SignUpContainer() {
   const authContext = useContext(AuthContext)
-
   const [role, setRole] = useState('BUYER')
   const [subscription, setSubscription] = useState(false)
   const [formData, setFormData] = useState({})

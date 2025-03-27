@@ -1,15 +1,17 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Navbar from '../navbar/Navbar'
-import ModalWindow from '../modal-window/ModalWindow'
+import Modal from '../Modal/Modal'
 import SignInForm from '../auth/signin/SignInForm'
 import styles from './Header.module.scss'
 
 export default function Header() {
   const [isScrolled, setScrolled] = useState(false)
+  const [searchItem, setSearchItem] = useState('')
+  const [showSignInForm, setShowSignInForm] = useState(false)
+
   useEffect(() => {
     window.addEventListener('scroll', handleScroll, { passive: true })
-
     return () => {
       window.removeEventListener('scroll', handleScroll)
     }
@@ -23,13 +25,10 @@ export default function Header() {
     }
   }
 
-  const [searchItem, setSearchItem] = useState('')
-
   const handleInputChange = (e) => {
     const searchItem = e.target.value
     setSearchItem(searchItem)
   }
-  const [showSignInForm, setShowSignInForm] = useState(false)
 
   const handleClose = () => {
     setShowSignInForm(false)
@@ -37,33 +36,31 @@ export default function Header() {
 
   return (
     <>
-      <header className="container">
+      <header className='container'>
         <div
           className={`${styles.headerContainer}
-           ${isScrolled ? styles.scrolledHeader : ''}
+            ${isScrolled ? styles.scrolledHeader : ''}
           }`}
         >
           <div className={styles.rowOne}>
-            <Link to="/">
+            <Link to='/'>
               <div className={styles.logo}>
-                <img src="/images/logoHK-36@4x.svg" alt="logo" />
+                <img src='/images/logoHK-36@4x.svg' alt='logo' />
               </div>
             </Link>
-
             <div className={styles.nav}>
               <Navbar />
             </div>
           </div>
-
           <div
             className={`${styles.rowTwo} ${
               isScrolled ? styles.stickyRowTwo : ''
             }`}
           >
             {isScrolled ? (
-              <Link to="/">
+              <Link to='/'>
                 <div className={styles.logo}>
-                  <img src="/images/logoHK-36@4x.svg" alt="logo" />
+                  <img src='/images/logoHK-36@4x.svg' alt='logo' />
                 </div>
               </Link>
             ) : (
@@ -72,7 +69,7 @@ export default function Header() {
             <div>
               <button className={styles.catalogButton}>
                 Каталог
-                <img src="/images/caret-down.svg" alt="CaretDown" />
+                <img src='/images/caret-down.svg' alt='CaretDown' />
               </button>
             </div>
             <div
@@ -81,43 +78,43 @@ export default function Header() {
               }`}
             >
               <input
-                type="search"
-                placeholder="Я шукаю . . ."
+                type='search'
+                placeholder='Я шукаю . . .'
                 value={searchItem}
                 onChange={handleInputChange}
               />
               <button className={styles.magnifyingGlass}>
                 <img
                   className={styles.magnifyingGlass}
-                  src="/images/magnifying-glass.svg"
-                  alt="magnifyingGlass"
+                  src='/images/magnifying-glass.svg'
+                  alt='magnifyingGlass'
                 />
               </button>
             </div>{' '}
             <div className={styles.iconsContainer}>
               <div className={styles.userIcon}>
                 <img
-                  src="/images/user-logout-default.svg"
-                  alt="user icon"
+                  src='/images/user-logout-default.svg'
+                  alt='user icon'
                   onClick={() => setShowSignInForm(true)}
                 />
               </div>
 
               <div className={styles.heartIcon}>
-                <img src="/images/heartIcon-default.svg" alt="heart icon" />
+                <img src='/images/heartIcon-default.svg' alt='heart icon' />
               </div>
 
               <div className={styles.basketIcon}>
-                <img src="/images/basket-default-noNotif.svg" alt="user icon" />
+                <img src='/images/basket-default-noNotif.svg' alt='user icon' />
               </div>
             </div>
           </div>
         </div>
       </header>
 
-      <ModalWindow show={showSignInForm} handleClose={handleClose}>
+      <Modal show={showSignInForm} handleClose={handleClose}>
         <SignInForm />
-      </ModalWindow>
+      </Modal>
     </>
   )
 }
