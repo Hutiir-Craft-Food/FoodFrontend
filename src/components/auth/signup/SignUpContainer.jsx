@@ -45,13 +45,30 @@ export default function SignUpContainer({ setShowSignUpContainer }) {
 
   return (
     <div className={styles.signUpContainer}>
-      <div className={styles.imgContainer}>
-        <img
-          src='/images/sign-in.png'
-          alt='imgForBuyerRegistration'
-          className={styles.imgBuyer}
-        />
-      </div>
+      {role === 'BUYER' && (
+        <div className={styles.imgContainer}>
+          <img
+            src="/images/sign-in.png"
+            alt="imgForBuyerRegistration"
+            className={styles.imgBuyer}
+          />
+        </div>
+      )}
+      {role === 'SELLER' && (
+        <div className={styles.imgContainer}>
+          <img
+            src="/images/sign-in.png"
+            alt="imgForBuyerRegistration"
+            className={styles.imgSeller}
+          />
+
+          <div className={styles.steps}>
+            <p>
+              <span className={styles.steps}>1-2-3</span>
+            </p>
+          </div>
+        </div>
+      )}
 
       <div className={styles.contentContainer}>
         <h4>Реєстрація</h4>
@@ -59,22 +76,20 @@ export default function SignUpContainer({ setShowSignUpContainer }) {
           <div className={styles.formContentContainer}>
             <div className={styles.rolesButtons}>
               <button
-                type='button'
                 className={
                   role === 'BUYER'
                     ? `${styles.button} ${styles.active}`
-                    : styles.button
+                    : `${styles.button}`
                 }
                 onClick={() => setRole('BUYER')}
               >
                 Хочу купувати
               </button>
               <button
-                type='button'
                 className={
                   role === 'SELLER'
                     ? `${styles.button} ${styles.active}`
-                    : styles.button
+                    : `${styles.button}`
                 }
                 onClick={() => setRole('SELLER')}
               >
@@ -84,32 +99,34 @@ export default function SignUpContainer({ setShowSignUpContainer }) {
 
             {role === 'BUYER' && (
               <SignUpBuyerForm
-                errors={errors}
-                setErrors={setErrors}
+                handleSubmit={handleSubmit}
                 setFormData={setFormData}
+                setSubscription={handleCheckbox}
               />
             )}
             {role === 'SELLER' && (
               <SignUpSellerForm
-                errors={errors}
-                setErrors={setErrors}
+                handleSubmit={handleSubmit}
                 setFormData={setFormData}
               />
             )}
           </div>
 
-          <div className={styles.checkboxLabel}>
-            <label className={styles.checkboxContainer}>
-              Бажаю отримувати новини та спеціальні пропозиції
-              <input
-                type='checkbox'
-                id='subscription'
-                checked={marketingConsent}
-                onChange={handleCheckbox}
-              />
-              <span className={styles.checkmark}></span>
-            </label>
-          </div>
+          {role === 'BUYER' && (
+            <div className={styles.checkboxLabel}>
+              <label className={styles.checkboxContainer}>
+                Бажаю отримувати новини та спеціальні пропозиції
+                <input
+                  type="checkbox"
+                  id="subscription"
+                  value={subscription}
+                  onChange={handleCheckbox}
+                />
+                <span className={styles.checkmark}></span>
+              </label>
+            </div>
+          )}
+          <br></br>
 
           <button
             className={
@@ -124,16 +141,19 @@ export default function SignUpContainer({ setShowSignUpContainer }) {
         </form>
 
         <div className={styles.signInLink}>
-          <a className={styles.signInLink} href='#'>
+          <button
+            className={styles.signInLink}
+            // onClick={() => }
+          >
             Вже маю акаунт
-          </a>
+          </button>
         </div>
 
         <div className={styles.userAgreement}>
           <p>
             <span>
               Підтверджуючи реєстрацію, я приймаю &nbsp;
-              <a href='#' className={styles.userAgreementLink}>
+              <a href="#" className={styles.userAgreementLink}>
                 умови користувацької угоди
               </a>
             </span>
