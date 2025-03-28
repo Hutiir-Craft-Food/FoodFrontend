@@ -35,7 +35,7 @@
   .errors {
     position: absolute;
     color: $danger-30;
-    bottom: 0;
+    bottom: -17px;
     font-size: 0.8125rem;
   }
 }
@@ -47,7 +47,7 @@
   .toggleEye {
     position: absolute;
     right: 5px;
-    top: 20px;
+    top: 24px;
     width: 40px;
     height: 40px;
     border: none;
