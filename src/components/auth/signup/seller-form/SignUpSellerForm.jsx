@@ -47,15 +47,12 @@ export default function SignUpSellerForm({ setFormData }) {
   const handleSellerNameChange = (event) => {
     setSellerName(event.target.value)
   }
-
   const handleEmailChange = (event) => {
     setEmail(event.target.value)
   }
-
   const handlePasswordChange = (event) => {
     setPassword(event.target.value)
   }
-
   const handleEyeButton = () => {
     setIsPasswordVisible(!isPasswordVisible)
   }
@@ -65,7 +62,6 @@ export default function SignUpSellerForm({ setFormData }) {
       details: { sellerName },
       email,
       password,
-      marketingConsent,
       role: 'SELLER',
     }
 
@@ -73,7 +69,7 @@ export default function SignUpSellerForm({ setFormData }) {
     if (!hasErrors) {
       setFormData(formData)
     }
-  }, [sellerName, email, password, marketingConsent, errors, setFormData])
+  }, [sellerName, email, password, errors, setFormData])
 
   return (
     <div className={styles.formContainer}>
@@ -133,6 +129,7 @@ export default function SignUpSellerForm({ setFormData }) {
             isPasswordVisible ? styles.openEye : styles.closeEye
           }`}
           onClick={handleEyeButton}
+          type='button'
         ></button>
         {!errors.password?.valid && (
           <span className={styles.errors}>{errors.password?.errorMessage}</span>
