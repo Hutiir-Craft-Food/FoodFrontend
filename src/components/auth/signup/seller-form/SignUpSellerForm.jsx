@@ -5,61 +5,42 @@ export default function SignUpSellerForm({ setFormData }) {
   const [sellerName, setSellerName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [marketingConsent, setMarketingConsent] = useState(false)
   const [errors, setErrors] = useState({})
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
 
   const validateSellerName = useCallback(() => {
     const pattern = /^[a-zA-Zа-яА-ЯІіЇїЄєҐґ\d&,`'\-\s"]{3,50}$/
-    if (pattern.test(sellerName)) {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        sellerName: { valid: true },
-      }))
-      return
-    }
+    const newValue = pattern.test(sellerName)
+      ? { valid: true, errorMessage: '' }
+      : { valid: false, errorMessage: 'Від 3 до 50 літер у розкладці UA чи EN' }
+
     setErrors((prevErrors) => ({
       ...prevErrors,
-      sellerName: {
-        valid: false,
-        errorMessage: 'Від 3 до 50 літер у розкладці UA чи EN',
-      },
+      sellerName: newValue,
     }))
   }, [sellerName])
 
   const validateEmail = useCallback(() => {
     const pattern = /^[A-Za-z0-9\._%+\-]+@[A-Za-z0-9\.\-]+\.[A-Za-z]{2,}$/
-    if (pattern.test(email)) {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        email: { valid: true },
-      }))
-      return
-    }
+    const newValue = pattern.test(email)
+      ? { valid: true, errorMessage: '' }
+      : { valid: false, errorMessage: 'Вкажіть корректний email' }
+
     setErrors((prevErrors) => ({
       ...prevErrors,
-      email: {
-        valid: false,
-        errorMessage: 'Вкажіть корректний email',
-      },
+      email: newValue,
     }))
   }, [email])
 
   const validatePassword = useCallback(() => {
     const pattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{9,}$/
-    if (pattern.test(password)) {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        password: { valid: true },
-      }))
-      return
-    }
+    const newValue = pattern.test(password)
+      ? { valid: true, errorMessage: '' }
+      : { valid: false, errorMessage: 'Від 8 літер та 1 числовий символ' }
+
     setErrors((prevErrors) => ({
       ...prevErrors,
-      password: {
-        valid: false,
-        errorMessage: 'Від 8 літер та 1 числовий символ',
-      },
+      password: newValue,
     }))
   }, [password])
 
