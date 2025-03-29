@@ -61,11 +61,6 @@ export default function SignUpContainer({ setShowSignUpContainer }) {
             alt='imgForBuyerRegistration'
             className={styles.imgSeller}
           />
-          <div className={styles.steps}>
-            <p>
-              <span className={styles.steps}>1-2-3</span>
-            </p>
-          </div>
         </div>
       )}
 

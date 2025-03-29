@@ -69,7 +69,7 @@ export default function SignUpSellerForm({ setFormData }) {
     if (!hasErrors) {
       setFormData(formData)
     }
-  }, [sellerName, email, password, errors, setFormData])
+  }, [errors, setFormData])
 
   return (
     <div className={styles.formContainer}>
