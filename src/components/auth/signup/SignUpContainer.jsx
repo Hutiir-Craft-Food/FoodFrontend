@@ -45,24 +45,13 @@ export default function SignUpContainer({ setShowSignUpContainer }) {
 
   return (
     <div className={styles.signUpContainer}>
-      {role === 'BUYER' && (
-        <div className={styles.imgContainer}>
-          <img
-            src='/images/sign-in.png'
-            alt='imgForBuyerRegistration'
-            className={styles.imgBuyer}
-          />
-        </div>
-      )}
-      {role === 'SELLER' && (
-        <div className={styles.imgContainer}>
-          <img
-            src='/images/sign-in.png'
-            alt='imgForBuyerRegistration'
-            className={styles.imgSeller}
-          />
-        </div>
-      )}
+      <div className={styles.imgContainer}>
+        <img
+          src='/images/sign-in.png'
+          alt='imgForBuyerRegistration'
+          className={styles.imgBuyer}
+        />
+      </div>
 
       <div className={styles.contentContainer}>
         <h4>Реєстрація</h4>
