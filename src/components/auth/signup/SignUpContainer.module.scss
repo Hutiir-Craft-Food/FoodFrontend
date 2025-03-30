@@ -36,16 +36,12 @@
     gap: 10px;
     position: relative;
 
-    .imgBuyer {
-      width: 488px;
-      height: 768px;
-      border-radius: 20px;
-    }
-    .imgSeller {
+    .img {
       width: 488px;
       height: 664px;
       border-radius: 20px;
     }
+
     /*Temporary used*/
     .steps {
       display: flex;
