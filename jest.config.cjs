@@ -9,6 +9,9 @@ module.exports = {
     '^.+\\.scss$': 'jest-scss-transform',
     '^.+\\.svg$': 'jest-transformer-svg',
   },
+  moduleNameMapper: {
+    '/src/(.*)': '<rootDir>/src/$1',
+  },
 }
 
 /**
