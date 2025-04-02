@@ -1,7 +1,7 @@
 import { useContext, useState, useCallback } from 'react'
 import { AuthContext } from '/src/context/AuthContext'
 import SignUpContainer from '../signup/SignUpContainer'
-import Modal from '/src/components/Modal/Modal'
+import Modal from '/src/components/modal/Modal'
 import styles from './SignInForm.module.scss'
 
 const SignInForm = () => {
@@ -176,9 +176,11 @@ const SignInForm = () => {
             {' '}
             Зареєструватись
           </button>
-          <Modal show={showSignUpContainer} handleClose={handleClose}>
-            <SignUpContainer />
-          </Modal>
+          {showSignUpContainer && (
+            <Modal handleClose={handleClose}>
+              <SignUpContainer />
+            </Modal>
+          )}
         </div>
       </div>
     </div>

@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Navbar from '../navbar/Navbar'
-import Modal from '../Modal/Modal'
+import Modal from '../modal/Modal'
 import SignInForm from '../auth/signin/SignInForm'
+import SignUpContainer from '../auth/signup/SignUpContainer'
 import styles from './Header.module.scss'
 
 export default function Header() {
@@ -111,10 +112,11 @@ export default function Header() {
           </div>
         </div>
       </header>
-
-      <Modal show={showSignInForm} handleClose={handleClose}>
-        <SignInForm />
-      </Modal>
+      {showSignInForm && (
+        <Modal handleClose={handleClose}>
+          {showSignInForm ? <SignInForm /> : <SignUpContainer />}
+        </Modal>
+      )}
     </>
   )
 }

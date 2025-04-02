@@ -48,8 +48,8 @@ export default function SignUpContainer() {
       {role === 'BUYER' && (
         <div className={styles.imgContainer}>
           <img
-            src="/images/sign-in.png"
-            alt="imgForBuyerRegistration"
+            src='/images/sign-in.png'
+            alt='imgForBuyerRegistration'
             className={styles.imgBuyer}
           />
         </div>
@@ -57,8 +57,8 @@ export default function SignUpContainer() {
       {role === 'SELLER' && (
         <div className={styles.imgContainer}>
           <img
-            src="/images/sign-in.png"
-            alt="imgForBuyerRegistration"
+            src='/images/sign-in.png'
+            alt='imgForBuyerRegistration'
             className={styles.imgSeller}
           />
 
@@ -117,9 +117,9 @@ export default function SignUpContainer() {
               <label className={styles.checkboxContainer}>
                 Бажаю отримувати новини та спеціальні пропозиції
                 <input
-                  type="checkbox"
-                  id="subscription"
-                  value={subscription}
+                  type='checkbox'
+                  id='subscription'
+                  value={marketingConsent}
                   onChange={handleCheckbox}
                 />
                 <span className={styles.checkmark}></span>
@@ -153,7 +153,7 @@ export default function SignUpContainer() {
           <p>
             <span>
               Підтверджуючи реєстрацію, я приймаю &nbsp;
-              <a href="#" className={styles.userAgreementLink}>
+              <a href='#' className={styles.userAgreementLink}>
                 умови користувацької угоди
               </a>
             </span>
