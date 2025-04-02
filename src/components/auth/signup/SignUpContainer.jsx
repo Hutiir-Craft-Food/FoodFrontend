@@ -4,7 +4,7 @@ import SignUpSellerForm from './seller-form/SignUpSellerForm'
 import { AuthContext } from '/src/context/AuthContext'
 import styles from './SignUpContainer.module.scss'
 
-export default function SignUpContainer() {
+export default function SignUpContainer({ setShowSignUpContainer }) {
   const authContext = useContext(AuthContext)
   const [role, setRole] = useState('BUYER')
   const [marketingConsent, setMarketingConsent] = useState(false)
@@ -45,30 +45,13 @@ export default function SignUpContainer() {
 
   return (
     <div className={styles.signUpContainer}>
-      {role === 'BUYER' && (
-        <div className={styles.imgContainer}>
-          <img
-            src='/images/sign-in.png'
-            alt='imgForBuyerRegistration'
-            className={styles.imgBuyer}
-          />
-        </div>
-      )}
-      {role === 'SELLER' && (
-        <div className={styles.imgContainer}>
-          <img
-            src='/images/sign-in.png'
-            alt='imgForBuyerRegistration'
-            className={styles.imgSeller}
-          />
-
-          <div className={styles.steps}>
-            <p>
-              <span className={styles.steps}>1-2-3</span>
-            </p>
-          </div>
-        </div>
-      )}
+      <div className={styles.imgContainer}>
+        <img
+          src='/images/sign-in.png'
+          alt='imgForBuyerRegistration'
+          className={styles.imgBuyer}
+        />
+      </div>
 
       <div className={styles.contentContainer}>
         <h4>Реєстрація</h4>
@@ -76,20 +59,22 @@ export default function SignUpContainer() {
           <div className={styles.formContentContainer}>
             <div className={styles.rolesButtons}>
               <button
+                type='button'
                 className={
                   role === 'BUYER'
                     ? `${styles.button} ${styles.active}`
-                    : `${styles.button}`
+                    : styles.button
                 }
                 onClick={() => setRole('BUYER')}
               >
                 Хочу купувати
               </button>
               <button
+                type='button'
                 className={
                   role === 'SELLER'
                     ? `${styles.button} ${styles.active}`
-                    : `${styles.button}`
+                    : styles.button
                 }
                 onClick={() => setRole('SELLER')}
               >
@@ -99,34 +84,32 @@ export default function SignUpContainer() {
 
             {role === 'BUYER' && (
               <SignUpBuyerForm
-                handleSubmit={handleSubmit}
+                errors={errors}
+                setErrors={setErrors}
                 setFormData={setFormData}
-                setSubscription={handleCheckbox}
               />
             )}
             {role === 'SELLER' && (
               <SignUpSellerForm
-                handleSubmit={handleSubmit}
+                errors={errors}
+                setErrors={setErrors}
                 setFormData={setFormData}
               />
             )}
           </div>
 
-          {role === 'BUYER' && (
-            <div className={styles.checkboxLabel}>
-              <label className={styles.checkboxContainer}>
-                Бажаю отримувати новини та спеціальні пропозиції
-                <input
-                  type='checkbox'
-                  id='subscription'
-                  value={marketingConsent}
-                  onChange={handleCheckbox}
-                />
-                <span className={styles.checkmark}></span>
-              </label>
-            </div>
-          )}
-          <br></br>
+          <div className={styles.checkboxLabel}>
+            <label className={styles.checkboxContainer}>
+              Бажаю отримувати новини та спеціальні пропозиції
+              <input
+                type='checkbox'
+                id='subscription'
+                checked={marketingConsent}
+                onChange={handleCheckbox}
+              />
+              <span className={styles.checkmark}></span>
+            </label>
+          </div>
 
           <button
             className={
@@ -141,12 +124,9 @@ export default function SignUpContainer() {
         </form>
 
         <div className={styles.signInLink}>
-          <button
-            className={styles.signInLink}
-            // onClick={() => }
-          >
+          <a className={styles.signInLink} href='#'>
             Вже маю акаунт
-          </button>
+          </a>
         </div>
 
         <div className={styles.userAgreement}>
@@ -163,3 +143,4 @@ export default function SignUpContainer() {
     </div>
   )
 }
+
