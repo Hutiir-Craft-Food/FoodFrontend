@@ -14,7 +14,6 @@
     height: 638px;
     padding: 16px;
     gap: 10px;
-    opacity: 0px;
   }
 
   .formContainer {
@@ -22,7 +21,6 @@
     height: 638px;
     padding: 20px 104px 20px 104px;
     gap: 24px;
-    opacity: 0px;
     display: flex;
     align-items: center;
     flex-flow: column wrap;
@@ -32,8 +30,7 @@
       line-height: 20px;
       width: 296px;
       height: 36px;
-      gap: 8px;
-      opacity: 0px;
+      gap: 8px;      
     }
 
     input {
@@ -82,7 +79,6 @@
       width: 296px;
       height: 36px;
       gap: 80px;
-      opacity: 0px;
       color: $primary-90;
       margin: 40px 0 20px 0;
       font-size: 1.5rem;
