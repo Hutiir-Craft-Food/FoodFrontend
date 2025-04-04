@@ -1,14 +1,12 @@
 import { useContext, useState, useCallback } from 'react'
 import { AuthContext } from '/src/context/AuthContext'
 import SignUpContainer from '../signup/SignUpContainer'
-import ModalWindow from '/src/components/modal-window/ModalWindow'
+import Modal from '/src/components/modal/Modal'
 import styles from './SignInForm.module.scss'
 
 const SignInForm = () => {
   const authContext = useContext(AuthContext)
-
   const [showSignUpContainer, setShowSignUpContainer] = useState(false)
-
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
@@ -18,29 +16,29 @@ const SignInForm = () => {
     setShowSignUpContainer(false)
   }
 
-  const handleEyeButtonClick = e => {
+  const handleEyeButtonClick = (e) => {
     e.preventDefault()
-    setIsPasswordVisible(prevValue => !prevValue)
+    setIsPasswordVisible((prevValue) => !prevValue)
   }
 
-  const handleEmailChange = e => {
+  const handleEmailChange = (e) => {
     setEmail(e.target.value)
   }
 
-  const handlePasswordChange = e => {
+  const handlePasswordChange = (e) => {
     setPassword(e.target.value)
   }
 
   const validateEmail = useCallback(() => {
     const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!pattern.test(email)) {
-      setErrors(prevErrors => ({
+      setErrors((prevErrors) => ({
         ...prevErrors,
         email: { valid: false, message: 'Не правильна адреса' },
       }))
       return
     }
-    setErrors(prevErrors => ({
+    setErrors((prevErrors) => ({
       ...prevErrors,
       email: { valid: true },
     }))
@@ -49,7 +47,7 @@ const SignInForm = () => {
   const validatePassword = useCallback(() => {
     const pattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{9,}$/
     if (!pattern.test(password)) {
-      setErrors(prevErrors => ({
+      setErrors((prevErrors) => ({
         ...prevErrors,
         password: {
           valid: false,
@@ -58,13 +56,13 @@ const SignInForm = () => {
       }))
       return
     }
-    setErrors(prevErrors => ({
+    setErrors((prevErrors) => ({
       ...prevErrors,
       password: { valid: true },
     }))
   }, [password])
 
-  const handleSignIn = async event => {
+  const handleSignIn = async (event) => {
     event.preventDefault()
     const hasErrors = Object.values(errors).some(({ valid }) => valid === false)
     if (hasErrors) {
@@ -86,7 +84,9 @@ const SignInForm = () => {
         setPassword('')
         setErrors({})
       } else {
-        const errorMessage = data.message || 'Такого користувача не існує, перевірте правильність введених даних'
+        const errorMessage =
+          data.message ||
+          'Такого користувача не існує, перевірте правильність введених даних'
         throw new Error(errorMessage)
       }
     } catch (error) {
@@ -107,7 +107,8 @@ const SignInForm = () => {
             <br />
             <input
               style={{
-                border: errors.email?.valid === false ? '1px solid #E02D3C' : '',
+                border:
+                  errors.email?.valid === false ? '1px solid #E02D3C' : '',
               }}
               type='email'
               id='email'
@@ -118,13 +119,18 @@ const SignInForm = () => {
               onBlur={validateEmail}
               autoFocus
             />
-            {errors.email?.valid === false && <p className={styles.incorrectInputMessage}>{errors.email.message}</p>}
+            {errors.email?.valid === false && (
+              <p className={styles.incorrectInputMessage}>
+                {errors.email.message}
+              </p>
+            )}
           </div>
           <div className={styles.passwordContainer}>
             <label htmlFor='password'>Пароль</label>
             <input
               style={{
-                border: errors.password?.valid === false ? '1px solid #E02D3C' : '',
+                border:
+                  errors.password?.valid === false ? '1px solid #E02D3C' : '',
               }}
               type={isPasswordVisible ? 'text' : 'password'}
               id='password'
@@ -136,12 +142,18 @@ const SignInForm = () => {
             />
             <button
               id='togglePassword'
-              className={`${styles.toggleEye} ${isPasswordVisible ? styles.openEye : styles.closeEye}`}
-              aria-label={isPasswordVisible ? 'Приховати пароль' : 'Показати пароль'}
+              className={`${styles.toggleEye} ${
+                isPasswordVisible ? styles.openEye : styles.closeEye
+              }`}
+              aria-label={
+                isPasswordVisible ? 'Приховати пароль' : 'Показати пароль'
+              }
               onClick={handleEyeButtonClick}
             ></button>
             {errors.password?.valid === false && (
-              <p className={styles.incorrectInputMessage}>{errors.password.message}</p>
+              <p className={styles.incorrectInputMessage}>
+                {errors.password.message}
+              </p>
             )}
           </div>
           <br />
@@ -155,11 +167,20 @@ const SignInForm = () => {
           <br />
         </form>
         <div>
-          <button className={styles.signUpLink} onClick={() => setShowSignUpContainer(true)}>
+          <button
+            className={styles.signUpLink}
+            onClick={() => {
+              setShowSignUpContainer(true)
+            }}
+          >
             {' '}
             Зареєструватись
           </button>
-          <ModalWindow show={showSignUpContainer} handleClose={handleClose} form={<SignUpContainer />} />
+          {showSignUpContainer && (
+            <Modal handleClose={handleClose}>
+              <SignUpContainer />
+            </Modal>
+          )}
         </div>
       </div>
     </div>
