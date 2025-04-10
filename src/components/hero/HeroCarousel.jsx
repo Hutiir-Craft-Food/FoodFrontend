@@ -10,14 +10,14 @@ const HeroCarousel = () => {
   return (
     <div
       style={{
-        width: '1200px',
+        width: '100%',
         height: '544px',
         padding: '48px',
         display: 'flex',
         gap: '16px',
       }}
     >
-      {/* left*/}
+      {/* left */}
       <div
         style={{
           width: '451px',
@@ -32,15 +32,24 @@ const HeroCarousel = () => {
             backgroundColor: '#F4E5D3',
             padding: '24px',
             borderRadius: '12px',
-            fontSize: '24px',
-            fontWeight: 'bold',
+            fontSize: '72px',
+            fontWeight: '700',
             color: '#511F4A',
+            lineHeight: '120%',
+            letterSpacing: '0',
             flex: 1,
           }}
         >
           Від ферми <br /> до столу
           <p
-            style={{ fontSize: '16px', fontWeight: 'normal', marginTop: '8px' }}
+            style={{
+              fontFamily: 'Circe',
+              fontWeight: '400',
+              fontSize: '24px',
+              lineHeight: '120%',
+              letterSpacing: '0',
+              marginTop: '8px',
+            }}
           >
             маркетплейс крафтових виробів <br /> від найкращих фермерів
           </p>
@@ -56,11 +65,34 @@ const HeroCarousel = () => {
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
+            position: 'relative',
           }}
         >
           <div style={{ fontSize: '16px', fontWeight: 'bold' }}>
             Продавайте з нами <br /> по всій Україні
           </div>
+
+          <div
+            style={{
+              position: 'absolute',
+              bottom: '1px',
+              left: '41%',
+              width: '255px',
+              height: '241px',
+              overflow: 'hidden',
+            }}
+          >
+            <img
+              src='/images/woman.svg'
+              alt='Дівчина'
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+              }}
+            />
+          </div>
+
           <button
             style={{
               marginTop: '16px',
@@ -138,7 +170,6 @@ const HeroCarousel = () => {
               }}
             />
           </SwiperSlide>
-
           <SwiperSlide>
             <img
               src='/images/slide4.svg'
