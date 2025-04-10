@@ -1,15 +1,18 @@
-import CustomCarousel from '/src/components/custom-carousel/CustomCarousel'
+import HeroCarousel from '/src/components/hero/HeroCarousel'
 import NewProducts from '/src/components/product/new-products/NewProducts'
 import Sellers from '/src/components/seller/sellers-container/SellersContainer'
 import RecommendedProducts from '/src/components/product/recommendations/RecommendedProducts'
 import ProductsOffers from '/src/components/product/offers/ProductOffers'
 import styles from './HomePage.module.scss'
+import 'swiper/css'
+import 'swiper/css/pagination'
+import 'swiper/css/autoplay'
 
 export default function HomePage() {
   return (
     <div className='container'>
-      <h1>Khutir Craftu</h1>
-      <CustomCarousel carouselCategory='advPosts' />
+      <h1></h1>
+      <HeroCarousel />
       <NewProducts />
       <ProductsOffers />
       <RecommendedProducts />
@@ -32,7 +35,7 @@ export default function HomePage() {
         </div>
       </section>
       <Sellers />
-      <CustomCarousel title='Блог' carouselCategory='blogPosts' />
+      <HeroCarousel title='Блог' carouselCategory='blogPosts' />
     </div>
   )
 }
