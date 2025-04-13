@@ -10,7 +10,8 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "test": "jest"
+    "test": "jest",
+    "mock-server": "cd __mocks__/ && camouflage -c ./config.yml"
   },
   "dependencies": {
     "axios": "^1.7.9",
@@ -33,9 +34,9 @@
     "@babel/core": "^7.24.6",
     "@babel/preset-env": "^7.24.6",
     "@babel/preset-react": "^7.24.6",
-    "@testing-library/dom": "^10.1.0",
-    "@testing-library/jest-dom": "^6.4.5",
-    "@testing-library/react": "^16.0.0",
+    "@testing-library/dom": "~10.4.0",
+    "@testing-library/jest-dom": "~6.6.3",
+    "@testing-library/react": "~16.2.0",
     "@testing-library/user-event": "^14.5.2",
     "@types/jest": "~29.5.12",
     "@types/react": "^18.2.66",
