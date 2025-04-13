@@ -4,7 +4,6 @@ import { ErrorBoundary } from 'react-error-boundary'
 import { AuthContext } from '/src/context/AuthContext'
 import router from './pages/Router'
 import NotFoundPage from './pages/not-found/NotFoundPage'
-import 'bootstrap/dist/css/bootstrap.min.css'
 import 'react-multi-carousel/lib/styles.css'
 import styles from './App.module.scss'
 
