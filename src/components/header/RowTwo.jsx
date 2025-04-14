@@ -1,8 +1,11 @@
 import Logo from './Logo'
 import SearchBar from './Searchbar'
+import { useAuthStore } from '../auth/store/AuthStore'
 import styles from './RowTwo.module.scss'
 
-export default function RowTwo({ isScrolled, setShowSignInForm }) {
+export default function RowTwo({ isScrolled }) {
+  const { showAuthWidget } = useAuthStore()
+
   return (
     <div className={styles.rowTwo}>
       {isScrolled && <Logo />}
@@ -22,7 +25,7 @@ export default function RowTwo({ isScrolled, setShowSignInForm }) {
           <img
             src="/images/user-logout-default.svg"
             alt="user icon"
-            onClick={() => setShowSignInForm(true)}
+            onClick={() => showAuthWidget()}
           />
         </div>
         <div className={styles.heartIcon}>
