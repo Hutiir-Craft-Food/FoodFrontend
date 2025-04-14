@@ -9,53 +9,59 @@
   flex-direction: column;
   position: relative;
   row-gap: 1.5rem;
+
   .inputsWrapper {
     width: 296px;
     height: 80px;
     display: flex;
     flex-direction: column;
     position: relative;
+
     label {
       @extend .paragraph4;
       text-align: left;
       color: $natural-50;
     }
+
+    input[type='text'],
     input[type='email'],
     input[type='password'] {
       @include inputs;
       @extend .paragraph3;
+    }
 
-      &:placeholder-shown {
-        color: $natural-30;
+    &:placeholder-shown {
+      color: $natural-30;
+    }
+
+    .errors {
+      position: absolute;
+      color: $danger-30;
+      bottom: -17px;
+      font-size: 0.8125rem;
+    }
+  }
+
+  .passwordContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    .toggleEye {
+      // TODO: why do we use absolute position here ?
+      position: absolute;
+      right: 5px;
+      top: 21px;
+      width: 40px;
+      height: 40px;
+      border: none;
+      &.openEye {
+        background: url('/src/icons/eyeLine.svg') no-repeat scroll 7px 7px;
       }
-    }
-  }
 
-  .errors {
-    position: absolute;
-    color: $danger-30;
-    bottom: -17px;
-    font-size: 0.8125rem;
-  }
-}
-.passwordContainer {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  .toggleEye {
-    position: absolute;
-    right: 5px;
-    top: 24px;
-    width: 40px;
-    height: 40px;
-    border: none;
-    &.openEye {
-      background: url('/src/icons/eyeLine.svg') no-repeat scroll 7px 7px;
-    }
-
-    &.closeEye {
-      background: url('/src/icons/eyeClosedLine.svg') no-repeat scroll 7px 7px;
+      &.closeEye {
+        background: url('/src/icons/eyeClosedLine.svg') no-repeat scroll 7px 7px;
+      }
     }
   }
 }

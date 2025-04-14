@@ -26,7 +26,8 @@
     "react-scroll": "^1.9.0",
     "sass": "^1.71.0",
     "scss": "^0.2.4",
-    "swiper": "^11.2.6"
+    "swiper": "^11.2.6",
+    "zustand": "^5.0.5"
   },
   "devDependencies": {
     "@babel/core": "^7.24.6",
