@@ -1,6 +1,6 @@
 @import '/src/styles/var.scss';
-@import '/src/styles/mixins.scss';
-@import '/src/styles/base/typography.scss';
+@import '/src/styles/mixins';
+@import '/src/styles/base/typography';
 
 .headerContainer {
   width: 100%;
@@ -15,6 +15,81 @@
   .hr {
     border-bottom: 1px solid $primary-20;
     margin: 0;
+    &.stickyRowTwo {
+      height: 104px;
+      padding-top: 32px;
+      align-items: center;
+      position: fixed;
+      overflow: hidden;
+      top: 0;
+      z-index: 999;
+    }
+    .catalogButton {
+      width: 168px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      @extend .paragraph4;
+      padding: 12px 32px;
+      border-radius: 8px;
+      border: none;
+      gap: 8px;
+      @include buttonPrimaryColor;
+      .active {
+        border: 1px solid $primary-50;
+        border-radius: 8px;
+      }
+    }
+
+    .searchContainer {
+      width: 100%;
+      height: 44px;
+      display: flex;
+      flex-direction: row;
+      padding: 0px 8px 0px 16px;
+      outline: none;
+      border-radius: 8px;
+      @include bordered(1px, $primary-20);
+
+      input[type='search'] {
+        outline: none;
+        width: 95%;
+        gap: 8px;
+        border: none;
+        @extend .paragraph3;
+        text-align: left;
+      }
+      &:placeholder-shown {
+        color: $natural-30;
+      }
+      .magnifyingGlass {
+        float: left;
+        right: 15px;
+        top: 12px;
+        border: none;
+        background: none;
+      }
+      &.stickySearchContainer {
+        width: 608px;
+      }
+    }
+
+    .iconsContainer {
+      width: 164px;
+      height: 44px;
+      gap: 16px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+
+      .iconsContainer:nth-child {
+        width: 44px;
+        height: 44px;
+        opacity: 0px;
+      }
+    }
   }
 }
 
