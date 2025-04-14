@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, use } from 'react'
+import { useState, useCallback } from 'react'
 import styles from './SignUpBuyerForm.module.scss'
 
 export default function SignUpBuyerForm({ errors, setErrors, setFormData }) {
@@ -74,12 +74,12 @@ export default function SignUpBuyerForm({ errors, setErrors, setFormData }) {
   return (
     <div className={styles.formContainer}>
       <div className={styles.inputsWrapper}>
-        <label htmlFor='email'>E-mail</label>
+        <label htmlFor="email">E-mail</label>
         <input
-          type='email'
-          id='email'
-          name='email'
-          placeholder='e.g.example@gmail.com'
+          type="email"
+          id="email"
+          name="email"
+          placeholder="e.g.example@gmail.com"
           required
           className={styles.formControl}
           value={email}
@@ -92,25 +92,25 @@ export default function SignUpBuyerForm({ errors, setErrors, setFormData }) {
       </div>
 
       <div className={`${styles.passwordContainer} ${styles.inputsWrapper}`}>
-        <label htmlFor='password'>Пароль</label>
+        <label htmlFor="password">Пароль</label>
         <input
           type={isPasswordVisible ? 'text' : 'password'}
-          id='password'
-          name='password'
+          id="password"
+          name="password"
           required
           value={password}
-          placeholder='Створіть пароль'
+          placeholder="Створіть пароль"
           onChange={handlePasswordChange}
           onBlur={validatePassword}
         />
-
-        <div
+        <button
           id='togglePassword'
           className={`${styles.toggleEye} ${
             isPasswordVisible ? styles.openEye : styles.closeEye
           }`}
           onClick={handleEyeButton}
-        ></div>
+          type='button'
+        ></button>
         <br />
         {!errors.password?.valid && (
           <span className={styles.errors}>{errors.password?.errorMessage}</span>
