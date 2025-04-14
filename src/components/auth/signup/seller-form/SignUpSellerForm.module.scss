@@ -1,5 +1,5 @@
 @import '/src/styles/var.scss';
-@import '/src/styles/_mixins.scss';
+@import '/src/styles/mixins';
 @import '/src/styles/base/typography';
 
 .formContainer {
@@ -9,6 +9,7 @@
   flex-direction: column;
   position: relative;
   row-gap: 0.5rem;
+  
   .inputsWrapper {
     width: 296px;
     height: 80px;
@@ -43,21 +44,25 @@
       overflow: hidden;
     }
   }
+
   .passwordContainer {
     width: 100%;
     display: flex;
     flex-direction: column;
     position: relative;
     .toggleEye {
+      // TODO: why do we use absolute position here ?
       position: absolute;
       right: 5px;
-      top: 45px;
+      top: 25px;
       width: 40px;
       height: 40px;
       border: none;
+
       &.openEye {
         background: url('/src/icons/eyeLine.svg') no-repeat scroll 7px 7px;
       }
+
       &.closeEye {
         background: url('/src/icons/eyeClosedLine.svg') no-repeat scroll 7px 7px;
       }

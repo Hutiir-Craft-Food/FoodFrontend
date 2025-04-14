@@ -1,18 +1,11 @@
 import { useState, useEffect } from 'react'
 import clsx from 'clsx'
-import Modal from '../modal/Modal'
 import RowOne from './RowOne'
 import RowTwo from './RowTwo'
-import SignInForm from '../auth/signin/SignInForm'
 import styles from './Header.module.scss'
 
 export default function Header() {
   const [isScrolled, setScrolled] = useState(false)
-  const [showSignInForm, setShowSignInForm] = useState(false)
-
-  const handleClose = () => {
-    setShowSignInForm(false)
-  }
 
   const handleScroll = () => {
     if (window.scrollY > 175) {
@@ -25,28 +18,19 @@ export default function Header() {
   useEffect(() => {
     handleScroll()
     window.addEventListener('scroll', handleScroll, { passive: true })
+
     return () => {
       window.removeEventListener('scroll', handleScroll)
     }
   }, [])
 
   return (
-    <>
-      <header className={clsx('container', isScrolled && styles.stickyStyle)}>
-        <div className={styles.headerContainer}>
-          {!isScrolled && <RowOne />}
-          <RowTwo
-            isScrolled={isScrolled}
-            setShowSignInForm={setShowSignInForm}
-          />
-          <div className={styles.hr} />
-        </div>
-      </header>
-      {showSignInForm && (
-        <Modal handleClose={handleClose}>
-          <SignInForm />
-        </Modal>
-      )}
-    </>
+    <header className={clsx('container', isScrolled && styles.stickyStyle)}>
+      <div className={styles.headerContainer}>
+        {!isScrolled && <RowOne />}
+        <RowTwo isScrolled={isScrolled} />
+        <div className={styles.hr} />
+      </div>
+    </header>
   )
 }
