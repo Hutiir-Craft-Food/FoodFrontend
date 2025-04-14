@@ -1,6 +1,6 @@
 @import '/src/styles/var.scss';
-@import '/src/styles/mixins.scss';
-@import '/src/styles/base/typography.scss';
+@import '/src/styles/mixins';
+@import '/src/styles/base/typography';
 
 .headerContainer {
   width: 100%;
@@ -111,6 +111,12 @@
       flex-direction: row;
       align-items: center;
       justify-content: center;
+
+      .iconsContainer:nth-child {
+        width: 44px;
+        height: 44px;
+        opacity: 0px;
+      }
     }
   }
 }

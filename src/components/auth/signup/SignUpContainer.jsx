@@ -1,13 +1,13 @@
-import { useState, useContext } from 'react'
+import { useState } from 'react'
 import SignUpBuyerForm from './buyer-form/SignUpBuyerForm'
 import SignUpSellerForm from './seller-form/SignUpSellerForm'
-import { AuthContext } from '/src/context/AuthContext'
+import { actions, roles, useAuthStore } from '../store/AuthStore'
 import styles from './SignUpContainer.module.scss'
 
-export default function SignUpContainer({ setShowSignUpContainer }) {
-  const authContext = useContext(AuthContext)
-  const [role, setRole] = useState('BUYER')
-  const [marketingConsent, setMarketingConsent] = useState(false)
+export default function SignUpContainer() {
+  const { setAction } = useAuthStore()
+  const { role, setRole } = useAuthStore()
+  const { marketingConsent, setMarketingConsent } = useAuthStore()
   const [formData, setFormData] = useState({})
   const [errors, setErrors] = useState({})
 
@@ -28,10 +28,9 @@ export default function SignUpContainer({ setShowSignUpContainer }) {
 
         if (response.ok) {
           const data = await response.json()
-          authContext.setToken(data.jwt)
+          // TODO: put data.jwt into user.accessToken
           setFormData({})
           setMarketingConsent(false)
-          setShowSignUpContainer(false)
         }
       } catch (error) {
         console.error('Failed:', error)
@@ -43,53 +42,49 @@ export default function SignUpContainer({ setShowSignUpContainer }) {
     setMarketingConsent(!marketingConsent)
   }
 
+  const switchToSignIn = () => {
+    setAction(actions.LOGIN)
+  }
+
   return (
     <div className={styles.signUpContainer}>
-      <div className={styles.imgContainer}>
-        <img
-          src='/images/sign-in.png'
-          alt='imgForBuyerRegistration'
-          className={styles.imgBuyer}
-        />
-      </div>
-
       <div className={styles.contentContainer}>
-        <h4>Реєстрація</h4>
+        <h2>Реєстрація</h2>
         <form onSubmit={handleSubmit}>
           <div className={styles.formContentContainer}>
             <div className={styles.rolesButtons}>
               <button
-                type='button'
+                type="button"
                 className={
-                  role === 'BUYER'
+                  role === roles.BUYER
                     ? `${styles.button} ${styles.active}`
-                    : styles.button
+                    : `${styles.button}`
                 }
-                onClick={() => setRole('BUYER')}
+                onClick={() => setRole(roles.BUYER)}
               >
                 Хочу купувати
               </button>
               <button
-                type='button'
+                type="button"
                 className={
-                  role === 'SELLER'
+                  role === roles.SELLER
                     ? `${styles.button} ${styles.active}`
-                    : styles.button
+                    : `${styles.button}`
                 }
-                onClick={() => setRole('SELLER')}
+                onClick={() => setRole(roles.SELLER)}
               >
                 Хочу продавати
               </button>
             </div>
 
-            {role === 'BUYER' && (
+            {role === roles.BUYER && (
               <SignUpBuyerForm
                 errors={errors}
                 setErrors={setErrors}
                 setFormData={setFormData}
               />
             )}
-            {role === 'SELLER' && (
+            {role === roles.SELLER && (
               <SignUpSellerForm
                 errors={errors}
                 setErrors={setErrors}
@@ -102,12 +97,12 @@ export default function SignUpContainer({ setShowSignUpContainer }) {
             <label className={styles.checkboxContainer}>
               Бажаю отримувати новини та спеціальні пропозиції
               <input
-                type='checkbox'
-                id='subscription'
+                type="checkbox"
+                id="marketingConsent"
+                className={styles.checkmark}
                 checked={marketingConsent}
                 onChange={handleCheckbox}
               />
-              <span className={styles.checkmark}></span>
             </label>
           </div>
 
@@ -123,17 +118,20 @@ export default function SignUpContainer({ setShowSignUpContainer }) {
           </button>
         </form>
 
-        <div className={styles.signInLink}>
-          <a className={styles.signInLink} href='#'>
+        <div>
+          <button
+            className={styles.signInLink}
+            onClick={() => switchToSignIn()}
+          >
             Вже маю акаунт
-          </a>
+          </button>
         </div>
 
         <div className={styles.userAgreement}>
           <p>
             <span>
               Підтверджуючи реєстрацію, я приймаю &nbsp;
-              <a href='#' className={styles.userAgreementLink}>
+              <a href="#" className={styles.userAgreementLink}>
                 умови користувацької угоди
               </a>
             </span>
@@ -143,4 +141,3 @@ export default function SignUpContainer({ setShowSignUpContainer }) {
     </div>
   )
 }
-
