@@ -1,17 +1,12 @@
 import { useState, useEffect } from 'react'
-import Logo from './Logo'
-import Navbar from '../navbar/Navbar'
 import Modal from '../modal/Modal'
-import SearchBar from './Searchbar'
 import RowOne from './RowOne'
 import RowTwo from './RowTwo'
 import SignInForm from '../auth/signin/SignInForm'
-import SignUpContainer from '../auth/signup/SignUpContainer'
 import styles from './Header.module.scss'
 
 export default function Header() {
   const [isScrolled, setScrolled] = useState(false)
-  const [searchItem, setSearchItem] = useState('')
   const [showSignInForm, setShowSignInForm] = useState(false)
 
   useEffect(() => {
@@ -27,11 +22,6 @@ export default function Header() {
     } else {
       setScrolled(false)
     }
-  }
-
-  const handleInputChange = (e) => {
-    const searchItem = e.target.value
-    setSearchItem(searchItem)
   }
 
   const handleClose = () => {
@@ -54,14 +44,16 @@ export default function Header() {
             isScrolled && styles.scrolledHeader
           }`}
         >
-          <RowOne isScrolled={isScrolled} />
-          <RowTwo isScrolled={isScrolled} />
-
+          <RowOne />
+          <RowTwo
+            isScrolled={isScrolled}
+            setShowSignInForm={setShowSignInForm}
+          />
         </div>
       </header>
       {showSignInForm && (
         <Modal handleClose={handleClose}>
-          {showSignInForm ? <SignInForm /> : <SignUpContainer />}
+          <SignInForm />
         </Modal>
       )}
     </>
