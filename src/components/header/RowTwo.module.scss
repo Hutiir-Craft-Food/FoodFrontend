@@ -1,0 +1,57 @@
+@import '/src/styles/var.scss';
+@import '/src/styles/mixins.scss';
+@import '/src/styles/base/typography.scss';
+
+.rowTwo {
+    width: 100%;
+    gap: 20px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    background: $white;
+    padding: 0 4vw 16px 4vw;
+    display: flex;
+    border-bottom: 1px solid $primary-20;
+
+    &.stickyRowTwo {
+      height: 104px;
+      padding-top: 32px;
+      align-items: center;
+      position: fixed;
+      overflow: hidden;
+      top: 0;
+      z-index: 2;
+    }
+
+    .catalogButton {
+      width: 168px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      @extend .paragraph4;
+      padding: 12px 32px;
+      border-radius: 8px;
+      border: none;
+      gap: 8px;
+      @include buttonPrimaryColor;
+      .active {
+        border: 1px solid $primary-50;
+        border-radius: 8px;
+      }
+    }
+
+    .iconsContainer {
+      width: 164px;
+      height: 44px;
+      gap: 16px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+
+
+

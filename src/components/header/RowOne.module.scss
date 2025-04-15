@@ -1,0 +1,14 @@
+
+.rowOne {
+    width: 816px;
+    height: 56px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .nav {
+      all: unset;
+      width: 578px;
+      float: right;
+    }
+  }
