@@ -1,13 +1,15 @@
-﻿import { useState, useEffect } from 'react'
+﻿import { useState } from 'react'
 import styles from './SearchBar.module.scss'
 
-export default function SearchBar({ isScrolled, handleSearch }) {
+export default function SearchBar({ isScrolled }) {
   const [searchText, setSearchItem] = useState('')
 
   const handleInputChange = (e) => {
     const searchItem = e.target.value
     setSearchItem(searchItem)
   }
+
+  const handleSearch = () => {}
 
   return (
     <div className={`${styles.searchContainer}  ${isScrolled && styles.stickySearchContainer}`}>
