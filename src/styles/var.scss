@@ -10,7 +10,14 @@ $brandFont: 'Circe', cursive;
 @font-face {
   font-family: 'Circe Bold';
   src: url('/fonts/CRC65.woff') format('woff');
-  font-weight: bolt;
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'NAMU';
+  src: url('/fonts/namu-1960.woff') format('woff');
+  font-weight: normal;
   font-style: normal;
 }
 
