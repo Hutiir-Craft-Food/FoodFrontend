@@ -1,0 +1,42 @@
+@import '/src/styles/var.scss';
+@import '/src/styles/mixins.scss';
+@import '/src/styles/base/typography.scss';
+
+.rowTwo {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid $primary-20;
+  gap: 2.5rem;
+  padding: 0 2rem;
+  margin-bottom: 0.8rem;
+
+  .catalogButton {
+    width: 168px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @extend .paragraph4;
+    padding: 12px 32px;
+    border-radius: 8px;
+    border: none;
+    gap: 8px;
+    @include buttonPrimaryColor;
+    .active {
+      border: 1px solid $primary-50;
+      border-radius: 8px;
+    }
+  }
+
+  .iconsContainer {
+    width: 164px;
+    height: 44px;
+    gap: 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+}

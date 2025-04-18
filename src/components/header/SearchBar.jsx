@@ -1,7 +1,7 @@
 ﻿import { useState, useEffect } from 'react'
 import styles from './SearchBar.module.scss'
 
-export default function SearchBar({ isScrolled, handleSearch }) {
+export default function SearchBar({ handleSearch }) {
   const [searchText, setSearchItem] = useState('')
 
   const handleInputChange = (e) => {
@@ -10,10 +10,19 @@ export default function SearchBar({ isScrolled, handleSearch }) {
   }
 
   return (
-    <div className={`${styles.searchContainer}  ${isScrolled && styles.stickySearchContainer}`}>
-      <input type='search' placeholder='Я шукаю . . .' value={searchText} onChange={handleInputChange} />
+    <div className={styles.searchContainer}>
+      <input
+        type="search"
+        placeholder="Я шукаю . . ."
+        value={searchText}
+        onChange={handleInputChange}
+      />
       <button className={styles.magnifyingGlass} onClick={() => handleSearch()}>
-        <img className={styles.magnifyingGlass} src='/images/magnifying-glass.svg' alt='magnifyingGlass' />
+        <img
+          className={styles.magnifyingGlass}
+          src="/images/magnifying-glass.svg"
+          alt="magnifyingGlass"
+        />
       </button>
     </div>
   )
