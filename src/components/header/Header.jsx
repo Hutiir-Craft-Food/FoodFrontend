@@ -21,7 +21,7 @@ export default function Header() {
   }
 
   const handleScroll = () => {
-    if (window.scrollY > 180) {
+    if (window.scrollY > 175) {
       setScrolled(true)
     } else if (window.scrollY < 100) {
       setScrolled(false)
@@ -45,6 +45,7 @@ export default function Header() {
             isScrolled={isScrolled}
             setShowSignInForm={setShowSignInForm}
           />
+          <div className={styles.hr} />
         </div>
       </header>
       {showSignInForm && (
