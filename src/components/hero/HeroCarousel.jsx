@@ -11,8 +11,6 @@ import styles from './HeroCarousel.module.scss'
 const HeroCarousel = () => {
   const navigate = useNavigate()
 
-  const slideStyle = styles.slideImage
-
   return (
     <div className={styles.heroContainer}>
       <div className={styles.leftBlock}>
@@ -61,7 +59,7 @@ const HeroCarousel = () => {
               muted
               playsInline
               preload='auto'
-              className={slideStyle}
+              className={styles.slideImage}
             />
           </SwiperSlide>
 
@@ -69,7 +67,7 @@ const HeroCarousel = () => {
             <img
               src='/images/slide2.svg'
               alt='Смачні продукти'
-              className={slideStyle}
+              className={styles.slideImage}
             />
           </SwiperSlide>
 
@@ -77,7 +75,7 @@ const HeroCarousel = () => {
             <img
               src='/images/slide3.svg'
               alt='Смачні продукти'
-              className={slideStyle}
+              className={styles.slideImage}
             />
           </SwiperSlide>
 
@@ -85,7 +83,7 @@ const HeroCarousel = () => {
             <img
               src='/images/slide4.svg'
               alt='Смачні продукти'
-              className={slideStyle}
+              className={styles.slideImage}
             />
           </SwiperSlide>
         </Swiper>
