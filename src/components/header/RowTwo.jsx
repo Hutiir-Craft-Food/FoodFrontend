@@ -1,10 +1,10 @@
-import Logo from './Logo.jsx'
-import SearchBar from './Searchbar.jsx'
+import Logo from './Logo'
+import SearchBar from './Searchbar'
 import styles from './RowTwo.module.scss'
 
-export default function RowTwo({ isScrolled, setShowSignInForm}) {
+export default function RowTwo({ isScrolled, setShowSignInForm }) {
   return (
-    <div className={`${styles.rowTwo} ${isScrolled && styles.stickyRowTwo}`}>
+    <div className={styles.rowTwo}>
       {isScrolled && <Logo />}
       <div>
         <button className={styles.catalogButton}>
@@ -12,7 +12,11 @@ export default function RowTwo({ isScrolled, setShowSignInForm}) {
           <img src="/images/caret-down.svg" alt="CaretDown" />
         </button>
       </div>
-      <SearchBar isScrolled={isScrolled} />
+
+      {/* search bar */}
+      <SearchBar />
+
+      {/* iconsContainer */}
       <div className={styles.iconsContainer}>
         <div className={styles.userIcon}>
           <img

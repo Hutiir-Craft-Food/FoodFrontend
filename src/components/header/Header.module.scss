@@ -4,79 +4,22 @@
 
 .headerContainer {
   width: 100%;
-  height: 172px;
   background: $white;
   display: flex;
-  justify-content: center;
   flex-direction: column;
-  align-items: center;
-  padding-top: 32px;
-  gap: 24px;
-  &.scrolledHeader {
-    height: 104px;
+  justify-content: center;
+  align-items: stretch;
+  margin: 0;
+  padding: 2rem 0.4rem 1rem 0.4rem;
+
+  .hr {
+    border-bottom: 1px solid $primary-20;
+    margin: 0;
   }
+}
 
-  // .rowOne {
-  //   width: 816px;
-  //   height: 56px;
-  //   display: flex;
-  //   flex-direction: row;
-  //   justify-content: space-between;
-
-  //   .nav {
-  //     all: unset;
-  //     width: 578px;
-  //     float: right;
-  //   }
-  // }
-
-  // .rowTwo {
-  //   width: 100%;
-  //   gap: 20px;
-  //   height: 60px;
-  //   display: flex;
-  //   justify-content: center;
-  //   background: $white;
-  //   padding: 0 4vw 16px 4vw;
-  //   display: flex;
-  //   border-bottom: 1px solid $primary-20;
-
-  //   &.stickyRowTwo {
-  //     height: 104px;
-  //     padding-top: 32px;
-  //     align-items: center;
-  //     position: fixed;
-  //     overflow: hidden;
-  //     top: 0;
-  //     z-index: 2;
-  //   }
-
-  //   .catalogButton {
-  //     width: 168px;
-  //     height: 44px;
-  //     display: flex;
-  //     align-items: center;
-  //     justify-content: center;
-  //     @extend .paragraph4;
-  //     padding: 12px 32px;
-  //     border-radius: 8px;
-  //     border: none;
-  //     gap: 8px;
-  //     @include buttonPrimaryColor;
-  //     .active {
-  //       border: 1px solid $primary-50;
-  //       border-radius: 8px;
-  //     }
-  //   }
-
-  //   .iconsContainer {
-  //     width: 164px;
-  //     height: 44px;
-  //     gap: 16px;
-  //     display: flex;
-  //     flex-direction: row;
-  //     align-items: center;
-  //     justify-content: center;
-  //   }
-  // }
+.stickyStyle {
+  position: sticky;
+  z-index: 2;
+  top: 0;
 }

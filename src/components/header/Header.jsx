@@ -9,28 +9,21 @@ export default function Header() {
   const [isScrolled, setScrolled] = useState(false)
   const [showSignInForm, setShowSignInForm] = useState(false)
 
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
-
-  const handleScroll = () => {
-    if (window.scrollY > 200) {
-      setScrolled(true)
-    } else {
-      setScrolled(false)
-    }
-  }
-
   const handleClose = () => {
     setShowSignInForm(false)
   }
 
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll, { passive: true })
+  const handleScroll = () => {
+    if (window.scrollY > 175) {
+      setScrolled(true)
+    } else if (window.scrollY < 100) {
+      setScrolled(false)
+    }
+  }
 
+  useEffect(() => {
+    handleScroll()
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => {
       window.removeEventListener('scroll', handleScroll)
     }
@@ -38,17 +31,14 @@ export default function Header() {
 
   return (
     <>
-      <header className="container">
-        <div
-          className={`${styles.headerContainer} ${
-            isScrolled && styles.scrolledHeader
-          }`}
-        >
-          <RowOne />
+      <header className={`container ${isScrolled && styles.stickyStyle}`}>
+        <div className={styles.headerContainer}>
+          {!isScrolled && <RowOne />}
           <RowTwo
             isScrolled={isScrolled}
             setShowSignInForm={setShowSignInForm}
           />
+          <div className={styles.hr} />
         </div>
       </header>
       {showSignInForm && (

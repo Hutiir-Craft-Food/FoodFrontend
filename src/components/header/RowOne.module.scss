@@ -1,14 +1,16 @@
-
 .rowOne {
-    width: 816px;
-    height: 56px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  margin-bottom: 0.8rem;
 
-    .nav {
-      all: unset;
-      width: 578px;
-      float: right;
-    }
+  .nav {
+    all: unset;
+    width: 578px;
+    float: right;
   }
+}
