@@ -28,8 +28,8 @@ const HeroCarousel = () => {
 
           <div className={styles.imageWrapper}>
             <img
-              src='/images/woman.svg'
-              alt='Дівчина'
+              src="/images/woman.svg"
+              alt="Дівчина"
               className={styles.image}
             />
           </div>
@@ -54,35 +54,35 @@ const HeroCarousel = () => {
         >
           <SwiperSlide>
             <video
-              src='/videos/animation.mp4'
+              src="/videos/animation_optimized.mp4"
               autoPlay
               muted
               playsInline
-              preload='auto'
+              preload="auto"
               className={styles.slideImage}
             />
           </SwiperSlide>
 
           <SwiperSlide>
             <img
-              src='/images/slide2.svg'
-              alt='Смачні продукти'
+              src="/images/hero-Carousel_1.svg"
+              alt="Смачні продукти"
               className={styles.slideImage}
             />
           </SwiperSlide>
 
           <SwiperSlide>
             <img
-              src='/images/slide3.svg'
-              alt='Смачні продукти'
+              src="/images/hero-Carousel_2.svg"
+              alt="Смачні продукти"
               className={styles.slideImage}
             />
           </SwiperSlide>
 
           <SwiperSlide>
             <img
-              src='/images/slide4.svg'
-              alt='Смачні продукти'
+              src="/images/hero-Carousel_3.svg"
+              alt="Смачні продукти"
               className={styles.slideImage}
             />
           </SwiperSlide>
