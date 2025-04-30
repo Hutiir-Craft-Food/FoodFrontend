@@ -1,0 +1,146 @@
+.heroContainer {
+  height: 37rem;
+  width: 100%;
+  padding: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: stretch;
+
+  @media (max-width: 48rem) {
+    padding: 1.5rem;
+  }
+}
+
+.leftBlock {
+  width: 28.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex-shrink: 0;
+
+  @media (max-width: 48rem) {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.promoBlock {
+  font-family: 'NAMU', sans-serif;
+  background-color: #f4e5d3;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  font-size: clamp(2rem, 6vw, 4.5rem);
+  font-weight: 700;
+  color: #4d0c30;
+  line-height: 1.2;
+
+  .subtitle {
+    font-family: 'Circe', sans-serif;
+    font-weight: 400;
+    font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+    color: #4d0c30;
+    margin-top: 0.75rem;
+  }
+
+  .promoLine {
+    display: block;
+  }
+}
+
+.sellerBlock {
+  background-color: #6a0d45;
+  color: #fff;
+  padding: 1.25rem;
+  border-radius: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  min-height: 15.625rem;
+}
+
+.sellerText {
+  font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+  font-weight: 700;
+  font-family: 'Circe', sans-serif;
+  z-index: 1;
+}
+
+.imageWrapper {
+  position: absolute;
+  bottom: 0;
+  left: 100%;
+  transform: translateX(-100%);
+  width: 16.25rem;
+  height: 15.625rem;
+  z-index: 0;
+
+  @media (max-width: 64rem) {
+    left: auto;
+    right: 0;
+    transform: none;
+  }
+
+  @media (max-width: 48rem) {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    width: 11.25rem;
+    height: 10.625rem;
+  }
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sellerButton {
+  margin-top: 1rem;
+  background-color: #fefcfa;
+  color: #537a67;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5rem;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  width: fit-content;
+  z-index: 2;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #e9e6e2;
+  }
+
+  @media (max-width: 48rem) {
+    width: 100%;
+  }
+}
+
+.rightBlock {
+  flex: 2;
+  min-width: 18.75rem;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  position: relative;
+
+  @media (max-width: 48rem) {
+    margin-top: 1.5rem;
+    aspect-ratio: auto;
+    height: auto;
+  }
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.slideImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1.25rem;
+}
