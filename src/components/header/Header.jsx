@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import clsx from 'clsx'
 import Modal from '../modal/Modal'
 import RowOne from './RowOne'
 import RowTwo from './RowTwo'
@@ -31,7 +32,7 @@ export default function Header() {
 
   return (
     <>
-      <header className={`container ${isScrolled && styles.stickyStyle}`}>
+      <header className={clsx('container', isScrolled && styles.stickyStyle)}>
         <div className={styles.headerContainer}>
           {!isScrolled && <RowOne />}
           <RowTwo
