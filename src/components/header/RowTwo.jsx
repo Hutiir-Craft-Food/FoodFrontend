@@ -4,7 +4,7 @@ import { useAuthStore } from '../auth/store/AuthStore'
 import styles from './RowTwo.module.scss'
 
 export default function RowTwo({ isScrolled }) {
-  const { showAuthWidget } = useAuthStore()
+  const { showAuthWidget, logout } = useAuthStore()
 
   return (
     <div className={styles.rowTwo}>
@@ -33,6 +33,9 @@ export default function RowTwo({ isScrolled }) {
         </div>
         <div className={styles.basketIcon}>
           <img src="/images/basket-default-noNotif.svg" alt="user icon" />
+        </div>
+        <div>
+          <button onClick={() => logout()}>вийти</button>
         </div>
       </div>
     </div>
