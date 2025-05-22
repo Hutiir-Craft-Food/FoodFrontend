@@ -1,5 +1,6 @@
 import { create } from 'zustand'
 import { combine } from 'zustand/middleware'
+import axios from 'axios'
 
 const roles = {
   GUEST: 'GUEST',
@@ -27,7 +28,7 @@ const userSlice = (set) => ({
 const initialPayload = {
   email: '',
   password: '',
-  details: null,
+  details: {},
   marketingConsent: false,
 }
 
@@ -80,6 +81,34 @@ const loginSlice = (set, get) => ({
   },
 })
 
+const registerSlice = (set, get) => ({
+  register: async () => {
+    const hasErrors = get().hasErrors
+    if (hasErrors()) return
+    const payload = {
+      email: get().email,
+      password: get().password,
+      details: get().details,
+      marketingConsent: get().marketingConsent,
+    }
+    const role = get().role
+    try {
+      const response = await axios.post('/api/v1/auth/register', {
+        payload,
+        role,
+      })
+      const accessToken = response.data.jwt
+      get().setUser({ payload, accessToken, role })
+      get().clearPayload()
+      get().switchToLogin()
+      get().switchToBuyer()
+      get().hideAuthWidget()
+    } catch (error) {
+      console.error('Failed:', error)
+    }
+  },
+})
+
 const logoutSlice = (set, get) => ({
   logout: () => {
     get().setUser(null)
@@ -100,15 +129,22 @@ const actionSlice = (set) => ({
   switchToRegister: () => set({ action: actions.REGISTER }),
 })
 
+const errorsSlice = (set, get) => ({
+  errors: {},
+  hasErrors: () => Object.keys(get().errors).length > 0,
+})
+
 const useAuthStore = create(
   (set, get) => ({
     ...roleSlice(set),
     ...actionSlice(set),
     ...payloadSlice(set),
     ...userSlice(set),
+    ...registerSlice(set, get),
     ...loginSlice(set, get),
     ...logoutSlice(set, get),
     ...visibilitySlice(set),
+    ...errorsSlice(set, get),
   }),
   { name: 'auth-store' }
 )

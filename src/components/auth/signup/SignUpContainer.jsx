@@ -8,34 +8,14 @@ export default function SignUpContainer() {
   const { setAction } = useAuthStore()
   const { role, setRole } = useAuthStore()
   const { marketingConsent, setMarketingConsent } = useAuthStore()
-  const [formData, setFormData] = useState({})
+  const { register } = useAuthStore()
   const [errors, setErrors] = useState({})
 
   const hasErrors = Object.values(errors).some(({ valid }) => valid === false)
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    const requestBody = { ...formData, marketingConsent, role }
-    if (!hasErrors) {
-      try {
-        const response = await fetch('/api/v1/auth/register', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(requestBody),
-        })
-
-        if (response.ok) {
-          const data = await response.json()
-          // TODO: put data.jwt into user.accessToken
-          setFormData({})
-          setMarketingConsent(false)
-        }
-      } catch (error) {
-        console.error('Failed:', error)
-      }
-    }
+    register()
   }
 
   const handleCheckbox = () => {
@@ -78,18 +58,10 @@ export default function SignUpContainer() {
             </div>
 
             {role === roles.BUYER && (
-              <SignUpBuyerForm
-                errors={errors}
-                setErrors={setErrors}
-                setFormData={setFormData}
-              />
+              <SignUpBuyerForm errors={errors} setErrors={setErrors} />
             )}
             {role === roles.SELLER && (
-              <SignUpSellerForm
-                errors={errors}
-                setErrors={setErrors}
-                setFormData={setFormData}
-              />
+              <SignUpSellerForm errors={errors} setErrors={setErrors} />
             )}
           </div>
 
