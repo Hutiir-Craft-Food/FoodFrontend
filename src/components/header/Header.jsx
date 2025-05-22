@@ -7,7 +7,7 @@ import styles from './Header.module.scss'
 export default function Header() {
   const [isScrolled, setScrolled] = useState(false)
   const [searchItem, setSearchItem] = useState('')
-  const { showAuthWidget } = useAuthStore()
+  const { showAuthWidget, logout, user } = useAuthStore()
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll, { passive: true })
@@ -33,6 +33,12 @@ export default function Header() {
   const handleAuthentication = () => {
     showAuthWidget()
   }
+  
+  const handleOut = () => {
+    logout()
+  }
+
+  console.log(user);
 
   return (
     <>
@@ -106,6 +112,9 @@ export default function Header() {
 
               <div className={styles.basketIcon}>
                 <img src="/images/basket-default-noNotif.svg" alt="user icon" />
+              </div>
+              <div>
+                <button onClick={() => handleOut()}>вийти</button>
               </div>
             </div>
           </div>
