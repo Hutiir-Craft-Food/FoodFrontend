@@ -1,19 +1,19 @@
 import { useState, useCallback } from 'react'
+import { useAuthStore } from '../../store/AuthStore'
 import styles from './SignUpBuyerForm.module.scss'
 
-export default function SignUpBuyerForm({ errors, setErrors, setFormData }) {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+export default function SignUpBuyerForm({ errors, setErrors }) {
+  const { email, setEmail } = useAuthStore()
+  const { password, setPassword } = useAuthStore()
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false)
 
   const validateEmail = useCallback(() => {
     const pattern = /^[A-Za-z0-9\._%+\-]+@[A-Za-z0-9\.\-]+\.[A-Za-z]{2,}$/
-
     if (pattern.test(email)) {
       setErrors((errors) => ({
         ...errors,
         email: { valid: true },
       }))
-
       return
     }
 
@@ -33,7 +33,6 @@ export default function SignUpBuyerForm({ errors, setErrors, setFormData }) {
         ...errors,
         password: { valid: true },
       }))
-
       return
     }
 
@@ -46,27 +45,14 @@ export default function SignUpBuyerForm({ errors, setErrors, setFormData }) {
     }))
   }, [password])
 
-  const handleEmailChange = (event) => {
-    const newEmail = event.target.value
-    setEmail(newEmail)
-
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      email: newEmail,
-    }))
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value)
   }
 
-  const handlePasswordChange = (event) => {
-    const newPassword = event.target.value
-    setPassword(newPassword)
-
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      password: newPassword,
-    }))
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value)
   }
 
-  const [isPasswordVisible, setIsPasswordVisible] = useState(false)
   const handleEyeButton = () => {
     setIsPasswordVisible(!isPasswordVisible)
   }
@@ -104,12 +90,12 @@ export default function SignUpBuyerForm({ errors, setErrors, setFormData }) {
           onBlur={validatePassword}
         />
         <button
-          id='togglePassword'
+          id="togglePassword"
           className={`${styles.toggleEye} ${
             isPasswordVisible ? styles.openEye : styles.closeEye
           }`}
           onClick={handleEyeButton}
-          type='button'
+          type="button"
         ></button>
         <br />
         {!errors.password?.valid && (

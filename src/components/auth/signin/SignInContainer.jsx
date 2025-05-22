@@ -5,11 +5,9 @@ import styles from './SignInContainer.module.scss'
 export default function SignInContainer() {
   const { email, setEmail } = useAuthStore()
   const { password, setPassword } = useAuthStore()
-
-  const [isPasswordVisible, setIsPasswordVisible] = useState(false)
-
   const { setAction } = useAuthStore()
   const { login } = useAuthStore()
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false)
 
   const handleEyeButtonClick = (e) => {
     e.preventDefault()
