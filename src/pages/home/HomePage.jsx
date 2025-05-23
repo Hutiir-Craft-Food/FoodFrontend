@@ -8,7 +8,6 @@ import styles from './HomePage.module.scss'
 export default function HomePage() {
   return (
     <div className='container'>
-      <h1></h1>
       <HeroCarousel />
       <NewProducts />
       <ProductsOffers />
