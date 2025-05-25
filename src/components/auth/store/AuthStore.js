@@ -1,5 +1,6 @@
 import { create } from 'zustand'
 import { combine } from 'zustand/middleware'
+import ApiClient from '../../../services/apiClient'
 
 const roles = {
   GUEST: 'GUEST',
@@ -51,38 +52,32 @@ const visibilitySlice = (set) => ({
 })
 
 const loginSlice = (set, get) => ({
-  login: () => {
-    const email = get().email
-    const password = get().password
-
-    ;(async () => {
-      // TODO: can we use apiClient here ?
+  login: async () => {
+    const hasErrors = get().hasErrors;
+    if (hasErrors()) return;
+    const email = get().email;
+    const password = get().password;
       try {
-        const response = await fetch('/api/v1/auth/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ email, password }),
-        })
-
-        if (response.ok) {
-          const data = await response.json()
-          const accessToken = data.jwt
+      const response = ApiClient.post('/v1/auth/login', {
+        email,
+        password
+      });
+      const accessToken = response.jwt
           const role = get().role
           get().setUser({ email, role, accessToken })
           get().hideAuthWidget()
-        }
+      get().setEmail('')
+      get().setPassword('')
       } catch (error) {
         console.error('Failed:', error)
       }
-    })()
-  },
+  }
 })
 
 const logoutSlice = (set, get) => ({
   logout: () => {
     get().setUser(null)
+    get().hideAuthWidget()
   },
 })
 
@@ -100,6 +95,11 @@ const actionSlice = (set) => ({
   switchToRegister: () => set({ action: actions.REGISTER }),
 })
 
+const errorsSlice = (set, get) => ({
+  errors: {},
+  hasErrors: () => Object.keys(get().errors).length > 0,
+})
+
 const useAuthStore = create(
   (set, get) => ({
     ...roleSlice(set),
@@ -109,6 +109,7 @@ const useAuthStore = create(
     ...loginSlice(set, get),
     ...logoutSlice(set, get),
     ...visibilitySlice(set),
+    ...errorsSlice(set, get)
   }),
   { name: 'auth-store' }
 )
