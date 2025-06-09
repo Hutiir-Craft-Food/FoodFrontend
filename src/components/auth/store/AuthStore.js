@@ -58,11 +58,11 @@ const loginSlice = (set, get) => ({
     const email = get().email
     const password = get().password
     try {
-      const response = ApiClient.post('/v1/auth/login', {
+      const response = await ApiClient.post('/v1/auth/login', {
         email,
         password,
       })
-      const accessToken = response.jwt
+      const accessToken = response.data.jwt
       const role = get().role
       get().setUser({ email, role, accessToken })
       get().hideAuthWidget()
@@ -86,7 +86,7 @@ const registerSlice = (set, get) => ({
     }
     const role = get().role
     try {
-      const response = await axios.post('/api/v1/auth/register', {
+      const response = await ApiClient.post('/v1/auth/register', {
         payload,
         role,
       })

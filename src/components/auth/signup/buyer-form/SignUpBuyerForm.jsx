@@ -9,39 +9,28 @@ export default function SignUpBuyerForm({ errors, setErrors }) {
 
   const validateEmail = useCallback(() => {
     const pattern = /^[A-Za-z0-9\._%+\-]+@[A-Za-z0-9\.\-]+\.[A-Za-z]{2,}$/
-    if (pattern.test(email)) {
-      setErrors((errors) => ({
-        ...errors,
-        email: { valid: true },
-      }))
-      return
-    }
+    const newValue = pattern.test(email)
+      ? { valid: true, errorMessage: '' }
+      : { valid: false, errorMessage: 'Некоректний формат email' }
 
-    setErrors((errors) => ({
-      ...errors,
-      email: {
-        valid: false,
-        errorMessage: 'Вкажіть коректний email',
-      },
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      email: newValue,
     }))
   }, [email])
 
   const validatePassword = useCallback(() => {
     const pattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{9,}$/
-    if (pattern.test(password)) {
-      setErrors((errors) => ({
-        ...errors,
-        password: { valid: true },
-      }))
-      return
-    }
+    const newValue = pattern.test(password)
+      ? { valid: true, errorMessage: '' }
+      : {
+          valid: false,
+          errorMessage: 'Пароль має містити щонайменше 8 літер та 1 цифру',
+        }
 
-    setErrors((errors) => ({
-      ...errors,
-      password: {
-        valid: false,
-        errorMessage: 'Від 8 буквенних та 1 числовий символи',
-      },
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      password: newValue,
     }))
   }, [password])
 

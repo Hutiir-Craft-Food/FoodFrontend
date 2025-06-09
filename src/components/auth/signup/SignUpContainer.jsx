@@ -60,9 +60,7 @@ export default function SignUpContainer() {
             {role === roles.BUYER && (
               <SignUpBuyerForm errors={errors} setErrors={setErrors} />
             )}
-            {role === roles.SELLER && (
-              <SignUpSellerForm errors={errors} setErrors={setErrors} />
-            )}
+            {role === roles.SELLER && <SignUpSellerForm />}
           </div>
 
           <div className={styles.checkboxLabel}>
