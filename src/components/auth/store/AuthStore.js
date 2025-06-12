@@ -44,10 +44,6 @@ const payloadSlice = combine({ ...initialPayload }, (set, get) => ({
   setDetails: (details) => set({ details }),
   setMarketingConsent: (marketingConsent) => set({ marketingConsent }),
   clearPayload: () => set({ ...initialPayload }),
-  resetSellerName: () => {
-    const currentDetails = get().details || {}
-    set({ details: { ...currentDetails, sellerName: '' } })
-  },
 }))
 
 // TODO: do we need to update user or user details partially ?
@@ -127,7 +123,7 @@ export const validationSlice = (set, get) => ({
 
 const useAuthStore = create(
   (set, get) => ({
-    ...roleSlice(set, get),
+    ...roleSlice(set),
     ...actionSlice(set),
     ...payloadSlice(set),
     ...userSlice(set),
