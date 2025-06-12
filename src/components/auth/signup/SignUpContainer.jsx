@@ -9,17 +9,11 @@ export default function SignUpContainer() {
   const { role, setRole } = useAuthStore()
   const { marketingConsent, setMarketingConsent } = useAuthStore()
   const { register } = useAuthStore()
-  const [errors, setErrors] = useState({})
-
-  const hasErrors = Object.values(errors).some(({ valid }) => valid === false)
+  const { hasErrors } = useAuthStore()
 
   const handleSubmit = async (event) => {
     event.preventDefault()
     register()
-  }
-
-  const handleCheckbox = () => {
-    setMarketingConsent(!marketingConsent)
   }
 
   const switchToSignIn = () => {
@@ -57,9 +51,7 @@ export default function SignUpContainer() {
               </button>
             </div>
 
-            {role === roles.BUYER && (
-              <SignUpBuyerForm errors={errors} setErrors={setErrors} />
-            )}
+            {role === roles.BUYER && <SignUpBuyerForm />}
             {role === roles.SELLER && <SignUpSellerForm />}
           </div>
 
@@ -71,18 +63,18 @@ export default function SignUpContainer() {
                 id="marketingConsent"
                 className={styles.checkmark}
                 checked={marketingConsent}
-                onChange={handleCheckbox}
+                onChange={(e) => setMarketingConsent(e.target.checked)}
               />
             </label>
           </div>
 
           <button
             className={
-              hasErrors
+              hasErrors()
                 ? `${styles.signUpButton} ${styles.signUpDisabled}`
                 : `${styles.signUpButton} ${styles.signUpEnabled}`
             }
-            disabled={hasErrors}
+            disabled={hasErrors()}
           >
             Зареєструватись
           </button>

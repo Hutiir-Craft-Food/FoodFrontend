@@ -3,12 +3,13 @@ const status = {
   FAIL: 'FAIL',
 }
 
-const validateEmail = (email) => {
-  ;({ status: status.SUCCESS, error: null })
-}
+const validateEmail = (email) => ({ status: status.SUCCESS, error: null })
 
-const validatePassword = (password) => {
-  ;({ status: status.SUCCESS, error: null })
-}
+const validatePassword = (password) => ({ status: status.SUCCESS, error: null })
 
-export default { validateEmail, validatePassword }
+const validateSellerName = (sellerName) => ({
+  status: status.SUCCESS,
+  error: null,
+})
+
+export { validateEmail, validatePassword, validateSellerName }

@@ -123,10 +123,19 @@ const actionSlice = (set) => ({
   switchToRegister: () => set({ action: actions.REGISTER }),
 })
 
-const validationSlice = (set, get) => ({
+export const validationSlice = (set, get) => ({
   errors: {},
-  addError: () => {},
   hasErrors: () => Object.keys(get().errors).length > 0,
+  getError: (errorKey) => get().errors[errorKey] || [],
+  addError: (errorObj) =>
+    set((state) => ({ errors: { ...state.errors, ...errorObj } })),
+  removeError: (errorKey) =>
+    set((state) => {
+      const newErrors = { ...state.errors }
+      delete newErrors[errorKey]
+      return { errors: newErrors }
+    }),
+  clearErrors: () => set({ errors: {} }),
 })
 
 const useAuthStore = create(

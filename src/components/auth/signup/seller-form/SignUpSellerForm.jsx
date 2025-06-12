@@ -1,55 +1,23 @@
 import { useState, useEffect, useCallback } from 'react'
 import { roles, useAuthStore } from '../../store/AuthStore'
+import {
+  validateEmail,
+  validatePassword,
+  validateSellerName,
+} from '../../../../util/ValidationUtil'
 import styles from './SignUpSellerForm.module.scss'
 
 export default function SignUpSellerForm() {
   const { email, setEmail } = useAuthStore()
   const { password, setPassword } = useAuthStore()
   const { details, setDetails } = useAuthStore()
-  const { role, setRole } = useAuthStore()
-  const [errors, setErrors] = useState({})
+  const { setRole } = useAuthStore()
+  const { getError } = useAuthStore()
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
 
   useEffect(() => {
     setRole(roles.SELLER)
   }, [setRole])
-
-  const validateSellerName = useCallback(() => {
-    const pattern = /^[a-zA-Zа-яА-ЯІіЇїЄєҐґ\d&,`'\-\s"]{3,50}$/
-    const sellerName = details?.sellerName || ''
-    const newValue = pattern.test(sellerName)
-      ? { valid: true, errorMessage: '' }
-      : { valid: false, errorMessage: 'Від 3 до 50 літер у розкладці UA чи EN' }
-
-    setErrors((prevErrors) => ({
-      ...prevErrors,
-      sellerName: newValue,
-    }))
-  }, [details])
-
-  const validateEmail = useCallback(() => {
-    const pattern = /^[A-Za-z0-9\._%+\-]+@[A-Za-z0-9\.\-]+\.[A-Za-z]{2,}$/
-    const newValue = pattern.test(email)
-      ? { valid: true, errorMessage: '' }
-      : { valid: false, errorMessage: 'Вкажіть корректний email' }
-
-    setErrors((prevErrors) => ({
-      ...prevErrors,
-      email: newValue,
-    }))
-  }, [email])
-
-  const validatePassword = useCallback(() => {
-    const pattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{9,}$/
-    const newValue = pattern.test(password)
-      ? { valid: true, errorMessage: '' }
-      : { valid: false, errorMessage: 'Від 8 літер та 1 числовий символ' }
-
-    setErrors((prevErrors) => ({
-      ...prevErrors,
-      password: newValue,
-    }))
-  }, [password])
 
   const handleSellerNameChange = (event) => {
     const newName = event.target.value
@@ -61,8 +29,9 @@ export default function SignUpSellerForm() {
   const handlePasswordChange = (event) => {
     setPassword(event.target.value)
   }
+
   const handleEyeButton = () => {
-    setIsPasswordVisible(!isPasswordVisible)
+    setIsPasswordVisible((prev) => !prev)
   }
 
   return (
@@ -80,11 +49,11 @@ export default function SignUpSellerForm() {
           onChange={handleSellerNameChange}
           onBlur={validateSellerName}
         />
-        {!errors.sellerName?.valid && (
-          <span className={styles.errors}>
-            {errors.sellerName?.errorMessage}
+        {getError('sellerName').map((msg, idx) => (
+          <span key={idx} className={styles.errors}>
+            {msg}
           </span>
-        )}
+        ))}
       </div>
 
       <div className={styles.inputsWrapper}>
@@ -99,9 +68,11 @@ export default function SignUpSellerForm() {
           onChange={handleEmailChange}
           onBlur={validateEmail}
         />
-        {!errors.email?.valid && (
-          <span className={styles.errors}>{errors.email?.errorMessage}</span>
-        )}
+        {getError('email').map((msg, idx) => (
+          <span key={idx} className={styles.errors}>
+            {msg}
+          </span>
+        ))}
       </div>
 
       <div className={`${styles.passwordContainer} ${styles.inputsWrapper}`}>
@@ -125,9 +96,11 @@ export default function SignUpSellerForm() {
           onClick={handleEyeButton}
           type="button"
         ></button>
-        {!errors.password?.valid && (
-          <span className={styles.errors}>{errors.password?.errorMessage}</span>
-        )}
+        {getError('password').map((msg, idx) => (
+          <span key={idx} className={styles.errors}>
+            {msg}
+          </span>
+        ))}
       </div>
     </div>
   )
