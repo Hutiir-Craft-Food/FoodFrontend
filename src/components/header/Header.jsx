@@ -3,9 +3,11 @@ import clsx from 'clsx'
 import RowOne from './RowOne'
 import RowTwo from './RowTwo'
 import styles from './Header.module.scss'
+import { useAuthStore } from '../auth/store/AuthStore'
 
 export default function Header() {
   const [isScrolled, setScrolled] = useState(false)
+  const { user } = useAuthStore()
 
   const handleScroll = () => {
     if (window.scrollY > 175) {
@@ -23,6 +25,8 @@ export default function Header() {
       window.removeEventListener('scroll', handleScroll)
     }
   }, [])
+
+  console.log(user)
 
   return (
     <header className={clsx('container', isScrolled && styles.stickyStyle)}>
