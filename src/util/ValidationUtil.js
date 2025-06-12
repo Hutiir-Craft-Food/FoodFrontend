@@ -17,19 +17,16 @@ const validateEmail = (email) => {
 }
 
 const validatePassword = (password) => {
-  const errors = []
+  const pattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{9,}$/
 
-  if (!/\d/.test(password)) {
-    errors.push('Пароль має містити хоча б одну цифру.')
+  if (pattern.test(password)) {
+    return { status: status.SUCCESS, error: null }
   }
 
-  const letterMatches = password.match(/[a-zA-Zа-яА-ЯїЇєЄґҐ]/g)
-
-  if (!letterMatches || letterMatches.length < 8) {
-    errors.push('Пароль має містити щонайменше 8 літер.')
+  return {
+    status: status.FAIL,
+    error: 'Пароль має містити щонайменше 8 літер та один числовий символ.',
   }
-
-  return errors
 }
 
 const validateSellerName = (sellerName) => {
