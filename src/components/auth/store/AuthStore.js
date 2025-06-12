@@ -2,12 +2,6 @@ import { create } from 'zustand'
 import { combine } from 'zustand/middleware'
 import ApiClient from '/src/services/apiClient'
 
-import {
-  validateEmail,
-  validatePassword,
-  validateSellerName,
-} from '/src/util/ValidationUtil.js'
-
 const roles = {
   GUEST: 'GUEST',
   BUYER: 'BUYER',
@@ -109,13 +103,13 @@ const errorsSlice = (set, get) => ({
 export const validationSlice = (set, get) => ({
   errors: {},
   hasErrors: () => Object.keys(get().errors).length > 0,
-  getError: (field) => get().errors[field] || [],
+  getError: (errorKey) => get().errors[errorKey] || [],
   addError: (errorObj) =>
     set((state) => ({ errors: { ...state.errors, ...errorObj } })),
-  removeError: (field) =>
+  removeError: (errorKey) =>
     set((state) => {
       const newErrors = { ...state.errors }
-      delete newErrors[field]
+      delete newErrors[errorKey]
       return { errors: newErrors }
     }),
   clearErrors: () => set({ errors: {} }),
