@@ -123,8 +123,9 @@ const actionSlice = (set) => ({
   switchToRegister: () => set({ action: actions.REGISTER }),
 })
 
-const errorsSlice = (set, get) => ({
+const validationSlice = (set, get) => ({
   errors: {},
+  addError: () => {},
   hasErrors: () => Object.keys(get().errors).length > 0,
 })
 
@@ -138,7 +139,7 @@ const useAuthStore = create(
     ...loginSlice(set, get),
     ...logoutSlice(set, get),
     ...visibilitySlice(set),
-    ...errorsSlice(set, get),
+    ...validationSlice(set, get),
   }),
   { name: 'auth-store' }
 )
