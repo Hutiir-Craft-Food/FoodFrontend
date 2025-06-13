@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 import { combine } from 'zustand/middleware'
-import ApiClient from '../../../services/apiClient'
+import ApiClient from '/src/services/apiClient'
 
 const roles = {
   GUEST: 'GUEST',
@@ -32,7 +32,7 @@ const initialPayload = {
   marketingConsent: false,
 }
 
-const payloadSlice = combine({ ...initialPayload }, (set) => ({
+const payloadSlice = combine({ ...initialPayload }, (set, get) => ({
   setEmail: (email) => set({ email }),
   setPassword: (password) => set({ password }),
   setDetails: (details) => set({ details }),
@@ -53,25 +53,25 @@ const visibilitySlice = (set) => ({
 
 const loginSlice = (set, get) => ({
   login: async () => {
-    const hasErrors = get().hasErrors;
-    if (hasErrors()) return;
-    const email = get().email;
-    const password = get().password;
-      try {
+    const hasErrors = get().hasErrors
+    if (hasErrors()) return
+    const email = get().email
+    const password = get().password
+    try {
       const response = ApiClient.post('/v1/auth/login', {
         email,
-        password
-      });
+        password,
+      })
       const accessToken = response.jwt
-          const role = get().role
-          get().setUser({ email, role, accessToken })
-          get().hideAuthWidget()
+      const role = get().role
+      get().setUser({ email, role, accessToken })
+      get().hideAuthWidget()
       get().setEmail('')
       get().setPassword('')
-      } catch (error) {
-        console.error('Failed:', error)
-      }
-  }
+    } catch (error) {
+      console.error('Failed:', error)
+    }
+  },
 })
 
 const logoutSlice = (set, get) => ({
@@ -100,6 +100,21 @@ const errorsSlice = (set, get) => ({
   hasErrors: () => Object.keys(get().errors).length > 0,
 })
 
+export const validationSlice = (set, get) => ({
+  errors: {},
+  hasErrors: () => Object.keys(get().errors).length > 0,
+  getError: (errorKey) => get().errors[errorKey] || [],
+  addError: (errorObj) =>
+    set((state) => ({ errors: { ...state.errors, ...errorObj } })),
+  removeError: (errorKey) =>
+    set((state) => {
+      const newErrors = { ...state.errors }
+      delete newErrors[errorKey]
+      return { errors: newErrors }
+    }),
+  clearErrors: () => set({ errors: {} }),
+})
+
 const useAuthStore = create(
   (set, get) => ({
     ...roleSlice(set),
@@ -109,7 +124,8 @@ const useAuthStore = create(
     ...loginSlice(set, get),
     ...logoutSlice(set, get),
     ...visibilitySlice(set),
-    ...errorsSlice(set, get)
+    ...errorsSlice(set, get),
+    ...validationSlice(set, get),
   }),
   { name: 'auth-store' }
 )
