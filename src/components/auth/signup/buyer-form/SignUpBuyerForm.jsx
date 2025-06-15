@@ -16,7 +16,7 @@ export default function SignUpBuyerForm() {
 
   const handleEmailValidation = (e) => {
     const { status, error } = validateEmail(e.target.value)
-    if (status === 'fail') {
+    if (status === 'FAIL') {
       addError({ email: [error] })
     } else {
       removeError('email')
@@ -25,14 +25,12 @@ export default function SignUpBuyerForm() {
 
   const handlePasswordValidation = (e) => {
     const { status, error } = validatePassword(e.target.value)
-    if (status === 'fail') {
+    if (status === 'FAIL') {
       addError({ password: [error] })
     } else {
       removeError('password')
     }
   }
-
-  console.log(errors)
 
   return (
     <div className={styles.formContainer}>

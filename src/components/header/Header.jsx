@@ -26,8 +26,6 @@ export default function Header() {
     }
   }, [])
 
-  console.log(user)
-
   return (
     <header className={clsx('container', isScrolled && styles.stickyStyle)}>
       <div className={styles.headerContainer}>
