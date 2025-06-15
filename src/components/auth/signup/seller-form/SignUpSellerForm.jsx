@@ -26,7 +26,7 @@ export default function SignUpSellerForm() {
 
   const handleSellerNameValidation = (e) => {
     const { status, error } = validateSellerName(e.target.value)
-    if (status === 'fail') {
+    if (status === 'FAIL') {
       addError({ sellerName: [error] })
     } else {
       removeError('sellerName')
@@ -35,7 +35,7 @@ export default function SignUpSellerForm() {
 
   const handleEmailValidation = (e) => {
     const { status, error } = validateEmail(e.target.value)
-    if (status === 'fail') {
+    if (status === 'FAIL') {
       addError({ email: [error] })
     } else {
       removeError('email')
@@ -44,19 +44,17 @@ export default function SignUpSellerForm() {
 
   const handlePasswordValidation = (e) => {
     const { status, error } = validatePassword(e.target.value)
-    if (status === 'fail') {
+    if (status === 'FAIL') {
       addError({ password: [error] })
     } else {
       removeError('password')
     }
   }
 
-  const handleEyeButton = () => {
+  const handleEyeButton = (e) => {
     e.preventDefault()
     setIsPasswordVisible((prev) => !prev)
   }
-
-  console.log(errors)
 
   return (
     <div className={styles.formContainer}>
