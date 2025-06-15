@@ -1,9 +1,11 @@
 const status = {
-  SUCCESS: 'SUCCESS',
-  FAIL: 'FAIL',
+  SUCCESS: 'success',
+  FAIL: 'fail',
 }
 
-const validateEmail = (email) => ({ status: status.SUCCESS, error: null })
+const validateEmail = (email) => {
+  return { status: status.SUCCESS, error: null }
+}
 
 const validatePassword = (password) => ({ status: status.SUCCESS, error: null })
 

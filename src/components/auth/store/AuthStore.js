@@ -123,7 +123,7 @@ const actionSlice = (set) => ({
   switchToRegister: () => set({ action: actions.REGISTER }),
 })
 
-export const validationSlice = (set, get) => ({
+const validationSlice = (set, get) => ({
   errors: {},
   hasErrors: () => Object.keys(get().errors).length > 0,
   getError: (errorKey) => get().errors[errorKey] || [],

@@ -1,20 +1,38 @@
-import { useState, useCallback } from 'react'
+import { useState } from 'react'
 import { useAuthStore } from '../../store/AuthStore'
-import {
-  validateEmail,
-  validatePassword,
-} from '../../../../util/ValidationUtil'
+import { validateEmail, validatePassword } from '@/util/ValidationUtil'
 import styles from './SignUpBuyerForm.module.scss'
 
 export default function SignUpBuyerForm() {
   const { email, setEmail } = useAuthStore()
   const { password, setPassword } = useAuthStore()
-  const { getError } = useAuthStore()
+  const { errors, addError, getError, removeError } = useAuthStore()
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
 
-  const handleEyeButton = () => {
+  const handleEyeButton = (e) => {
+    e.preventDefault()
     setIsPasswordVisible(!isPasswordVisible)
   }
+
+  const handleEmailValidation = (e) => {
+    const { status, error } = validateEmail(e.target.value)
+    if (status === 'fail') {
+      addError({ email: [error] })
+    } else {
+      removeError('email')
+    }
+  }
+
+  const handlePasswordValidation = (e) => {
+    const { status, error } = validatePassword(e.target.value)
+    if (status === 'fail') {
+      addError({ password: [error] })
+    } else {
+      removeError('password')
+    }
+  }
+
+  console.log(errors)
 
   return (
     <div className={styles.formContainer}>
@@ -29,7 +47,7 @@ export default function SignUpBuyerForm() {
           className={styles.formControl}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          onBlur={(e) => validateEmail(e.target.value)}
+          onBlur={handleEmailValidation}
         />
         {getError('email').map((err, index) => (
           <span key={index} className={styles.errors}>
@@ -48,7 +66,7 @@ export default function SignUpBuyerForm() {
           value={password}
           placeholder="Створіть пароль"
           onChange={(e) => setPassword(e.target.value)}
-          onBlur={(e) => validatePassword(e.target.value)}
+          onBlur={handlePasswordValidation}
         />
         <button
           id="togglePassword"
