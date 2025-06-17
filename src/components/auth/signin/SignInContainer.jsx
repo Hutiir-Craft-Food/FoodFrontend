@@ -10,7 +10,7 @@ export default function SignInContainer() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
 
   const handleEyeButtonClick = (e) => {
-    e.preventDefault()
+    e.preventDefault() // TODO: do we need this ?
     setIsPasswordVisible((prevValue) => !prevValue)
   }
 
@@ -22,12 +22,12 @@ export default function SignInContainer() {
     setPassword(e.target.value)
   }
 
-  // TODO: can we externilize this hanndler?
-  const handleSignIn = async (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
     login()
   }
 
+  // TODO: use switchToRegister in AuthStore
   const switchToSignUp = () => {
     setAction(actions.REGISTER)
   }
@@ -36,7 +36,7 @@ export default function SignInContainer() {
     <div className={styles.signInContainer}>
       <div className={styles.formContainer}>
         <h2>Вхід</h2>
-        <form onSubmit={handleSignIn}>
+        <form onSubmit={handleSubmit}>
           <div className={styles.emailContainer}>
             <label htmlFor="email">E-mail</label>
             <br />
