@@ -1,22 +1,26 @@
 import { useState } from 'react'
 import { useAuthStore } from '../../store/AuthStore'
-import { validateEmail, validatePassword } from '@/util/ValidationUtil'
+import {
+  validateEmail,
+  validatePassword,
+  status as validationStatus,
+} from '~/util/ValidationUtil'
 import styles from './SignUpBuyerForm.module.scss'
 
 export default function SignUpBuyerForm() {
   const { email, setEmail } = useAuthStore()
   const { password, setPassword } = useAuthStore()
-  const { errors, addError, getError, removeError } = useAuthStore()
+  const { errors, addError, removeError } = useAuthStore()
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
 
   const handleEyeButton = (e) => {
-    e.preventDefault()
-    setIsPasswordVisible(!isPasswordVisible)
+    e.preventDefault() // TODO: do we need this ?
+    setIsPasswordVisible(!isPasswordVisible) // TODO: use callback instead
   }
 
   const handleEmailValidation = (e) => {
     const { status, error } = validateEmail(e.target.value)
-    if (status === 'FAIL') {
+    if (status === validationStatus.FAIL) {
       addError({ email: [error] })
     } else {
       removeError('email')
@@ -25,7 +29,7 @@ export default function SignUpBuyerForm() {
 
   const handlePasswordValidation = (e) => {
     const { status, error } = validatePassword(e.target.value)
-    if (status === 'FAIL') {
+    if (status === validationStatus.FAIL) {
       addError({ password: [error] })
     } else {
       removeError('password')
@@ -47,11 +51,7 @@ export default function SignUpBuyerForm() {
           onChange={(e) => setEmail(e.target.value)}
           onBlur={handleEmailValidation}
         />
-        {getError('email').map((err, index) => (
-          <span key={index} className={styles.errors}>
-            {err}
-          </span>
-        ))}
+        {errors?.email && <div className={styles.errors}>{errors.email}</div>}
       </div>
 
       <div className={`${styles.passwordContainer} ${styles.inputsWrapper}`}>
@@ -74,12 +74,10 @@ export default function SignUpBuyerForm() {
           onClick={handleEyeButton}
           type="button"
         ></button>
-        <br />
-        {getError('password').map((err, index) => (
-          <span key={index} className={styles.errors}>
-            {err}
-          </span>
-        ))}
+        <br /> {/* TODO: can we remove this br ? */}
+        {errors?.password && (
+          <div className={styles.errors}>{errors.password}</div>
+        )}
       </div>
     </div>
   )

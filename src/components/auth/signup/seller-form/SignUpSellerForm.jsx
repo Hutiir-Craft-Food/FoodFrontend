@@ -4,7 +4,8 @@ import {
   validateEmail,
   validatePassword,
   validateSellerName,
-} from '@/util/ValidationUtil'
+  status as validationStatus,
+} from '~/util/ValidationUtil'
 import styles from './SignUpSellerForm.module.scss'
 
 export default function SignUpSellerForm() {
@@ -12,7 +13,7 @@ export default function SignUpSellerForm() {
   const { password, setPassword } = useAuthStore()
   const { details, setDetails } = useAuthStore()
   const { setRole } = useAuthStore()
-  const { errors, addError, getError, removeError } = useAuthStore()
+  const { errors, addError, removeError } = useAuthStore()
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
 
   useEffect(() => {
@@ -26,8 +27,8 @@ export default function SignUpSellerForm() {
 
   const handleSellerNameValidation = (e) => {
     const { status, error } = validateSellerName(e.target.value)
-    if (status === 'FAIL') {
-      addError({ sellerName: [error] })
+    if (status === validationStatus.FAIL) {
+      addError({ sellerName: error })
     } else {
       removeError('sellerName')
     }
@@ -35,8 +36,8 @@ export default function SignUpSellerForm() {
 
   const handleEmailValidation = (e) => {
     const { status, error } = validateEmail(e.target.value)
-    if (status === 'FAIL') {
-      addError({ email: [error] })
+    if (status === validationStatus.FAIL) {
+      addError({ email: error })
     } else {
       removeError('email')
     }
@@ -44,15 +45,15 @@ export default function SignUpSellerForm() {
 
   const handlePasswordValidation = (e) => {
     const { status, error } = validatePassword(e.target.value)
-    if (status === 'FAIL') {
-      addError({ password: [error] })
+    if (status === validationStatus.FAIL) {
+      addError({ password: error })
     } else {
       removeError('password')
     }
   }
 
   const handleEyeButton = (e) => {
-    e.preventDefault()
+    e.preventDefault() // TODO: do we need this here ?
     setIsPasswordVisible((prev) => !prev)
   }
 
@@ -71,11 +72,9 @@ export default function SignUpSellerForm() {
           onChange={handleSellerNameChange}
           onBlur={handleSellerNameValidation}
         />
-        {getError('sellerName').map((msg, idx) => (
-          <span key={idx} className={styles.errors}>
-            {msg}
-          </span>
-        ))}
+        {errors?.sellerName && (
+          <div className={styles.errors}>{errors.sellerName}</div>
+        )}
       </div>
 
       <div className={styles.inputsWrapper}>
@@ -90,11 +89,7 @@ export default function SignUpSellerForm() {
           onChange={(e) => setEmail(e.target.value)}
           onBlur={handleEmailValidation}
         />
-        {getError('email').map((msg, idx) => (
-          <span key={idx} className={styles.errors}>
-            {msg}
-          </span>
-        ))}
+        {errors?.email && <div className={styles.errors}>{errors.email}</div>}
       </div>
 
       <div className={`${styles.passwordContainer} ${styles.inputsWrapper}`}>
@@ -118,11 +113,9 @@ export default function SignUpSellerForm() {
           onClick={handleEyeButton}
           type="button"
         ></button>
-        {getError('password').map((msg, idx) => (
-          <span key={idx} className={styles.errors}>
-            {msg}
-          </span>
-        ))}
+        {errors?.password && (
+          <div className={styles.errors}>{errors.password}</div>
+        )}
       </div>
     </div>
   )

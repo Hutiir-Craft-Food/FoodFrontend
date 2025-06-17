@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 import { combine } from 'zustand/middleware'
-import ApiClient from '../../../services/apiClient'
+import apiClient from '~/services/apiClient'
 
 const roles = {
   GUEST: 'GUEST',
@@ -57,8 +57,9 @@ const loginSlice = (set, get) => ({
     if (hasErrors()) return
     const email = get().email
     const password = get().password
+
     try {
-      const response = await ApiClient.post('/v1/auth/login', {
+      const response = await apiClient.post('/v1/auth/login', {
         email,
         password,
       })
@@ -66,9 +67,9 @@ const loginSlice = (set, get) => ({
       const role = get().role
       get().setUser({ email, role, accessToken })
       get().hideAuthWidget()
-      get().setEmail('')
-      get().setPassword('')
+      get().clearPayload()
     } catch (error) {
+      // TODO: user must become aware of it
       console.error('Failed:', error)
     }
   },
@@ -86,7 +87,7 @@ const registerSlice = (set, get) => ({
     }
     const role = get().role
     try {
-      const response = await ApiClient.post('/v1/auth/register', {
+      const response = await apiClient.post('/v1/auth/register', {
         payload,
         role,
       })

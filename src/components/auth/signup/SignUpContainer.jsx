@@ -16,6 +16,7 @@ export default function SignUpContainer() {
     register()
   }
 
+  // TODO: use switchToLogin in AuthStore
   const switchToSignIn = () => {
     setAction(actions.LOGIN)
   }
