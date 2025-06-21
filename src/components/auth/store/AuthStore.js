@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 import { combine } from 'zustand/middleware'
-import ApiClient from '/src/services/apiClient'
+import ApiClient from '../../../services/apiClient'
 
 const roles = {
   GUEST: 'GUEST',
@@ -28,11 +28,11 @@ const userSlice = (set) => ({
 const initialPayload = {
   email: '',
   password: '',
-  details: null,
+  details: {},
   marketingConsent: false,
 }
 
-const payloadSlice = combine({ ...initialPayload }, (set, get) => ({
+const payloadSlice = combine({ ...initialPayload }, (set) => ({
   setEmail: (email) => set({ email }),
   setPassword: (password) => set({ password }),
   setDetails: (details) => set({ details }),
@@ -58,16 +58,44 @@ const loginSlice = (set, get) => ({
     const email = get().email
     const password = get().password
     try {
-      const response = ApiClient.post('/v1/auth/login', {
+      const response = await ApiClient.post('/v1/auth/login', {
         email,
         password,
       })
-      const accessToken = response.jwt
+      const accessToken = response.data.jwt
       const role = get().role
       get().setUser({ email, role, accessToken })
       get().hideAuthWidget()
       get().setEmail('')
       get().setPassword('')
+    } catch (error) {
+      console.error('Failed:', error)
+    }
+  },
+})
+
+const registerSlice = (set, get) => ({
+  register: async () => {
+    const hasErrors = get().hasErrors
+    if (hasErrors()) return
+    const payload = {
+      email: get().email,
+      password: get().password,
+      details: get().details,
+      marketingConsent: get().marketingConsent,
+    }
+    const role = get().role
+    try {
+      const response = await ApiClient.post('/v1/auth/register', {
+        payload,
+        role,
+      })
+      const accessToken = response.data.jwt
+      get().setUser({ payload, accessToken, role })
+      get().clearPayload()
+      get().switchToLogin()
+      get().switchToBuyer()
+      get().hideAuthWidget()
     } catch (error) {
       console.error('Failed:', error)
     }
@@ -95,12 +123,7 @@ const actionSlice = (set) => ({
   switchToRegister: () => set({ action: actions.REGISTER }),
 })
 
-const errorsSlice = (set, get) => ({
-  errors: {},
-  hasErrors: () => Object.keys(get().errors).length > 0,
-})
-
-export const validationSlice = (set, get) => ({
+const validationSlice = (set, get) => ({
   errors: {},
   hasErrors: () => Object.keys(get().errors).length > 0,
   getError: (errorKey) => get().errors[errorKey] || [],
@@ -121,10 +144,10 @@ const useAuthStore = create(
     ...actionSlice(set),
     ...payloadSlice(set),
     ...userSlice(set),
+    ...registerSlice(set, get),
     ...loginSlice(set, get),
     ...logoutSlice(set, get),
     ...visibilitySlice(set),
-    ...errorsSlice(set, get),
     ...validationSlice(set, get),
   }),
   { name: 'auth-store' }
