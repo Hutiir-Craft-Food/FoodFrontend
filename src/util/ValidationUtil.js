@@ -30,9 +30,10 @@ const validatePassword = (password) => {
 }
 
 const validateSellerName = (sellerName) => {
+  const trimmedName = sellerName.trim()
   const pattern = /^[a-zA-Zа-яА-ЯІіЇїЄєҐґ\d&,`'\-\s"]{3,50}$/
 
-  if (pattern.test(sellerName)) {
+  if (pattern.test(trimmedName)) {
     return { status: status.SUCCESS, error: null }
   }
 
