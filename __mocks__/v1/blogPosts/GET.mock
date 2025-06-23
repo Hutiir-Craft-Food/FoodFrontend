@@ -3,7 +3,7 @@ Content-Type: application/json
 
 {{#code}}
 (()=>{
-   const blogPosts = [
+   const blog-posts = [
 		{
 			id: 1,
 			image: 'https://i.pinimg.com/564x/96/3e/7e/963e7eb66e98723f8ed386fa37988b2e.jpg',
@@ -33,7 +33,7 @@ Content-Type: application/json
             'X-Requested-By': 'blog-posts'
         },
         body: JSON.stringify({
-            carouselItems: blogPosts
+            carouselItems: blog-posts
         })
     };
 })();
