@@ -32,12 +32,21 @@ const initialPayload = {
   marketingConsent: false,
 }
 
-const payloadSlice = combine({ ...initialPayload }, (set) => ({
+const payloadSlice = combine({ ...initialPayload }, (set, get) => ({
   setEmail: (email) => set({ email }),
   setPassword: (password) => set({ password }),
   setDetails: (details) => set({ details }),
   setMarketingConsent: (marketingConsent) => set({ marketingConsent }),
   clearPayload: () => set({ ...initialPayload }),
+  checkIsModified: () => {
+    const { email, password, details, marketingConsent } = get()
+    return (
+      email !== initialPayload.email ||
+      password !== initialPayload.password ||
+      JSON.stringify(details) !== JSON.stringify(initialPayload.details) ||
+      marketingConsent !== initialPayload.marketingConsent
+    )
+  },
 }))
 
 // TODO: do we need to update user or user details partially ?
@@ -70,7 +79,7 @@ const loginSlice = (set, get) => ({
       get().clearPayload()
     } catch (error) {
       // TODO: user must become aware of it
-      console.error('Failed:', error)
+      alert('Щось пішло не так:', error)
     }
   },
 })
@@ -98,7 +107,7 @@ const registerSlice = (set, get) => ({
       get().switchToBuyer()
       get().hideAuthWidget()
     } catch (error) {
-      console.error('Failed:', error)
+      alert('Щось пішло не так:', error)
     }
   },
 })
@@ -112,14 +121,12 @@ const logoutSlice = (set, get) => ({
 
 const roleSlice = (set) => ({
   role: roles.BUYER,
-  setRole: (role) => set({ role }), // TODO: remove this
   switchToBuyer: () => set({ role: roles.BUYER }),
   switchToSeller: () => set({ role: roles.SELLER }),
 })
 
 const actionSlice = (set) => ({
   action: actions.LOGIN,
-  setAction: (action) => set({ action }), // TODO: remove this
   switchToLogin: () => set({ action: actions.LOGIN }),
   switchToRegister: () => set({ action: actions.REGISTER }),
 })
@@ -143,7 +150,7 @@ const useAuthStore = create(
   (set, get) => ({
     ...roleSlice(set),
     ...actionSlice(set),
-    ...payloadSlice(set),
+    ...payloadSlice(set, get),
     ...userSlice(set),
     ...registerSlice(set, get),
     ...loginSlice(set, get),

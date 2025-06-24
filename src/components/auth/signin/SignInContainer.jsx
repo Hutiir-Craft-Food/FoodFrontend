@@ -1,13 +1,18 @@
 import { useState } from 'react'
-import { actions, useAuthStore } from '../store/AuthStore'
+import { useAuthStore } from '../store/AuthStore'
+import Modal from '~/components/modal/Modal.jsx'
+import ConfirmModal from '../confirmModal/ConfirmModal'
 import styles from './SignInContainer.module.scss'
 
 export default function SignInContainer() {
   const { email, setEmail } = useAuthStore()
   const { password, setPassword } = useAuthStore()
-  const { setAction } = useAuthStore()
+  const { switchToRegister } = useAuthStore()
   const { login } = useAuthStore()
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
+  const [showConfirm, setShowConfirm] = useState(false)
+
+  const handleCloseConfirmModal = () => setShowConfirm(false)
 
   const handleEyeButtonClick = (e) => {
     e.preventDefault() // TODO: do we need this ?
@@ -25,11 +30,6 @@ export default function SignInContainer() {
   const handleSubmit = async (event) => {
     event.preventDefault()
     login()
-  }
-
-  // TODO: use switchToRegister in AuthStore
-  const switchToSignUp = () => {
-    setAction(actions.REGISTER)
   }
 
   return (
@@ -71,7 +71,6 @@ export default function SignInContainer() {
               onClick={handleEyeButtonClick}
             ></button>
           </div>
-          <br />
           <a className={styles.fogetPasswordLink} href="#">
             Забули пароль?
           </a>
@@ -84,13 +83,26 @@ export default function SignInContainer() {
         <div>
           <button
             className={styles.signUpLink}
-            onClick={() => switchToSignUp()}
+            onClick={() => {
+              if (email.trim() || password.trim()) {
+                setShowConfirm(true)
+              } else {
+                switchToRegister()
+              }
+            }}
           >
-            {' '}
             Зареєструватись
           </button>
         </div>
       </div>
+      {showConfirm && (
+        <Modal handleClose={handleCloseConfirmModal}>
+          <ConfirmModal
+            confirmAction={switchToRegister}
+            setShowConfirm={setShowConfirm}
+          />
+        </Modal>
+      )}
     </div>
   )
 }

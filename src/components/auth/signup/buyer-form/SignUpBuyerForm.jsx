@@ -3,7 +3,7 @@ import { useAuthStore } from '../../store/AuthStore'
 import {
   validateEmail,
   validatePassword,
-  status as validationStatus,
+  statuses as validationStatuses,
 } from '~/util/ValidationUtil'
 import styles from './SignUpBuyerForm.module.scss'
 
@@ -15,12 +15,12 @@ export default function SignUpBuyerForm() {
 
   const handleEyeButton = (e) => {
     e.preventDefault() // TODO: do we need this ?
-    setIsPasswordVisible(!isPasswordVisible) // TODO: use callback instead
+    setIsPasswordVisible((prev) => !prev)
   }
 
   const handleEmailValidation = (e) => {
     const { status, error } = validateEmail(e.target.value)
-    if (status === validationStatus.FAIL) {
+    if (status === validationStatuses.FAIL) {
       addError({ email: [error] })
     } else {
       removeError('email')
@@ -29,7 +29,7 @@ export default function SignUpBuyerForm() {
 
   const handlePasswordValidation = (e) => {
     const { status, error } = validatePassword(e.target.value)
-    if (status === validationStatus.FAIL) {
+    if (status === validationStatuses.FAIL) {
       addError({ password: [error] })
     } else {
       removeError('password')
@@ -74,7 +74,6 @@ export default function SignUpBuyerForm() {
           onClick={handleEyeButton}
           type="button"
         ></button>
-        <br /> {/* TODO: can we remove this br ? */}
         {errors?.password && (
           <div className={styles.errors}>{errors.password}</div>
         )}

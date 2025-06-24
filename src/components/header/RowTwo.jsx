@@ -34,10 +34,6 @@ export default function RowTwo({ isScrolled }) {
         <div className={styles.basketIcon}>
           <img src="/images/basket-default-noNotif.svg" alt="user icon" />
         </div>
-        {/* TODO: remove Exit button */}
-        <div>
-          <button onClick={() => logout()}>вийти</button>
-        </div>
       </div>
     </div>
   )

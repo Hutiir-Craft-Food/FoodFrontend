@@ -4,7 +4,7 @@ import {
   validateEmail,
   validatePassword,
   validateSellerName,
-  status as validationStatus,
+  statuses as validationStatuses,
 } from '~/util/ValidationUtil'
 import styles from './SignUpSellerForm.module.scss'
 
@@ -12,13 +12,8 @@ export default function SignUpSellerForm() {
   const { email, setEmail } = useAuthStore()
   const { password, setPassword } = useAuthStore()
   const { details, setDetails } = useAuthStore()
-  const { setRole } = useAuthStore()
   const { errors, addError, removeError } = useAuthStore()
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
-
-  useEffect(() => {
-    setRole(roles.SELLER)
-  }, [setRole])
 
   const handleSellerNameChange = (event) => {
     const newName = event.target.value
@@ -27,7 +22,7 @@ export default function SignUpSellerForm() {
 
   const handleSellerNameValidation = (e) => {
     const { status, error } = validateSellerName(e.target.value)
-    if (status === validationStatus.FAIL) {
+    if (status === validationStatuses.FAIL) {
       addError({ sellerName: error })
     } else {
       removeError('sellerName')
@@ -36,7 +31,7 @@ export default function SignUpSellerForm() {
 
   const handleEmailValidation = (e) => {
     const { status, error } = validateEmail(e.target.value)
-    if (status === validationStatus.FAIL) {
+    if (status === validationStatuses.FAIL) {
       addError({ email: error })
     } else {
       removeError('email')
@@ -45,7 +40,7 @@ export default function SignUpSellerForm() {
 
   const handlePasswordValidation = (e) => {
     const { status, error } = validatePassword(e.target.value)
-    if (status === validationStatus.FAIL) {
+    if (status === validationStatuses.FAIL) {
       addError({ password: error })
     } else {
       removeError('password')

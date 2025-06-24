@@ -1,0 +1,55 @@
+@import '/src/styles/var.scss';
+
+.confirmModal {
+  padding: 45px;
+
+  .confirmModalContainer {
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    padding: 20px 24px;
+    width: 296px;
+    font-family: Circe, sans-serif;
+    font-size: 1rem;
+    color: $primary-90;
+    text-align: center;
+
+    p {
+      margin-bottom: 16px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+
+      button {
+        flex: 1;
+        height: 36px;
+        font-size: 1rem;
+        font-weight: 600;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &.confirmBtn {
+          background-color: $primary-50;
+          color: $white;
+
+          &:hover {
+            background-color: $primary-60;
+          }
+        }
+
+        &.cancelBtn {
+          background-color: $natural-20;
+          color: $primary-50;
+
+          &:hover {
+            background-color: $natural-30;
+          }
+        }
+      }
+    }
+  }
+}

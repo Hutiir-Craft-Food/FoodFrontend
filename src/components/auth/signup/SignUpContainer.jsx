@@ -1,24 +1,26 @@
 import { useState } from 'react'
 import SignUpBuyerForm from './buyer-form/SignUpBuyerForm'
 import SignUpSellerForm from './seller-form/SignUpSellerForm'
-import { actions, roles, useAuthStore } from '../store/AuthStore'
+import { roles, useAuthStore } from '../store/AuthStore'
+import Modal from '~/components/modal/Modal.jsx'
+import ConfirmModal from '../confirmModal/ConfirmModal'
 import styles from './SignUpContainer.module.scss'
 
 export default function SignUpContainer() {
-  const { setAction } = useAuthStore()
-  const { role, setRole } = useAuthStore()
+  const { switchToLogin, switchToSeller, switchToBuyer, checkIsModified } =
+    useAuthStore()
+  const { role } = useAuthStore()
   const { marketingConsent, setMarketingConsent } = useAuthStore()
   const { register } = useAuthStore()
   const { hasErrors } = useAuthStore()
+  const [showConfirm, setShowConfirm] = useState(false)
+  const [confirmAction, setConfirmAction] = useState(null)
+
+  const handleCloseConfirmModal = () => setShowConfirm(false)
 
   const handleSubmit = async (event) => {
     event.preventDefault()
     register()
-  }
-
-  // TODO: use switchToLogin in AuthStore
-  const switchToSignIn = () => {
-    setAction(actions.LOGIN)
   }
 
   return (
@@ -35,7 +37,14 @@ export default function SignUpContainer() {
                     ? `${styles.button} ${styles.active}`
                     : `${styles.button}`
                 }
-                onClick={() => setRole(roles.BUYER)}
+                onClick={() => {
+                  if (checkIsModified()) {
+                    setConfirmAction(() => switchToBuyer)
+                    setShowConfirm(true)
+                  } else {
+                    switchToBuyer()
+                  }
+                }}
               >
                 Хочу купувати
               </button>
@@ -46,7 +55,14 @@ export default function SignUpContainer() {
                     ? `${styles.button} ${styles.active}`
                     : `${styles.button}`
                 }
-                onClick={() => setRole(roles.SELLER)}
+                onClick={() => {
+                  if (checkIsModified()) {
+                    setConfirmAction(() => switchToSeller)
+                    setShowConfirm(true)
+                  } else {
+                    switchToSeller()
+                  }
+                }}
               >
                 Хочу продавати
               </button>
@@ -84,7 +100,14 @@ export default function SignUpContainer() {
         <div>
           <button
             className={styles.signInLink}
-            onClick={() => switchToSignIn()}
+            onClick={() => {
+              if (checkIsModified()) {
+                setConfirmAction(() => switchToLogin)
+                setShowConfirm(true)
+              } else {
+                switchToLogin()
+              }
+            }}
           >
             Вже маю акаунт
           </button>
@@ -101,6 +124,14 @@ export default function SignUpContainer() {
           </p>
         </div>
       </div>
+      {showConfirm && (
+        <Modal handleClose={handleCloseConfirmModal}>
+          <ConfirmModal
+            confirmAction={confirmAction}
+            setShowConfirm={setShowConfirm}
+          />
+        </Modal>
+      )}
     </div>
   )
 }
