@@ -113,6 +113,12 @@ describe('ValidationUtil', () => {
       expect(result.error).toBeNull()
     })
 
+    test('should return SUCCESS for a valid name with leading and trailing spaces (trimmed)', () => {
+      const result = validateSellerName('   Best Shop   ')
+      expect(result.status).toBe(status.SUCCESS)
+      expect(result.error).toBeNull()
+    })
+
     test('should return FAIL for a name with unsupported special character (@)', () => {
       const result = validateSellerName('Shop@Name')
       expect(result.status).toBe(status.FAIL)
