@@ -3,7 +3,7 @@ Content-Type: application/json
 
 {{#code}}
 (()=>{
-   const adv-posts = [
+   const advPosts = [
 		{
 			id: 1,
 			image: 'https://vanelja.com/wp-content/uploads/2021/10/vanilladreamcrepes-823x1024-1.jpg',
@@ -33,7 +33,7 @@ Content-Type: application/json
             'X-Requested-By': 'adv-posts'
         },
         body: JSON.stringify({
-            carouselItems: adv-posts
+            carouselItems: advPosts
         })
     };
 })();
