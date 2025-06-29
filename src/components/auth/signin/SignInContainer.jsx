@@ -1,7 +1,5 @@
 import { useState } from 'react'
 import { useAuthStore } from '../store/AuthStore'
-import Modal from '~/components/modal/Modal.jsx'
-import ConfirmModal from '../confirmModal/ConfirmModal'
 import styles from './SignInContainer.module.scss'
 
 export default function SignInContainer() {
@@ -10,9 +8,6 @@ export default function SignInContainer() {
   const { switchToRegister } = useAuthStore()
   const { login } = useAuthStore()
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
-  const [showConfirm, setShowConfirm] = useState(false)
-
-  const handleCloseConfirmModal = () => setShowConfirm(false)
 
   const handleEyeButtonClick = (e) => {
     e.preventDefault() // TODO: do we need this ?
@@ -84,25 +79,13 @@ export default function SignInContainer() {
           <button
             className={styles.signUpLink}
             onClick={() => {
-              if (email.trim() || password.trim()) {
-                setShowConfirm(true)
-              } else {
-                switchToRegister()
-              }
+              switchToRegister()
             }}
           >
             Зареєструватись
           </button>
         </div>
       </div>
-      {showConfirm && (
-        <Modal handleClose={handleCloseConfirmModal}>
-          <ConfirmModal
-            confirmAction={switchToRegister}
-            setShowConfirm={setShowConfirm}
-          />
-        </Modal>
-      )}
     </div>
   )
 }

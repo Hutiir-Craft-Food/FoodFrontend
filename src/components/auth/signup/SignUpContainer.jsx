@@ -7,7 +7,7 @@ import ConfirmModal from '../confirmModal/ConfirmModal'
 import styles from './SignUpContainer.module.scss'
 
 export default function SignUpContainer() {
-  const { switchToLogin, switchToSeller, switchToBuyer, checkIsModified } =
+  const { switchToLogin, switchToSeller, switchToBuyer, isDirty } =
     useAuthStore()
   const { role } = useAuthStore()
   const { marketingConsent, setMarketingConsent } = useAuthStore()
@@ -38,7 +38,7 @@ export default function SignUpContainer() {
                     : `${styles.button}`
                 }
                 onClick={() => {
-                  if (checkIsModified()) {
+                  if (isDirty()) {
                     setConfirmAction(() => switchToBuyer)
                     setShowConfirm(true)
                   } else {
@@ -56,12 +56,7 @@ export default function SignUpContainer() {
                     : `${styles.button}`
                 }
                 onClick={() => {
-                  if (checkIsModified()) {
-                    setConfirmAction(() => switchToSeller)
-                    setShowConfirm(true)
-                  } else {
-                    switchToSeller()
-                  }
+                  switchToSeller()
                 }}
               >
                 Хочу продавати
@@ -101,7 +96,7 @@ export default function SignUpContainer() {
           <button
             className={styles.signInLink}
             onClick={() => {
-              if (checkIsModified()) {
+              if (isDirty()) {
                 setConfirmAction(() => switchToLogin)
                 setShowConfirm(true)
               } else {

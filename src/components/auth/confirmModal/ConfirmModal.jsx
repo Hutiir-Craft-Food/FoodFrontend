@@ -2,7 +2,7 @@ import { useAuthStore } from '../store/AuthStore'
 import styles from './ConfirmModal.module.scss'
 
 function ConfirmModal({ confirmAction, setShowConfirm }) {
-  const { clearPayload } = useAuthStore()
+  const { details, setDetails, setMarketingConsent } = useAuthStore()
   return (
     <div className={styles.confirmModal}>
       <div className={styles.confirmModalContainer}>
@@ -12,7 +12,8 @@ function ConfirmModal({ confirmAction, setShowConfirm }) {
             className={styles.confirmBtn}
             onClick={() => {
               confirmAction()
-              clearPayload()
+              setDetails({})
+              setMarketingConsent(false)
               setShowConfirm(false)
             }}
           >

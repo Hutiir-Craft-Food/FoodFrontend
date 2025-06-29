@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useAuthStore } from '../../store/AuthStore'
 import {
   validateEmail,
@@ -13,6 +13,26 @@ export default function SignUpBuyerForm() {
   const { errors, addError, removeError } = useAuthStore()
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
 
+  useEffect(() => {
+    if (email) {
+      const { status, error } = validateEmail(email)
+      if (status === validationStatuses.FAIL) {
+        addError({ email: error })
+      } else {
+        removeError('email')
+      }
+    }
+
+    if (password) {
+      const { status, error } = validatePassword(password)
+      if (status === validationStatuses.FAIL) {
+        addError({ password: error })
+      } else {
+        removeError('password')
+      }
+    }
+  }, [])
+
   const handleEyeButton = (e) => {
     e.preventDefault() // TODO: do we need this ?
     setIsPasswordVisible((prev) => !prev)
@@ -21,7 +41,7 @@ export default function SignUpBuyerForm() {
   const handleEmailValidation = (e) => {
     const { status, error } = validateEmail(e.target.value)
     if (status === validationStatuses.FAIL) {
-      addError({ email: [error] })
+      addError({ email: error })
     } else {
       removeError('email')
     }
@@ -30,7 +50,7 @@ export default function SignUpBuyerForm() {
   const handlePasswordValidation = (e) => {
     const { status, error } = validatePassword(e.target.value)
     if (status === validationStatuses.FAIL) {
-      addError({ password: [error] })
+      addError({ password: error })
     } else {
       removeError('password')
     }

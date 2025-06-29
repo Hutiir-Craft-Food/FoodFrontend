@@ -38,11 +38,9 @@ const payloadSlice = combine({ ...initialPayload }, (set, get) => ({
   setDetails: (details) => set({ details }),
   setMarketingConsent: (marketingConsent) => set({ marketingConsent }),
   clearPayload: () => set({ ...initialPayload }),
-  checkIsModified: () => {
-    const { email, password, details, marketingConsent } = get()
+  isDirty: () => {
+    const { details, marketingConsent } = get()
     return (
-      email !== initialPayload.email ||
-      password !== initialPayload.password ||
       JSON.stringify(details) !== JSON.stringify(initialPayload.details) ||
       marketingConsent !== initialPayload.marketingConsent
     )
@@ -66,7 +64,6 @@ const loginSlice = (set, get) => ({
     if (hasErrors()) return
     const email = get().email
     const password = get().password
-
     try {
       const response = await apiClient.post('/v1/auth/login', {
         email,
@@ -78,7 +75,6 @@ const loginSlice = (set, get) => ({
       get().hideAuthWidget()
       get().clearPayload()
     } catch (error) {
-      // TODO: user must become aware of it
       alert('Щось пішло не так:', error)
     }
   },
