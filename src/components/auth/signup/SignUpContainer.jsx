@@ -10,13 +10,46 @@ export default function SignUpContainer() {
   const { switchToLogin, switchToSeller, switchToBuyer, isDirty } =
     useAuthStore()
   const { role } = useAuthStore()
-  const { marketingConsent, setMarketingConsent } = useAuthStore()
+  const { setDetails, marketingConsent, setMarketingConsent } = useAuthStore()
   const { register } = useAuthStore()
   const { hasErrors } = useAuthStore()
   const [showConfirm, setShowConfirm] = useState(false)
   const [confirmAction, setConfirmAction] = useState(null)
 
+  const handleConfirm = () => {
+    if (confirmAction === 'switchToBuyer') {
+      switchToBuyer()
+    } else if (confirmAction === 'switchToLogin') {
+      switchToLogin()
+    }
+    setDetails({})
+    setMarketingConsent(false)
+    setShowConfirm(false)
+  }
+
+  const handleReject = () => {
+    setShowConfirm(false)
+  }
+
   const handleCloseConfirmModal = () => setShowConfirm(false)
+
+  const handleSwitchToBuyer = () => {
+    if (isDirty()) {
+      setConfirmAction('switchToBuyer')
+      setShowConfirm(true)
+    } else {
+      switchToBuyer()
+    }
+  }
+
+  const handleSwitchToLogin = () => {
+    if (isDirty()) {
+      setConfirmAction('switchToLogin')
+      setShowConfirm(true)
+    } else {
+      switchToLogin()
+    }
+  }
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -38,12 +71,7 @@ export default function SignUpContainer() {
                     : `${styles.button}`
                 }
                 onClick={() => {
-                  if (isDirty()) {
-                    setConfirmAction(() => switchToBuyer)
-                    setShowConfirm(true)
-                  } else {
-                    switchToBuyer()
-                  }
+                  handleSwitchToBuyer()
                 }}
               >
                 Хочу купувати
@@ -96,12 +124,7 @@ export default function SignUpContainer() {
           <button
             className={styles.signInLink}
             onClick={() => {
-              if (isDirty()) {
-                setConfirmAction(() => switchToLogin)
-                setShowConfirm(true)
-              } else {
-                switchToLogin()
-              }
+              handleSwitchToLogin()
             }}
           >
             Вже маю акаунт
@@ -121,10 +144,7 @@ export default function SignUpContainer() {
       </div>
       {showConfirm && (
         <Modal handleClose={handleCloseConfirmModal}>
-          <ConfirmModal
-            confirmAction={confirmAction}
-            setShowConfirm={setShowConfirm}
-          />
+          <ConfirmModal onConfirm={handleConfirm} onReject={handleReject} />
         </Modal>
       )}
     </div>

@@ -1,8 +1,7 @@
 import { useAuthStore } from '../store/AuthStore'
 import styles from './ConfirmModal.module.scss'
 
-function ConfirmModal({ confirmAction, setShowConfirm }) {
-  const { details, setDetails, setMarketingConsent } = useAuthStore()
+function ConfirmModal({ onConfirm, onReject }) {
   return (
     <div className={styles.confirmModal}>
       <div className={styles.confirmModalContainer}>
@@ -11,18 +10,12 @@ function ConfirmModal({ confirmAction, setShowConfirm }) {
           <button
             className={styles.confirmBtn}
             onClick={() => {
-              confirmAction()
-              setDetails({})
-              setMarketingConsent(false)
-              setShowConfirm(false)
+              onConfirm()
             }}
           >
             Так
           </button>
-          <button
-            className={styles.cancelBtn}
-            onClick={() => setShowConfirm(false)}
-          >
+          <button className={styles.cancelBtn} onClick={() => onReject()}>
             Ні
           </button>
         </div>
