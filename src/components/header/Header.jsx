@@ -2,10 +2,12 @@ import { useState, useEffect } from 'react'
 import clsx from 'clsx'
 import RowOne from './RowOne'
 import RowTwo from './RowTwo'
+import { useAuthStore } from '../auth/store/AuthStore'
 import styles from './Header.module.scss'
 
 export default function Header() {
   const [isScrolled, setScrolled] = useState(false)
+  const { user } = useAuthStore()
 
   const handleScroll = () => {
     if (window.scrollY > 175) {

@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 import { combine } from 'zustand/middleware'
-import ApiClient from '/src/services/apiClient'
+import apiClient from '~/services/apiClient'
 
 const roles = {
   GUEST: 'GUEST',
@@ -28,7 +28,7 @@ const userSlice = (set) => ({
 const initialPayload = {
   email: '',
   password: '',
-  details: null,
+  details: {},
   marketingConsent: false,
 }
 
@@ -38,6 +38,13 @@ const payloadSlice = combine({ ...initialPayload }, (set, get) => ({
   setDetails: (details) => set({ details }),
   setMarketingConsent: (marketingConsent) => set({ marketingConsent }),
   clearPayload: () => set({ ...initialPayload }),
+  isDirty: () => {
+    const { details, marketingConsent } = get()
+    return (
+      JSON.stringify(details) !== JSON.stringify(initialPayload.details) ||
+      marketingConsent !== initialPayload.marketingConsent
+    )
+  },
 }))
 
 // TODO: do we need to update user or user details partially ?
@@ -58,18 +65,45 @@ const loginSlice = (set, get) => ({
     const email = get().email
     const password = get().password
     try {
-      const response = ApiClient.post('/v1/auth/login', {
+      const response = await apiClient.post('/v1/auth/login', {
         email,
         password,
       })
-      const accessToken = response.jwt
+      const accessToken = response.data.jwt
       const role = get().role
       get().setUser({ email, role, accessToken })
       get().hideAuthWidget()
-      get().setEmail('')
-      get().setPassword('')
+      get().clearPayload()
     } catch (error) {
-      console.error('Failed:', error)
+      alert('Щось пішло не так:', error)
+    }
+  },
+})
+
+const registerSlice = (set, get) => ({
+  register: async () => {
+    const hasErrors = get().hasErrors
+    if (hasErrors()) return
+    const payload = {
+      email: get().email,
+      password: get().password,
+      details: get().details,
+      marketingConsent: get().marketingConsent,
+    }
+    const role = get().role
+    try {
+      const response = await apiClient.post('/v1/auth/register', {
+        payload,
+        role,
+      })
+      const accessToken = response.data.jwt
+      get().setUser({ payload, accessToken, role })
+      get().clearPayload()
+      get().switchToLogin()
+      get().switchToBuyer()
+      get().hideAuthWidget()
+    } catch (error) {
+      alert('Щось пішло не так:', error)
     }
   },
 })
@@ -83,24 +117,17 @@ const logoutSlice = (set, get) => ({
 
 const roleSlice = (set) => ({
   role: roles.BUYER,
-  setRole: (role) => set({ role }), // TODO: remove this
   switchToBuyer: () => set({ role: roles.BUYER }),
   switchToSeller: () => set({ role: roles.SELLER }),
 })
 
 const actionSlice = (set) => ({
   action: actions.LOGIN,
-  setAction: (action) => set({ action }), // TODO: remove this
   switchToLogin: () => set({ action: actions.LOGIN }),
   switchToRegister: () => set({ action: actions.REGISTER }),
 })
 
-const errorsSlice = (set, get) => ({
-  errors: {},
-  hasErrors: () => Object.keys(get().errors).length > 0,
-})
-
-export const validationSlice = (set, get) => ({
+const validationSlice = (set, get) => ({
   errors: {},
   hasErrors: () => Object.keys(get().errors).length > 0,
   getError: (errorKey) => get().errors[errorKey] || [],
@@ -119,12 +146,12 @@ const useAuthStore = create(
   (set, get) => ({
     ...roleSlice(set),
     ...actionSlice(set),
-    ...payloadSlice(set),
+    ...payloadSlice(set, get),
     ...userSlice(set),
+    ...registerSlice(set, get),
     ...loginSlice(set, get),
     ...logoutSlice(set, get),
     ...visibilitySlice(set),
-    ...errorsSlice(set, get),
     ...validationSlice(set, get),
   }),
   { name: 'auth-store' }

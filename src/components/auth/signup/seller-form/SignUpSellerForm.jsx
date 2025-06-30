@@ -1,138 +1,115 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect } from 'react'
+import { roles, useAuthStore } from '../../store/AuthStore'
+import {
+  validateEmail,
+  validatePassword,
+  validateSellerName,
+  statuses as validationStatuses,
+} from '~/util/ValidationUtil'
 import styles from './SignUpSellerForm.module.scss'
 
-export default function SignUpSellerForm({ setFormData }) {
-  const [sellerName, setSellerName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [errors, setErrors] = useState({})
+export default function SignUpSellerForm() {
+  const { email, setEmail } = useAuthStore()
+  const { password, setPassword } = useAuthStore()
+  const { details, setDetails } = useAuthStore()
+  const { errors, addError, removeError } = useAuthStore()
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
 
-  const validateSellerName = useCallback(() => {
-    const pattern = /^[a-zA-Zа-яА-ЯІіЇїЄєҐґ\d&,`'\-\s"]{3,50}$/
-    const newValue = pattern.test(sellerName)
-      ? { valid: true, errorMessage: '' }
-      : { valid: false, errorMessage: 'Від 3 до 50 літер у розкладці UA чи EN' }
-
-    setErrors((prevErrors) => ({
-      ...prevErrors,
-      sellerName: newValue,
-    }))
-  }, [sellerName])
-
-  const validateEmail = useCallback(() => {
-    const pattern = /^[A-Za-z0-9\._%+\-]+@[A-Za-z0-9\.\-]+\.[A-Za-z]{2,}$/
-    const newValue = pattern.test(email)
-      ? { valid: true, errorMessage: '' }
-      : { valid: false, errorMessage: 'Вкажіть корректний email' }
-
-    setErrors((prevErrors) => ({
-      ...prevErrors,
-      email: newValue,
-    }))
-  }, [email])
-
-  const validatePassword = useCallback(() => {
-    const pattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{9,}$/
-    const newValue = pattern.test(password)
-      ? { valid: true, errorMessage: '' }
-      : { valid: false, errorMessage: 'Від 8 літер та 1 числовий символ' }
-
-    setErrors((prevErrors) => ({
-      ...prevErrors,
-      password: newValue,
-    }))
-  }, [password])
-
   const handleSellerNameChange = (event) => {
-    setSellerName(event.target.value)
-  }
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value)
-  }
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value)
-  }
-  const handleEyeButton = () => {
-    setIsPasswordVisible(!isPasswordVisible)
+    const newName = event.target.value
+    setDetails({ ...details, sellerName: newName })
   }
 
-  useEffect(() => {
-    const formData = {
-      details: { sellerName },
-      email,
-      password,
-      role: 'SELLER',
+  const handleSellerNameValidation = (e) => {
+    const { status, error } = validateSellerName(e.target.value)
+    if (status === validationStatuses.FAIL) {
+      addError({ sellerName: error })
+    } else {
+      removeError('sellerName')
     }
+  }
 
-    const hasErrors = Object.values(errors).some(({ valid }) => valid === false)
-    if (!hasErrors) {
-      setFormData(formData)
+  const handleEmailValidation = (e) => {
+    const { status, error } = validateEmail(e.target.value)
+    if (status === validationStatuses.FAIL) {
+      addError({ email: error })
+    } else {
+      removeError('email')
     }
-  }, [errors, setFormData])
+  }
+
+  const handlePasswordValidation = (e) => {
+    const { status, error } = validatePassword(e.target.value)
+    if (status === validationStatuses.FAIL) {
+      addError({ password: error })
+    } else {
+      removeError('password')
+    }
+  }
+
+  const handleEyeButton = (e) => {
+    e.preventDefault() // TODO: do we need this here ?
+    setIsPasswordVisible((prev) => !prev)
+  }
 
   return (
     <div className={styles.formContainer}>
       <div className={styles.inputsWrapper}>
-        <label htmlFor='sellerName'>Назва компанії або ПІБ</label>
+        <label htmlFor="sellerName">Назва компанії або ПІБ</label>
         <input
-          type='text'
-          id='sellerName'
-          name='sellerName'
+          type="text"
+          id="sellerName"
+          name="sellerName"
           placeholder="ТОВ 'Фермер'"
-          minLength='3'
+          minLength="3"
           required
-          value={sellerName}
+          value={details.sellerName}
           onChange={handleSellerNameChange}
-          onBlur={validateSellerName}
+          onBlur={handleSellerNameValidation}
         />
-        {!errors.sellerName?.valid && (
-          <span className={styles.errors}>
-            {errors.sellerName?.errorMessage}
-          </span>
+        {errors?.sellerName && (
+          <div className={styles.errors}>{errors.sellerName}</div>
         )}
       </div>
 
       <div className={styles.inputsWrapper}>
-        <label htmlFor='email'>E-mail</label>
+        <label htmlFor="email">E-mail</label>
         <input
-          type='email'
-          id='email'
-          name='email'
-          placeholder='e.g.example@gmail.com'
+          type="email"
+          id="email"
+          name="email"
+          placeholder="e.g.example@gmail.com"
           required
           value={email}
-          onChange={handleEmailChange}
-          onBlur={validateEmail}
+          onChange={(e) => setEmail(e.target.value)}
+          onBlur={handleEmailValidation}
         />
-        {!errors.email?.valid && (
-          <span className={styles.errors}>{errors.email?.errorMessage}</span>
-        )}
+        {errors?.email && <div className={styles.errors}>{errors.email}</div>}
       </div>
 
       <div className={`${styles.passwordContainer} ${styles.inputsWrapper}`}>
-        <label htmlFor='password'>Пароль</label>
+        <label htmlFor="password">Пароль</label>
         <input
           type={isPasswordVisible ? 'text' : 'password'}
-          id='password'
-          name='password'
-          minLength='9'
+          id="password"
+          name="password"
+          minLength="9"
           required
           value={password}
-          placeholder='Створіть пароль'
-          onChange={handlePasswordChange}
-          onBlur={validatePassword}
+          placeholder="Створіть пароль"
+          onChange={(e) => setPassword(e.target.value)}
+          onBlur={handlePasswordValidation}
         />
         <button
-          id='togglePassword'
+          id="togglePassword"
           className={`${styles.toggleEye} ${
             isPasswordVisible ? styles.openEye : styles.closeEye
           }`}
           onClick={handleEyeButton}
-          type='button'
+          type="button"
         ></button>
-        {!errors.password?.valid && (
-          <span className={styles.errors}>{errors.password?.errorMessage}</span>
+        {errors?.password && (
+          <div className={styles.errors}>{errors.password}</div>
         )}
       </div>
     </div>

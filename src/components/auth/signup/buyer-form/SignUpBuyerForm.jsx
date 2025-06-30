@@ -1,74 +1,59 @@
-import { useState, useCallback } from 'react'
+import { useState, useEffect } from 'react'
+import { useAuthStore } from '../../store/AuthStore'
+import {
+  validateEmail,
+  validatePassword,
+  statuses as validationStatuses,
+} from '~/util/ValidationUtil'
 import styles from './SignUpBuyerForm.module.scss'
 
-export default function SignUpBuyerForm({ errors, setErrors, setFormData }) {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-
-  const validateEmail = useCallback(() => {
-    const pattern = /^[A-Za-z0-9\._%+\-]+@[A-Za-z0-9\.\-]+\.[A-Za-z]{2,}$/
-
-    if (pattern.test(email)) {
-      setErrors((errors) => ({
-        ...errors,
-        email: { valid: true },
-      }))
-
-      return
-    }
-
-    setErrors((errors) => ({
-      ...errors,
-      email: {
-        valid: false,
-        errorMessage: 'Вкажіть коректний email',
-      },
-    }))
-  }, [email])
-
-  const validatePassword = useCallback(() => {
-    const pattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{9,}$/
-    if (pattern.test(password)) {
-      setErrors((errors) => ({
-        ...errors,
-        password: { valid: true },
-      }))
-
-      return
-    }
-
-    setErrors((errors) => ({
-      ...errors,
-      password: {
-        valid: false,
-        errorMessage: 'Від 8 буквенних та 1 числовий символи',
-      },
-    }))
-  }, [password])
-
-  const handleEmailChange = (event) => {
-    const newEmail = event.target.value
-    setEmail(newEmail)
-
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      email: newEmail,
-    }))
-  }
-
-  const handlePasswordChange = (event) => {
-    const newPassword = event.target.value
-    setPassword(newPassword)
-
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      password: newPassword,
-    }))
-  }
-
+export default function SignUpBuyerForm() {
+  const { email, setEmail } = useAuthStore()
+  const { password, setPassword } = useAuthStore()
+  const { errors, addError, removeError } = useAuthStore()
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
-  const handleEyeButton = () => {
-    setIsPasswordVisible(!isPasswordVisible)
+
+  useEffect(() => {
+    if (email) {
+      const { status, error } = validateEmail(email)
+      if (status === validationStatuses.FAIL) {
+        addError({ email: error })
+      } else {
+        removeError('email')
+      }
+    }
+
+    if (password) {
+      const { status, error } = validatePassword(password)
+      if (status === validationStatuses.FAIL) {
+        addError({ password: error })
+      } else {
+        removeError('password')
+      }
+    }
+  }, [])
+
+  const handleEyeButton = (e) => {
+    e.preventDefault() // TODO: do we need this ?
+    setIsPasswordVisible((prev) => !prev)
+  }
+
+  const handleEmailValidation = (e) => {
+    const { status, error } = validateEmail(e.target.value)
+    if (status === validationStatuses.FAIL) {
+      addError({ email: error })
+    } else {
+      removeError('email')
+    }
+  }
+
+  const handlePasswordValidation = (e) => {
+    const { status, error } = validatePassword(e.target.value)
+    if (status === validationStatuses.FAIL) {
+      addError({ password: error })
+    } else {
+      removeError('password')
+    }
   }
 
   return (
@@ -83,12 +68,10 @@ export default function SignUpBuyerForm({ errors, setErrors, setFormData }) {
           required
           className={styles.formControl}
           value={email}
-          onChange={handleEmailChange}
-          onBlur={validateEmail}
+          onChange={(e) => setEmail(e.target.value)}
+          onBlur={handleEmailValidation}
         />
-        {!errors.email?.valid && (
-          <span className={styles.errors}>{errors.email?.errorMessage}</span>
-        )}
+        {errors?.email && <div className={styles.errors}>{errors.email}</div>}
       </div>
 
       <div className={`${styles.passwordContainer} ${styles.inputsWrapper}`}>
@@ -100,20 +83,19 @@ export default function SignUpBuyerForm({ errors, setErrors, setFormData }) {
           required
           value={password}
           placeholder="Створіть пароль"
-          onChange={handlePasswordChange}
-          onBlur={validatePassword}
+          onChange={(e) => setPassword(e.target.value)}
+          onBlur={handlePasswordValidation}
         />
         <button
-          id='togglePassword'
+          id="togglePassword"
           className={`${styles.toggleEye} ${
             isPasswordVisible ? styles.openEye : styles.closeEye
           }`}
           onClick={handleEyeButton}
-          type='button'
+          type="button"
         ></button>
-        <br />
-        {!errors.password?.valid && (
-          <span className={styles.errors}>{errors.password?.errorMessage}</span>
+        {errors?.password && (
+          <div className={styles.errors}>{errors.password}</div>
         )}
       </div>
     </div>

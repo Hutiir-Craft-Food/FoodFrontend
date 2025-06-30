@@ -1,11 +1,11 @@
 import axios from 'axios'
 
-const ApiClient = axios.create({
+const apiClient = axios.create({
   baseURL: '/api',
   headers: {
-    Accept: 'application/json',
+    'Accept': 'application/json',
     'Content-Type': 'application/json',
   },
 })
 
-export default ApiClient
+export default apiClient
