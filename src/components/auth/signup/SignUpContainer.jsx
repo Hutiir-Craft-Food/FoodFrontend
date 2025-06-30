@@ -1,9 +1,9 @@
-import { useState } from 'react'
+import { useState, useRef, useCallback } from 'react'
 import SignUpBuyerForm from './buyer-form/SignUpBuyerForm'
 import SignUpSellerForm from './seller-form/SignUpSellerForm'
 import { roles, useAuthStore } from '../store/AuthStore'
 import Modal from '~/components/modal/Modal.jsx'
-import ConfirmModal from '../confirmModal/ConfirmModal'
+import ConfirmationDialogue from '~/components/modal/ConfirmationDialogue'
 import styles from './SignUpContainer.module.scss'
 
 export default function SignUpContainer() {
@@ -14,28 +14,26 @@ export default function SignUpContainer() {
   const { register } = useAuthStore()
   const { hasErrors } = useAuthStore()
   const [showConfirm, setShowConfirm] = useState(false)
-  const [confirmAction, setConfirmAction] = useState(null)
+  const actionRef = useRef(() => {})
 
-  const handleConfirm = () => {
-    if (confirmAction === 'switchToBuyer') {
-      switchToBuyer()
-    } else if (confirmAction === 'switchToLogin') {
-      switchToLogin()
-    }
+  // TODO: remove this comment after review.
+  // refer to this pattern:
+  // https://legacy.reactjs.org/docs/hooks-faq.html#how-to-read-an-often-changing-value-from-usecallback
+  // search for "useEventCallback"
+  const handleConfirm = useCallback(() => {
     setDetails({})
-    setMarketingConsent(false)
     setShowConfirm(false)
-  }
+    actionRef.current()
+  }, [actionRef])
 
   const handleReject = () => {
+    actionRef.current = () => {}
     setShowConfirm(false)
   }
-
-  const handleCloseConfirmModal = () => setShowConfirm(false)
 
   const handleSwitchToBuyer = () => {
     if (isDirty()) {
-      setConfirmAction('switchToBuyer')
+      actionRef.current = switchToBuyer
       setShowConfirm(true)
     } else {
       switchToBuyer()
@@ -44,7 +42,8 @@ export default function SignUpContainer() {
 
   const handleSwitchToLogin = () => {
     if (isDirty()) {
-      setConfirmAction('switchToLogin')
+      actionRef.current = switchToLogin
+      setMarketingConsent(false)
       setShowConfirm(true)
     } else {
       switchToLogin()
@@ -70,9 +69,7 @@ export default function SignUpContainer() {
                     ? `${styles.button} ${styles.active}`
                     : `${styles.button}`
                 }
-                onClick={() => {
-                  handleSwitchToBuyer()
-                }}
+                onClick={() => handleSwitchToBuyer()}
               >
                 Хочу купувати
               </button>
@@ -83,9 +80,7 @@ export default function SignUpContainer() {
                     ? `${styles.button} ${styles.active}`
                     : `${styles.button}`
                 }
-                onClick={() => {
-                  switchToSeller()
-                }}
+                onClick={() => switchToSeller()}
               >
                 Хочу продавати
               </button>
@@ -143,8 +138,11 @@ export default function SignUpContainer() {
         </div>
       </div>
       {showConfirm && (
-        <Modal handleClose={handleCloseConfirmModal}>
-          <ConfirmModal onConfirm={handleConfirm} onReject={handleReject} />
+        <Modal handleClose={handleReject}>
+          <ConfirmationDialogue
+            onConfirm={handleConfirm}
+            onReject={handleReject}
+          />
         </Modal>
       )}
     </div>
