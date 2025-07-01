@@ -28,7 +28,7 @@ const HeroCarousel = () => {
 
           <div className={styles.imageWrapper}>
             <img
-              src="/images/woman.svg"
+              src="/images/woman1.png"
               alt="Дівчина"
               className={styles.image}
             />
