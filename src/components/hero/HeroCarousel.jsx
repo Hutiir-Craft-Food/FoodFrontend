@@ -65,7 +65,7 @@ const HeroCarousel = () => {
 
           <SwiperSlide>
             <img
-              src="/images/hero-Carousel_1.svg"
+              src="/images/hero-Carousel_1.png"
               alt="Смачні продукти"
               className={styles.slideImage}
             />
@@ -81,7 +81,7 @@ const HeroCarousel = () => {
 
           <SwiperSlide>
             <img
-              src="/images/hero-Carousel_3.svg"
+              src="/images/hero-Carousel_3.png"
               alt="Смачні продукти"
               className={styles.slideImage}
             />
