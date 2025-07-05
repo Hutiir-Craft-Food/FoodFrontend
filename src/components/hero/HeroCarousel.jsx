@@ -73,7 +73,7 @@ const HeroCarousel = () => {
 
           <SwiperSlide>
             <img
-              src="/images/hero-Carousel_2.svg"
+              src="/images/hero-Carousel_2.png"
               alt="Смачні продукти"
               className={styles.slideImage}
             />
