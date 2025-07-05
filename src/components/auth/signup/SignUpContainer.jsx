@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from 'react'
+import { useState, useRef } from 'react'
 import SignUpBuyerForm from './buyer-form/SignUpBuyerForm'
 import SignUpSellerForm from './seller-form/SignUpSellerForm'
 import { roles, useAuthStore } from '../store/AuthStore'
@@ -16,15 +16,11 @@ export default function SignUpContainer() {
   const [showConfirm, setShowConfirm] = useState(false)
   const actionRef = useRef(() => {})
 
-  // TODO: remove this comment after review.
-  // refer to this pattern:
-  // https://legacy.reactjs.org/docs/hooks-faq.html#how-to-read-an-often-changing-value-from-usecallback
-  // search for "useEventCallback"
-  const handleConfirm = useCallback(() => {
+  const handleConfirm = () => {
     setDetails({})
     setShowConfirm(false)
     actionRef.current()
-  }, [actionRef])
+  }
 
   const handleReject = () => {
     actionRef.current = () => {}
@@ -41,9 +37,9 @@ export default function SignUpContainer() {
   }
 
   const handleSwitchToLogin = () => {
+    setMarketingConsent(false)
     if (isDirty()) {
       actionRef.current = switchToLogin
-      setMarketingConsent(false)
       setShowConfirm(true)
     } else {
       switchToLogin()
@@ -70,6 +66,7 @@ export default function SignUpContainer() {
                     : `${styles.button}`
                 }
                 onClick={() => handleSwitchToBuyer()}
+                // disabled={role === roles.BUYER}
               >
                 Хочу купувати
               </button>

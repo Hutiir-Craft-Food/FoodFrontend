@@ -39,11 +39,13 @@ const payloadSlice = combine({ ...initialPayload }, (set, get) => ({
   setMarketingConsent: (marketingConsent) => set({ marketingConsent }),
   clearPayload: () => set({ ...initialPayload }),
   isDirty: () => {
-    const { details, marketingConsent } = get()
-    return (
-      JSON.stringify(details) !== JSON.stringify(initialPayload.details) ||
-      marketingConsent !== initialPayload.marketingConsent
-    )
+    // const { details, marketingConsent } = get()
+    // return (
+    //   JSON.stringify(details) !== JSON.stringify(initialPayload.details) ||
+    //   marketingConsent !== initialPayload.marketingConsent
+    // )
+    const { details } = get()
+    return JSON.stringify(details) !== JSON.stringify(initialPayload.details)
   },
 }))
 
