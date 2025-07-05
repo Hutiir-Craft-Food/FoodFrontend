@@ -28,7 +28,7 @@ const HeroCarousel = () => {
 
           <div className={styles.imageWrapper}>
             <img
-              src="/images/woman.svg"
+              src="/images/woman.png"
               alt="Дівчина"
               className={styles.image}
             />
@@ -65,7 +65,7 @@ const HeroCarousel = () => {
 
           <SwiperSlide>
             <img
-              src="/images/hero-Carousel_1.svg"
+              src="/images/hero-Carousel_1.png"
               alt="Смачні продукти"
               className={styles.slideImage}
             />
@@ -73,7 +73,7 @@ const HeroCarousel = () => {
 
           <SwiperSlide>
             <img
-              src="/images/hero-Carousel_2.svg"
+              src="/images/hero-Carousel_2.png"
               alt="Смачні продукти"
               className={styles.slideImage}
             />
@@ -81,7 +81,7 @@ const HeroCarousel = () => {
 
           <SwiperSlide>
             <img
-              src="/images/hero-Carousel_3.svg"
+              src="/images/hero-Carousel_3.png"
               alt="Смачні продукти"
               className={styles.slideImage}
             />
