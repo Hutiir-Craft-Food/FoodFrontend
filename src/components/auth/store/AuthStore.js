@@ -39,13 +39,16 @@ const payloadSlice = combine({ ...initialPayload }, (set, get) => ({
   setMarketingConsent: (marketingConsent) => set({ marketingConsent }),
   clearPayload: () => set({ ...initialPayload }),
   isDirty: () => {
-    // const { details, marketingConsent } = get()
-    // return (
-    //   JSON.stringify(details) !== JSON.stringify(initialPayload.details) ||
-    //   marketingConsent !== initialPayload.marketingConsent
-    // )
-    const { details } = get()
-    return JSON.stringify(details) !== JSON.stringify(initialPayload.details)
+    const { action, role, details } = get()
+    if (
+      action == actions.REGISTER &&
+      role == roles.SELLER &&
+      JSON.stringify(details) !== JSON.stringify(initialPayload.details)
+    ) {
+      return true
+    } else {
+      return false
+    }
   },
 }))
 
@@ -118,15 +121,22 @@ const logoutSlice = (set, get) => ({
 })
 
 const roleSlice = (set) => ({
-  role: roles.BUYER,
+  role: roles.GUEST,
+  setRole: (newRole) => set({ role: newRole }),
   switchToBuyer: () => set({ role: roles.BUYER }),
   switchToSeller: () => set({ role: roles.SELLER }),
 })
 
-const actionSlice = (set) => ({
+const actionSlice = (set, get) => ({
   action: actions.LOGIN,
-  switchToLogin: () => set({ action: actions.LOGIN }),
-  switchToRegister: () => set({ action: actions.REGISTER }),
+  switchToLogin: () => {
+    get().setRole(roles.GUEST)
+    set({ action: actions.LOGIN })
+  },
+  switchToRegister: () => {
+    get().setRole(roles.BUYER)
+    set({ action: actions.REGISTER })
+  },
 })
 
 const validationSlice = (set, get) => ({
@@ -146,8 +156,8 @@ const validationSlice = (set, get) => ({
 
 const useAuthStore = create(
   (set, get) => ({
-    ...roleSlice(set),
-    ...actionSlice(set),
+    ...roleSlice(set, get),
+    ...actionSlice(set, get),
     ...payloadSlice(set, get),
     ...userSlice(set),
     ...registerSlice(set, get),

@@ -66,7 +66,6 @@ export default function SignUpContainer() {
                     : `${styles.button}`
                 }
                 onClick={() => handleSwitchToBuyer()}
-                // disabled={role === roles.BUYER}
               >
                 Хочу купувати
               </button>
