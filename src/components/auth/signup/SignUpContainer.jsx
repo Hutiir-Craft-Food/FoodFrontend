@@ -1,49 +1,54 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import SignUpBuyerForm from './buyer-form/SignUpBuyerForm'
 import SignUpSellerForm from './seller-form/SignUpSellerForm'
-import { actions, roles, useAuthStore } from '../store/AuthStore'
+import { roles, useAuthStore } from '../store/AuthStore'
+import Modal from '~/components/modal/Modal.jsx'
+import ConfirmationDialogue from '~/components/modal/ConfirmationDialogue'
 import styles from './SignUpContainer.module.scss'
 
 export default function SignUpContainer() {
-  const { setAction } = useAuthStore()
-  const { role, setRole } = useAuthStore()
-  const { marketingConsent, setMarketingConsent } = useAuthStore()
-  const [formData, setFormData] = useState({})
-  const [errors, setErrors] = useState({})
+  const { switchToLogin, switchToSeller, switchToBuyer, isDirty } =
+    useAuthStore()
+  const { role } = useAuthStore()
+  const { setDetails, marketingConsent, setMarketingConsent } = useAuthStore()
+  const { register } = useAuthStore()
+  const { hasErrors } = useAuthStore()
+  const [showConfirm, setShowConfirm] = useState(false)
+  const actionRef = useRef(() => {})
 
-  const hasErrors = Object.values(errors).some(({ valid }) => valid === false)
+  const handleConfirm = () => {
+    setDetails({})
+    setShowConfirm(false)
+    actionRef.current()
+  }
 
-  const handleSubmit = async (event) => {
-    event.preventDefault()
-    const requestBody = { ...formData, marketingConsent, role }
-    if (!hasErrors) {
-      try {
-        const response = await fetch('/api/v1/auth/register', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(requestBody),
-        })
+  const handleReject = () => {
+    actionRef.current = () => {}
+    setShowConfirm(false)
+  }
 
-        if (response.ok) {
-          const data = await response.json()
-          // TODO: put data.jwt into user.accessToken
-          setFormData({})
-          setMarketingConsent(false)
-        }
-      } catch (error) {
-        console.error('Failed:', error)
-      }
+  const handleSwitchToBuyer = () => {
+    if (isDirty()) {
+      actionRef.current = switchToBuyer
+      setShowConfirm(true)
+    } else {
+      switchToBuyer()
     }
   }
 
-  const handleCheckbox = () => {
-    setMarketingConsent(!marketingConsent)
+  const handleSwitchToLogin = () => {
+    setMarketingConsent(false)
+    if (isDirty()) {
+      actionRef.current = switchToLogin
+      setShowConfirm(true)
+    } else {
+      switchToLogin()
+    }
   }
 
-  const switchToSignIn = () => {
-    setAction(actions.LOGIN)
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    register()
   }
 
   return (
@@ -60,7 +65,7 @@ export default function SignUpContainer() {
                     ? `${styles.button} ${styles.active}`
                     : `${styles.button}`
                 }
-                onClick={() => setRole(roles.BUYER)}
+                onClick={() => handleSwitchToBuyer()}
               >
                 Хочу купувати
               </button>
@@ -71,26 +76,14 @@ export default function SignUpContainer() {
                     ? `${styles.button} ${styles.active}`
                     : `${styles.button}`
                 }
-                onClick={() => setRole(roles.SELLER)}
+                onClick={() => switchToSeller()}
               >
                 Хочу продавати
               </button>
             </div>
 
-            {role === roles.BUYER && (
-              <SignUpBuyerForm
-                errors={errors}
-                setErrors={setErrors}
-                setFormData={setFormData}
-              />
-            )}
-            {role === roles.SELLER && (
-              <SignUpSellerForm
-                errors={errors}
-                setErrors={setErrors}
-                setFormData={setFormData}
-              />
-            )}
+            {role === roles.BUYER && <SignUpBuyerForm />}
+            {role === roles.SELLER && <SignUpSellerForm />}
           </div>
 
           <div className={styles.checkboxLabel}>
@@ -101,18 +94,18 @@ export default function SignUpContainer() {
                 id="marketingConsent"
                 className={styles.checkmark}
                 checked={marketingConsent}
-                onChange={handleCheckbox}
+                onChange={(e) => setMarketingConsent(e.target.checked)}
               />
             </label>
           </div>
 
           <button
             className={
-              hasErrors
+              hasErrors()
                 ? `${styles.signUpButton} ${styles.signUpDisabled}`
                 : `${styles.signUpButton} ${styles.signUpEnabled}`
             }
-            disabled={hasErrors}
+            disabled={hasErrors()}
           >
             Зареєструватись
           </button>
@@ -121,7 +114,9 @@ export default function SignUpContainer() {
         <div>
           <button
             className={styles.signInLink}
-            onClick={() => switchToSignIn()}
+            onClick={() => {
+              handleSwitchToLogin()
+            }}
           >
             Вже маю акаунт
           </button>
@@ -138,6 +133,14 @@ export default function SignUpContainer() {
           </p>
         </div>
       </div>
+      {showConfirm && (
+        <Modal handleClose={handleReject}>
+          <ConfirmationDialogue
+            onConfirm={handleConfirm}
+            onReject={handleReject}
+          />
+        </Modal>
+      )}
     </div>
   )
 }
