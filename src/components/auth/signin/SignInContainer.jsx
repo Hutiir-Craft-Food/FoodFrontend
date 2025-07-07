@@ -1,18 +1,16 @@
 import { useState } from 'react'
-import { actions, useAuthStore } from '../store/AuthStore'
+import { useAuthStore } from '../store/AuthStore'
 import styles from './SignInContainer.module.scss'
 
 export default function SignInContainer() {
   const { email, setEmail } = useAuthStore()
   const { password, setPassword } = useAuthStore()
-
+  const { switchToRegister } = useAuthStore()
+  const { login } = useAuthStore()
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
 
-  const { setAction } = useAuthStore()
-  const { login } = useAuthStore()
-
   const handleEyeButtonClick = (e) => {
-    e.preventDefault()
+    e.preventDefault() // TODO: do we need this ?
     setIsPasswordVisible((prevValue) => !prevValue)
   }
 
@@ -24,21 +22,16 @@ export default function SignInContainer() {
     setPassword(e.target.value)
   }
 
-  // TODO: can we externilize this hanndler?
-  const handleSignIn = async (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
     login()
-  }
-
-  const switchToSignUp = () => {
-    setAction(actions.REGISTER)
   }
 
   return (
     <div className={styles.signInContainer}>
       <div className={styles.formContainer}>
         <h2>Вхід</h2>
-        <form onSubmit={handleSignIn}>
+        <form onSubmit={handleSubmit}>
           <div className={styles.emailContainer}>
             <label htmlFor="email">E-mail</label>
             <br />
@@ -73,7 +66,6 @@ export default function SignInContainer() {
               onClick={handleEyeButtonClick}
             ></button>
           </div>
-          <br />
           <a className={styles.fogetPasswordLink} href="#">
             Забули пароль?
           </a>
@@ -86,9 +78,10 @@ export default function SignInContainer() {
         <div>
           <button
             className={styles.signUpLink}
-            onClick={() => switchToSignUp()}
+            onClick={() => {
+              switchToRegister()
+            }}
           >
-            {' '}
             Зареєструватись
           </button>
         </div>
