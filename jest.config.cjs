@@ -10,7 +10,7 @@ module.exports = {
     '^.+\\.svg$': 'jest-transformer-svg',
   },
   moduleNameMapper: {
-    '/src/(.*)': '<rootDir>/src/$1',
+    '^~/(.*)$': '<rootDir>/src/$1',
   },
 }
 
