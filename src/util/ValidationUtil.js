@@ -17,15 +17,15 @@ const validateEmail = (email) => {
 }
 
 const validatePassword = (password) => {
-  const pattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{9,}$/
-
+  const pattern =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+=-])[ A-Za-z\d!@#$%^&*()_+=-]{8,30}$/
   if (pattern.test(password)) {
     return { status: statuses.SUCCESS, error: null }
   }
 
   return {
     status: statuses.FAIL,
-    error: 'Пароль має містити щонайменше 8 літер та один числовий символ.',
+    error: 'Щонайменше 8 символів: літери, цифри, символи.',
   }
 }
 
