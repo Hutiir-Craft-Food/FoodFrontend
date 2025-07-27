@@ -3,8 +3,6 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import SignUpSellerForm from './SignUpSellerForm'
 import { useAuthStore } from '../../store/AuthStore'
 
-// npm run test SignUpSellerForm.test.jsx
-
 jest.mock('../../store/AuthStore')
 
 describe('SignUpSellerForm component tests', () => {
