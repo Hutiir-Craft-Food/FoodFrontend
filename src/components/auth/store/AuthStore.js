@@ -94,13 +94,11 @@ const registerSlice = (set, get) => ({
       password: get().password,
       details: get().details,
       marketingConsent: get().marketingConsent,
+      role: get().role,
     }
-    const role = get().role
     try {
-      const response = await apiClient.post('/v1/auth/register', {
-        payload,
-        role,
-      })
+      const response = await apiClient.post('/v1/auth/register', payload)
+
       const accessToken = response.data.jwt
       get().setUser({ payload, accessToken, role })
       get().clearPayload()
