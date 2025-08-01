@@ -89,6 +89,7 @@ const registerSlice = (set, get) => ({
   register: async () => {
     const hasErrors = get().hasErrors
     if (hasErrors()) return
+    const role = get().role
     const payload = {
       email: get().email,
       password: get().password,
