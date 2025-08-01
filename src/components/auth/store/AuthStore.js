@@ -92,7 +92,7 @@ const registerSlice = (set, get) => ({
     const payload = {
       email: get().email,
       password: get().password,
-      details: get().details,
+      details: role === roles.SELLER ? get().details : null,
       marketingConsent: get().marketingConsent,
       role: get().role,
     }
