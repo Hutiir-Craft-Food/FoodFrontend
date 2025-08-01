@@ -89,18 +89,17 @@ const registerSlice = (set, get) => ({
   register: async () => {
     const hasErrors = get().hasErrors
     if (hasErrors()) return
+    const role = get().role
     const payload = {
       email: get().email,
       password: get().password,
-      details: get().details,
+      details: role === roles.SELLER ? get().details : null,
       marketingConsent: get().marketingConsent,
+      role: get().role,
     }
-    const role = get().role
     try {
-      const response = await apiClient.post('/v1/auth/register', {
-        payload,
-        role,
-      })
+      const response = await apiClient.post('/v1/auth/register', payload)
+
       const accessToken = response.data.jwt
       get().setUser({ payload, accessToken, role })
       get().clearPayload()
