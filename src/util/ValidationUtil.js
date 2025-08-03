@@ -18,7 +18,7 @@ const validateEmail = (email) => {
 
 const validatePassword = (password) => {
   const pattern =
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+=-])[ A-Za-z\d!@#$%^&*()_+=-]{8,30}$/
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*[\d])(?=.*[\s!@#$%^&*()_+=-])(.{8,30}).*$/
   if (pattern.test(password)) {
     return { status: statuses.SUCCESS, error: null }
   }
