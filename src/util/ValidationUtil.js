@@ -25,7 +25,7 @@ const validatePassword = (password) => {
 
   return {
     status: statuses.FAIL,
-    error: 'Щонайменше 8 символів: літери, цифри, символи.',
+    error: 'Пароль має містити щонайменше 8 літер та один числовий символ.',
   }
 }
 
