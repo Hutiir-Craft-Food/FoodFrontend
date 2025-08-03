@@ -54,10 +54,15 @@ describe('ValidationUtil', () => {
       expect(result.error).toBe(errorMessage)
     })
     test('should return FAIL for a password with Cyrillic letters', () => {
-      const result = validatePassword('Пароль123!!!')
+      let result = validatePassword('Пароль123!!!')
+      expect(result.status).toBe(statuses.FAIL)
+      expect(result.error).toBe(errorMessage)
+
+      result = validatePassword('Fake Password! бла	Бла')
       expect(result.status).toBe(statuses.FAIL)
       expect(result.error).toBe(errorMessage)
     })
+
     test('should return FAIL for a password with only special characters', () => {
       const result = validatePassword('@#$%^&*!')
       expect(result.status).toBe(statuses.FAIL)
