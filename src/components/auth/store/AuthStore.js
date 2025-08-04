@@ -89,23 +89,34 @@ const registerSlice = (set, get) => ({
   register: async () => {
     const hasErrors = get().hasErrors
     if (hasErrors()) return
-    const role = get().role
+
+    const { email, password, marketingConsent, role, details } = get()
+
     const payload = {
-      email: get().email,
-      password: get().password,
-      details: role === roles.SELLER ? get().details : null,
-      marketingConsent: get().marketingConsent,
-      role: get().role,
+      email,
+      password,
+      details: role === roles.SELLER ? details : null,
+      marketingConsent,
+      role,
     }
+
     try {
       const response = await apiClient.post('/v1/auth/register', payload)
 
       const accessToken = response.data.jwt
-      get().setUser({ payload, accessToken, role })
-      get().clearPayload()
-      get().switchToLogin()
-      get().switchToBuyer()
-      get().hideAuthWidget()
+      const {
+        setUser,
+        clearPayload,
+        switchToLogin,
+        switchToBuyer,
+        hideAuthWidget,
+      } = get()
+
+      setUser({ email, accessToken, role })
+      clearPayload()
+      switchToLogin()
+      switchToBuyer()
+      hideAuthWidget()
     } catch (error) {
       alert('Щось пішло не так:', error)
     }
