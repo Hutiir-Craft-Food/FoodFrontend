@@ -93,8 +93,6 @@ export default function SignUpSellerForm() {
           type={isPasswordVisible ? 'text' : 'password'}
           id="password"
           name="password"
-          minLength="9"
-          required
           value={password}
           placeholder="Створіть пароль"
           onChange={(e) => setPassword(e.target.value)}
