@@ -29,7 +29,7 @@ describe('ValidationUtil', () => {
   })
   describe('validatePassword', () => {
     const errorMessage =
-      'Пароль має містити щонайменше 8 літер та один числовий символ.'
+      'Пароль має містити щонайменше 8 символів: літери, цифри, символи.'
     test('should return SUCCESS for a valid password', () => {
       let result = validatePassword('FakePassword12!')
       expect(result.status).toBe(statuses.SUCCESS)
