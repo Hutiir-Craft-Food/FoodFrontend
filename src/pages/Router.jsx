@@ -3,6 +3,7 @@ import Header from '../components/header/Header'
 import Footer from '../components/footer/Footer'
 import HomePage from './home/HomePage'
 import NotFoundPage from './not-found/NotFoundPage'
+import UserProfile from './userProfile/userProfile'
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: '/about',
         element: <h1>Про нас</h1>,
+      },
+      {
+        path: '/userProfile',
+        element: <UserProfile />,
       },
       {
         path: '*',
