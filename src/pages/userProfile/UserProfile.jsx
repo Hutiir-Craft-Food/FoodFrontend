@@ -4,14 +4,12 @@ import { useAuthStore } from '../../components/auth/store/AuthStore'
 export default function UserProfile() {
   const { user, logout } = useAuthStore()
   const navigate = useNavigate()
-
   const userName = user?.payload?.email ?? ''
+
   const logoutAction = () => {
     logout()
     navigate('/')
   }
-  console.log(user)
-  console.log(userName)
 
   return (
     <div className="container">
