@@ -1,6 +1,6 @@
-import ProductGallery from '../../components/product/ProductGallery'
-import ProductInfo from '../../components/product/ProductInfo'
-import ProductDescriptionTabs from '../../components/product/ProductDescriptionTabs'
+import ProductGallery from '../../components/product/ProductGallery/ProductGallery'
+import ProductInfo from '../../components/product/ProductInfo/ProductInfo'
+import ProductDescriptionTabs from '../../components/product/productDescriptoinTabs/ProductDescriptionTabs'
 import styles from './ProductPage.module.scss'
 
 export default function ProductPage() {
