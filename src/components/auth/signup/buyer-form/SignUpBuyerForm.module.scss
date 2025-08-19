@@ -63,5 +63,11 @@
         background: url('/src/icons/eyeClosedLine.svg') no-repeat scroll 7px 7px;
       }
     }
+
+    input[type='password'] {
+      &.inputErrorClass {
+        border: 2px solid $danger-30;
+      }
+    }
   }
 }

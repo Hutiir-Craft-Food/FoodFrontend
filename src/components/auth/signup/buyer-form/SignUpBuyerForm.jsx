@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import clsx from 'clsx'
 import { useAuthStore } from '../../store/AuthStore'
 import {
   validateEmail,
@@ -77,10 +78,12 @@ export default function SignUpBuyerForm() {
       <div className={`${styles.passwordContainer} ${styles.inputsWrapper}`}>
         <label htmlFor="password">Пароль</label>
         <input
+          className={clsx(errors?.password && styles.inputErrorClass)}
           type={isPasswordVisible ? 'text' : 'password'}
           id="password"
           name="password"
           required
+          minLength="8"
           value={password}
           placeholder="Створіть пароль"
           onChange={(e) => setPassword(e.target.value)}
