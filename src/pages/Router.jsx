@@ -2,6 +2,7 @@ import { createBrowserRouter, Outlet } from 'react-router-dom'
 import Header from '../components/header/Header'
 import Footer from '../components/footer/Footer'
 import HomePage from './home/HomePage'
+import ProductPage from './product/ProductPage'
 import NotFoundPage from './not-found/NotFoundPage'
 
 const router = createBrowserRouter([
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: '/about',
         element: <h1>Про нас</h1>,
+      },
+      {
+        path: '/product/:productId',
+        element: <ProductPage />,
       },
       {
         path: '*',
