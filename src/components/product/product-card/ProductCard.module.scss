@@ -1,12 +1,19 @@
-.cardImage {
-  display: flex;
-  flex-direction: column;
-
   .heart {
     position: absolute;
     right: 20px;
     top: 20px;
+
+    &:hover{
+      scale: 1.5;
+      transition: all 0.2s ease-out;
+    }
   }
+
+.cardImage {
+  display: flex;
+  flex-direction: column;
+
+
 }
 
 .title {

@@ -13,23 +13,25 @@ export default function ProductCard({ product }) {
 
   return (
     <div className='card'>
-      <div className={`card-icon ${styles.cardImage}`}>
-        <div
-          className={styles.heart}
-          onClick={toggleFavorite}
-          style={{ cursor: 'pointer' }}
-        >
-          {isFavorite ? <FaHeart color='red' /> : <FaRegHeart color='grey' />}
-        </div>
-        <img
-          src={product.image || `./images/image-not-found.png`}
-          alt='product image'
-        />
+      <div
+        className={styles.heart}
+        onClick={toggleFavorite}
+        style={{ cursor: 'pointer' }}
+      >
+        {isFavorite ? <FaHeart color='red' /> : <FaRegHeart color='grey' />}
       </div>
+      <Link to={`/product/${product.id}`}>
+        <div className={`card-icon ${styles.cardImage}`}>
+          <img
+            src={product.image || `./images/image-not-found.png`}
+            alt='product image'
+          />
+          <h5 className={`card-title mt-3 ${styles.title}`}>{product.name}</h5>
+        </div>
+      </Link>
       <div className='card-body'>
-        <h5 className={`card-title mt-3 ${styles.title}`}>{product.name}</h5>
         <div className={`card-text ${styles.text}`}>
-          <a className={styles.manufacturerLink} href='#'>
+          <a className={styles.manufacturerLink} href="#">
             {product.manufacturer}
           </a>
           <br />
