@@ -4,6 +4,7 @@ import Footer from '../components/footer/Footer'
 import HomePage from './home/HomePage'
 import NotFoundPage from './not-found/NotFoundPage'
 import UserProfile from './userProfile/userProfile'
+import ProductPage from './product/ProductPage'
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: '/userProfile',
         element: <UserProfile />,
+      },
+      {
+        path: '/product/:id',
+        element: <ProductPage/>,
       },
       {
         path: '*',
