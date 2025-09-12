@@ -1,78 +1,51 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
+import ImageGallery from 'react-image-gallery'
+import 'react-image-gallery/styles/css/image-gallery.css'
 import styles from './ProductGallery.module.scss'
 
-export default function ProductGallery({ fetchImages }) {
+export default function ProductGallery() {
   const fallback = '/images/image-not-found.png'
   const [images, setImages] = useState([])
-  const [mainImage, setMainImage] = useState(fallback)
-  const thumbRef = useRef(null)
 
   useEffect(() => {
-    if (fetchImages) {
-      fetchImages()
-        .then((data) => {
-          const validImages = data.filter(Boolean).slice(0, 5)
-          setImages(validImages)
-          setMainImage(validImages[0] || fallback)
-        })
-        .catch(() => {
-          setImages([])
-          setMainImage(fallback)
-        })
+    const fetchImagesFromApi = async () => {
+      try {
+        const res = await fetch(
+          '/api/v1/products?filter=is_new&offset=0&limit=4'
+        )
+        const data = await res.json()
+        const firstProduct = data.products?.[0]
+
+        let valid = firstProduct?.images?.slice(0, 5) || []
+
+        if (!valid.length && firstProduct?.image) {
+          valid = Array(5).fill(firstProduct.image)
+        }
+
+        if (!valid.length) valid = [fallback]
+
+        setImages(valid)
+      } catch (err) {
+        console.error('Помилка при завантаженні картинок', err)
+        setImages([fallback])
+      }
     }
-  }, [fetchImages])
 
-  const scrollUp = () => {
-    thumbRef.current?.scrollBy({ top: -88, behavior: 'smooth' })
-  }
+    fetchImagesFromApi()
+  }, [])
 
-  const scrollDown = () => {
-    thumbRef.current?.scrollBy({ top: 88, behavior: 'smooth' })
-  }
+  const galleryItems = images.map((src) => ({
+    original: src,
+    thumbnail: src,
+  }))
 
   return (
     <div className={styles.productGallery}>
-      <div className={styles.thumbnails}>
-        {images.length > 4 && (
-          <>
-            <button
-              className={`${styles.thumbButton} ${styles.up}`}
-              onClick={scrollUp}
-            />
-            <button
-              className={`${styles.thumbButton} ${styles.down}`}
-              onClick={scrollDown}
-            />
-          </>
-        )}
-        <div className={styles.thumbWrapper} ref={thumbRef}>
-          {images.length > 0
-            ? images.map((img, index) => (
-                <img
-                  key={index}
-                  src={img || fallback}
-                  alt={`thumb-${index}`}
-                  className={`${styles.thumbnail} ${
-                    img === mainImage ? styles.active : ''
-                  }`}
-                  onClick={() => setMainImage(img || fallback)}
-                />
-              ))
-            : [1, 2].map((i) => (
-                <img
-                  key={i}
-                  src={fallback}
-                  alt={`thumb-not-found-${i}`}
-                  className={styles.thumbnail}
-                />
-              ))}
-        </div>
-      </div>
-
-      <img
-        src={mainImage || fallback}
-        alt="main product"
-        className={styles.mainImage}
+      <ImageGallery
+        items={galleryItems}
+        showFullscreenButton={false}
+        showPlayButton={false}
+        thumbnailPosition="left"
       />
     </div>
   )
