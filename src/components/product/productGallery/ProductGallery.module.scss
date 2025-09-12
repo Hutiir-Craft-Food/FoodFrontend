@@ -1,7 +1,61 @@
 @import '/src/styles/var.scss';
 
-  .productGallery {
-    width: 30%;
-    height: 300px;
-    border: solid 1px yellow;
+.productGallery {
+  display: flex;
+  gap: 2.43rem;
+  width: 100%;
+  max-width: 33.81rem;
+  height: 26.37rem;
+  border: 0.0625rem solid rgb(251, 251, 14);
+  margin: 0 0 2rem 0; // 32px відступ до наступної компоненти
+
+  .mainImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border: 0.0625rem solid #ddd;
+    border-radius: 0.5rem;
   }
+
+  .thumbnails {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4375rem;
+    width: 5rem;
+  }
+
+  .thumbWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .thumbnail {
+    width: 5rem;
+    height: 5rem;
+    object-fit: cover;
+    border: 0.0625rem solid #eff6eb;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: border-color 0.2s, transform 0.2s;
+
+    &:hover {
+      border-color: #666;
+      transform: scale(1.03);
+    }
+
+    &.active {
+      border: 0.125rem solid $primary-50;
+      transform: scale(1.05);
+    }
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+
+    .thumbnail {
+      width: 3.75rem;
+      height: 3.75rem;
+    }
+  }
+}

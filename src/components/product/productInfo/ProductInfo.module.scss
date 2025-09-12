@@ -1,7 +1,15 @@
 @import '/src/styles/var.scss';
 
-  .productInfo {
-    text-align: center;
-    width: 70%;
-    border: solid 1px yellow;
-  }
+.productInfo {
+  text-align: center;
+  width: 100%;
+  max-width: 40rem;
+  height: 27.125rem;
+  border: 0.0625rem solid yellow;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 1rem;
+  transform: rotate(0deg);
+  opacity: 1;
+}
