@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom'
-import ProductGallery from '../../components/product/ProductGallery/ProductGallery'
-import ProductInfo from '../../components/product/ProductInfo/ProductInfo'
+import ProductGallery from '../../components/product/productGallery/ProductGallery.jsx'
+import ProductInfo from '../../components/product/productInfo/ProductInfo.jsx'
 import ProductDescriptionTabs from '../../components/product/productDescriptoinTabs/ProductDescriptionTabs'
 import styles from './ProductPage.module.scss'
 
