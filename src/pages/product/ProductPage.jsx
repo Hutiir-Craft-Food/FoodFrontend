@@ -2,10 +2,12 @@ import { useParams } from 'react-router-dom'
 import ProductGallery from '../../components/product/ProductGallery/ProductGallery'
 import ProductInfo from '../../components/product/ProductInfo/ProductInfo'
 import ProductDescriptionTabs from '../../components/product/productDescriptoinTabs/ProductDescriptionTabs'
+import useProduct from '../../components/product/useProduct'
 import styles from './ProductPage.module.scss'
 
 export default function ProductPage() {
   const { id } = useParams()
+  const product = useProduct(id)
   return (
     <div className="container">
       <h2>Сторінка продукту</h2>
@@ -16,7 +18,7 @@ export default function ProductPage() {
           <ProductGallery />
           <ProductInfo />
         </div>
-        <ProductDescriptionTabs />
+        <ProductDescriptionTabs product={product} />
       </div>
     </div>
   )
