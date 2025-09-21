@@ -1,86 +1,24 @@
 HTTP/1.1 200 OK
 Content-Type: application/json
 
-{{#code}}
-(() => {
-    const products = [
-        {
-          "id": 1,
-          "name": "Брі де Мьо із зеленим перцем та трюфельним маслом",
-          "manufacturer": "Ферма Зелений Луг",
-          "image": "https://i.postimg.cc/YCrbyLHN/bri.png",
-          "rating": 3.8,
-          "reviews": 11,
-          "regular_price": 370,
-          "sale_price": 320,
-          "is_new": true,
-          "is_recommend": false,
-          "is_offer": false,
-          "is_available": true,
-          "tabs": {
-            "description": "Сир Брi — один з найдавніших французьких сирів...",
-            "composition": "Склад: молоко, закваска, сіль, ферменти.",
-            "allergens": "Алергени: молочні продукти.",
-            "energy": "Енергетична цінність: 334 ккал / 100 г.",
-            "storage": "Зберігати при температурі від +2°C до +6°C."
-          }
-        }
-    ];
-
-    // беремо id з params, а не query
-    const id = parseInt(request.params.id);
-    const product = products.find(p => p.id === id);
-
-    return {
-        status: product ? 200 : 404,
-        headers: {
-            'X-Requested-By': 'responseProduct'
-        },
-        body: JSON.stringify(product || { error: "Product not found" })
-    };
-})();
-
-; (()=>{product:
-;            {
-;           "id": 1,
-;           "name": "Брі де Мьо із зеленим перцем та трюфельним маслом",
-;           "manufacturer": "Ферма Зелений Луг",
-;           "image" : "https://i.postimg.cc/YCrbyLHN/bri.png",
-;           "rating": 3.8,
-;           "reviews": 11,
-;           "regular_price": 370,
-;           "sale_price": 320,
-;           "is_new": true,
-;           "is_recommend": false,
-;           "is_offer": false,
-;           "is_available": true,
-;           "tabs": {
-;             "description": "Сир Брi — один з найдавніших французьких сирів. Сир покритий цвіллю, що нагадує за кольором білий оксамит, під яким знаходиться ніжна текуча маса вершкового кольору, має виражений солодко-солоний вершковий смак і гіркуватий присмак. Виймати сир з холодильника краще заздалегідь, оскільки справжній смак десертного сиру розкривається при кімнатній температурі.",
-;             "composition": "Склад: молоко, закваска, сіль, ферменти.",
-;             "allergens": "Алергени: молочні продукти.",
-;             "energy": "Енергетична цінність: 334 ккал / 100 г.",
-;             "storage": "Зберігати при температурі від +2°C до +6°C."
-;           }
-;         },
-
-;       const id = parseInt(request.query.id);
-;       const offset = parseInt(request.query.offset) || 0;
-;       const limit = parseInt(request.query.limit) || 4;
-;       const filterFromRequest = request.query.filter;
-;       const filteredProducts = products.filter((product)=> product[filterFromRequest] === true);
-;       console.log(filteredProducts);
-;       const selectedProducts = filteredProducts.slice(offset, offset + limit);
-
-;     return {
-;         status: 200,
-;         headers: {
-;             'X-Requested-By': 'responseProducts'
-;         },
-;         body: JSON.stringify({
-;             product: product
-;         })
-;     };
-; })();
-{{/code}}
-
-
+{
+  "id": 1,
+  "name": "Брі де Мьо із зеленим перцем та трюфельним маслом",
+  "manufacturer": "Ферма Зелений Луг",
+  "image": "https://i.postimg.cc/YCrbyLHN/bri.png",
+  "rating": 3.8,
+  "reviews": 11,
+  "regular_price": 370,
+  "sale_price": 320,
+  "is_new": true,
+  "is_recommend": false,
+  "is_offer": false,
+  "is_available": true,
+  "tabs": {
+    "description": "Сир Брi — один з найдавніших французьких сирів...",
+    "composition": "Склад: молоко, закваска, сіль, ферменти.",
+    "allergens": "Алергени: молочні продукти.",
+    "energy": "334 ккал / 100 г.",
+    "storage": "Зберігати при +2°C...+6°C."
+  }
+}

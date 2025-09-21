@@ -7,16 +7,17 @@ import styles from './ProductPage.module.scss'
 
 export default function ProductPage() {
   const { id } = useParams()
-  const product = useProduct(id)
+  const { product } = useProduct(id)
+  const productName = (product && product.name) || ''
   return (
     <div className="container">
       <h2>Сторінка продукту</h2>
       <h3>Product ID: {id}</h3>
       <div className={styles.productPageContent}>
-        <p>каталог - молочні продукти - сири - сир Брі</p>
+        <p>каталог - молочні продукти - сири - {productName}</p>
         <div className={styles.galleryAndInfoContainer}>
           <ProductGallery />
-          <ProductInfo />
+          <ProductInfo product={product} />
         </div>
         <ProductDescriptionTabs product={product} />
       </div>

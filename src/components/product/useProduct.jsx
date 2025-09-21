@@ -23,5 +23,5 @@ export default function useProduct(id) {
     fetchProduct()
   }, [id])
 
-  return { product, loading }
+  return { product }
 }
