@@ -1,6 +1,6 @@
 @import '/src/styles/var.scss';
 
-h3{
+h3 {
   text-align: center;
 }
 .productPageContent {
@@ -10,7 +10,6 @@ h3{
 
   .galleryAndInfoContainer {
     width: 100%;
-    height: 300px;
     display: flex;
     justify-content: space-between;
   }

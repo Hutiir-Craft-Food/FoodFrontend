@@ -1,0 +1,63 @@
+@import '/src/styles/var.scss';
+
+.productDescriptionTabs {
+  padding: 20px 48px;
+
+  .nav {
+    a {
+      color: black;
+      border: none;
+      border-radius: 20px;
+      width: 100%;
+      padding: 12px;
+      font-family: Circe;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 400;
+      margin-bottom: 5px;
+
+      &:hover,
+      &.activeLink {
+        background-color: $primary-10;
+        font-weight: 700;
+      }
+    }
+  }
+
+  .tabContainer {
+    position: relative;
+    padding: 20px 50px;
+    border-radius: 20px;
+    background-color: $primary-10;
+    height: 400px;
+    display: flex;
+    align-items: center;
+
+    .logo {
+      position: absolute;
+      left: 27px;
+      top: 36px;
+      z-index: 1;
+    }
+
+    .logoSecond {
+      position: absolute;
+      right: 15.221px;
+      bottom: 23px;
+      z-index: 1;
+    }
+
+    .tabContent {
+      background: rgba(255, 255, 255, 0.9);
+      font-family: Circe;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 400;
+      border-radius: 20px;
+      padding: 20px;
+      text-align: left;
+      width: 100%;
+      z-index: 2;
+    }
+  }
+}
