@@ -1,14 +1,39 @@
 import { useParams } from 'react-router-dom'
 import ProductGallery from '../../components/product/ProductGallery/ProductGallery'
 import ProductInfo from '../../components/product/ProductInfo/ProductInfo'
-import ProductDescriptionTabs from '../../components/product/productDescriptoinTabs/ProductDescriptionTabs'
+import ProductDescriptionTabs from '../../components/product/productDescriptionTabs/ProductDescriptionTabs'
 import useProduct from '../../components/product/useProduct'
 import styles from './ProductPage.module.scss'
 
 export default function ProductPage() {
   const { id } = useParams()
-  const { product } = useProduct(id)
-  const productName = (product && product.name) || ''
+  const { product, loading, error } = useProduct(id)
+  const productName = product?.name || ''
+  if (loading) {
+    return (
+      <div className="container">
+        <h2>Завантаження продукту...</h2>
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className="container">
+        <h2>Помилка</h2>
+        <p style={{ color: 'red' }}>{error}</p>
+      </div>
+    )
+  }
+
+  if (!product) {
+    return (
+      <div className="container">
+        <h2>Продукт не знайдено</h2>
+      </div>
+    )
+  }
+
   return (
     <div className="container">
       <h2>Сторінка продукту</h2>
