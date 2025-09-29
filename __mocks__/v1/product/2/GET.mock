@@ -13,13 +13,11 @@ Content-Type: application/json
   "is_recommend": false,
   "is_offer": false,
   "is_available": true,
-   "tabs": {
-    "description": "Мед - корисний продукт",
-    "composition": "Склад: мед натуральний",
-    "allergens": "Алергени: мед",
-    "energy": "334 ккал / 100 г.",
-    "storage": "Зберігати при +2°C...+26°C."
-  }
+  "description": "Мед - корисний продукт",
+  "composition": "Склад: мед натуральний",
+  "allergens": "Алергени: мед",
+  "energy": "334 ккал / 100 г.",
+  "storage": "Зберігати при +2°C...+26°C."
 }
 
 

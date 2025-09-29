@@ -4,16 +4,7 @@ import { Tab, Nav, Row, Col } from 'react-bootstrap'
 import styles from './ProductDescriptionTabs.module.scss'
 
 export default function ProductDescriptionTabs({ product }) {
-  const [tabs, setTabs] = useState({})
   const [activeKey, setActiveKey] = useState('description')
-
-  useEffect(() => {
-    if (product?.tabs) {
-      setTabs(product.tabs)
-    }
-  }, [product])
-
-  const { description, composition, allergens, energy, storage } = tabs
 
   return (
     <div className={styles.productDescriptionTabs}>
@@ -78,32 +69,34 @@ export default function ProductDescriptionTabs({ product }) {
             </Nav>
           </Col>
 
-          <Col sm={9} className={styles.tabContainer}>
-            <img src="/public/images/Logo.png" className={styles.logo} />
-            <img
-              src="/public/images/Logo_sign_green.png"
-              className={styles.logoSecond}
-            />
-            <div className={styles.tabContent}>
-              <Tab.Content>
-                <Tab.Pane eventKey="description">
-                  <p>{description} </p>
-                </Tab.Pane>
-                <Tab.Pane eventKey="composition">
-                  <p>{composition}</p>
-                </Tab.Pane>
-                <Tab.Pane eventKey="allergens">
-                  <p>{allergens}</p>
-                </Tab.Pane>
-                <Tab.Pane eventKey="energy">
-                  <p>{energy}</p>
-                </Tab.Pane>
-                <Tab.Pane eventKey="storage">
-                  <p>{storage}</p>
-                </Tab.Pane>
-              </Tab.Content>
-            </div>
-          </Col>
+          {product && (
+            <Col sm={9} className={styles.tabContainer}>
+              <img src="/public/images/Logo.png" className={styles.logo} />
+              <img
+                src="/public/images/Logo_sign_green.png"
+                className={styles.logoSecond}
+              />
+              <div className={styles.tabContent}>
+                <Tab.Content>
+                  <Tab.Pane eventKey="description">
+                    <p>{product.description} </p>
+                  </Tab.Pane>
+                  <Tab.Pane eventKey="composition">
+                    <p>{product.composition}</p>
+                  </Tab.Pane>
+                  <Tab.Pane eventKey="allergens">
+                    <p>{product.allergens}</p>
+                  </Tab.Pane>
+                  <Tab.Pane eventKey="energy">
+                    <p>{product.energy}</p>
+                  </Tab.Pane>
+                  <Tab.Pane eventKey="storage">
+                    <p>{product.storage}</p>
+                  </Tab.Pane>
+                </Tab.Content>
+              </div>
+            </Col>
+          )}
         </Row>
       </Tab.Container>
     </div>

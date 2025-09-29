@@ -13,13 +13,11 @@ Content-Type: application/json
   "is_recommend": false,
   "is_offer": false,
   "is_available": true,
-  "tabs": {
-    "description": "Ароматне варення з лісової малини.",
-    "composition": "Склад: малина, цукор.",
-    "allergens": "Алергени: відсутні.",
-    "energy": "Енергетична цінність: 250 ккал / 100 г.",
-    "storage": "Зберігати при температурі від +2°C до +10°C."
-  }
+  "description": "Ароматне варення з лісової малини.",
+  "composition": "Склад: малина, цукор.",
+  "allergens": "Алергени: відсутні.",
+  "energy": "Енергетична цінність: 250 ккал / 100 г.",
+  "storage": "Зберігати при температурі від +2°C до +10°C."
 }
 
 
