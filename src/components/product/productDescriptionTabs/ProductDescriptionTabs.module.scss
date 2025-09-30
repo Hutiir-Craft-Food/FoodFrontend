@@ -16,11 +16,17 @@
       font-weight: 400;
       margin-bottom: 5px;
 
-      &:hover,
-      &.activeLink {
+      &:hover {
         background-color: $primary-10;
         font-weight: 700;
+        transition: 0.2s ease-in-out;
       }
+    }
+
+    :global(.nav-link.active) {
+      background-color: $primary-10;
+      font-weight: 700;
+      transition: 0.5s ease-in-out;
     }
   }
 

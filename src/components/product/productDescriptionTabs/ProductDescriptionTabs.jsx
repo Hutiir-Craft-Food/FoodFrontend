@@ -1,68 +1,32 @@
-import { useEffect, useState } from 'react'
-import clsx from 'clsx'
 import { Tab, Nav, Row, Col } from 'react-bootstrap'
 import styles from './ProductDescriptionTabs.module.scss'
 
 export default function ProductDescriptionTabs({ product }) {
-  const [activeKey, setActiveKey] = useState('description')
-
   return (
     <div className={styles.productDescriptionTabs}>
       <Tab.Container
-        activeKey={activeKey}
-        onSelect={(key) => setActiveKey(key)}
+        defaultActiveKey="description"
         className={styles.tabContainer}
       >
         <Row>
           <Col sm={3} className="rounded-start">
             <Nav variant="tabs" className={`${styles.nav} flex-column`}>
               <Nav.Item className="text-black">
-                <Nav.Link
-                  eventKey="description"
-                  className={clsx({
-                    [styles.activeLink]: activeKey === 'description',
-                  })}
-                >
+                <Nav.Link eventKey="description" className={styles.navLinka}>
                   Опис
                 </Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link
-                  eventKey="composition"
-                  className={clsx({
-                    [styles.activeLink]: activeKey === 'composition',
-                  })}
-                >
-                  Склад
-                </Nav.Link>
+                <Nav.Link eventKey="composition">Склад</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link
-                  eventKey="allergens"
-                  className={clsx({
-                    [styles.activeLink]: activeKey === 'allergens',
-                  })}
-                >
-                  Алергени
-                </Nav.Link>
+                <Nav.Link eventKey="allergens">Алергени</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link
-                  eventKey="energy"
-                  className={clsx({
-                    [styles.activeLink]: activeKey === 'energy',
-                  })}
-                >
-                  Енергетична цінність
-                </Nav.Link>
+                <Nav.Link eventKey="energy">Енергетична цінність</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link
-                  eventKey="storage"
-                  className={clsx({
-                    [styles.activeLink]: activeKey === 'storage',
-                  })}
-                >
+                <Nav.Link eventKey="storage">
                   Термін та умови зберігання
                 </Nav.Link>
               </Nav.Item>
