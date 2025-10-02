@@ -17,7 +17,7 @@ export default function useProducts({ filter, limit }) {
     try {
       setLoading(true)
       const { data } = await ApiClient.get(uri, { params })
-      setProducts(prevProducts => ({
+      setProducts((prevProducts) => ({
         ...prevProducts,
         [offset]: data.products,
       }))
@@ -29,7 +29,7 @@ export default function useProducts({ filter, limit }) {
   }
 
   const loadMoreProducts = () => {
-    setOffset(prevOffset => prevOffset + limit)
+    setOffset((prevOffset) => prevOffset + limit)
   }
 
   useEffect(() => {

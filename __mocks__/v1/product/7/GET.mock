@@ -1,0 +1,24 @@
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": 7,
+  "name": "Сік яблучний",
+  "manufacturer": "Соковий Рай",
+  "rating": 4.7,
+  "reviews": 5,
+  "regular_price": 60,
+  "sale_price": 55,
+  "is_new": true,
+  "is_recommend": true,
+  "is_offer": false,
+  "is_available": false,
+  "description": "Натуральний яблучний сік без додавання цукру.",
+  "composition": "Склад: яблука 100%.",
+  "allergens": "Алергени: відсутні.",
+  "energy": "Енергетична цінність: 45 ккал / 100 мл.",
+  "storage": "Зберігати при температурі від 0°C до +6°C."
+}
+
+
+
