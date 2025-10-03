@@ -87,42 +87,32 @@ $main-image-width: 27.375rem;
 
   button {
     position: absolute;
-    top: 11.6875rem;
+
     width: 2.75rem;
     height: 2.75rem;
-    background: #537a67;
     border: none;
     border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     cursor: pointer;
-    padding: 0;
     user-select: none;
-    transition: background 0.2s ease;
-    font-size: 1.75rem;
-    color: #fff;
+    padding: 0;
+    transition: background-color 0.2s ease;
+    background-color: #537a67;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 1.35rem auto;
 
     &:hover {
-      background: darken(#537a67, 10%);
-    }
-
-    img {
-      width: 1.03125rem;
-      height: 0.5625rem;
-      display: block;
+      background-color: darken(#537a67, 10%);
     }
   }
 
   .leftNav {
-    left: 0.625rem;
-    top: 50%;
-    transform: translateY(-50%);
+    left: 1.25rem;
+    background-image: url('/images/arrowLeft.svg');
   }
 
   .rightNav {
-    right: 0.625rem;
-    top: 50%;
-    transform: translateY(-50%);
+    right: 1.25rem;
+    background-image: url('/images/arrowRight.svg');
   }
 }

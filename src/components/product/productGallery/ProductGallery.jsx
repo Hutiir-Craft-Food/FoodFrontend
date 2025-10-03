@@ -110,12 +110,16 @@ export default function ProductGallery() {
 
         {slideCount > 0 && (
           <>
-            <button className={styles.leftNav} onClick={() => paginate(-1)}>
-              ‹
-            </button>
-            <button className={styles.rightNav} onClick={() => paginate(1)}>
-              ›
-            </button>
+            <button
+              className={styles.leftNav}
+              onClick={() => paginate(-1)}
+              aria-label="Попереднє зображення"
+            />
+            <button
+              className={styles.rightNav}
+              onClick={() => paginate(1)}
+              aria-label="Наступне зображення"
+            />
           </>
         )}
       </div>
