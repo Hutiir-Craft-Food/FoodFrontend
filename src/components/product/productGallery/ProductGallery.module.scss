@@ -25,50 +25,104 @@ $main-image-width: 27.375rem;
       width: $thumbnail-size;
       height: $thumbnail-size;
       object-fit: contain;
-      border: 1px solid #eff6eb;
       cursor: pointer;
       background: #fff;
+      border: 1px solid #eff6eb;
+      transition: border 0.2s ease;
 
       &.active {
         border: 0.2rem solid #537a67;
       }
     }
+
+    .placeholder {
+      width: $thumbnail-size;
+      height: $thumbnail-size;
+      background: #d9d9d9;
+      filter: grayscale(1);
+      border: 1px solid #ccc;
+      transition: border 0.2s ease;
+    }
+  }
+}
+
+.mainImage {
+  position: relative;
+  width: $main-image-width;
+  height: $gallery-height;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .sliderWrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
   }
 
-  .mainImage {
-    position: relative;
-    width: $main-image-width;
-    height: $gallery-height;
-    overflow: hidden;
+  .slide {
+    min-width: 100%;
+    height: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
     img {
       width: 100%;
       height: 100%;
       object-fit: contain;
-    }
-
-    button {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(255, 255, 255, 0.8);
-      border: none;
-      font-size: 2rem;
-      cursor: pointer;
-      padding: 0.25rem 0.5rem;
-      border-radius: 0.25rem;
       user-select: none;
+      pointer-events: none;
+    }
+  }
+
+  .placeholder {
+    width: $main-image-width;
+    height: $gallery-height;
+    background: #d9d9d9;
+    filter: grayscale(1);
+    border: 1px solid #ccc;
+  }
+
+  button {
+    position: absolute;
+    top: 11.6875rem;
+    width: 2.75rem;
+    height: 2.75rem;
+    background: #537a67;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 0;
+    user-select: none;
+    transition: background 0.2s ease;
+    font-size: 1.75rem;
+    color: #fff;
+
+    &:hover {
+      background: darken(#537a67, 10%);
     }
 
-    .leftNav {
-      left: 0.5rem;
+    img {
+      width: 1.03125rem;
+      height: 0.5625rem;
+      display: block;
     }
+  }
 
-    .rightNav {
-      right: 0.5rem;
-    }
+  .leftNav {
+    left: 0.625rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .rightNav {
+    right: 0.625rem;
+    top: 50%;
+    transform: translateY(-50%);
   }
 }
