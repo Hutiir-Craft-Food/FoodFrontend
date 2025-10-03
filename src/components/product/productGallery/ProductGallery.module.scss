@@ -1,48 +1,45 @@
 @import '/src/styles/var.scss';
 
 $thumbnail-size: 4rem;
-$thumbnail-gap: 0.5rem;
-$gallery-gap: 2rem;
-$gallery-height: 18rem;
-$product-info-width: 40rem;
-$product-gallery-width: 41.625rem;
+$thumbnail-gap: 1.5rem;
+$gallery-gap: 3.0625rem;
+$gallery-height: 26rem;
+$product-gallery-width: 34.4375rem;
+$main-image-width: 27.375rem;
 
 .productGallery {
   display: flex;
-  gap: $thumbnail-gap;
+  gap: $gallery-gap;
   width: $product-gallery-width;
+  height: $gallery-height;
   align-items: flex-start;
 
   .thumbnails {
     display: flex;
     flex-direction: column;
     gap: $thumbnail-gap;
+    width: $thumbnail-size;
+    height: $gallery-height;
 
     img {
       width: $thumbnail-size;
       height: $thumbnail-size;
       object-fit: contain;
       border: 1px solid #eff6eb;
-      border-radius: 0.375rem;
       cursor: pointer;
       background: #fff;
 
       &.active {
-        border: 2px solid #90c63f;
-        transform: scale(1.05);
-        transition: 0.2s;
+        border: 0.2rem solid #537a67;
       }
     }
   }
 
   .mainImage {
     position: relative;
-    flex: 1;
+    width: $main-image-width;
     height: $gallery-height;
-    border: 1px solid #ddd;
-    border-radius: 0.5625rem;
     overflow: hidden;
-    background: #fff;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -52,14 +52,20 @@ export default function ProductGallery() {
             alt={`thumbnail-${index}`}
             className={index === activeIndex ? styles.active : ''}
             onClick={() => setActiveIndex(index)}
+            onError={(e) => (e.target.src = fallback)}
           />
         ))}
       </div>
 
       <div className={styles.mainImage} ref={ref}>
-        <img src={images[activeIndex]} alt="product" />
+        <img
+          src={images[activeIndex]}
+          alt="product"
+          onError={(e) => (e.target.src = fallback)}
+        />
         <button
           className={styles.leftNav}
+          aria-label="Попереднє фото"
           onClick={() =>
             setActiveIndex((i) => (i - 1 + images.length) % images.length)
           }
@@ -68,6 +74,7 @@ export default function ProductGallery() {
         </button>
         <button
           className={styles.rightNav}
+          aria-label="Наступне фото"
           onClick={() => setActiveIndex((i) => (i + 1) % images.length)}
         >
           ›
