@@ -29,7 +29,7 @@ export default function ProductGallery() {
     const fetchImages = async () => {
       try {
         const res = await fetch(
-          '/api/v1/products?filter=is_new&offset=0&limit=5'
+          '/api/v1/products?filter=is_new&offset=0&limit=4'
         )
         const data = await res.json()
         const firstProduct = data.products?.[0]
