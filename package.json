@@ -17,6 +17,7 @@
     "axios": "^1.7.9",
     "bootstrap": "^5.3.8",
     "clsx": "^2.1.1",
+    "framer-motion": "^12.23.22",
     "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.10",
