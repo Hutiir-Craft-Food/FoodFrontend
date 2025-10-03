@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import ProductGallery from '../../components/product/ProductGallery/ProductGallery'
+import ProductGallery from '../../components/product/productGallery/ProductGallery.jsx'
 import ProductInfo from '../../components/product/productInfo/ProductInfo'
 import ProductDescriptionTabs from '../../components/product/productDescriptionTabs/ProductDescriptionTabs'
 import useProduct from '../../components/product/useProduct'
