@@ -3,6 +3,7 @@ Content-Type: application/json
 
 {
   "id": 7,
+  "categoryId": 4,
   "name": "Сік яблучний",
   "manufacturer": "Соковий Рай",
   "rating": 4.7,
