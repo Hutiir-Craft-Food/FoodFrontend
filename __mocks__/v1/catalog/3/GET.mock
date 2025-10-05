@@ -1,0 +1,26 @@
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Каталог",
+  "children": [
+    {
+      "id": 10,
+      "name": "Солодощі",
+      "children": [
+        {
+          "id": 11,
+          "name": "Варення",
+          "children": [
+            {
+              "id": 12,
+              "name": "Варення з малини",
+              "children": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

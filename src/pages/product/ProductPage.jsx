@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom'
+import Breadcrumbs from '../../components/product/breadcrumbs/Breadcrumbs'
 import ProductGallery from '../../components/product/ProductGallery/ProductGallery'
 import ProductInfo from '../../components/product/productInfo/ProductInfo'
 import ProductDescriptionTabs from '../../components/product/productDescriptionTabs/ProductDescriptionTabs'
@@ -8,7 +9,8 @@ import styles from './ProductPage.module.scss'
 export default function ProductPage() {
   const { id } = useParams()
   const { product, loading, error } = useProduct(id)
-  const productName = product?.name ?? ''
+  const categoryId = product?.categoryId ?? ''
+
   if (loading) {
     return (
       <div className="container">
@@ -39,7 +41,7 @@ export default function ProductPage() {
       <h2>Сторінка продукту</h2>
       <h3>Product ID: {id}</h3>
       <div className={styles.productPageContent}>
-        <p>каталог - молочні продукти - сири - {productName}</p>
+        <Breadcrumbs categoryId={categoryId} />
         <div className={styles.galleryAndInfoContainer}>
           <ProductGallery />
           <ProductInfo product={product} />
