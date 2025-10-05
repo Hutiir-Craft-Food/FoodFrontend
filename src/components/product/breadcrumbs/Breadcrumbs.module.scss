@@ -1,0 +1,20 @@
+@import '/src/styles/var.scss';
+
+.breadcrumbs {
+  a {
+    color: $primary-80;
+    text-decoration: none;
+    text-align: center;
+    font-family: Circe;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    cursor: pointer;
+
+    &:hover {
+      color: $primary-60;
+      font-weight: 600;
+    }
+  }
+}

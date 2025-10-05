@@ -3,6 +3,7 @@ Content-Type: application/json
 
 {
   "id": 2,
+  "categoryId": 2,
   "name": "Мед квітковий",
   "manufacturer": "Пасіка Весела Бджілка",
   "rating": 5,

@@ -3,6 +3,7 @@ Content-Type: application/json
 
 {
   "id": 5,
+  "categoryId": 3,
   "name": "Варення з малини",
   "manufacturer": "Садиба Ягодина",
   "rating": 4.9,
