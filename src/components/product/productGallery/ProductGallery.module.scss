@@ -13,6 +13,8 @@ $main-image-width: 27.375rem;
   width: $product-gallery-width;
   height: $gallery-height;
   align-items: flex-start;
+  margin-left: 3rem;
+  margin-top: 1rem;
 
   .thumbnails {
     display: flex;
