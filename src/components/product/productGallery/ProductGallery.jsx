@@ -15,7 +15,7 @@ export default function ProductGallery() {
   })
 
   const paginate = (dir) => {
-    if (images.length === 0) return
+    if (images.length === 1) return
     setInstant(false)
     setIndex((prev) => {
       let next = prev + dir
