@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { motion } from 'framer-motion'
 import styles from './ProductGallery.module.scss'
 import { useSwipe } from './useSwipe'
@@ -19,8 +19,8 @@ export default function ProductGallery() {
     setInstant(false)
     setIndex((prev) => {
       let next = prev + dir
-      if (next < 1) next = images.length
-      if (next > images.length) next = 1
+      if (next < 0) next = images.length
+      if (next > images.length + 1) next = 1
       return next
     })
   }
@@ -50,11 +50,17 @@ export default function ProductGallery() {
   }, [])
 
   const slideCount = images.length
-  const extended =
-    slideCount > 0 ? [images[slideCount - 1], ...images, images[0]] : [null]
 
-  const thumbnails = [...images]
-  while (thumbnails.length < maxSlides) thumbnails.push(null)
+  const extended = useMemo(() => {
+    if (slideCount > 0) return [images[slideCount - 1], ...images, images[0]]
+    return [null]
+  }, [images, slideCount])
+
+  const thumbnails = useMemo(() => {
+    return Array(maxSlides)
+      .fill(null)
+      .map((_, i) => images[i] || null)
+  }, [images])
 
   return (
     <div className={styles.productGallery}>
@@ -87,8 +93,18 @@ export default function ProductGallery() {
           }
           onAnimationComplete={() => {
             if (slideCount === 0) return
-            if (index === 0) setIndex(slideCount)
-            if (index === slideCount + 1) setIndex(1)
+
+            if (index === slideCount + 1) {
+              setInstant(true)
+              setIndex(1)
+            }
+
+            if (index === 0) {
+              setInstant(true)
+              setIndex(slideCount)
+            }
+
+            setTimeout(() => setInstant(false), 0)
           }}
         >
           {extended.map((src, i) => (
