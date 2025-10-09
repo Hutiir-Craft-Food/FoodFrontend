@@ -6,24 +6,22 @@ export default function useBreadcrumbs(categoryId) {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
 
-  function extractPathFromBranch(tree) {
-    const path = []
-    let current = tree
-
-    while (current) {
-      path.push({ id: current.id, name: current.name })
-      if (current.children && current.children.length > 0) {
-        current = current.children[0]
-      } else {
-        current = null
-      }
-    }
-
-    return path
-  }
-
   useEffect(() => {
     if (!categoryId) return
+
+    function extractPathFromBranch(tree) {
+      const path = []
+      let current = tree
+      while (current) {
+        path.push({ id: current.id, name: current.name })
+        if (current.children && current.children.length > 0) {
+          current = current.children[0]
+        } else {
+          current = null
+        }
+      }
+      return path
+    }
 
     const fetchBreadcrumbs = async () => {
       setLoading(true)
@@ -42,5 +40,5 @@ export default function useBreadcrumbs(categoryId) {
     fetchBreadcrumbs()
   }, [categoryId])
 
-  return { breadcrumbs }
+  return { breadcrumbs, loading, error }
 }
