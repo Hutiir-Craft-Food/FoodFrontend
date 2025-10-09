@@ -14,10 +14,13 @@
   "prettier.enable": true,
   "prettier.useEditorConfig": false,
   "search.exclude": {
-    "cli/target": true,
-    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/.build": true,
+    "**/.git": true,
     "**/dist": true,
-    "**/.build": true
+    "**/node_modules": true,
+    "**/tmp": true,
+    "cli/target": true
   },
   "css.format.enable": true,
   "css.format.spaceAroundSelectorSeparator": true
