@@ -13,7 +13,7 @@ export default function useProduct(id) {
       setLoading(true)
       setError(null)
       try {
-        const { data } = await ApiClient.get(`/v1/product/${id}`)
+        const { data } = await ApiClient.get(`/v1/products/${id}`)
         setProduct(data)
       } catch (error) {
         console.error('Error fetching product: ', error.message)
