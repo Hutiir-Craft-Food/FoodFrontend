@@ -1,0 +1,26 @@
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{{#code}}
+(()=>{
+  const product = {
+    "id": 123,
+    "name": "Брі де Мьо із зеленим перцем та трюфельним маслом",
+    "manufacturer": "Ферма Зелений Луг",
+    "description": "Сир Брi — один з найдавніших французьких сирів...",
+    "composition": "Склад: молоко, закваска, сіль, ферменти.",
+    "allergens": "Алергени: молочні продукти.",
+    "energy": "Енергетична цінність: 334 ккал / 100 г.",
+    "storage": "Зберігати при температурі від +2°C до +6°C."
+  };
+
+  return {
+    status: 200,
+    headers: {
+      'X-Requested-By': 'responseProductById'
+    },
+    body: JSON.stringify(product)
+  };
+})();
+{{/code}}
