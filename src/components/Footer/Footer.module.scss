@@ -1,5 +1,88 @@
 @import '/src/styles/var.scss';
+@import '/src/styles/base/_typography.scss';
 
 .footer {
+  margin-top: 30px;
+  padding: 48px;
   font-size: 16px;
+  font-family: Circe;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+
+  .content {
+    display: flex;
+    justify-content: space-between;
+
+    .left_side {
+      .logo_cotainer {
+        margin-bottom: 48px;
+      }
+      .subscribeForm {
+        margin-bottom: 64px;
+
+        .input_group {
+          max-width: 296px;
+          margin: 16px 0;
+          border: 1px solid $natural-30;
+          border-radius: 8px;
+          display: flex;
+          justify-content: space-between;
+          overflow: hidden;
+
+          .input {
+            border: none;
+            height: 40px;
+            font-size: 18px;
+            color: $natural-30;
+            padding-left: 9px;
+
+            &:focus {
+              outline: none;
+            }
+          }
+
+          .button {
+            width: 40px;
+            height: 40px;
+            background-color: $primary-50;
+            border-radius: 8px;
+            border: none;
+          }
+        }
+
+        .agreement_message {
+          font-size: 12px;
+        }
+      }
+    }
+
+    .right_side {
+      display: flex;
+      justify-content: space-between;
+
+      ul {
+        list-style-type: none;
+      }
+    }
+  }
+
+  .nav {
+    display: flex;
+    justify-content: space-between;
+
+    ul {
+      padding: 0;
+      li {
+        margin-right: 24px;
+        display: inline-block;
+        cursor: pointer;
+
+        &:hover {
+          transform: scale(1.2);
+          transition: ease-in-out 0.25s;
+        }
+      }
+    }
+  }
 }
