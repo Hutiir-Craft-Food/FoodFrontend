@@ -7,7 +7,14 @@ Content-Type: application/json
   const product = {
     "id": 123,
     "name": "Брі де Мьо із зеленим перцем та трюфельним маслом",
-    "manufacturer": "Ферма Зелений Луг",
+    "category": {
+      "id": 2,
+      "name": "Сири"
+    },
+    "seller": {
+      "id": 1,
+      "sellerName": "Ферма Зелений Луг"
+    },
     "description": "Сир Брi — один з найдавніших французьких сирів...",
     "composition": "Склад: молоко, закваска, сіль, ферменти.",
     "allergens": "Алергени: молочні продукти.",
