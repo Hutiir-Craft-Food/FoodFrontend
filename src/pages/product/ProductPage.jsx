@@ -3,6 +3,7 @@ import ProductGallery from '../../components/product/ProductGallery/ProductGalle
 import ProductInfo from '../../components/product/productInfo/ProductInfo'
 import ProductDescriptionTabs from '../../components/product/productDescriptionTabs/ProductDescriptionTabs'
 import useProduct from '../../components/product/useProduct'
+import Breadcrumbs from '~/components/breadcrumbs/Breadcrumbs.jsx'
 import styles from './ProductPage.module.scss'
 
 export default function ProductPage() {
@@ -39,7 +40,7 @@ export default function ProductPage() {
       <h2>Сторінка продукту</h2>
       <h3>Product ID: {id}</h3>
       <div className={styles.productPageContent}>
-        <p>каталог - молочні продукти - сири - {productName}</p>
+        <Breadcrumbs categoryTree={null} productName={productName} />
         <div className={styles.galleryAndInfoContainer}>
           <ProductGallery />
           <ProductInfo product={product} />
