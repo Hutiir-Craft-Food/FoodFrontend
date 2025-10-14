@@ -2,12 +2,15 @@ import { useState, useEffect, useMemo } from 'react'
 import { motion } from 'framer-motion'
 import styles from './ProductGallery.module.scss'
 import { useSwipe } from './useSwipe'
+import { useParams } from 'react-router-dom'
 
-export default function ProductGallery() {
+export default function ProductGallery({ productId: propProductId }) {
   const maxSlides = 5
   const [images, setImages] = useState([])
   const [index, setIndex] = useState(1)
   const [instant, setInstant] = useState(false)
+  const { id: routeProductId } = useParams()
+  const productId = propProductId || routeProductId
 
   const { ref } = useSwipe({
     onSwipeLeft: () => paginate(1),
@@ -28,14 +31,15 @@ export default function ProductGallery() {
   useEffect(() => {
     const fetchImages = async () => {
       try {
-        const res = await fetch(
-          '/api/v1/products?filter=is_new&offset=0&limit=4'
-        )
-        const data = await res.json()
-        const firstProduct = data.products?.[0]
+        if (!productId) return
 
-        let valid = firstProduct?.images?.slice(0, maxSlides) || []
-        if (!valid.length && firstProduct?.image) valid = [firstProduct.image]
+        const res = await fetch(`/api/v1/products/${productId}/images`)
+
+        const data = await res.json()
+
+        const valid = (data.images || [])
+          .flatMap((img) => Object.values(img.links || {}).filter(Boolean))
+          .slice(0, maxSlides)
 
         setImages(valid)
         setIndex(1)
@@ -47,7 +51,7 @@ export default function ProductGallery() {
     }
 
     fetchImages()
-  }, [])
+  }, [productId, maxSlides])
 
   const slideCount = images.length
 
@@ -61,6 +65,20 @@ export default function ProductGallery() {
       .fill(null)
       .map((_, i) => images[i] || null)
   }, [images])
+
+  const handleAnimationComplete = () => {
+    if (slideCount === 1) return
+
+    if (index === slideCount + 1) {
+      setInstant(true)
+      setIndex(1)
+    } else if (index === 0) {
+      setInstant(true)
+      setIndex(slideCount)
+    }
+
+    setTimeout(() => setInstant(false), 0)
+  }
 
   return (
     <div className={styles.productGallery}>
@@ -91,21 +109,7 @@ export default function ProductGallery() {
           transition={
             instant ? { duration: 0 } : { duration: 0.5, ease: 'easeInOut' }
           }
-          onAnimationComplete={() => {
-            if (slideCount === 0) return
-
-            if (index === slideCount + 1) {
-              setInstant(true)
-              setIndex(1)
-            }
-
-            if (index === 0) {
-              setInstant(true)
-              setIndex(slideCount)
-            }
-
-            setTimeout(() => setInstant(false), 0)
-          }}
+          onAnimationComplete={handleAnimationComplete}
         >
           {extended.map((src, i) => (
             <div key={i} className={styles.slide}>

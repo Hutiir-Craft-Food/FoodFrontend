@@ -10,9 +10,9 @@ Content-Type: application/json
         position: 1,
         links: {
           thumbnail: "https://i.postimg.cc/YCrbyLHN/bri.png",
-          small: "https://i.postimg.cc/pTgVLRpF/bri2.png",
-          medium: "https://i.postimg.cc/XvZ3Fh2M/bri3.png",
-          large: "https://i.postimg.cc/XvZ3Fh2M/bri3.png"
+          small: "https://i.postimg.cc/FFd9sw9H/bri1.png",
+          medium: "https://i.postimg.cc/FFd9sw9H/bri3.png",
+          large: "https://i.postimg.cc/FFd9sw9H/bri3.png"
         }
       }
     ]
