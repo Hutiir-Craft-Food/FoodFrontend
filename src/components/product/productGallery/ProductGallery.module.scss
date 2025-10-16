@@ -2,10 +2,10 @@
 
 $thumbnail-size: 4rem;
 $thumbnail-gap: 1.5rem;
-$gallery-gap: 3.0625rem;
+$gallery-gap: 3.1rem;
 $gallery-height: 26rem;
-$product-gallery-width: 34.4375rem;
-$main-image-width: 27.375rem;
+$product-gallery-width: 34.4rem;
+$main-image-width: 27.3rem;
 
 .productGallery {
   display: flex;
@@ -90,8 +90,8 @@ $main-image-width: 27.375rem;
   button {
     position: absolute;
 
-    width: 2.75rem;
-    height: 2.75rem;
+    width: 2.7rem;
+    height: 2.7rem;
     border: none;
     border-radius: 50%;
     cursor: pointer;
@@ -101,7 +101,7 @@ $main-image-width: 27.375rem;
     background-color: #537a67;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 1.35rem auto;
+    background-size: 1.4rem auto;
 
     &:hover {
       background-color: darken(#537a67, 10%);
@@ -109,12 +109,12 @@ $main-image-width: 27.375rem;
   }
 
   .leftNav {
-    left: 1.25rem;
-    background-image: url('/images/arrowLeft.svg');
+    left: 1.3rem;
+    background-image: url('/src/icons/arrowLeft.svg');
   }
 
   .rightNav {
     right: 1.25rem;
-    background-image: url('/images/arrowRight.svg');
+    background-image: url('/src/icons/arrowRight.svg');
   }
 }
