@@ -1,0 +1,27 @@
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{{#code}}
+(()=>{
+  const categoryTree = {
+  "id": 1,
+  "name": "Молочні продукти",
+  "children": [
+    {
+      "id": 2,
+      "name": "Сири",
+      "children": []
+    }
+  ]
+};
+
+  return {
+    status: 200,
+    headers: {
+      'X-Requested-By': 'responseProductById'
+    },
+    body: JSON.stringify(categoryTree)
+  };
+})();
+{{/code}}
