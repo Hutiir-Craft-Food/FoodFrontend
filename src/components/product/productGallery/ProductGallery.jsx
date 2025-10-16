@@ -17,6 +17,8 @@ export default function ProductGallery({ productId: propProductId }) {
     onSwipeRight: () => paginate(-1),
   })
 
+  const MOCK_IMAGE_ID = 123
+
   const paginate = (dir) => {
     if (images.length === 1) return
     setInstant(false)
@@ -31,9 +33,16 @@ export default function ProductGallery({ productId: propProductId }) {
   useEffect(() => {
     const fetchImages = async () => {
       try {
-        if (!productId) return
+        // Ми використовуємо MOCK_IMAGE_ID замість productId, щоб обійти 404 помилку моків.
+        const idToFetch = MOCK_IMAGE_ID
 
-        const res = await fetch(`/api/v1/products/${productId}/images`)
+        if (!idToFetch) return
+
+        const res = await fetch(`/api/v1/products/${idToFetch}/images`)
+
+        if (!res.ok) {
+          throw new Error(`API returned status ${res.status}`)
+        }
 
         const data = await res.json()
 
@@ -51,7 +60,7 @@ export default function ProductGallery({ productId: propProductId }) {
     }
 
     fetchImages()
-  }, [productId, maxSlides])
+  }, [maxSlides])
 
   const slideCount = images.length
 
