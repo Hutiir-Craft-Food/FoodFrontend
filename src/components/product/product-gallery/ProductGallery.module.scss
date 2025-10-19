@@ -1,7 +1,5 @@
 @import '/src/styles/var.scss';
 
-$thumbnail-size: 4rem;
-$thumbnail-gap: 1.5rem;
 $gallery-gap: 3.1rem;
 $gallery-height: 26rem;
 $product-gallery-width: 34.4rem;
@@ -15,37 +13,6 @@ $main-image-width: 27.3rem;
   align-items: flex-start;
   margin-left: 3rem;
   margin-top: 1rem;
-
-  .thumbnails {
-    display: flex;
-    flex-direction: column;
-    gap: $thumbnail-gap;
-    width: $thumbnail-size;
-    height: $gallery-height;
-
-    img {
-      width: $thumbnail-size;
-      height: $thumbnail-size;
-      object-fit: contain;
-      cursor: pointer;
-      background: #fff;
-      border: 1px solid #eff6eb;
-      transition: border 0.2s ease;
-
-      &.active {
-        border: 0.2rem solid #537a67;
-      }
-    }
-
-    .placeholder {
-      width: $thumbnail-size;
-      height: $thumbnail-size;
-      background: #d9d9d9;
-      filter: grayscale(1);
-      border: 1px solid #ccc;
-      transition: border 0.2s ease;
-    }
-  }
 }
 
 .mainImage {

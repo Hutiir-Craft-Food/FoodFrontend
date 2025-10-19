@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import ProductGallery from '../../components/product/productGallery/ProductGallery.jsx'
+import ProductGallery from '../../components/product/product-gallery/ProductGallery.jsx'
 import ProductInfo from '../../components/product/productInfo/ProductInfo'
 import ProductDescriptionTabs from '../../components/product/productDescriptionTabs/ProductDescriptionTabs'
 import useProduct from '../../components/product/useProduct'
@@ -41,7 +41,7 @@ export default function ProductPage() {
       <div className={styles.productPageContent}>
         <p>каталог - молочні продукти - сири - {productName}</p>
         <div className={styles.galleryAndInfoContainer}>
-          <ProductGallery />
+          <ProductGallery productId={id} />
           <ProductInfo product={product} />
         </div>
         <ProductDescriptionTabs product={product} />

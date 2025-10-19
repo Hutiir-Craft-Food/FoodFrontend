@@ -13,7 +13,7 @@ export default function useProduct(id) {
       setLoading(true)
       setError(null)
       try {
-        const { data } = await ApiClient.get(`/v1/products?id=${id}`)
+        const { data } = await ApiClient.get(`/v1/products/${id}`)
 
         setProduct(data)
       } catch (e) {
