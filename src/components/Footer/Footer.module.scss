@@ -14,6 +14,11 @@
     display: flex;
     justify-content: space-between;
 
+    .left_side,
+    .right_side {
+      width: 50%;
+    }
+
     .left_side {
       .logo_cotainer {
         margin-bottom: 48px;
@@ -61,8 +66,29 @@
       display: flex;
       justify-content: space-between;
 
-      ul {
-        list-style-type: none;
+      .block_of_links {
+        justify-content: space-between;
+
+        h4 {
+          margin-bottom: 24px;
+        }
+
+        ul {
+          list-style-type: none;
+          padding: 0;
+        }
+
+        a {
+          text-decoration: none;
+          color: inherit;
+        }
+
+        &:nth-of-type(2),
+        &:nth-of-type(3) {
+          li {
+            margin-bottom: 16px;
+          }
+        }
       }
     }
   }

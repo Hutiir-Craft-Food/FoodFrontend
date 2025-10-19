@@ -36,27 +36,57 @@ export default function Footer() {
             </form>
           </div>
           <div className={styles.right_side}>
-            <ul>
+            <div className={styles.block_of_links}>
               <h4>Про нас</h4>
-              <li>Наша місія</li>
-              <li>Співпраця</li>
-              <li>Контакти</li>
-              <li>Політика конфіденціальності</li>
-            </ul>
-            <ul>
+              <ul>
+                <li>
+                  <a href="#">Наша місія</a>
+                </li>
+                <li>
+                  <a href="#">Співпраця</a>
+                </li>
+                <li>
+                  <a href="#">Контакти</a>
+                </li>
+                <li>
+                  <a href="#">Політика конфіденціальності</a>
+                </li>
+              </ul>
+            </div>
+            <div className={styles.block_of_links}>
               <h4>Покупцям</h4>
-              <li>Блог</li>
-              <li>Виробники</li>
-              <li>Бонусна програма</li>
-              <li>Доставка і оплата</li>
-              <li>FAQ</li>
-            </ul>
-            <ul>
+              <ul>
+                <li>
+                  <a href="#">Блог</a>
+                </li>
+                <li>
+                  <a href="#">Виробники</a>
+                </li>
+                <li>
+                  <a href="#">Бонусна програма</a>
+                </li>
+                <li>
+                  <a href="#">Доставка і оплата</a>
+                </li>
+                <li>
+                  <a href="#">FAQ</a>
+                </li>
+              </ul>
+            </div>
+            <div className={styles.block_of_links}>
               <h4>Продавцям</h4>
-              <li>Умови співпраці</li>
-              <li>Довідка</li>
-              <li>Угода користувача</li>
-            </ul>
+              <ul>
+                <li>
+                  <a href="#">Умови співпраці</a>
+                </li>
+                <li>
+                  <a href="#">Довідка</a>
+                </li>
+                <li>
+                  <a href="#">Угода користувача</a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
         <div className={styles.nav}>
