@@ -9,7 +9,8 @@ import styles from './ProductPage.module.scss'
 export default function ProductPage() {
   const { id } = useParams()
   const { product, loading, error } = useProduct(id)
-  const categoryId = product?.categoryId ?? ''
+  const categoryId = product?.category?.id ?? ''
+  const productName = product?.name ?? ''
 
   if (loading) {
     return (
@@ -41,7 +42,7 @@ export default function ProductPage() {
       <h2>Сторінка продукту</h2>
       <h3>Product ID: {id}</h3>
       <div className={styles.productPageContent}>
-        <Breadcrumbs categoryId={categoryId} />
+        <Breadcrumbs categoryId={categoryId} productName={productName} />
         <div className={styles.galleryAndInfoContainer}>
           <ProductGallery />
           <ProductInfo product={product} />

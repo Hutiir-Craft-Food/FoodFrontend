@@ -3,9 +3,15 @@ Content-Type: application/json
 
 {
   "id": 2,
-  "categoryId": 2,
   "name": "Мед квітковий",
-  "manufacturer": "Пасіка Весела Бджілка",
+    "category": {
+    "id": 2,
+    "name": "Продукти бджільництва"
+  },
+  "seller": {
+    "id": 4,
+    "sellerName": "Пасіка Весела бджілка"
+  },
   "rating": 5,
   "reviews": 15,
   "regular_price": 150,
