@@ -1,0 +1,14 @@
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": 4,
+  "name": "Напої",
+  "children": [
+    {
+      "id": 7,
+      "name": "Соки",
+      "children": []
+    }
+  ]
+}

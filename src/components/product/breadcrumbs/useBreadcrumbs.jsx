@@ -27,7 +27,9 @@ export default function useBreadcrumbs(categoryId) {
       setLoading(true)
       setError(null)
       try {
-        const { data } = await ApiClient.get(`/v1/catalog/${categoryId}`)
+        const { data } = await ApiClient.get(
+          `/v1/categories/catalog/${categoryId}`
+        )
         const path = extractPathFromBranch(data)
         setBreadcrumbs(path)
       } catch (error) {

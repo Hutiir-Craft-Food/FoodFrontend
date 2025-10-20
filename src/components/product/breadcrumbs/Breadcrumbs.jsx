@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import useBreadcrumbs from './useBreadcrumbs'
 import styles from './Breadcrumbs.module.scss'
 
-export default function Breadcrumbs({ categoryId }) {
+export default function Breadcrumbs({ categoryId, productName }) {
   const { breadcrumbs, loading, error } = useBreadcrumbs(categoryId)
 
   if (loading) {
@@ -25,25 +25,20 @@ export default function Breadcrumbs({ categoryId }) {
 
   return (
     <nav className={styles.breadcrumbs}>
+      <Link to="/categories/catalog/">
+        <img src="/images/catalog-icon.svg" alt="catalog icon" />
+      </Link>
+      <span className="m-3">{' > '}</span>
       {breadcrumbs.map((item, index) => {
         const isLast = index === breadcrumbs.length - 1
         return (
           <span key={item.id}>
-            {!isLast ? (
-              <Link to={`/catalog/${item.id}`}>
-                {item.name.toLowerCase() == 'каталог' ? (
-                  <img src="/images/catalog-icon.svg" alt="catalog icon" />
-                ) : (
-                  item.name
-                )}
-              </Link>
-            ) : (
-              <span className={styles.lastBreadcrumb}>{item.name}</span>
-            )}
-            {!isLast && <span className="m-3">{' > '}</span>}
+            <Link to={`/categories/catalog/${item.id}`}>{item.name}</Link>
+            <span className="m-3">{' > '}</span>
           </span>
         )
       })}
+      <span className={styles.lastBreadcrumb}> {productName} </span>
     </nav>
   )
 }
