@@ -14,19 +14,19 @@
     display: flex;
     justify-content: space-between;
 
-    .left_side,
-    .right_side {
+    .leftSide,
+    .rightSide {
       width: 50%;
     }
 
-    .left_side {
-      .logo_cotainer {
+    .leftSide {
+      .logoCotainer {
         margin-bottom: 48px;
       }
       .subscribeForm {
         margin-bottom: 64px;
 
-        .input_group {
+        .inputGroup {
           max-width: 296px;
           margin: 16px 0;
           border: 1px solid $natural-30;
@@ -56,17 +56,17 @@
           }
         }
 
-        .agreement_message {
+        .agreementMessage {
           font-size: 12px;
         }
       }
     }
 
-    .right_side {
+    .rightSide {
       display: flex;
       justify-content: space-between;
 
-      .block_of_links {
+      .blockOfLinks {
         justify-content: space-between;
 
         h4 {
@@ -81,6 +81,10 @@
         a {
           text-decoration: none;
           color: inherit;
+          &:hover {
+            color: $primary-60;
+            font-weight: 700;
+          }
         }
 
         &:nth-of-type(2),

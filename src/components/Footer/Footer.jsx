@@ -1,4 +1,8 @@
 import styles from './Footer.module.scss'
+import arrowRight from '~/icons/button/arrow-right.svg'
+import facebookIcon from '~/icons/facebook-icon.svg'
+import telegramIcon from '~/icons/telegram-icon.svg'
+import instagramIcon from '~/icons/instagram-icon.svg'
 
 export default function Footer() {
   const handleSubmit = () => {}
@@ -6,17 +10,17 @@ export default function Footer() {
     <footer className="container">
       <div className={styles.footer}>
         <div className={styles.content}>
-          <div className={styles.left_side}>
-            <div className={styles.logo_cotainer}>
+          <div className={styles.leftSide}>
+            <div className={styles.logoCotainer}>
               <a href="/">
-                <img src="/images/logo_footer.png" alt="logo" />
+                <img src="/images/logo-footer.png" alt="logo" />
               </a>
             </div>
             <form className={styles.subscribeForm} onSubmit={handleSubmit}>
               <label htmlFor="email" className={styles.label}>
                 Підпишись і отримуй спеціальні пропозиції!
               </label>
-              <div className={styles.input_group}>
+              <div className={styles.inputGroup}>
                 <input
                   type="email"
                   id="email"
@@ -26,17 +30,17 @@ export default function Footer() {
                   className={styles.input}
                 />
                 <button type="submit" className={styles.button}>
-                  <img src="/images/arrow-right.svg" alt="надіслати" />
+                  <img src={arrowRight} alt="надіслати" />
                 </button>
               </div>
-              <p className={styles.agreement_message}>
+              <p className={styles.agreementMessage}>
                 Натискаючи кнопку «Підписатись», ви даєте згоду на обробку
                 персональних даних
               </p>
             </form>
           </div>
-          <div className={styles.right_side}>
-            <div className={styles.block_of_links}>
+          <div className={styles.rightSide}>
+            <div className={styles.blockOfLinks}>
               <h4>Про нас</h4>
               <ul>
                 <li>
@@ -53,7 +57,7 @@ export default function Footer() {
                 </li>
               </ul>
             </div>
-            <div className={styles.block_of_links}>
+            <div className={styles.blockOfLinks}>
               <h4>Покупцям</h4>
               <ul>
                 <li>
@@ -73,7 +77,7 @@ export default function Footer() {
                 </li>
               </ul>
             </div>
-            <div className={styles.block_of_links}>
+            <div className={styles.blockOfLinks}>
               <h4>Продавцям</h4>
               <ul>
                 <li>
@@ -94,17 +98,17 @@ export default function Footer() {
             <ul>
               <li>
                 <a href="#">
-                  <img src="/images/facebook_icon.svg" alt="facebook_icon." />
+                  <img src={facebookIcon} alt="facebook icon." />
                 </a>
               </li>
               <li>
                 <a href="#">
-                  <img src="/images/instagram_icon.svg" alt="intagram_icon" />
+                  <img src={instagramIcon} alt="intagram icon" />
                 </a>
               </li>
               <li>
                 <a href="#">
-                  <img src="images/telegram_icon.svg" alt="itelegram_icon" />
+                  <img src={telegramIcon} alt="telegram icon" />
                 </a>
               </li>
             </ul>
