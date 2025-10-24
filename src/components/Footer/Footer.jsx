@@ -1,8 +1,8 @@
 import styles from './Footer.module.scss'
-import arrowRight from '~/icons/button/arrow-right.svg'
-import facebookIcon from '~/icons/facebook-icon.svg'
-import telegramIcon from '~/icons/telegram-icon.svg'
-import instagramIcon from '~/icons/instagram-icon.svg'
+import arrowRight from '~/icons/submit-button/arrowRight.svg'
+import facebookIcon from '~/icons/facebookIcon.svg'
+import telegramIcon from '~/icons/telegramIcon.svg'
+import instagramIcon from '~/icons/instagramIcon.svg'
 
 export default function Footer() {
   const handleSubmit = () => {}
