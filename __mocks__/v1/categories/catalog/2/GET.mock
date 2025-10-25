@@ -1,14 +1,17 @@
 HTTP/1.1 200 OK
 Content-Type: application/json
 
+
 {
-  "id": 2,
-  "name": "Продукти бджільництва",
+  "id": 1,
+  "name": "Молочні продукти",
   "children": [
     {
       "id": 2,
-      "name": "Натуральний мед",
+      "name": "Сири",
       "children": []
     }
   ]
 }
+
+
