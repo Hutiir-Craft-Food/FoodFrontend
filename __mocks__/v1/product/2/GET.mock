@@ -5,8 +5,8 @@ Content-Type: application/json
   "id": 2,
   "name": "Мед квітковий",
     "category": {
-    "id": 2,
-    "name": "Продукти бджільництва"
+    "id": 7,
+    "name": "Мед натуральний"
   },
   "seller": {
     "id": 4,

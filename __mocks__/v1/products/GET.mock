@@ -6,7 +6,7 @@ Content-Type: application/json
 (()=>{
    const products = [
     {
-      "id": 1,
+      "id": 123,
       "name": "Брі де Мьо із зеленим перцем та трюфельним маслом",
       "manufacturer": "Ферма Зелений Луг",
       "image": "https://i.postimg.cc/YCrbyLHN/bri.png",
