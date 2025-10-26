@@ -1,0 +1,18 @@
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{{#code}}
+(()=>{
+    return {
+        status: 200,
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            request: {
+              path: request.path
+            }
+        })
+    };
+})();
+{{/code}}
