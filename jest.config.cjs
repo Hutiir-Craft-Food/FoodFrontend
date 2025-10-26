@@ -13,6 +13,14 @@ module.exports = {
     '/src/(.*)': '<rootDir>/src/$1',
     '^~/(.*)$': '<rootDir>/src/$1',
   },
+  coverageThreshold: {
+    global: {
+      lines: 30,
+      statements: 30,
+      branches: 40,
+      functions: 50,
+    },
+  },
 }
 
 /**
