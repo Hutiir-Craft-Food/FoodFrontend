@@ -1,0 +1,87 @@
+@import '/src/styles/var.scss';
+
+$gallery-gap: 3.1rem;
+$gallery-height: 26rem;
+$product-gallery-width: 34.4rem;
+$main-image-width: 27.3rem;
+
+.productGallery {
+  display: flex;
+  gap: $gallery-gap;
+  width: $product-gallery-width;
+  height: $gallery-height;
+  align-items: flex-start;
+  margin-left: 3rem;
+  margin-top: 1rem;
+}
+
+.mainImage {
+  position: relative;
+  width: $main-image-width;
+  height: $gallery-height;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .sliderWrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+
+  .slide {
+    min-width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      user-select: none;
+      pointer-events: none;
+    }
+  }
+
+  .placeholder {
+    width: $main-image-width;
+    height: $gallery-height;
+    background: #d9d9d9;
+    filter: grayscale(1);
+    border: 1px solid #ccc;
+  }
+
+  button {
+    position: absolute;
+
+    width: 2.7rem;
+    height: 2.7rem;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    user-select: none;
+    padding: 0;
+    transition: background-color 0.2s ease;
+    background-color: #537a67;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 1.4rem auto;
+
+    &:hover {
+      background-color: darken(#537a67, 10%);
+    }
+  }
+
+  .leftNav {
+    left: 1.3rem;
+    background-image: url('/src/icons/arrowLeft.svg');
+  }
+
+  .rightNav {
+    right: 1.25rem;
+    background-image: url('/src/icons/arrowRight.svg');
+  }
+}

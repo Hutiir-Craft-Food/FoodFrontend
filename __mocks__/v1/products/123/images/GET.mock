@@ -1,0 +1,39 @@
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{{#code}}
+(() => {
+  const response = {
+    images: [
+      {
+        uid: "123e4567-e89b-12d3-a456-426614174000",
+        position: 1,
+        links: {
+          thumbnail: "https://i.postimg.cc/YCrbyLHN/bri.png",
+          small: "https://i.postimg.cc/FFd9sw9H/bri1.png",
+          medium: "https://i.postimg.cc/FFd9sw9H/bri3.png",
+          large: "https://i.postimg.cc/FFd9sw9H/bri3.png"
+        }
+      },
+      {
+        uid: "123e4567-e89b-12d3-a456-426614174002",
+        position: 2,
+        links: {
+          thumbnail: "https://i.postimg.cc/YCrbyLHN/bri.png",
+          small: "https://i.postimg.cc/FFd9sw9H/bri1.png",
+          medium: "https://i.postimg.cc/FFd9sw9H/bri3.png",
+          large: "https://i.postimg.cc/FFd9sw9H/bri3.png"
+        }
+      }
+    ]
+  };
+
+  return {
+    status: 200,
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(response)
+  };
+})();
+{{/code}}
+
+
