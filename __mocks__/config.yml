@@ -2,24 +2,15 @@ loglevel: info
 cpus: 1
 monitoring:
   port: 5555
-ssl:
-  cert: "./certs/server.cert"
-  key: "./certs/server.key"
-  root_cert: "./certs/root.cert"
 protocols:
   http:
     enable: true
-    mocks_dir: "./"
+    mocks_dir: './'
     port: 8080
 
 injection:
   enable: true
 origins:
   - http://localhost:3000
-  - http://localhost:3001
-  - http://localhost:5000
 validation:
   enable: false
-  schemas:
-    - type: OpenApi
-      url: https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/examples/v3.0/petstore.json
