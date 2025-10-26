@@ -1,0 +1,39 @@
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{{#code}}
+(() => {
+  const response = {
+    images: [
+      {
+        uid: "123e4567-e89b-12d3-a456-426614174001",
+        position: 1,
+        links: {
+          thumbnail: "http://localhost:8080/images/products/cheese/bri/thumbnail",
+          small: "http://localhost:8080/images/products/cheese/bri/small",
+          medium: "http://localhost:8080/images/products/cheese/bri/medium",
+          large: "http://localhost:8080/images/products/cheese/bri/large"
+        }
+      },
+      {
+        uid: "123e4567-e89b-12d3-a456-426614174002",
+        position: 2,
+        links: {
+          thumbnail: "http://localhost:8080/images/products/cheese/bri/thumbnail",
+          small: "http://localhost:8080/images/products/cheese/bri/small",
+          medium: "http://localhost:8080/images/products/cheese/bri/medium",
+          large: "http://localhost:8080/images/products/cheese/bri/large"
+        }
+      }
+    ]
+  };
+
+  return {
+    status: 200,
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(response)
+  };
+})();
+{{/code}}
+
+

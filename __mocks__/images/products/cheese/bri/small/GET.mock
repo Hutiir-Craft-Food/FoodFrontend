@@ -1,0 +1,4 @@
+HTTP/1.1 200 OK
+Content-Type: image/png
+
+{{file path="./images/products/cheese/bri/small/bri-small.png"}}
