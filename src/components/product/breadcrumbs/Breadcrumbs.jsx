@@ -3,7 +3,7 @@ import useBreadcrumbs from './useBreadcrumbs'
 import styles from './Breadcrumbs.module.scss'
 
 export default function Breadcrumbs({ categoryId, productName }) {
-  const { breadcrumbs, loading, error } = useBreadcrumbs(categoryId)
+  const { data, loading, error } = useBreadcrumbs(categoryId)
 
   if (loading) {
     return (
@@ -23,21 +23,32 @@ export default function Breadcrumbs({ categoryId, productName }) {
     )
   }
 
+  const renderBreadcrumbs = (node) => {
+    if (!node) return null
+
+    const child = node.children.length > 0 ? node.children[0] : null
+
+    return (
+      <>
+        <Link to={`/catalog?categoryId=${node.id}`}>{node.name}</Link>
+        {child && (
+          <>
+            <span className="m-3"> &gt; </span>
+            {renderBreadcrumbs(child)}
+          </>
+        )}
+      </>
+    )
+  }
+
   return (
     <nav className={styles.breadcrumbs}>
       <Link to="/categories/catalog/">
         <img src="/images/catalog-icon.svg" alt="catalog icon" />
       </Link>
       <span className="m-3">{' > '}</span>
-      {breadcrumbs.map((item, index) => {
-        const isLast = index === breadcrumbs.length - 1
-        return (
-          <span key={item.id}>
-            <Link to={`/categories/catalog/${item.id}`}>{item.name}</Link>
-            <span className="m-3">{' > '}</span>
-          </span>
-        )
-      })}
+      {renderBreadcrumbs(data)}
+      <span className="m-3">{' > '}</span>
       <span className={styles.lastBreadcrumb}> {productName} </span>
     </nav>
   )
