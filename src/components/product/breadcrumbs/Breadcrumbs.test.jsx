@@ -11,48 +11,52 @@ describe('Breadcrumbs component', () => {
     jest.clearAllMocks()
   })
 
-  test('shows loading state ', () => {
-    useBreadcrumbs.mockReturnValue({ breadcrumbs: [], loading: true, error: null })
+  test('shows loading state', () => {
+    useBreadcrumbs.mockReturnValue({
+      data: [],
+      loading: true,
+      error: null,
+    })
 
-    render(
-      <MemoryRouter>
-        <Breadcrumbs categoryId={1} productName="Яблуко" />
-      </MemoryRouter>
-    )
+    render(<Breadcrumbs categoryId={1} productName="Яблуко" />)
 
     expect(screen.getByText(/Завантаження.../i)).toBeInTheDocument()
   })
 
   test('shows error message', () => {
-    useBreadcrumbs.mockReturnValue({ breadcrumbs: [], loading: false, error: 'Network error' })
+    useBreadcrumbs.mockReturnValue({
+      data: null,
+      loading: false,
+      error: 'Network error',
+    })
 
-    render(
-      <MemoryRouter>
-        <Breadcrumbs categoryId={2} productName="Яблуко" />
-      </MemoryRouter>
-    )
+    render(<Breadcrumbs categoryId={2} productName="Яблуко" />)
 
     expect(
       screen.getByText(/Не вдалось завантажити навігацію по каталогу -/i)
     ).toBeInTheDocument()
-    expect(screen.getByText(/Network error/)).toBeInTheDocument()
+    expect(screen.getByText(/Network error/i)).toBeInTheDocument()
   })
 
-  test('renders breadcrumbs ', () => {
-    const breadcrumbs = [
-      { id: '10', name: 'Фрукти' },
-      { id: '12', name: 'Цитрусові' }
-    ]
+  test('renders breadcrumbs', () => {
+    const breadcrumbs = {
+      id: 10,
+      name: 'Фрукти',
+      children: [{ id: 12, name: 'Цитрусові', children: [] }],
+    }
 
-    useBreadcrumbs.mockReturnValue({ breadcrumbs: breadcrumbs, loading: false, error: null })
+    useBreadcrumbs.mockReturnValue({
+      data: breadcrumbs,
+      loading: false,
+      error: null,
+    })
 
     render(
       <MemoryRouter>
-        <Breadcrumbs categoryId={10} productName="Лимон" />
+        <Breadcrumbs categoryId={12} productName="Лимон" />
       </MemoryRouter>
     )
 
-    
     const catalogLink = screen.getByRole('link', { name: 'catalog icon' })
     expect(catalogLink).toBeInTheDocument()
     expect(screen.getByText('Фрукти')).toBeInTheDocument()

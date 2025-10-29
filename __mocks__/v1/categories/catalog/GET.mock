@@ -1,0 +1,91 @@
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+[
+  {
+    "id": 1,
+    "name": "Молочні продукти",
+    "children": [
+      {
+        "id": 2,
+        "name": "Сири",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Напої",
+    "children": [
+      {
+        "id": 11,
+        "name": "Безалкогольні напої",
+        "children": [
+          {
+            "id": 14,
+            "name": "Вода",
+            "children": []
+          },
+          {
+            "id": 4,
+            "name": "Соки",
+            "children": []
+          },
+          {
+            "id": 16,
+            "name": "Газовані напої",
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": 12,
+        "name": "Гарячі напої",
+        "children": [
+          {
+            "id": 17,
+            "name": "Кава",
+            "children": []
+          },
+          {
+            "id": 18,
+            "name": "Чай",
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": 13,
+        "name": "Алкогольні напої",
+        "children": [
+          {
+            "id": 19,
+            "name": "Вино",
+            "children": []
+          },
+          {
+            "id": 20,
+            "name": "Пиво",
+            "children": []
+          },
+          {
+            "id": 21,
+            "name": "Міцний алкоголь",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "name": "Продукти бджільництва",
+    "children": [
+      {
+        "id": 7,
+        "name": "Натуральний мед",
+        "children": []
+      }
+    ]
+  }
+]
