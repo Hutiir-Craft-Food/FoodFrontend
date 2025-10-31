@@ -4,7 +4,14 @@ Content-Type: application/json
 {
   "id": 7,
   "name": "Сік яблучний",
-  "manufacturer": "Соковий Рай",
+    "category": {
+    "id": 4,
+    "name": "Соки"
+  },
+  "seller": {
+    "id": 1,
+    "sellerName": "Соковий рай"
+  },
   "rating": 4.7,
   "reviews": 5,
   "regular_price": 60,

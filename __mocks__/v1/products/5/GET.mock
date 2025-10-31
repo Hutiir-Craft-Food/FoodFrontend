@@ -4,7 +4,14 @@ Content-Type: application/json
 {
   "id": 5,
   "name": "Варення з малини",
-  "manufacturer": "Садиба Ягодина",
+   "category": {
+    "id": 3,
+    "name": "Варення"
+  },
+  "seller": {
+    "id": 4,
+    "sellerName": "Садиба Ягодина"
+  },
   "rating": 4.9,
   "reviews": 4,
   "regular_price": 120,
