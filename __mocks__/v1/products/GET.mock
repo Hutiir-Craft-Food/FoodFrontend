@@ -4,7 +4,7 @@ Content-Type: application/json
 
 {{#code}}
 (()=>{
-   const products = [
+  const products = [
     {
       "id": 1,
       "name": "Брі де Мьо із зеленим перцем та трюфельним маслом",
@@ -224,23 +224,42 @@ Content-Type: application/json
      }
   ];
 
-      const id = parseInt(request.query.id);
-      const offset = parseInt(request.query.offset) || 0;
-      const limit = parseInt(request.query.limit) || 4;
-      const filterFromRequest = request.query.filter;
-      const filteredProducts = products.filter((product)=> product[filterFromRequest] === true);
-      console.log(filteredProducts);
-      const selectedProducts = filteredProducts.slice(offset, offset + limit);
+  const id = parseInt(request.query.id);
+  if (id) {
+    const product = products.find(p => p.id === id);
+
+    if (!product) {
+      return {
+        status: 404,
+        body: JSON.stringify({ error: "Product not found" })
+      };
+    }
 
     return {
-        status: 200,
-        headers: {
-            'X-Requested-By': 'responseProducts'
-        },
-        body: JSON.stringify({
-            products: selectedProducts
-        })
+      status: 200,
+      headers: {
+        'X-Requested-By': 'responseProductById'
+      },
+      body: JSON.stringify(product)
     };
+  }
+
+  const offset = parseInt(request.query.offset) || 0;
+  const limit = parseInt(request.query.limit) || 4;
+  const filterFromRequest = request.query.filter;
+  const filteredProducts = products.filter((product)=> product[filterFromRequest] === true);
+  console.log(filteredProducts);
+  const selectedProducts = filteredProducts.slice(offset, offset + limit);
+
+  return {
+      status: 200,
+      headers: {
+          'X-Requested-By': 'responseProducts'
+      },
+      body: JSON.stringify({
+          products: selectedProducts
+      })
+  };
 })();
 {{/code}}
 
