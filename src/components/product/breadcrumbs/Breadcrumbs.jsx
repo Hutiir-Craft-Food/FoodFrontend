@@ -30,7 +30,7 @@ export default function Breadcrumbs({ categoryId, productName }) {
 
     return (
       <>
-        <Link to={`/catalog?categoryId=${node.id}`}>{node.name}</Link>
+        <Link to={`/categories/catalog?categoryId=${node.id}`}>{node.name}</Link>
         {child && (
           <>
             <span className="m-3"> &gt; </span>

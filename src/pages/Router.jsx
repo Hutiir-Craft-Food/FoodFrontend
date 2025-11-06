@@ -5,8 +5,7 @@ import HomePage from './home/HomePage'
 import NotFoundPage from './not-found/NotFoundPage'
 import UserProfile from './userProfile/userProfile'
 import ProductPage from './product/ProductPage'
-import Category from './category/Category'
-import Catalog from './catalog/Catalog'
+
 
 const router = createBrowserRouter([
   {
@@ -54,11 +53,11 @@ const router = createBrowserRouter([
       },
         {
         path: '/categories/catalog',
-        element: <Catalog />,
+        element: <h1>Каталог товарів</h1>,
       },
       {
         path: '/categories/catalog/:categoryId',
-        element: <Category />,
+        element: <h1>Категорія товарів</h1>,
       },
       {
         path: '*',
