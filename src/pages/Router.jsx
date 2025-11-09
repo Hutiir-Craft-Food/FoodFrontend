@@ -6,7 +6,6 @@ import NotFoundPage from './not-found/NotFoundPage'
 import UserProfile from './userProfile/userProfile'
 import ProductPage from './product/ProductPage'
 
-
 const router = createBrowserRouter([
   {
     path: '/',
@@ -51,12 +50,12 @@ const router = createBrowserRouter([
         path: '/product/:id',
         element: <ProductPage />,
       },
-        {
-        path: '/categories/catalog',
+      {
+        path: '/catalog',
         element: <h1>Каталог товарів</h1>,
       },
       {
-        path: '/categories/catalog/:categoryId',
+        path: '/catalog/category/:categoryId',
         element: <h1>Категорія товарів</h1>,
       },
       {
