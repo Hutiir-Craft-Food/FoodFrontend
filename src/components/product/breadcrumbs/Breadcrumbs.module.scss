@@ -1,0 +1,27 @@
+@import '/src/styles/var.scss';
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  font-family: Circe;
+  font-size: 14px;
+  color: $primary-80;
+  line-height: 120%;
+  text-align: center;
+
+  a {
+    display: inline-block;
+    color: $primary-80;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.25s ease-out;
+
+    &:hover {
+      transform: scale(1.15);
+    }
+  }
+
+  .lastBreadcrumb {
+    text-decoration: underline;
+  }
+}

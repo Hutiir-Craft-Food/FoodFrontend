@@ -1,0 +1,14 @@
+HTTP/1.1 500
+Content-Type: application/json
+
+{{#code}}
+(() => {
+  return {
+    status: 500,
+    headers: { "Content-Type": "application/json" },
+    body: {
+      message: "Looks like something went wrong for your product request"
+    }
+  };
+})();
+{{/code}}
