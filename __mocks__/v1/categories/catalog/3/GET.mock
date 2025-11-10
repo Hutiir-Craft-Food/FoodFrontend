@@ -1,17 +1,14 @@
 HTTP/1.1 200 OK
 Content-Type: application/json
 
-
 {
-  "id": 1,
-  "name": "Молочні продукти",
+  "id": 33,
+  "name": "Солодощі",
   "children": [
     {
-      "id": 2,
-      "name": "Сири",
+      "id": 3,
+      "name": "Варення",
       "children": []
     }
   ]
 }
-
-

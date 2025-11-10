@@ -48,7 +48,15 @@ const router = createBrowserRouter([
       },
       {
         path: '/product/:id',
-        element: <ProductPage/>,
+        element: <ProductPage />,
+      },
+      {
+        path: '/catalog',
+        element: <h1>Каталог товарів</h1>,
+      },
+      {
+        path: '/catalog/category/:categoryId',
+        element: <h1>Категорія товарів</h1>,
       },
       {
         path: '*',
