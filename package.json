@@ -10,8 +10,9 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "test": "jest",
-    "mock-server": "cd __mocks__/ && camouflage -c ./config.yml"
+    "test": "jest --coverage",
+    "posttest": "jest-coverage-thresholds-bumper",
+    "mock-server": "cd __mocks__/api && camouflage -c ./config.yml"
   },
   "dependencies": {
     "axios": "^1.7.9",
@@ -28,7 +29,7 @@
     "react-scroll": "^1.9.0",
     "sass": "^1.71.0",
     "scss": "^0.2.4",
-    "swiper": "^11.2.6",
+    "swiper": "^12.0.3",
     "zustand": "^5.0.5"
   },
   "devDependencies": {
