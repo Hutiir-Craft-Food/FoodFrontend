@@ -9,7 +9,7 @@ npm install -g camouflage-server
 ### Start Camouflage:
 
 ```sh
-cd __mocks__
+cd __mocks__/api
 camouflage -c ./config.yml
 ```
 
