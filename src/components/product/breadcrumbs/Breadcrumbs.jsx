@@ -45,7 +45,8 @@ export default function Breadcrumbs({ categoryId, productName }) {
   return (
     <nav className={styles.breadcrumbs}>
       <Link to="/catalog">
-        <img src={catalogIcon} alt="Catalog" />
+        {/* <img src={catalogIcon} alt="catalog-icon" /> */}
+        Catalog
       </Link>
       <span className="m-3">{' > '}</span>
       {renderBreadcrumbs(data)}
