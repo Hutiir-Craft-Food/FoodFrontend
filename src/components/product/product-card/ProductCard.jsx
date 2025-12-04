@@ -6,6 +6,7 @@ import styles from './ProductCard.module.scss'
 
 export default function ProductCard({ product }) {
   const [isFavorite, setIsFavorite] = useState(false)
+  console.log (product)
 
   const toggleFavorite = () => {
     setIsFavorite(!isFavorite)
@@ -32,30 +33,30 @@ export default function ProductCard({ product }) {
       <div className='card-body'>
         <div className={`card-text ${styles.text}`}>
           <a className={styles.manufacturerLink} href="#">
-            {product.manufacturer}
+            {product.seller.sellerName}
           </a>
           <br />
           <div className='d-flex justify-content-between mt-3'>
             <span className={styles.isAvailable}>
-              {product.is_available ? 'В наявності' : 'Товар відсутній'}
+              {product.available ? 'В наявності' : 'Товар відсутній'}
             </span>
-            <Rating
+            {/* <Rating
               count={5}
               value={product.rating}
               size={24}
               activeColor='#ffd700'
               edit={false}
               isHalf={true}
-            />
-            <span>({product.reviews})</span>
+            /> */}
+            {/* <span>({product.reviews})</span> */}
           </div>
           <div className='d-flex justify-content-between'>
             <div>
               <span className={styles.regularPrice}>
-                {product.regular_price} ₴
+              {product?.prices?.[0]?.price ? `${product.prices[0].price} грн` : ''}
               </span>
               <br />
-              <span className={styles.salePrice}>{product.sale_price} ₴</span>
+              {/* <span className={styles.salePrice}>{product.prices.price} ₴</span> */}
             </div>
             <Link className={styles.btn} to={`#`}>
               В кошик
