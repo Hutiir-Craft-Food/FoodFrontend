@@ -1,5 +1,7 @@
-@import './normalize.scss';
-@import './var.scss';
+@import '~/styles/normalize.scss';
+@import '~/styles/var.scss';
+@import '~/styles/base/_fonts.scss';
+
 
 body,
 html {
@@ -20,7 +22,7 @@ body {
   }
 
   h2 {
-    color: $primary-50;
+    color: $primary-90;
     font-family: $brandFont;
     font-size: 30px;
     font-weight: 700;
