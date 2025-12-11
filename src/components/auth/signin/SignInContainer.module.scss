@@ -32,13 +32,21 @@
 
     .emailContainer {
       margin-bottom: 20px;
+      position: relative;
+
+      .xCircle{
+        position: absolute;
+        right: 10px;
+        top: 47px;
+        width: 24px;
+        height: 24px;
+      }
     }
 
     .passwordContainer {
       margin-top: 0.5rem;
       position: relative;
       .toggleEye {
-        // TODO: why do we use absolute position here ?
         position: absolute;
         right: 5px;
         top: 40px;

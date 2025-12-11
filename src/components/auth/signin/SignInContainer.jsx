@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useAuthStore } from '../store/AuthStore'
+import XCircle from '~/icons/XCircle.svg'
 import styles from './SignInContainer.module.scss'
 
 export default function SignInContainer() {
@@ -8,6 +9,7 @@ export default function SignInContainer() {
   const { switchToRegister } = useAuthStore()
   const { login } = useAuthStore()
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
+  
 
   const handleEyeButtonClick = (e) => {
     e.preventDefault() // TODO: do we need this ?
@@ -16,6 +18,10 @@ export default function SignInContainer() {
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value)
+  }
+
+  const handleEmailClear = (e) => {
+    setEmail('')
   }
 
   const handlePasswordChange = (e) => {
@@ -44,6 +50,13 @@ export default function SignInContainer() {
               onChange={handleEmailChange}
               autoFocus
             />
+            {email && (
+              <img
+                src={XCircle}
+                alt="XCircle icon"
+                className={styles.xCircle}
+                onClick={handleEmailClear}
+              />)}
           </div>
           <div className={styles.passwordContainer}>
             <label htmlFor="password">Пароль</label>
