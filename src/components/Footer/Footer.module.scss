@@ -25,9 +25,9 @@
       }
       .subscribeForm {
         margin-bottom: 64px;
+        max-width: 324px;
 
         .inputGroup {
-          max-width: 315px;
           margin: 16px 0;
           border: 1px solid $natural-30;
           border-radius: 8px;
@@ -58,6 +58,7 @@
 
         .agreementMessage {
           font-size: 12px;
+          max-width: 274PX;
         }
       }
     }

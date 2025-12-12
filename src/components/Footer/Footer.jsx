@@ -35,7 +35,6 @@ export default function Footer() {
               </div>
               <p className={styles.agreementMessage}>
                 Натискаючи кнопку «Підписатись», ви даєте згоду
-                <br/>
                 на обробку персональних даних
               </p>
             </form>
