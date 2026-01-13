@@ -1,0 +1,16 @@
+@import '/src/styles/var.scss';
+
+$gallery-gap: 3.1rem;
+$gallery-height: 26rem;
+$product-gallery-width: 34.4rem;
+$main-image-width: 27.3rem;
+
+.productGallery {
+  display: flex;
+  gap: $gallery-gap;
+  width: fit-content;
+  height: $gallery-height;
+  align-items: flex-start;
+  margin-left: 3rem;
+  margin-top: 1rem;
+}
