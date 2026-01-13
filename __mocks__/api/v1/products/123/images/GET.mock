@@ -23,6 +23,7 @@ Content-Type: application/json
           small: "https://i.postimg.cc/FFd9sw9H/bri1.png",
           medium: "https://i.postimg.cc/FFd9sw9H/bri3.png",
           large: "https://i.postimg.cc/FFd9sw9H/bri3.png"
+
         }
       }
     ]

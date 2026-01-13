@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom'
-import Breadcrumbs from '../../components/product/breadcrumbs/Breadcrumbs'
 import ProductGallery from '../../components/product/product-gallery/ProductGallery.jsx'
+import Breadcrumbs from '../../components/product/breadcrumbs/Breadcrumbs'
 import ProductInfo from '../../components/product/productInfo/ProductInfo'
 import ProductDescriptionTabs from '../../components/product/productDescriptionTabs/ProductDescriptionTabs'
 import useProduct from '../../components/product/useProduct'
@@ -44,7 +44,7 @@ export default function ProductPage() {
       <div className={styles.productPageContent}>
         <Breadcrumbs categoryId={categoryId} productName={productName} />
         <div className={styles.galleryAndInfoContainer}>
-          <ProductGallery />
+          <ProductGallery productId={id} />
           <ProductInfo product={product} />
         </div>
         <ProductDescriptionTabs product={product} />
