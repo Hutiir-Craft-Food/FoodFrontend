@@ -1,32 +1,41 @@
 import { useState, useEffect } from 'react'
 import ApiClient from '/src/services/apiClient'
 
-export default function useProducts({ api }) {
-  const [products, setProducts] = useState({})
+export default function useProducts({ filter, limit }) {
+  const [products, setProducts] = useState([])
+  const [offset, setOffset] = useState(0)
   const [loading, setLoading] = useState(false)
 
   const fetchProducts = async () => {
-    if (loading) {
-      return
-    }
+    if (loading) return
 
     try {
       setLoading(true)
-      const { data } = await ApiClient.get(api)
-      setProducts(data)
+
+      const { data } = await ApiClient.get('/v1/products', {
+        params: { filter, offset, limit }
+      })
+
+      setProducts(prev => [...prev, ...data.products])
     } catch (error) {
-      console.error('Error: ', error.message)
+      console.error('Error:', error.message)
     } finally {
       setLoading(false)
     }
   }
 
-
   useEffect(() => {
     fetchProducts()
-  }, [])
+  }, [offset])
 
-  const allProducts = Object.values(products).flat()
+  useEffect(() => {
+    setProducts([])
+    setOffset(0)
+  }, [filter])
 
-  return { allProducts, loading }
+  const loadMoreProducts = () => {
+    setOffset(prev => prev + limit)
+  }
+
+  return { products, loadMoreProducts, loading }
 }
