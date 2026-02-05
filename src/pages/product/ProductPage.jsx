@@ -3,7 +3,7 @@ import Breadcrumbs from '../../components/product/breadcrumbs/Breadcrumbs'
 import ProductGallery from '../../components/product/ProductGallery/ProductGallery'
 import ProductInfo from '../../components/product/productInfo/ProductInfo'
 import ProductDescriptionTabs from '../../components/product/productDescriptionTabs/ProductDescriptionTabs'
-import ShippingAndPayment from '../../components/product/shippingAndPayment/ShippingAndPayment'
+import ShippingAndPayment from '../../components/product/shipping-and-payment/ShippingAndPayment'
 import useProduct from '../../components/product/useProduct'
 import styles from './ProductPage.module.scss'
 
