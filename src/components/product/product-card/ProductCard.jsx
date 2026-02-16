@@ -6,7 +6,6 @@ import styles from './ProductCard.module.scss'
 
 export default function ProductCard({ product }) {
   const [isFavorite, setIsFavorite] = useState(false)
-  console.log (product)
 
   const toggleFavorite = () => {
     setIsFavorite(!isFavorite)
