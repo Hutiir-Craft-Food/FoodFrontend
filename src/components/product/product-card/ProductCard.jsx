@@ -23,7 +23,7 @@ export default function ProductCard({ product }) {
       <Link to={`/product/${product.id}`}>
         <div className={`card-icon ${styles.cardImage}`}>
           <img
-            src={product.image || `./images/image-not-found.png`}
+            src={product.images[0].links.medium || `/images/image-not-found.png`}
             alt='product image'
           />
           <h5 className={`card-title mt-3 ${styles.title}`}>{product.name}</h5>

@@ -9,7 +9,7 @@ export default function FeaturedProducts() {
 
   return (
     <div className="container">
-      <h2>Акції місяця </h2>
+      <h2>Новинки</h2>
       <div className="row">
         {products.length > 0 &&
           products.map((product) => {
@@ -27,22 +27,22 @@ export default function FeaturedProducts() {
         {loading && 'Завантаження...'}
       </div>
       <div className="d-flex justify-content-center">
-        {hasMore ?
+        {hasMore ? (
           <button
             onClick={() => loadMore()}
             className={styles.button}
           >
             Показати ще
-             <img className={styles.arrow} src={arrowIcon} alt="arrow icon"/>
+            <img className={styles.arrow} src={arrowIcon} alt="arrow icon" />
           </button>
-          :
+          ) : (
           <Link to="/catalog">
             <button className={styles.button}>
               Показати всі смаколики
-              <img className={styles.arrow} src={arrowIcon} alt="arrow icon"/>
+              <img className={styles.arrow} src={arrowIcon} alt="arrow icon" />
             </button>
           </Link>
-        }
+        )}
       </div>
     </div>
   )
