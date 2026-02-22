@@ -35,9 +35,9 @@ export default function ProductDescriptionTabs({ product }) {
 
           {product && (
             <Col sm={9} className={styles.tabContainer}>
-              <img src="/public/images/Logo.png" className={styles.logo} />
+              <img src="/images/Logo.png" className={styles.logo} />
               <img
-                src="/public/images/Logo_sign_green.png"
+                src="/images/Logo_sign_green.png"
                 className={styles.logoSecond}
               />
               <div className={styles.tabContent}>
