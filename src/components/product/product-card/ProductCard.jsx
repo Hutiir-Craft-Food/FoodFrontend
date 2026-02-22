@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import Rating from 'react-rating-stars-component'
 import { FaHeart, FaRegHeart } from 'react-icons/fa'
 import styles from './ProductCard.module.scss'
 
@@ -39,15 +38,6 @@ export default function ProductCard({ product }) {
             <span className={styles.isAvailable}>
               {product.available ? 'В наявності' : 'Товар відсутній'}
             </span>
-            {/* <Rating
-              count={5}
-              value={product.rating}
-              size={24}
-              activeColor='#ffd700'
-              edit={false}
-              isHalf={true}
-            /> */}
-            {/* <span>({product.reviews})</span> */}
           </div>
           <div className='d-flex justify-content-between'>
             <div>
@@ -55,7 +45,6 @@ export default function ProductCard({ product }) {
               {product?.prices?.[0]?.price ? `${product.prices[0].price} грн` : ''}
               </span>
               <br />
-              {/* <span className={styles.salePrice}>{product.prices.price} ₴</span> */}
             </div>
             <Link className={styles.btn} to={`#`}>
               В кошик
