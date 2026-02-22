@@ -5,7 +5,7 @@ import styles from './RecommendedProducts.module.scss'
 const filter = 'is_recommend'
 const limit = 4
 
-export default function NewProducts() {
+export default function RecommendedProducts() {
   const { allProducts, loadMoreProducts, loading } = useProducts({
     filter,
     limit,
