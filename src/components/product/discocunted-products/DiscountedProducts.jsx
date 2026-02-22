@@ -1,11 +1,11 @@
 import ProductCard from '../product-card/ProductCard'
 import useProducts from '../useProducts'
-import styles from './ProductOffers.module.scss'
+import styles from './DiscountedProducts.module.scss'
 
 const filter = 'is_offer'
 const limit = 4
 
-export default function NewProducts() {
+export default function DiscountedProducts() {
   const { allProducts, loadMoreProducts, loading } = useProducts({
     filter,
     limit,
