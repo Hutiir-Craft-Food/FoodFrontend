@@ -1,11 +1,11 @@
-import useProducts from '../useProducts'
 import ProductCard from '../product-card/ProductCard'
-import styles from './NewProducts.module.scss'
+import useProducts from '../useProducts'
+import styles from './RecommendedProducts.module.scss'
 
-const filter = 'is_new'
+const filter = 'is_recommend'
 const limit = 4
 
-export default function NewProducts() {
+export default function RecommendedProducts() {
   const { allProducts, loadMoreProducts, loading } = useProducts({
     filter,
     limit,
@@ -16,14 +16,14 @@ export default function NewProducts() {
       <h2>Новинки </h2>
       <div className="row">
         {allProducts.length > 0 &&
-          allProducts.map((newProduct) => {
+          allProducts.map((recommendProduct) => {
             return (
               <div
                 className="col-lg-3 col-md-4 col-sm-6 col-12 mb-4"
-                key={newProduct.id}
+                key={recommendProduct.id}
               >
                 <div className="rounded flex-column h-100">
-                  <ProductCard product={newProduct} />
+                  <ProductCard product={recommendProduct} />
                 </div>
               </div>
             )

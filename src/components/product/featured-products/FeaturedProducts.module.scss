@@ -1,0 +1,21 @@
+@import '~/styles/var.scss';
+
+.button {
+	color: $primary-90;
+	text-align: center;
+	border:solid 2px $primary-50;
+	border-radius: 8px;
+	background:none;
+	padding: 8px 24px;
+	font-weight: 700;
+
+	&:hover{
+		background: $primary-10;
+		cursor: pointer;
+	}
+
+	.arrow{
+		margin: 0 10px
+	}
+}
+

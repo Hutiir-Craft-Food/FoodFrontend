@@ -1,17 +1,13 @@
-import HeroCarousel from '/src/components/hero/HeroCarousel'
-import NewProducts from '/src/components/product/new-products/NewProducts'
-import Sellers from '/src/components/seller/sellers-container/SellersContainer'
-import RecommendedProducts from '/src/components/product/recommendations/RecommendedProducts'
-import ProductsOffers from '/src/components/product/offers/ProductOffers'
+import HeroCarousel from '~/components/hero/HeroCarousel'
+import FeaturedProducts from '~/components/product/featured-products/FeaturedProducts'
+import Sellers from '~/components/seller/sellers-container/SellersContainer'
 import styles from './HomePage.module.scss'
 
 export default function HomePage() {
   return (
     <div className='container'>
       <HeroCarousel />
-      <NewProducts />
-      <ProductsOffers />
-      <RecommendedProducts />
+      <FeaturedProducts />
 
       <section>
         <h2>Чомy ми?</h2>

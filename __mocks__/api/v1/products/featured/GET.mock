@@ -1,0 +1,43 @@
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+[
+  {
+    "id": 123,
+    "name": "Брі де Мьо із зеленим перцем та трюфельним маслом",
+    "available": true,
+    "description": "Сир Брі - один з найдавніших французьких сирів. Сир покритий цвіллю, що нагадує за кольором білий оксамит, під яким знаходиться ніжна текуча маса вершкового кольору, має виражений солодко-солоний вершковий смак і горіховий присмак. Виймати сир з холодильника краще заздалегідь, оскільки справжній смак десертного сиру розкривається при кімнатній температурі.",
+    "category": {
+      "id": 2,
+      "name": "Сири"
+    },
+    "seller": {
+      "id": 1,
+      "sellerName": "Ферма Зелений Луг"
+    },
+    "images": [
+      {
+        "position": 1,
+        "links": {
+          "thumbnail": "https://i.postimg.cc/YCrbyLHN/bri.png",
+          "small": "https://i.postimg.cc/YCrbyLHN/bri.png",
+          "medium": "https://i.postimg.cc/YCrbyLHN/bri.png",
+          "large": "https://i.postimg.cc/YCrbyLHN/bri.png"
+        }
+      }
+    ],
+    "prices": [
+      {
+        "price": 320,
+        "qty": 1,
+        "unitId": 1
+      }
+    ],
+    "units": [
+      {
+        "id": 1,
+        "name": "г."
+      }
+    ]
+  }
+]
