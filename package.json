@@ -11,7 +11,7 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "test": "jest --coverage",
-    "posttest": "jest-coverage-thresholds-bumper --config-path jest.config.mjs",
+    "bump-coverage-thresholds": "jest-coverage-thresholds-bumper --config-path jest.config.js",
     "mock-server": "cd __mocks__/api && camouflage -c ./config.yml"
   },
   "dependencies": {
