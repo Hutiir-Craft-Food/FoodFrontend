@@ -3,7 +3,7 @@ import Header from '../components/header/Header'
 import Footer from '../components/footer/Footer'
 import HomePage from './home/HomePage'
 import NotFoundPage from './not-found/NotFoundPage'
-import UserProfile from './userProfile/userProfile'
+import UserProfile from './user-profile/UserProfile'
 import ProductPage from './product/ProductPage'
 
 const router = createBrowserRouter([
