@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   verbose: true,
   testEnvironment: 'jsdom',
   testEnvironmentOptions: {
@@ -30,10 +30,10 @@ module.exports = {
   ],
   coverageThreshold: {
     global: {
-      branches: 30, // TODO: increase to at least 40%
-      functions: 30, // TODO: increase to at least 50%
-      lines: 30,
-      statements: 30,
+      branches: 55.93, // TODO: increase to at least 40%
+      functions: 50, // TODO: increase to at least 50%
+      lines: 53.75,
+      statements: 55.74,
     },
   },
 }

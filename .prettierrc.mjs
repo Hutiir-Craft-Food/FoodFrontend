@@ -1,6 +1,6 @@
 // https://prettier.io/docs/options
 
-module.exports = {
+export default {
   enable: true,
   useEditorConfig: false,
   arrowParens: 'always',
