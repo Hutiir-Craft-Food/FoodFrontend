@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import ApiClient from '../../services/apiClient'
+import ApiClient from '~/services/apiClient'
 
 export default function useProduct(id) {
   const [product, setProduct] = useState(null)

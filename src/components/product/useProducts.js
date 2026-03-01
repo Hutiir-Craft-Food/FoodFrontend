@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import ApiClient from '/src/services/apiClient'
+import ApiClient from '~/services/apiClient'
 
 export default function useProducts({ filter, limit }) {
   const [products, setProducts] = useState([])
@@ -13,10 +13,10 @@ export default function useProducts({ filter, limit }) {
       setLoading(true)
 
       const { data } = await ApiClient.get('/v1/products', {
-        params: { filter, offset, limit }
+        params: { filter, offset, limit },
       })
 
-      setProducts(prev => [...prev, ...data.products])
+      setProducts((prev) => [...prev, ...data.products])
     } catch (error) {
       console.error('Error:', error.message)
     } finally {
@@ -34,7 +34,7 @@ export default function useProducts({ filter, limit }) {
   }, [filter])
 
   const loadMoreProducts = () => {
-    setOffset(prev => prev + limit)
+    setOffset((prev) => prev + limit)
   }
 
   return { products, loadMoreProducts, loading }

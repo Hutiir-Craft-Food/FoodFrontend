@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react'
-import ApiClient from '/src/services/apiClient'
+import ApiClient from '~/services/apiClient'
 
 export default function useFeaturedProducts({limit = 4} = {}) {
   const [products, setProducts] = useState([])
@@ -25,7 +25,7 @@ export default function useFeaturedProducts({limit = 4} = {}) {
     fetchProducts()
   }, [])
 
-   const loadMore = () => {
+  const loadMore = () => {
     setVisibleCount((prev) => prev + limit)
   }
 
@@ -40,6 +40,6 @@ export default function useFeaturedProducts({limit = 4} = {}) {
     products: productsForRender,
     loading,
     loadMore,
-    hasMore
+    hasMore,
   }
 }
