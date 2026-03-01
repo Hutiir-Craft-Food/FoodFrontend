@@ -1,10 +1,10 @@
 import { useParams } from 'react-router-dom'
-import Breadcrumbs from '../../components/product/breadcrumbs/Breadcrumbs'
-import ProductGallery from '../../components/product/ProductGallery/ProductGallery'
+import Breadcrumbs from '~/components/product/breadcrumbs/Breadcrumbs'
+import ProductGallery from '~/components/product/productGallery/ProductGallery'
 import ProductInfo from '~/components/product/product-info/ProductInfo'
 import ProductDescriptionTabs from '~/components/product/product-description/ProductDescriptionTabs'
-import ShippingAndPayment from '../../components/product/shipping-and-payment/ShippingAndPayment'
-import useProduct from '../../components/product/useProduct'
+import ShippingAndPayment from '~/components/product/shipping-and-payment/ShippingAndPayment'
+import useProduct from '~/components/product/useProduct'
 import styles from './ProductPage.module.scss'
 
 export default function ProductPage() {
