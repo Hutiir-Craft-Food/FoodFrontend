@@ -10,7 +10,7 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "test": "jest --coverage --watch",
+    "test": "jest --coverage --watchAll",
     "posttest": "jest-coverage-thresholds-bumper --config-path jest.config.cjs",
     "mock-server": "cd __mocks__/api && camouflage -c ./config.yml"
   },
