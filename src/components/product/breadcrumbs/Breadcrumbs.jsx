@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import useBreadcrumbs from './useBreadcrumbs'
 import styles from './Breadcrumbs.module.scss'
-import catalogIcon from '~/icons/catalogIcon.svg'
+import CatalogIcon from '~/icons/Catalog'
 
 export default function Breadcrumbs({ categoryId, productName }) {
   const { data, loading, error } = useBreadcrumbs(categoryId)
@@ -45,7 +45,7 @@ export default function Breadcrumbs({ categoryId, productName }) {
   return (
     <nav className={styles.breadcrumbs}>
       <Link to="/catalog">
-        <img src={catalogIcon} alt="Catalog" />
+        <CatalogIcon />
       </Link>
       <span className="m-3">{' > '}</span>
       {renderBreadcrumbs(data)}

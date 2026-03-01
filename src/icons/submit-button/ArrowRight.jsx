@@ -1,0 +1,22 @@
+import { memo } from 'react'
+
+export default memo(function ArrowRight() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      fill="transparent"
+      viewBox="0 0 24 24"
+      role="img"
+    >
+      <title>send icon</title>
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M12.9697 4.74042C13.2626 4.44753 13.7374 4.44753 14.0303 4.74042L20.7803 11.4904C21.0732 11.7833 21.0732 12.2582 20.7803 12.5511L14.0303 19.3011C13.7374 19.594 13.2626 19.594 12.9697 19.3011C12.6768 19.0082 12.6768 18.5333 12.9697 18.2404L18.4393 12.7708H3.75C3.33579 12.7708 3 12.435 3 12.0208C3 11.6065 3.33579 11.2708 3.75 11.2708H18.4393L12.9697 5.80108C12.6768 5.50819 12.6768 5.03332 12.9697 4.74042Z"
+        fill="white"
+      />
+    </svg>
+  )
+})

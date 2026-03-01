@@ -11,6 +11,7 @@
   "files.autoSaveWorkspaceFilesOnly": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
+  "diffEditor.ignoreTrimWhitespace": true,
   "prettier.enable": true,
   "prettier.useEditorConfig": false,
   "search.exclude": {
@@ -23,5 +24,6 @@
     "cli/target": true
   },
   "css.format.enable": true,
-  "css.format.spaceAroundSelectorSeparator": true
+  "css.format.spaceAroundSelectorSeparator": true,
+  "jest.runMode": "on-demand"
 }

@@ -1,8 +1,8 @@
 import styles from './Footer.module.scss'
-import arrowRight from '~/icons/submit-button/arrowRight.svg'
-import facebookIcon from '~/icons/facebookIcon.svg'
-import telegramIcon from '~/icons/telegramIcon.svg'
-import instagramIcon from '~/icons/instagramIcon.svg'
+import ArrowRight from '~/icons/submit-button/arrowRight'
+import FacebookIcon from '~/icons/Facebook'
+import TelegramIcon from '~/icons/Telegram'
+import InstagramIcon from '~/icons/Instagram'
 
 export default function Footer() {
   const handleSubmit = () => {}
@@ -30,12 +30,12 @@ export default function Footer() {
                   className={styles.input}
                 />
                 <button type="submit" className={styles.button}>
-                  <img src={arrowRight} alt="надіслати" />
+                  <ArrowRight />
                 </button>
               </div>
               <p className={styles.agreementMessage}>
-                Натискаючи кнопку «Підписатись», ви даєте згоду
-                на обробку персональних даних
+                Натискаючи кнопку «Підписатись», ви даєте згоду на обробку
+                персональних даних
               </p>
             </form>
           </div>
@@ -98,17 +98,17 @@ export default function Footer() {
             <ul>
               <li>
                 <a href="#">
-                  <img src={facebookIcon} alt="facebook icon." />
+                  <FacebookIcon />
                 </a>
               </li>
               <li>
                 <a href="#">
-                  <img src={instagramIcon} alt="intagram icon" />
+                  <InstagramIcon />
                 </a>
               </li>
               <li>
                 <a href="#">
-                  <img src={telegramIcon} alt="telegram icon" />
+                  <TelegramIcon />
                 </a>
               </li>
             </ul>

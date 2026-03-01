@@ -4,6 +4,11 @@ module.exports = {
   testEnvironmentOptions: {
     html: "<html lang='en'><div id='root'></div></html>",
   },
+  testPathIgnorePatterns: [
+    '<rootDir>/node_modules/',
+    '<rootDir>/dist/',
+    '<rootDir>/src/(assets|icons)/',
+  ],
   transform: {
     '^.+\\.[jt]sx?$': 'babel-jest',
     '^.+\\.scss$': 'jest-scss-transform',
@@ -17,6 +22,11 @@ module.exports = {
     '^swiper/modules$': '<rootDir>/__mocks__/components/swiper/modules.js',
     '^swiper/css(/.*)?$': '<rootDir>/__mocks__/components/swiper/styles.js',
   },
+  coveragePathIgnorePatterns: [
+    '<rootDir>/node_modules/',
+    '<rootDir>/dist/',
+    '<rootDir>/src/(assets|icons)/',
+  ],
   coverageThreshold: {
     global: {
       lines: 30,
