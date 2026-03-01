@@ -18,7 +18,7 @@ describe('Footer Component', () => {
       screen.getByLabelText('Підпишись і отримуй спеціальні пропозиції!')
     ).toBeInTheDocument()
     expect(screen.getByPlaceholderText('Ваш e-mail')).toBeInTheDocument()
-    expect(screen.getByRole('img', { name: 'надіслати' })).toBeInTheDocument()
+    expect(screen.getByRole('img', { name: 'send icon' })).toBeInTheDocument()
   })
 
   test('renders agreement message', () => {
@@ -40,10 +40,10 @@ describe('Footer Component', () => {
 
   test('renders social media icons', () => {
     expect(
-      screen.getByRole('img', { name: 'facebook icon.' })
+      screen.getByRole('img', { name: 'facebook icon' })
     ).toBeInTheDocument()
     expect(
-      screen.getByRole('img', { name: 'intagram icon' })
+      screen.getByRole('img', { name: 'instagram icon' })
     ).toBeInTheDocument()
     expect(
       screen.getByRole('img', { name: 'telegram icon' })
