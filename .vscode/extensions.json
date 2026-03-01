@@ -7,7 +7,6 @@
     "eamodio.gitlens",
     "ms-vsliveshare.vsliveshare",
     "esbenp.prettier-vscode",
-    "firsttris.vscode-jest-runner",
     "orta.vscode-jest"
   ]
 }
