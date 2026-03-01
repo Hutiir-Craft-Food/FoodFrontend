@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import arrowIcon from '~/icons/arrowIcon.svg'
+import ArrowIcon from '~/icons/ArrowRight12x10'
 import useFeaturedProducts from './useFeaturedProducts'
 import ProductCard from '../product-card/ProductCard'
 import styles from './FeaturedProducts.module.scss'
@@ -33,13 +33,13 @@ export default function FeaturedProducts() {
             className={styles.button}
           >
             Показати ще
-            <img className={styles.arrow} src={arrowIcon} alt="arrow icon" />
+            <ArrowIcon className={styles.arrow} />
           </button>
           ) : (
           <Link to="/catalog">
             <button className={styles.button}>
               Показати всі смаколики
-              <img className={styles.arrow} src={arrowIcon} alt="arrow icon" />
+              <ArrowIcon className={styles.arrow} />
             </button>
           </Link>
         )}
