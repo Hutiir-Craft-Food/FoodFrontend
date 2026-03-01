@@ -1,4 +1,4 @@
-import closeIcon from '/src/icons/mdiclose.svg'
+import CloseButtonIcon from '~/icons/CloseButton'
 import styles from './Modal.module.scss'
 
 export default function Modal({ handleClose, children }) {
@@ -6,12 +6,7 @@ export default function Modal({ handleClose, children }) {
     <>
       <div className={styles.overlay} onClick={handleClose}></div>
       <div className={styles.modal}>
-        <img
-          src={closeIcon}
-          alt='icon'
-          className={styles.closeIcon}
-          onClick={handleClose}
-        />
+        <CloseButtonIcon className={styles.closeIcon} onClick={handleClose} />
         {children}
       </div>
     </>
