@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import Logo from './Logo'
-import SearchBar from './Searchbar'
+import SearchBar from './SearchBar'
 import { useAuthStore } from '../auth/store/AuthStore'
 import styles from './RowTwo.module.scss'
 

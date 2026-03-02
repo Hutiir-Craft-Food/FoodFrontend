@@ -10,8 +10,8 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "test": "jest --coverage --watchAll",
-    "posttest": "jest-coverage-thresholds-bumper --config-path jest.config.cjs",
+    "test": "jest --coverage",
+    "bump-coverage-thresholds": "jest-coverage-thresholds-bumper --config-path jest.config.js",
     "mock-server": "cd __mocks__/api && camouflage -c ./config.yml"
   },
   "dependencies": {
@@ -45,10 +45,12 @@
     "@types/react-dom": "^18.2.22",
     "@vitejs/plugin-react": "^4.3.1",
     "eslint": "^8.57.0",
+    "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.9",
     "jest": "~29.7.0",
+    "jest-coverage-thresholds-bumper": "^1.1.0",
     "jest-environment-jsdom": "~29.7.0",
     "jest-scss-transform": "~1.0.3",
     "jest-transformer-svg": "^2.0.2",

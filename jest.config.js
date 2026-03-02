@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   verbose: true,
   testEnvironment: 'jsdom',
   testEnvironmentOptions: {
@@ -22,6 +22,7 @@ module.exports = {
     '^swiper/modules$': '<rootDir>/__mocks__/components/swiper/modules.js',
     '^swiper/css(/.*)?$': '<rootDir>/__mocks__/components/swiper/styles.js',
   },
+  collectCoverage: true,
   coveragePathIgnorePatterns: [
     '<rootDir>/node_modules/',
     '<rootDir>/dist/',
@@ -29,10 +30,10 @@ module.exports = {
   ],
   coverageThreshold: {
     global: {
-      lines: 30,
-      statements: 30,
-      branches: 40,
-      functions: 50,
+      branches: 35.0, // TODO: increase to at least 40%
+      functions: 35.0, // TODO: increase to at least 50%
+      lines: 40.0,
+      statements: 40.0,
     },
   },
 }

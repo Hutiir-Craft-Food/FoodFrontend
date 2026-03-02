@@ -1,5 +1,5 @@
 import styles from './Footer.module.scss'
-import ArrowRight from '~/icons/submit-button/arrowRight'
+import ArrowRight from '~/icons/submit-button/ArrowRight'
 import FacebookIcon from '~/icons/Facebook'
 import TelegramIcon from '~/icons/Telegram'
 import InstagramIcon from '~/icons/Instagram'
