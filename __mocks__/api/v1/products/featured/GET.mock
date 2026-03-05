@@ -2,42 +2,690 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 [
-  {
-    "id": 123,
-    "name": "Брі де Мьо із зеленим перцем та трюфельним маслом",
-    "available": true,
-    "description": "Сир Брі - один з найдавніших французьких сирів. Сир покритий цвіллю, що нагадує за кольором білий оксамит, під яким знаходиться ніжна текуча маса вершкового кольору, має виражений солодко-солоний вершковий смак і горіховий присмак. Виймати сир з холодильника краще заздалегідь, оскільки справжній смак десертного сиру розкривається при кімнатній температурі.",
-    "category": {
-      "id": 2,
-      "name": "Сири"
-    },
-    "seller": {
-      "id": 1,
-      "sellerName": "Ферма Зелений Луг"
-    },
-    "images": [
-      {
-        "position": 1,
-        "links": {
-          "thumbnail": "https://i.postimg.cc/YCrbyLHN/bri.png",
-          "small": "https://i.postimg.cc/YCrbyLHN/bri.png",
-          "medium": "https://i.postimg.cc/YCrbyLHN/bri.png",
-          "large": "https://i.postimg.cc/YCrbyLHN/bri.png"
-        }
-      }
-    ],
-    "prices": [
-      {
-        "price": 320,
-        "qty": 1,
-        "unitId": 1
-      }
-    ],
-    "units": [
-      {
+    {
         "id": 1,
-        "name": "г."
-      }
-    ]
-  }
+        "name": "Куряча тушка",
+        "available": true,
+        "description": "Свіжа курка, фермерська",
+        "ingredients": null,
+        "nutrition": null,
+        "storage": null,
+        "allergens": null,
+        "seller": {
+            "id": 1,
+            "sellerName": "Seller"
+        },
+        "category": {
+            "id": 9,
+            "name": "Курятина"
+        },
+        "images": [
+            {
+                "position": 1,
+                "links": {
+                    "thumbnail": "https://images.unsplash.com/photo-1587336768918-ca17c127c2e5?w=500&auto=format&fit=crop&q=60",
+                    "small": "https://images.unsplash.com/photo-1587336768918-ca17c127c2e5?w=500&auto=format&fit=crop&q=60",
+                    "medium": "https://images.unsplash.com/photo-1587336768918-ca17c127c2e5?w=500&auto=format&fit=crop&q=60",
+                    "large": "https://images.unsplash.com/photo-1587336768918-ca17c127c2e5?w=500&auto=format&fit=crop&q=60"
+                }
+            }
+        ],
+        "prices": [
+            {
+                "price": 180.35,
+                "qty": 1,
+                "unitId": 4
+            },
+            { 
+                "price": 60.35, 
+                 "qty": 500, 
+                 "unitId": 3 
+            },
+            { 
+                "price": 35.35, 
+                "qty": 250, 
+                "unitId": 3 
+            }
+        ],
+        "units": [
+             { 
+                 "id": 3, 
+                 "name": "гр." 
+             },
+            {
+                "id": 4,
+                "name": "кг."
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Куряче серце",
+        "available": true,
+        "description": "Курячі серця свіжі",
+        "ingredients": null,
+        "nutrition": null,
+        "storage": null,
+        "allergens": null,
+        "seller": {
+            "id": 1,
+            "sellerName": "Seller"
+        },
+        "category": {
+            "id": 9,
+            "name": "Курятина"
+        },
+        "images": [
+            {
+                "position": 1,
+                "links": {
+                    "thumbnail": "https://images.unsplash.com/photo-1587593810167-9d91a1ac6f1c?w=500&auto=format&fit=crop&q=60",
+                    "small": "https://images.unsplash.com/photo-1587593810167-9d91a1ac6f1c?w=500&auto=format&fit=crop&q=60",
+                    "medium": "https://images.unsplash.com/photo-1587593810167-9d91a1ac6f1c?w=500&auto=format&fit=crop&q=60",
+                    "large": "https://images.unsplash.com/photo-1587593810167-9d91a1ac6f1c?w=500&auto=format&fit=crop&q=60"
+                }
+            }
+        ],
+        "prices": [
+            {
+                "price": 193.49,
+                "qty": 1,
+                "unitId": 4
+            }
+        ],
+        "units": [
+            {
+                "id": 4,
+                "name": "кг."
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Куряча печінка",
+        "available": true,
+        "description": "Куряча печінка свіжа",
+        "ingredients": null,
+        "nutrition": null,
+        "storage": null,
+        "allergens": null,
+        "seller": {
+            "id": 1,
+            "sellerName": "Seller"
+        },
+        "category": {
+            "id": 9,
+            "name": "Курятина"
+        },
+        "images": [
+            {
+                "position": 1,
+                "links": {
+                    "thumbnail": "https://images.unsplash.com/photo-1587593810167-9d91a1ac6f1c?w=500&auto=format&fit=crop&q=60",
+                    "small": "https://images.unsplash.com/photo-1587593810167-9d91a1ac6f1c?w=500&auto=format&fit=crop&q=60",
+                    "medium": "https://images.unsplash.com/photo-1587593810167-9d91a1ac6f1c?w=500&auto=format&fit=crop&q=60",
+                    "large": "https://images.unsplash.com/photo-1587593810167-9d91a1ac6f1c?w=500&auto=format&fit=crop&q=60"
+                }
+            }
+        ],
+        "prices": [
+            {
+                "price": 192.00,
+                "qty": 1,
+                "unitId": 4
+            }
+        ],
+        "units": [
+            {
+                "id": 4,
+                "name": "кг."
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "name": "Курячі стегна",
+        "available": true,
+        "description": "Стегна курячі свіжі",
+        "ingredients": null,
+        "nutrition": null,
+        "storage": null,
+        "allergens": null,
+        "seller": {
+            "id": 1,
+            "sellerName": "Seller"
+        },
+        "category": {
+            "id": 9,
+            "name": "Курятина"
+        },
+        "images": [
+            {
+                "position": 1,
+                "links": {
+                    "thumbnail": "https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=500&auto=format&fit=crop&q=60",
+                    "small": "https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=500&auto=format&fit=crop&q=60",
+                    "medium": "https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=500&auto=format&fit=crop&q=60",
+                    "large": "https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=500&auto=format&fit=crop&q=60"
+                }
+            }
+        ],
+        "prices": [
+            {
+                "price": 202.67,
+                "qty": 1,
+                "unitId": 4
+            }
+        ],
+        "units": [
+            {
+                "id": 4,
+                "name": "кг."
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "name": "Курячі крильця",
+        "available": true,
+        "description": "Крильця курячі свіжі",
+        "ingredients": null,
+        "nutrition": null,
+        "storage": null,
+        "allergens": null,
+        "seller": {
+            "id": 1,
+            "sellerName": "Seller"
+        },
+        "category": {
+            "id": 9,
+            "name": "Курятина"
+        },
+        "images": [
+            {
+                "position": 1,
+                "links": {
+                    "thumbnail": "https://images.unsplash.com/photo-1599483340001-96f5d07b5c5c?w=500&auto=format&fit=crop&q=60",
+                    "small": "https://images.unsplash.com/photo-1599483340001-96f5d07b5c5c?w=500&auto=format&fit=crop&q=60",
+                    "medium": "https://images.unsplash.com/photo-1599483340001-96f5d07b5c5c?w=500&auto=format&fit=crop&q=60",
+                    "large": "https://images.unsplash.com/photo-1599483340001-96f5d07b5c5c?w=500&auto=format&fit=crop&q=60"
+                }
+            }
+        ],
+        "prices": [
+            {
+                "price": 177.53,
+                "qty": 1,
+                "unitId": 4
+            }
+        ],
+        "units": [
+            {
+                "id": 4,
+                "name": "кг."
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "name": "Куряче філе",
+        "available": true,
+        "description": "Філе куряче без шкіри",
+        "ingredients": null,
+        "nutrition": null,
+        "storage": null,
+        "allergens": null,
+        "seller": {
+            "id": 1,
+            "sellerName": "Seller"
+        },
+        "category": {
+            "id": 9,
+            "name": "Курятина"
+        },
+        "images": [
+            {
+                "position": 1,
+                "links": {
+                    "thumbnail": "https://images.unsplash.com/photo-1587336768918-ca17c127c2e5?w=500&auto=format&fit=crop&q=60",
+                    "small": "https://images.unsplash.com/photo-1587336768918-ca17c127c2e5?w=500&auto=format&fit=crop&q=60",
+                    "medium": "https://images.unsplash.com/photo-1587336768918-ca17c127c2e5?w=500&auto=format&fit=crop&q=60",
+                    "large": "https://images.unsplash.com/photo-1587336768918-ca17c127c2e5?w=500&auto=format&fit=crop&q=60"
+                }
+            }
+        ],
+        "prices": [
+            {
+                "price": 178.52,
+                "qty": 1,
+                "unitId": 4
+            }
+        ],
+        "units": [
+            {
+                "id": 4,
+                "name": "кг."
+            }
+        ]
+    },
+    {
+        "id": 7,
+        "name": "Фарш курячий",
+        "available": true,
+        "description": "Фарш з курячого м'яса",
+        "ingredients": null,
+        "nutrition": null,
+        "storage": null,
+        "allergens": null,
+        "seller": {
+            "id": 1,
+            "sellerName": "Seller"
+        },
+        "category": {
+            "id": 9,
+            "name": "Курятина"
+        },
+        "images": [
+            {
+                "position": 1,
+                "links": {
+                    "thumbnail": "https://images.unsplash.com/photo-1587336768918-ca17c127c2e5?w=500&auto=format&fit=crop&q=60",
+                    "small": "https://images.unsplash.com/photo-1587336768918-ca17c127c2e5?w=500&auto=format&fit=crop&q=60",
+                    "medium": "https://images.unsplash.com/photo-1587336768918-ca17c127c2e5?w=500&auto=format&fit=crop&q=60",
+                    "large": "https://images.unsplash.com/photo-1587336768918-ca17c127c2e5?w=500&auto=format&fit=crop&q=60"
+                }
+            }
+        ],
+        "prices": [
+            {
+                "price": 123.20,
+                "qty": 1,
+                "unitId": 4
+            }
+        ],
+        "units": [
+            {
+                "id": 4,
+                "name": "кг."
+            }
+        ]
+    },
+    {
+        "id": 8,
+        "name": "Копчена курка",
+        "available": true,
+        "description": "Курка копчена",
+        "ingredients": null,
+        "nutrition": null,
+        "storage": null,
+        "allergens": null,
+        "seller": {
+            "id": 1,
+            "sellerName": "Seller"
+        },
+        "category": {
+            "id": 9,
+            "name": "Курятина"
+        },
+        "images": [
+            {
+                "position": 1,
+                "links": {
+                    "thumbnail": "https://images.unsplash.com/photo-1587336768918-ca17c127c2e5?w=500&auto=format&fit=crop&q=60",
+                    "small": "https://images.unsplash.com/photo-1587336768918-ca17c127c2e5?w=500&auto=format&fit=crop&q=60",
+                    "medium": "https://images.unsplash.com/photo-1587336768918-ca17c127c2e5?w=500&auto=format&fit=crop&q=60",
+                    "large": "https://images.unsplash.com/photo-1587336768918-ca17c127c2e5?w=500&auto=format&fit=crop&q=60"
+                }
+            }
+        ],
+        "prices": [
+            {
+                "price": 165.65,
+                "qty": 1,
+                "unitId": 4
+            }
+        ],
+        "units": [
+            {
+                "id": 4,
+                "name": "кг."
+            }
+        ]
+    },
+    {
+        "id": 9,
+        "name": "Курка гриль",
+        "available": true,
+        "description": "Курка-гриль готова",
+        "ingredients": null,
+        "nutrition": null,
+        "storage": null,
+        "allergens": null,
+        "seller": {
+            "id": 1,
+            "sellerName": "Seller"
+        },
+        "category": {
+            "id": 9,
+            "name": "Курятина"
+        },
+        "images": [
+            {
+                "position": 1,
+                "links": {
+                    "thumbnail": "https://images.unsplash.com/photo-1587336768918-ca17c127c2e5?w=500&auto=format&fit=crop&q=60",
+                    "small": "https://images.unsplash.com/photo-1587336768918-ca17c127c2e5?w=500&auto=format&fit=crop&q=60",
+                    "medium": "https://images.unsplash.com/photo-1587336768918-ca17c127c2e5?w=500&auto=format&fit=crop&q=60",
+                    "large": "https://images.unsplash.com/photo-1587336768918-ca17c127c2e5?w=500&auto=format&fit=crop&q=60"
+                }
+            }
+        ],
+        "prices": [
+            {
+                "price": 217.09,
+                "qty": 1,
+                "unitId": 4
+            }
+        ],
+        "units": [
+            {
+                "id": 4,
+                "name": "кг."
+            }
+        ]
+    },
+    {
+        "id": 10,
+        "name": "Свинина",
+        "available": true,
+        "description": "Свіжа свинина",
+        "ingredients": null,
+        "nutrition": null,
+        "storage": null,
+        "allergens": null,
+        "seller": {
+            "id": 1,
+            "sellerName": "Seller"
+        },
+        "category": {
+            "id": 7,
+            "name": "Свинина"
+        },
+        "images": [
+            {
+                "position": 1,
+                "links": {
+                    "thumbnail": "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=500&auto=format&fit=crop&q=60",
+                    "small": "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=500&auto=format&fit=crop&q=60",
+                    "medium": "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=500&auto=format&fit=crop&q=60",
+                    "large": "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=500&auto=format&fit=crop&q=60"
+                }
+            }
+        ],
+        "prices": [
+            {
+                "price": 490.46,
+                "qty": 1,
+                "unitId": 4
+            }
+        ],
+        "units": [
+            {
+                "id": 4,
+                "name": "кг."
+            }
+        ]
+    },
+    {
+        "id": 11,
+        "name": "Свиняча вирізка",
+        "available": true,
+        "description": "Свиняча вирізка свіжа",
+        "ingredients": null,
+        "nutrition": null,
+        "storage": null,
+        "allergens": null,
+        "seller": {
+            "id": 1,
+            "sellerName": "Seller"
+        },
+        "category": {
+            "id": 7,
+            "name": "Свинина"
+        },
+        "images": [
+            {
+                "position": 1,
+                "links": {
+                    "thumbnail": "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=500&auto=format&fit=crop&q=60",
+                    "small": "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=500&auto=format&fit=crop&q=60",
+                    "medium": "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=500&auto=format&fit=crop&q=60",
+                    "large": "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=500&auto=format&fit=crop&q=60"
+                }
+            }
+        ],
+        "prices": [
+            {
+                "price": 446.92,
+                "qty": 1,
+                "unitId": 4
+            }
+        ],
+        "units": [
+            {
+                "id": 4,
+                "name": "кг."
+            }
+        ]
+    },
+    {
+        "id": 12,
+        "name": "Свинячі ребра",
+        "available": true,
+        "description": "Свинячі ребра для грилю",
+        "ingredients": null,
+        "nutrition": null,
+        "storage": null,
+        "allergens": null,
+        "seller": {
+            "id": 1,
+            "sellerName": "Seller"
+        },
+        "category": {
+            "id": 7,
+            "name": "Свинина"
+        },
+        "images": [
+            {
+                "position": 1,
+                "links": {
+                    "thumbnail": "https://images.unsplash.com/photo-1558036117-15e82a2c9a9a?w=500&auto=format&fit=crop&q=60",
+                    "small": "https://images.unsplash.com/photo-1558036117-15e82a2c9a9a?w=500&auto=format&fit=crop&q=60",
+                    "medium": "https://images.unsplash.com/photo-1558036117-15e82a2c9a9a?w=500&auto=format&fit=crop&q=60",
+                    "large": "https://images.unsplash.com/photo-1558036117-15e82a2c9a9a?w=500&auto=format&fit=crop&q=60"
+                }
+            }
+        ],
+        "prices": [
+            {
+                "price": 464.99,
+                "qty": 1,
+                "unitId": 4
+            }
+        ],
+        "units": [
+            {
+                "id": 4,
+                "name": "кг."
+            }
+        ]
+    },
+    {
+        "id": 13,
+        "name": "Свиняча грудинка",
+        "available": true,
+        "description": "Свиняча грудинка свіжа",
+        "ingredients": null,
+        "nutrition": null,
+        "storage": null,
+        "allergens": null,
+        "seller": {
+            "id": 1,
+            "sellerName": "Seller"
+        },
+        "category": {
+            "id": 7,
+            "name": "Свинина"
+        },
+        "images": [
+            {
+                "position": 1,
+                "links": {
+                    "thumbnail": "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=500&auto=format&fit=crop&q=60",
+                    "small": "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=500&auto=format&fit=crop&q=60",
+                    "medium": "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=500&auto=format&fit=crop&q=60",
+                    "large": "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=500&auto=format&fit=crop&q=60"
+                }
+            }
+        ],
+        "prices": [
+            {
+                "price": 241.86,
+                "qty": 1,
+                "unitId": 4
+            }
+        ],
+        "units": [
+            {
+                "id": 4,
+                "name": "кг."
+            }
+        ]
+    },
+    {
+        "id": 14,
+        "name": "Свиняча печінка",
+        "available": true,
+        "description": "Свиняча печінка свіжа",
+        "ingredients": null,
+        "nutrition": null,
+        "storage": null,
+        "allergens": null,
+        "seller": {
+            "id": 1,
+            "sellerName": "Seller"
+        },
+        "category": {
+            "id": 7,
+            "name": "Свинина"
+        },
+        "images": [
+            {
+                "position": 1,
+                "links": {
+                    "thumbnail": "https://images.unsplash.com/photo-1587593810167-9d91a1ac6f1c?w=500&auto=format&fit=crop&q=60",
+                    "small": "https://images.unsplash.com/photo-1587593810167-9d91a1ac6f1c?w=500&auto=format&fit=crop&q=60",
+                    "medium": "https://images.unsplash.com/photo-1587593810167-9d91a1ac6f1c?w=500&auto=format&fit=crop&q=60",
+                    "large": "https://images.unsplash.com/photo-1587593810167-9d91a1ac6f1c?w=500&auto=format&fit=crop&q=60"
+                }
+            }
+        ],
+        "prices": [
+            {
+                "price": 455.76,
+                "qty": 1,
+                "unitId": 4
+            }
+        ],
+        "units": [
+            {
+                "id": 4,
+                "name": "кг."
+            }
+        ]
+    },
+    {
+        "id": 15,
+        "name": "Бекон",
+        "available": true,
+        "description": "Бекон якісний",
+        "ingredients": null,
+        "nutrition": null,
+        "storage": null,
+        "allergens": null,
+        "seller": {
+            "id": 1,
+            "sellerName": "Seller"
+        },
+        "category": {
+            "id": 7,
+            "name": "Свинина"
+        },
+        "images": [
+            {
+                "position": 1,
+                "links": {
+                    "thumbnail": "https://images.unsplash.com/photo-1574781338179-7d1b4e4adb2c?w=500&auto=format&fit=crop&q=60",
+                    "small": "https://images.unsplash.com/photo-1574781338179-7d1b4e4adb2c?w=500&auto=format&fit=crop&q=60",
+                    "medium": "https://images.unsplash.com/photo-1574781338179-7d1b4e4adb2c?w=500&auto=format&fit=crop&q=60",
+                    "large": "https://images.unsplash.com/photo-1574781338179-7d1b4e4adb2c?w=500&auto=format&fit=crop&q=60"
+                }
+            }
+        ],
+        "prices": [
+            {
+                "price": 267.66,
+                "qty": 1,
+                "unitId": 4
+            }
+        ],
+        "units": [
+            {
+                "id": 4,
+                "name": "кг."
+            }
+        ]
+    },
+    {
+        "id": 16,
+        "name": "Ковбаса",
+        "available": true,
+        "description": "Різні види ковбас",
+        "ingredients": null,
+        "nutrition": null,
+        "storage": null,
+        "allergens": null,
+        "seller": {
+            "id": 1,
+            "sellerName": "Seller"
+        },
+        "category": {
+            "id": 7,
+            "name": "Свинина"
+        },
+        "images": [
+            {
+                "position": 1,
+                "links": {
+                    "thumbnail": "https://images.unsplash.com/photo-1596818538476-1a856a8c8245?w=500&auto=format&fit=crop&q=60",
+                    "small": "https://images.unsplash.com/photo-1596818538476-1a856a8c8245?w=500&auto=format&fit=crop&q=60",
+                    "medium": "https://images.unsplash.com/photo-1596818538476-1a856a8c8245?w=500&auto=format&fit=crop&q=60",
+                    "large": "https://images.unsplash.com/photo-1596818538476-1a856a8c8245?w=500&auto=format&fit=crop&q=60"
+                }
+            }
+        ],
+        "prices": [
+            {
+                "price": 401.21,
+                "qty": 1,
+                "unitId": 4
+            }
+        ],
+        "units": [
+            {
+                "id": 4,
+                "name": "кг."
+            }
+        ]
+    }
 ]
