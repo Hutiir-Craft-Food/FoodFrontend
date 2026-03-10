@@ -2,10 +2,10 @@ import { useState } from "react"
 import styles from './ProductPrice.module.scss'
 
 export default function ProductPrice({ product }) {
-  const pricesInfo = product?.prices ?? []
+  const prices = product?.prices ?? []
   const units = product?.units ?? []
-  const [activeIndex, setActiveIndex] = useState(0)
-  const activePrice = pricesInfo[activeIndex] ?? {}
+  const [selectedPriceIndex, setSelectedPriceIndex] = useState(0)
+  const activePrice = prices[selectedPriceIndex] ?? {}
 
   return (
     <div className={styles.productPriceContainer}>
@@ -13,19 +13,19 @@ export default function ProductPrice({ product }) {
         {activePrice?.price ? `${activePrice.price} грн` : "Немає ціни"}
       </p>
       <div className={styles.listOFPackaging}>
-        {pricesInfo && pricesInfo.map((priceInfo, index) => {
+        {prices.map((price, index) => {
           const unit = units.find(
-            (unit) => unit.id === priceInfo.unitId
+            (unit) => unit.id === price.unitId
           )
           return (
             <button
               type="button"
-              className={`${styles.buttonPackaging} ${activeIndex === index ? styles.active : ''}`}
+              className={`${styles.buttonPackaging} ${selectedPriceIndex === index ? styles.active : ''}`}
               key={`${product.id}-${index}`}
-              onClick={() => setActiveIndex(index)}
+              onClick={() => setSelectedPriceIndex(index)}
               
             >
-              {priceInfo.qty} {unit?.name || ''}
+              {price.qty} {unit?.name || ''}
             </button>
           )
         })}

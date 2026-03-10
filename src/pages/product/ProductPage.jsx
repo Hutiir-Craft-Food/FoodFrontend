@@ -6,7 +6,7 @@ import ProductDescriptionTabs from '~/components/product/product-description/Pro
 import ShippingAndPayment from '~/components/product/shipping-and-payment/ShippingAndPayment'
 import useProduct from '~/components/product/useProduct'
 import styles from './ProductPage.module.scss'
-import ProductPrice from '../../components/product/product-price/ProductPrice'
+import ProductPrice from '~/components/product/product-price/ProductPrice'
 
 export default function ProductPage() {
   const { id } = useParams()
