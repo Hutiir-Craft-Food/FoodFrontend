@@ -9,7 +9,26 @@ Content-Type: application/json
       "id": 123,
       "name": "Брі де Мьо із зеленим перцем та трюфельним маслом",
       "manufacturer": "Ферма Зелений Луг",
-      "image": "https://i.postimg.cc/YCrbyLHN/bri.png",
+      images: [
+        {
+          position: 1,
+          links: {
+            thumbnail: "https://i.postimg.cc/YCrbyLHN/bri.png",
+            small: "https://i.postimg.cc/FFd9sw9H/bri1.png",
+            medium: "https://i.postimg.cc/FFd9sw9H/bri3.png",
+            large: "https://i.postimg.cc/FFd9sw9H/bri3.png"
+          }
+        },
+        {
+          position: 2,
+          links: {
+            thumbnail: "https://i.postimg.cc/YCrbyLHN/bri.png",
+            small: "https://i.postimg.cc/FFd9sw9H/bri1.png",
+            medium: "https://i.postimg.cc/FFd9sw9H/bri3.png",
+            large: "https://i.postimg.cc/FFd9sw9H/bri3.png"
+          }
+        }
+      ],
       "rating": 3.8,
       "reviews": 11,
       "regular_price": 370,
