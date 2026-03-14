@@ -3,30 +3,46 @@ Content-Type: application/json
 
 {
   "id": 2,
-  "name": "Мед квітковий",
-    "category": {
-    "id": 7,
-    "name": "Мед натуральний"
-  },
+  "name": "Куряче серце",
+  "available": true,
+  "description": "Курячі серця свіжі",
+  "ingredients": null,
+  "nutrition": null,
+  "storage": null,
+  "allergens": null,
   "seller": {
-    "id": 4,
-    "sellerName": "Пасіка Весела бджілка"
+      "id": 1,
+      "sellerName": "Seller"
   },
-  "rating": 5,
-  "reviews": 15,
-  "regular_price": 150,
-  "sale_price": 140,
-  "is_new": true,
-  "is_recommend": false,
-  "is_offer": false,
-  "is_available": true,
-  "description": "Мед - корисний продукт",
-  "composition": "Склад: мед натуральний",
-  "allergens": "Алергени: мед",
-  "energy": "334 ккал / 100 г.",
-  "storage": "Зберігати при +2°C...+26°C."
+  "category": {
+      "id": 9,
+      "name": "Курятина"
+  },
+  "images": [
+      {
+          "position": 1,
+          "links": {
+              "thumbnail": "https://images.unsplash.com/photo-1587593810167-9d91a1ac6f1c?w=500&auto=format&fit=crop&q=60",
+              "small": "https://images.unsplash.com/photo-1587593810167-9d91a1ac6f1c?w=500&auto=format&fit=crop&q=60",
+              "medium": "https://images.unsplash.com/photo-1587593810167-9d91a1ac6f1c?w=500&auto=format&fit=crop&q=60",
+              "large": "https://images.unsplash.com/photo-1587593810167-9d91a1ac6f1c?w=500&auto=format&fit=crop&q=60"
+          }
+      }
+  ],
+  "prices": [
+    {
+      "price": 193.49,
+      "qty": 1,
+      "unitId": 4
+    }
+  ],
+  "units": [
+    {
+      "id": 4,
+      "name": "кг."
+    }
+  ]
 }
-
 
 
 

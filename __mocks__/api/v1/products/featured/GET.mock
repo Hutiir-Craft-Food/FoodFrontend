@@ -31,27 +31,27 @@ Content-Type: application/json
             }
         ],
         "prices": [
-            {
-                "price": 180.35,
-                "qty": 1,
-                "unitId": 4
-            },
-            { 
-                "price": 60.35, 
-                 "qty": 500, 
-                 "unitId": 3 
-            },
             { 
                 "price": 35.35, 
                 "qty": 250, 
                 "unitId": 3 
+            },       
+            { 
+                "price": 60.35, 
+                    "qty": 500, 
+                    "unitId": 3 
+            },       
+            {
+                "price": 180.35,
+                "qty": 1,
+                "unitId": 4
             }
         ],
         "units": [
-             { 
-                 "id": 3, 
-                 "name": "гр." 
-             },
+                { 
+                    "id": 3, 
+                    "name": "гр." 
+                },
             {
                 "id": 4,
                 "name": "кг."
