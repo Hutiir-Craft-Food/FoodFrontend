@@ -97,7 +97,11 @@ export default function SignUpBuyerForm() {
           onClick={handleEyeButton}
           type="button"
         ></button>
-        <div className={styles.hint}>Щонайменше 8 символів: літери, цифри, символи</div>
+         {errors?.password ? 
+          <div className={styles.errors}>{errors.password}</div>
+          :
+          <div className={styles.hint}>Щонайменше 8 символів: літери, цифри, символи</div>
+        }
       </div>
     </div>
   )
