@@ -22,13 +22,10 @@
 
 .signUpContainer {
   .contentContainer {
+    justify-content: start;
     h2 {
-      height: 36px;
-      display: flex;
-      justify-content: center;
-      text-align: center;
+      font-weight: 400;
       color: $primary-90;
-      @extend h2;
     }
 
     .formContentContainer {

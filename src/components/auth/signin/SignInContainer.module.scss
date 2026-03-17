@@ -4,11 +4,8 @@
   .formContainer {
     width: 504px;
     height: 638px;
-    padding: 20px 104px 20px 104px;
+    padding: 0 104px;
     gap: 24px;
-    display: flex;
-    align-items: center;
-    flex-flow: column wrap;
 
     label {
       font-size: 16px;
