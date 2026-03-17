@@ -40,7 +40,7 @@ const validateSellerName = (sellerName) => {
 
   return {
     status: statuses.FAIL,
-    error: 'Назва продавця має містити від 3 до 50 символів (UA або EN)',
+    error: 'Назва має містити від 3 до 50 символів (UA або EN)',
   }
 }
 
