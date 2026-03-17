@@ -4,10 +4,8 @@
 
 .formContainer {
   width: 296px;
-  height: fit-content;
   display: flex;
   flex-direction: column;
-  position: relative;
   row-gap: 0.5rem;
 
   .inputsWrapper {
@@ -37,11 +35,9 @@
     }
 
     .errors {
-      position: absolute;
       color: $danger-50;
-      bottom: -17px;
       font-size: 0.8125rem;
-      overflow: hidden;
+      width: 700px;
     }
   }
 
@@ -72,6 +68,10 @@
       &.inputErrorClass {
         border: 2px solid $danger-30;
       }
+    }
+    .hint{
+      font-size: 0.8125rem;
+      color: $natural-50;
     }
   }
 }
