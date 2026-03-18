@@ -4,7 +4,7 @@
   .formContainer {
     width: 504px;
     height: 638px;
-    padding: 0 104px;
+    padding: 20px 104px;
     gap: 24px;
 
     label {
@@ -19,19 +19,23 @@
       height: 40px;
       width: 100%;
       border: none;
+      background: none;
 
       &:focus-visible {
         outline: none;
+        background: none;
       }
     }
 
     .inputContainer {
       display: flex;
-      border: 1px solid $primary-30;
+      outline: 1px solid $primary-30;
       border-radius: 8px;
+      background: none;
 
       &:focus-within {
-          outline: 2px solid $primary-40;
+        outline: 2px solid $primary-40;
+        background: none;
       }
     }
     
@@ -40,28 +44,18 @@
       
       .buttonXCircle{
         border: none;
-        background: url('/src/icons/xCircleLine.svg') no-repeat scroll 7px 7px;
+        background: none;
       }
     }
 
     .passwordContainer {
       margin-top: 0.5rem;
-      position: relative;
+      
       .toggleEye {
-        position: absolute;
-        right: 5px;
-        top: 40px;
         width: 40px;
         height: 40px;
         border: none;
-        &.openEye {
-          background: url('/src/icons/eyeLine.svg') no-repeat scroll 7px 7px;
-        }
-
-        &.closeEye {
-          background: url('/src/icons/eyeClosedLine.svg') no-repeat scroll 7px
-            7px;
-        }
+        background: none;
       }
     }
 

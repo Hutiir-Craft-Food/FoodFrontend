@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { useAuthStore } from '../store/AuthStore'
 import XCircle from '~/icons/XCircle.svg'
+import ClosedEyeIcon from '~/icons/eyeClosedLine.svg'
+import OpenEyeIcon from '~/icons/eyeline.svg'
 import styles from './SignInContainer.module.scss'
 
 export default function SignInContainer() {
@@ -75,15 +77,18 @@ export default function SignInContainer() {
               />
               <button
                 id="togglePassword"
-                className={`${styles.toggleEye} ${
-                  isPasswordVisible ? styles.openEye : styles.closeEye
-                }`}
+                className={styles.toggleEye} 
                 aria-label={
                   isPasswordVisible ? 'Приховати пароль' : 'Показати пароль'
                 }
                 onClick={handleEyeButtonClick}
-              ></button>
-
+              >
+                {isPasswordVisible ? (
+                  <img src={OpenEyeIcon} alt="open eye icon" />
+                ) : (
+                  <img src={ClosedEyeIcon} alt="closed eye icon" />
+                )}
+              </button>
             </div>
            
           </div>

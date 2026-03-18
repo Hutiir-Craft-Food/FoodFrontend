@@ -77,27 +77,35 @@ export default function SignUpBuyerForm() {
 
       <div className={`${styles.passwordContainer} ${styles.inputsWrapper}`}>
         <label htmlFor="password">Пароль</label>
-        <input
-          className={clsx(errors?.password && styles.inputErrorClass)}
-          type={isPasswordVisible ? 'text' : 'password'}
-          id="password"
-          name="password"
-          required
-          minLength="8"
-          value={password}
-          placeholder="Створіть пароль"
-          onChange={(e) => setPassword(e.target.value)}
-          onBlur={handlePasswordValidation}
-        />
-        <button
-          id="togglePassword"
-          className={`${styles.toggleEye} ${
-            isPasswordVisible ? styles.openEye : styles.closeEye
-          }`}
-          onClick={handleEyeButton}
-          type="button"
-        ></button>
-         {errors?.password ? 
+        <div className={styles.inputContainer}>
+          <input
+            className={clsx(errors?.password && styles.inputErrorClass)}
+            type={isPasswordVisible ? 'text' : 'password'}
+            id="password"
+            name="password"
+            required
+            minLength="8"
+            value={password}
+            placeholder="Створіть пароль"
+            onChange={(e) => setPassword(e.target.value)}
+            onBlur={handlePasswordValidation}
+          />
+          <button
+            id="togglePassword"
+            className={styles.toggleEye} 
+            aria-label={
+              isPasswordVisible ? 'Приховати пароль' : 'Показати пароль'
+            }
+            onClick={handleEyeButtonClick}
+          >
+            {isPasswordVisible ? (
+              <img src={OpenEyeIcon} alt="open eye icon" />
+            ) : (
+              <img src={ClosedEyeIcon} alt="closed eye icon" />
+            )}
+          </button>
+          </div>
+        {errors?.password && (
           <div className={styles.errors}>{errors.password}</div>
           :
           <div className={styles.hint}>Щонайменше 8 символів: літери, цифри, символи</div>
