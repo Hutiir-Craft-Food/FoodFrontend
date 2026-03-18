@@ -18,25 +18,29 @@
     input {
       height: 40px;
       width: 100%;
-      outline: 1px solid $primary-30;
       border: none;
-      border-radius: 8px;
 
       &:focus-visible {
-        border: 2px solid $primary-40;
+        outline: none;
       }
     }
 
+    .inputContainer {
+      display: flex;
+      border: 1px solid $primary-30;
+      border-radius: 8px;
+
+      &:focus-within {
+          outline: 2px solid $primary-40;
+      }
+    }
+    
     .emailContainer {
       margin-bottom: 20px;
-      position: relative;
-
-      .xCircle{
-        position: absolute;
-        right: 10px;
-        top: 47px;
-        width: 24px;
-        height: 24px;
+      
+      .buttonXCircle{
+        border: none;
+        background: url('/src/icons/xCircleLine.svg') no-repeat scroll 7px 7px;
       }
     }
 

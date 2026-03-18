@@ -41,7 +41,8 @@ export default function SignInContainer() {
           <div className={styles.emailContainer}>
             <label htmlFor="email">E-mail</label>
             <br />
-            <input
+            <div className={styles.inputContainer}>
+              <input
               type="email"
               id="email"
               name="email"
@@ -49,35 +50,42 @@ export default function SignInContainer() {
               value={email}
               onChange={handleEmailChange}
               autoFocus
-            />
-            {email && (
-              <img
-                src={XCircle}
-                alt="XCircle icon"
-                className={styles.xCircle}
-                onClick={handleEmailClear}
-              />)}
+              />
+              {email && (
+                <button 
+                  className={styles.buttonXCircle}
+                  onClick={handleEmailClear}
+                >
+                  <img src={XCircle} alt="XCircle icon"/>
+                </button>
+              )}
+            </div>
+            
           </div>
           <div className={styles.passwordContainer}>
             <label htmlFor="password">Пароль</label>
-            <input
-              type={isPasswordVisible ? 'text' : 'password'}
-              id="password"
-              name="password"
-              value={password}
-              required
-              onChange={handlePasswordChange}
-            />
-            <button
-              id="togglePassword"
-              className={`${styles.toggleEye} ${
-                isPasswordVisible ? styles.openEye : styles.closeEye
-              }`}
-              aria-label={
-                isPasswordVisible ? 'Приховати пароль' : 'Показати пароль'
-              }
-              onClick={handleEyeButtonClick}
-            ></button>
+            <div className={styles.inputContainer}>
+              <input
+                type={isPasswordVisible ? 'text' : 'password'}
+                id="password"
+                name="password"
+                value={password}
+                required
+                onChange={handlePasswordChange}
+              />
+              <button
+                id="togglePassword"
+                className={`${styles.toggleEye} ${
+                  isPasswordVisible ? styles.openEye : styles.closeEye
+                }`}
+                aria-label={
+                  isPasswordVisible ? 'Приховати пароль' : 'Показати пароль'
+                }
+                onClick={handleEyeButtonClick}
+              ></button>
+
+            </div>
+           
           </div>
           <a className={styles.fogetPasswordLink} href="#">
             Забули пароль?
