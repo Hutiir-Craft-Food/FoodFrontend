@@ -1,0 +1,32 @@
+@import '/src/styles/var.scss';
+
+  .productPriceContainer {
+    .price{
+      font-size: 32px;
+      font-weight: 700;
+      color: $natural-90;
+      font-family: $mainBoldFont;
+      margin-bottom: 24px;
+    }
+
+    .listOFPackaging{
+      display: flex;
+        
+    .buttonPackaging{
+      color: $primary-50;
+      font-size: 16px;
+      text-align: center;
+      border: none;
+      background: none;
+      padding: 4px 0;
+      width: 144px;
+      height: 28px;
+      margin-right: 30px;
+      cursor: "pointer"
+    }
+    .active{
+      border: solid 2px $primary-50;
+      border-radius: 5px;
+    }
+  }
+}

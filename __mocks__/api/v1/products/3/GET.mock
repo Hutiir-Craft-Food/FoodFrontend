@@ -1,0 +1,43 @@
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": 3,
+  "name": "Куряча печінка",
+  "available": true,
+  "description": "Куряча печінка свіжа",
+  "ingredients": null,
+  "nutrition": null,
+  "storage": null,
+  "allergens": null,
+  "seller": {
+    "id": 1,
+    "sellerName": "Seller"
+  },
+  "category": {
+    "id": 9,
+    "name": "Курятина"
+  },
+  "images": [
+    {
+      "position": 1,
+      "links": {
+        "thumbnail": "https://images.unsplash.com/photo-1587593810167-9d91a1ac6f1c?w=500&auto=format&fit=crop&q=60",
+        "small": "https://images.unsplash.com/photo-1587593810167-9d91a1ac6f1c?w=500&auto=format&fit=crop&q=60",
+        "medium": "https://images.unsplash.com/photo-1587593810167-9d91a1ac6f1c?w=500&auto=format&fit=crop&q=60",
+        "large": "https://images.unsplash.com/photo-1587593810167-9d91a1ac6f1c?w=500&auto=format&fit=crop&q=60"
+      }
+    }
+  ],
+  "prices": [],
+  "units": [
+    {
+      "id": 4,
+      "name": "кг."
+    }
+  ]
+}
+
+
+
+

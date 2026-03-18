@@ -1,0 +1,63 @@
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+ {
+    "id": 1,
+    "name": "Куряча тушка",
+    "available": true,
+    "description": "Свіжа курка, фермерська",
+    "ingredients": null,
+    "nutrition": null,
+    "storage": null,
+    "allergens": null,
+    "seller": {
+        "id": 1,
+        "sellerName": "Seller"
+    },
+    "category": {
+        "id": 9,
+        "name": "Курятина"
+    },
+    "images": [
+        {
+            "position": 1,
+            "links": {
+                "thumbnail": "https://images.unsplash.com/photo-1587336768918-ca17c127c2e5?w=500&auto=format&fit=crop&q=60",
+                "small": "https://images.unsplash.com/photo-1587336768918-ca17c127c2e5?w=500&auto=format&fit=crop&q=60",
+                "medium": "https://images.unsplash.com/photo-1587336768918-ca17c127c2e5?w=500&auto=format&fit=crop&q=60",
+                "large": "https://images.unsplash.com/photo-1587336768918-ca17c127c2e5?w=500&auto=format&fit=crop&q=60"
+            }
+        }
+    ],
+    "prices": [
+         { 
+            "price": 35.35, 
+            "qty": 250, 
+            "unitId": 3 
+        },       
+        { 
+            "price": 60.35, 
+                "qty": 500, 
+                "unitId": 3 
+        },       
+         {
+            "price": 180.35,
+            "qty": 1,
+            "unitId": 4
+        }
+    ],
+    "units": [
+            { 
+                "id": 3, 
+                "name": "гр." 
+            },
+        {
+            "id": 4,
+            "name": "кг."
+        }
+    ]
+}
+
+
+
+
