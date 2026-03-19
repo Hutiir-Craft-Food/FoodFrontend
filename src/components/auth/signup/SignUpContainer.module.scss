@@ -22,9 +22,12 @@
 
 .signUpContainer {
   .contentContainer {
-    justify-content: start;
+    
     h2 {
-      font-weight: 400;
+      text-align: center;
+      margin: 50px 0;
+      font-size: 30px;
+      font-family: $mainBoldFont;
       color: $primary-90;
     }
 
