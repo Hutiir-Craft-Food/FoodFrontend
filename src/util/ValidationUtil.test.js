@@ -88,70 +88,70 @@ describe('ValidationUtil', () => {
       const result = validateSellerName('Shop@Name')
       expect(result.status).toBe(statuses.FAIL)
       expect(result.error).toBe(
-        'Назва продавця має містити від 3 до 50 символів (UA або EN)'
+        'Назва має містити від 3 до 50 символів (UA або EN)'
       )
     })
     test('should return FAIL for a name with HTML-like tags', () => {
       const result = validateSellerName('<b>Shop</b>')
       expect(result.status).toBe(statuses.FAIL)
       expect(result.error).toBe(
-        'Назва продавця має містити від 3 до 50 символів (UA або EN)'
+        'Назва має містити від 3 до 50 символів (UA або EN)'
       )
     })
     test('should return FAIL for a name with forward slash', () => {
       const result = validateSellerName('Shop/Name')
       expect(result.status).toBe(statuses.FAIL)
       expect(result.error).toBe(
-        'Назва продавця має містити від 3 до 50 символів (UA або EN)'
+        'Назва має містити від 3 до 50 символів (UA або EN)'
       )
     })
     test('should return FAIL for a name with backslash', () => {
       const result = validateSellerName('Shop\\Name')
       expect(result.status).toBe(statuses.FAIL)
       expect(result.error).toBe(
-        'Назва продавця має містити від 3 до 50 символів (UA або EN)'
+        'Назва має містити від 3 до 50 символів (UA або EN)'
       )
     })
     test('should return FAIL for a name with parentheses', () => {
       const result = validateSellerName('Shop(Name)')
       expect(result.status).toBe(statuses.FAIL)
       expect(result.error).toBe(
-        'Назва продавця має містити від 3 до 50 символів (UA або EN)'
+        'Назва має містити від 3 до 50 символів (UA або EN)'
       )
     })
     test('should return FAIL for a name with dot', () => {
       const result = validateSellerName('Shop.Name')
       expect(result.status).toBe(statuses.FAIL)
       expect(result.error).toBe(
-        'Назва продавця має містити від 3 до 50 символів (UA або EN)'
+        'Назва має містити від 3 до 50 символів (UA або EN)'
       )
     })
     test('should return FAIL for a name with question mark', () => {
       const result = validateSellerName('Shop?Name')
       expect(result.status).toBe(statuses.FAIL)
       expect(result.error).toBe(
-        'Назва продавця має містити від 3 до 50 символів (UA або EN)'
+        'Назва має містити від 3 до 50 символів (UA або EN)'
       )
     })
     test('should return FAIL for a name with exclamation mark', () => {
       const result = validateSellerName('Shop!Name')
       expect(result.status).toBe(statuses.FAIL)
       expect(result.error).toBe(
-        'Назва продавця має містити від 3 до 50 символів (UA або EN)'
+        'Назва має містити від 3 до 50 символів (UA або EN)'
       )
     })
     test('should return FAIL for a name with colon', () => {
       const result = validateSellerName('Shop:Name')
       expect(result.status).toBe(statuses.FAIL)
       expect(result.error).toBe(
-        'Назва продавця має містити від 3 до 50 символів (UA або EN)'
+        'Назва має містити від 3 до 50 символів (UA або EN)'
       )
     })
     test('should return FAIL for a name shorter than 3 characters', () => {
       const result = validateSellerName('AB')
       expect(result.status).toBe(statuses.FAIL)
       expect(result.error).toBe(
-        'Назва продавця має містити від 3 до 50 символів (UA або EN)'
+        'Назва має містити від 3 до 50 символів (UA або EN)'
       )
     })
     test('should return FAIL for a name longer than 50 characters', () => {
@@ -159,14 +159,14 @@ describe('ValidationUtil', () => {
       const result = validateSellerName(longName)
       expect(result.status).toBe(statuses.FAIL)
       expect(result.error).toBe(
-        'Назва продавця має містити від 3 до 50 символів (UA або EN)'
+        'Назва має містити від 3 до 50 символів (UA або EN)'
       )
     })
     test('should return FAIL for an empty seller name', () => {
       const result = validateSellerName('')
       expect(result.status).toBe(statuses.FAIL)
       expect(result.error).toBe(
-        'Назва продавця має містити від 3 до 50 символів (UA або EN)'
+        'Назва має містити від 3 до 50 символів (UA або EN)'
       )
     })
   })
