@@ -6,73 +6,62 @@
   width: 296px;
   display: flex;
   flex-direction: column;
-  row-gap: 0.5rem;
+  row-gap: 1.5rem;
 
-  .inputsWrapper {
-    width: 296px;
-    height: 80px;
+  input {
+    height: 40px;
+    width: 100%;
+    border: none;
+    background: none;
+    background-color: transparent;
+
+    &:focus-visible {
+      outline: none;
+      background: none;
+    }
+  }
+
+  .inputContainer {
     display: flex;
-    flex-direction: column;
-    position: relative;
-    row-gap: 4px;
-    quotes: auto;
-    label {
-      @extend .paragraph4;
-      text-align: left;
-      color: $natural-50;
-    }
+    outline: 1px solid $primary-30;
+    border-radius: 8px;
+    background: none;
+    background-color: transparent;
 
-    input[type='text'],
-    input[type='email'],
-    input[type='tel'],
-    input[type='password'] {
-      @include inputs;
-      @extend .paragraph3;
+    &:focus-within {
+      outline: 2px solid $primary-40;
+      background: none;
+      background-color: transparent;
     }
+  }
 
-    &:placeholder-shown {
-      color: $natural-30;
-    }
+  .errors {
+    color: $danger-50;
+    font-size: 0.8rem;
+  }
 
-    .errors {
-      color: $danger-50;
-      font-size: 0.8125rem;
-      width: 300px;
-      
-    }
+  .buttonXCircle {
+    border: none;
+    background: none;
   }
 
   .passwordContainer {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    position: relative;
+
     .toggleEye {
-      // TODO: why do we use absolute position here ?
-      position: absolute;
-      right: 5px;
-      top: 25px;
       width: 40px;
       height: 40px;
       border: none;
-
-      &.openEye {
-        background: url('/src/icons/eyeLine.svg') no-repeat scroll 7px 7px;
-      }
-
-      &.closeEye {
-        background: url('/src/icons/eyeClosedLine.svg') no-repeat scroll 7px 7px;
-      }
+      background: none;
     }
+  }
 
-    input[type='password'] {
-      &.inputErrorClass {
-        border: 2px solid $danger-30;
-      }
-    }
-    .hint{
-      font-size: 0.8125rem;
-      color: $natural-50;
-    }
+  .inputErrorClass {
+    border: 2px solid $danger-30;
+  }
+
+  .hint {
+    font-size: 0.8rem;
+    color: $natural-50;
   }
 }

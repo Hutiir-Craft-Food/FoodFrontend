@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react'
 import clsx from 'clsx'
 import { useAuthStore } from '../../store/AuthStore'
+import XCircle from '~/icons/XCircle.jsx'
+import ClosedEyeIcon from '~/icons/ClosedEyeIcon.jsx'
+import OpenEyeIcon from '~/icons/OpenEyeIcon.jsx'
 import {
   validateEmail,
   validatePassword,
@@ -34,8 +37,11 @@ export default function SignUpBuyerForm() {
     }
   }, [])
 
+  const handleEmailClear = (e) => {
+    setEmail('')
+  }
+
   const handleEyeButton = (e) => {
-    e.preventDefault() // TODO: do we need this ?
     setIsPasswordVisible((prev) => !prev)
   }
 
@@ -59,27 +65,47 @@ export default function SignUpBuyerForm() {
 
   return (
     <div className={styles.formContainer}>
-      <div className={styles.inputsWrapper}>
+      <div className={styles.emailContainer}>
         <label htmlFor="email">E-mail</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="e.g.example@gmail.com"
-          required
-          className={styles.formControl}
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          onBlur={handleEmailValidation}
-        />
+        <div
+          className={clsx(
+            styles.inputContainer,
+            errors?.email && styles.inputErrorClass
+          )}
+        >
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="e.g.example@gmail.com"
+            required
+            className={styles.formControl}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            onBlur={handleEmailValidation}
+          />
+          {email && (
+            <button
+              type="button"
+              className={styles.buttonXCircle}
+              onClick={handleEmailClear}
+            >
+              <XCircle />
+            </button>
+          )}
+        </div>
         {errors?.email && <div className={styles.errors}>{errors.email}</div>}
       </div>
 
-      <div className={`${styles.passwordContainer} ${styles.inputsWrapper}`}>
+      <div className={styles.passwordContainer}>
         <label htmlFor="password">Пароль</label>
-        <div className={styles.inputContainer}>
+        <div
+          className={clsx(
+            styles.inputContainer,
+            errors?.password && styles.inputErrorClass
+          )}
+        >
           <input
-            className={clsx(errors?.password && styles.inputErrorClass)}
             type={isPasswordVisible ? 'text' : 'password'}
             id="password"
             name="password"
@@ -91,25 +117,24 @@ export default function SignUpBuyerForm() {
             onBlur={handlePasswordValidation}
           />
           <button
+            type="button"
             id="togglePassword"
-            className={styles.toggleEye} 
+            className={styles.toggleEye}
             aria-label={
               isPasswordVisible ? 'Приховати пароль' : 'Показати пароль'
             }
-            onClick={handleEyeButtonClick}
+            onClick={handleEyeButton}
           >
-            {isPasswordVisible ? (
-              <img src={OpenEyeIcon} alt="open eye icon" />
-            ) : (
-              <img src={ClosedEyeIcon} alt="closed eye icon" />
-            )}
+            {isPasswordVisible ? <OpenEyeIcon /> : <ClosedEyeIcon />}
           </button>
-          </div>
-        {errors?.password && (
+        </div>
+        {errors?.password ? (
           <div className={styles.errors}>{errors.password}</div>
-          :
-          <div className={styles.hint}>Щонайменше 8 символів: літери, цифри, символи</div>
-        }
+        ) : (
+          <div className={styles.hint}>
+            Щонайменше 8 символів: літери, цифри, символи
+          </div>
+        )}
       </div>
     </div>
   )

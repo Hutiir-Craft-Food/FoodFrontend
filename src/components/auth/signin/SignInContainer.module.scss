@@ -1,10 +1,18 @@
 @import '/src/styles/var.scss';
 
 .signInContainer {
+  h2 {
+    text-align: center;
+    margin: 50px 0;
+    font-size: 30px;
+    font-family: $mainBoldFont;
+    color: $primary-90;
+  }
+
   .formContainer {
     width: 504px;
     height: 638px;
-    padding: 20px 104px;
+    padding: 0 104px;
     gap: 24px;
 
     label {
@@ -38,11 +46,11 @@
         background: none;
       }
     }
-    
+
     .emailContainer {
       margin-bottom: 20px;
-      
-      .buttonXCircle{
+
+      .buttonXCircle {
         border: none;
         background: none;
       }
@@ -50,26 +58,13 @@
 
     .passwordContainer {
       margin-top: 0.5rem;
-      
+
       .toggleEye {
         width: 40px;
         height: 40px;
         border: none;
         background: none;
       }
-    }
-
-    .incorrectInputMessage {
-      margin-top: 5px;
-      color: $danger-50;
-    }
-
-    h2 {
-      text-align: center;
-      margin: 50px 0;
-      font-size: 30px;
-      font-family: $mainBoldFont;
-      color: $primary-90;
     }
 
     .fogetPasswordLink {
