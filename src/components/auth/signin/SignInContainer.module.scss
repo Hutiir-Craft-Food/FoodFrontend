@@ -1,6 +1,14 @@
 @import '/src/styles/var.scss';
 
 .signInContainer {
+  h2 {
+    text-align: center;
+    margin: 50px 0;
+    font-size: 30px;
+    font-family: $mainBoldFont;
+    color: $primary-90;
+  }
+
   .formContainer {
     width: 504px;
     height: 638px;
@@ -18,60 +26,45 @@
     input {
       height: 40px;
       width: 100%;
-      outline: 1px solid $primary-30;
       border: none;
-      border-radius: 8px;
+      background: none;
 
       &:focus-visible {
-        border: 2px solid $primary-40;
+        outline: none;
+        background: none;
+      }
+    }
+
+    .inputContainer {
+      display: flex;
+      outline: 1px solid $primary-30;
+      border-radius: 8px;
+      background: none;
+
+      &:focus-within {
+        outline: 2px solid $primary-40;
+        background: none;
       }
     }
 
     .emailContainer {
       margin-bottom: 20px;
-      position: relative;
 
-      .xCircle{
-        position: absolute;
-        right: 10px;
-        top: 47px;
-        width: 24px;
-        height: 24px;
+      .buttonXCircle {
+        border: none;
+        background: none;
       }
     }
 
     .passwordContainer {
       margin-top: 0.5rem;
-      position: relative;
+
       .toggleEye {
-        position: absolute;
-        right: 5px;
-        top: 40px;
         width: 40px;
         height: 40px;
         border: none;
-        &.openEye {
-          background: url('/src/icons/eyeLine.svg') no-repeat scroll 7px 7px;
-        }
-
-        &.closeEye {
-          background: url('/src/icons/eyeClosedLine.svg') no-repeat scroll 7px
-            7px;
-        }
+        background: none;
       }
-    }
-
-    .incorrectInputMessage {
-      margin-top: 5px;
-      color: $danger-50;
-    }
-
-    h2 {
-      text-align: center;
-      margin: 50px 0;
-      font-size: 30px;
-      font-family: $mainBoldFont;
-      color: $primary-90;
     }
 
     .fogetPasswordLink {
