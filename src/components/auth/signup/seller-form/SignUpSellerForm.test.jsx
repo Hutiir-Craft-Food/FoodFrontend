@@ -37,7 +37,7 @@ describe('SignUpSellerForm component tests', () => {
 
     expect(screen.getByLabelText(/назва компанії/i)).toBeInTheDocument()
     expect(screen.getByLabelText(/e-mail/i)).toBeInTheDocument()
-    expect(screen.getByLabelText(/пароль/i)).toBeInTheDocument()
+    expect(screen.getByLabelText(/^пароль$/i)).toBeInTheDocument()
 
     const toggleBtn = document.querySelector('#togglePassword')
     expect(toggleBtn).toBeInTheDocument()
@@ -116,7 +116,7 @@ describe('SignUpSellerForm component tests', () => {
 
     const { container } = render(<SignUpSellerForm />)
 
-    const passwordInput = screen.getByLabelText(/пароль/i)
+    const passwordInput = screen.getByLabelText(/^пароль$/i)
     const toggleBtn = container.querySelector('button#togglePassword')
 
     expect(passwordInput).toHaveAttribute('type', 'password')
@@ -148,7 +148,7 @@ describe('SignUpSellerForm component tests', () => {
     })
     expect(mockSetEmail).toHaveBeenCalledWith('user@test.com')
 
-    fireEvent.change(screen.getByLabelText(/пароль/i), {
+    fireEvent.change(screen.getByPlaceholderText(/пароль/i), {
       target: { value: 'mypassword' },
     })
     expect(mockSetPassword).toHaveBeenCalledWith('mypassword')
@@ -177,13 +177,13 @@ describe('SignUpSellerForm component tests', () => {
     const { rerender } = render(<SignUpSellerForm />)
 
     expect(screen.getByLabelText(/e-mail/i)).toHaveValue('persist@example.com')
-    expect(screen.getByLabelText(/пароль/i)).toHaveValue('persistpass')
+    expect(screen.getByLabelText(/^пароль$/i)).toHaveValue('persistpass')
     expect(screen.getByLabelText(/назва компанії/i)).toHaveValue('Persist Name')
 
     rerender(<SignUpSellerForm />)
 
     expect(screen.getByLabelText(/e-mail/i)).toHaveValue('persist@example.com')
-    expect(screen.getByLabelText(/пароль/i)).toHaveValue('persistpass')
+    expect(screen.getByLabelText(/^пароль$/i)).toHaveValue('persistpass')
     expect(screen.getByLabelText(/назва компанії/i)).toHaveValue('Persist Name')
   })
 
@@ -202,7 +202,7 @@ describe('SignUpSellerForm component tests', () => {
 
     const { rerender } = render(<SignUpSellerForm />)
 
-    const passwordInput = screen.getByLabelText(/пароль/i)
+    const passwordInput = screen.getByLabelText(/^пароль$/i)
     fireEvent.change(passwordInput, { target: { value: '123' } })
     fireEvent.blur(passwordInput)
 
