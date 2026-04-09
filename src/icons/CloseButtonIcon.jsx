@@ -1,6 +1,6 @@
 import { memo } from 'react'
 
-export default memo(function CloseButton({ onclick, ...rest }) {
+export default memo(function CloseButtonIcon({ onclick, ...rest }) {
   return (
     <svg
       width="25"
