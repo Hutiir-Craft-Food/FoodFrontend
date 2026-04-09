@@ -1,6 +1,4 @@
-import { memo } from 'react'
-
-export default memo(function ClosedEyeIcon() {
+export default function XCircle() {
   return (
     <svg
       width="24"
@@ -17,4 +15,4 @@ export default memo(function ClosedEyeIcon() {
       />
     </svg>
   )
-})
+}
