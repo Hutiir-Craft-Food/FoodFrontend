@@ -1,6 +1,4 @@
-import { memo } from 'react'
-
-export default memo(function UkrPoshtaIcon() {
+export default function UkrPoshtaIcon() {
   return (
     // source: https://logos.fandom.com/wiki/Ukrposhta?file=Upost_logo-ua.svg
     <svg
@@ -15,4 +13,4 @@ export default memo(function UkrPoshtaIcon() {
       <path d="m52.567 45.927-26.486-5.994C18.186 38.147 13.234 30.3 15.02 22.404c1.787-7.895 9.635-12.846 17.529-11.06s12.847 9.634 11.061 17.529a14.6 14.6 0 0 1-6.488 9.165l-.01.007a.36.36 0 0 0-.155.3c0 .173.12.317.28.356l11.785 2.664a.73.73 0 0 0 .743-.272q.001-.002.001 0a25.6 25.6 0 0 0 5.195-15.452C54.96 11.992 44.297.836 30.843.044a29.16 29.16 0 0 0-18.341 5.254C-.759 14.583-3.981 32.86 5.304 46.121l23.563 33.653a.55.55 0 0 0 .445.226.55.55 0 0 0 .446-.229l23.141-33.002a.55.55 0 0 0 .094-.307.55.55 0 0 0-.424-.536" />
     </svg>
   )
-})
+}

@@ -1,4 +1,4 @@
-import CloseButtonIcon from '~/icons/CloseButton'
+import CloseButtonIcon from '~/icons/CloseButtonIcon'
 import styles from './Modal.module.scss'
 
 export default function Modal({ handleClose, children }) {

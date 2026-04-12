@@ -1,6 +1,4 @@
-import { memo } from 'react'
-
-export default memo(function CatalogIcon() {
+export default function CatalogIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20,4 +18,4 @@ export default memo(function CatalogIcon() {
       />
     </svg>
   )
-})
+}

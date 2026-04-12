@@ -29,7 +29,7 @@ describe('SignUpBuyerForm', () => {
     render(<SignUpBuyerForm />)
 
     expect(screen.getByLabelText(/e-mail/i)).toBeInTheDocument()
-    expect(screen.getByLabelText(/пароль/i)).toBeInTheDocument()
+    expect(screen.getByLabelText(/^пароль$/i)).toBeInTheDocument()
     expect(screen.getByRole('button', { type: 'button' })).toBeInTheDocument()
   })
 
@@ -64,7 +64,7 @@ describe('SignUpBuyerForm', () => {
 
     render(<SignUpBuyerForm />)
 
-    const passwordInput = screen.getByLabelText(/пароль/i)
+    const passwordInput = screen.getByLabelText(/^пароль$/i)
     fireEvent.change(passwordInput, { target: { value: 'mypassword' } })
     expect(mockSetPassword).toHaveBeenCalledWith('mypassword')
   })
@@ -118,7 +118,7 @@ describe('SignUpBuyerForm', () => {
 
     const { rerender } = render(<SignUpBuyerForm />)
 
-    const passwordInput = screen.getByLabelText(/пароль/i)
+    const passwordInput = screen.getByLabelText(/^пароль$/i)
     fireEvent.change(passwordInput, { target: { value: '123' } })
     fireEvent.blur(passwordInput)
 
@@ -154,7 +154,7 @@ describe('SignUpBuyerForm', () => {
 
     const { container } = render(<SignUpBuyerForm />)
 
-    const passwordInput = screen.getByLabelText(/пароль/i)
+    const passwordInput = screen.getByLabelText(/^пароль$/i)
     const toggleButton = container.querySelector('#togglePassword')
 
     expect(passwordInput).toHaveAttribute('type', 'password')

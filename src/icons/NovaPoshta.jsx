@@ -1,6 +1,4 @@
-import { memo } from 'react'
-
-export default memo(function NovaPoshtaIcon() {
+export default function NovaPoshtaIcon() {
   return (
     // source: https://logos.fandom.com/wiki/Nova_Poshta
     <svg
@@ -24,4 +22,4 @@ export default memo(function NovaPoshtaIcon() {
       />
     </svg>
   )
-})
+}

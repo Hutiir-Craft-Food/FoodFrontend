@@ -1,6 +1,4 @@
-import { memo } from 'react'
-
-export default memo(function InstagramIcon() {
+export default function InstagramIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21,4 +19,4 @@ export default memo(function InstagramIcon() {
       />
     </svg>
   )
-})
+}

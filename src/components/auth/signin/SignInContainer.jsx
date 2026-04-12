@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { useAuthStore } from '../store/AuthStore'
-import XCircle from '~/icons/XCircle.svg'
+import XCircle from '~/icons/XCircle.jsx'
+import ClosedEyeIcon from '~/icons/ClosedEyeIcon.jsx'
+import OpenEyeIcon from '~/icons/OpenEyeIcon.jsx'
 import styles from './SignInContainer.module.scss'
 
 export default function SignInContainer() {
@@ -9,10 +11,8 @@ export default function SignInContainer() {
   const { switchToRegister } = useAuthStore()
   const { login } = useAuthStore()
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
-  
 
   const handleEyeButtonClick = (e) => {
-    e.preventDefault() // TODO: do we need this ?
     setIsPasswordVisible((prevValue) => !prevValue)
   }
 
@@ -41,43 +41,50 @@ export default function SignInContainer() {
           <div className={styles.emailContainer}>
             <label htmlFor="email">E-mail</label>
             <br />
-            <input
-              type="email"
-              id="email"
-              name="email"
-              required
-              value={email}
-              onChange={handleEmailChange}
-              autoFocus
-            />
-            {email && (
-              <img
-                src={XCircle}
-                alt="XCircle icon"
-                className={styles.xCircle}
-                onClick={handleEmailClear}
-              />)}
+            <div className={styles.inputContainer}>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                value={email}
+                onChange={handleEmailChange}
+                autoFocus
+              />
+              {email && (
+                <button
+                  type="button"
+                  className={styles.buttonXCircle}
+                  onClick={handleEmailClear}
+                >
+                  <XCircle />
+                </button>
+              )}
+            </div>
           </div>
           <div className={styles.passwordContainer}>
             <label htmlFor="password">Пароль</label>
-            <input
-              type={isPasswordVisible ? 'text' : 'password'}
-              id="password"
-              name="password"
-              value={password}
-              required
-              onChange={handlePasswordChange}
-            />
-            <button
-              id="togglePassword"
-              className={`${styles.toggleEye} ${
-                isPasswordVisible ? styles.openEye : styles.closeEye
-              }`}
-              aria-label={
-                isPasswordVisible ? 'Приховати пароль' : 'Показати пароль'
-              }
-              onClick={handleEyeButtonClick}
-            ></button>
+            <div className={styles.inputContainer}>
+              <input
+                type={isPasswordVisible ? 'text' : 'password'}
+                id="password"
+                name="password"
+                value={password}
+                required
+                onChange={handlePasswordChange}
+              />
+              <button
+                type="button"
+                id="togglePassword"
+                className={styles.toggleEye}
+                aria-label={
+                  isPasswordVisible ? 'Приховати пароль' : 'Показати пароль'
+                }
+                onClick={handleEyeButtonClick}
+              >
+                {isPasswordVisible ? <OpenEyeIcon /> : <ClosedEyeIcon />}
+              </button>
+            </div>
           </div>
           <a className={styles.fogetPasswordLink} href="#">
             Забули пароль?
