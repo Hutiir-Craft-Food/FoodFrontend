@@ -1,7 +1,14 @@
 @import '/src/styles/var.scss';
 
-  .productInfo {
-    text-align: center;
-    width: 70%;
-    border: solid 1px yellow;
+.productInfo {
+  text-align: center;
+  width: 70%;
+  margin-bottom: 20px;
+
+  h3 {
+    font-size: 32px;
+    color: $primary-80;
+    text-align: start;
+    font-family: 'Circe Bold';
   }
+}
