@@ -41,12 +41,10 @@ export default function ProductPage() {
 
   return (
     <div className="container">
-      <h2>Сторінка продукту</h2>
-      <h3>Product ID: {id}</h3>
       <div className={styles.productPageContent}>
         <Breadcrumbs categoryId={categoryId} productName={productName} />
         <div className={styles.galleryAndInfoContainer}>
-          <ProductGallery productId={id} />
+          <ProductGallery product={product} />
           <div className={styles.infoAndPriceContainer}>
             <ProductInfo product={product} />
             <ProductPrice product={product} />

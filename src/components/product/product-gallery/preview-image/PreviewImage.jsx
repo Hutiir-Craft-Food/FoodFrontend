@@ -75,7 +75,7 @@ export default function PreviewImage({
                 src={src}
                 alt={`product-image-${i}`}
                 onError={(e) => {
-                  e.target.src = '/productImages/image-not-found.png'
+                  e.target.src = '/images/image-not-found.png'
                 }}
               />
             ) : (
