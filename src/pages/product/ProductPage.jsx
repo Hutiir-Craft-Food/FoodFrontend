@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom'
 import Breadcrumbs from '~/components/product/breadcrumbs/Breadcrumbs'
-import ProductGallery from '~/components/product/productGallery/ProductGallery'
+import ProductGallery from '~/components/product/product-gallery/ProductGallery'
 import ProductInfo from '~/components/product/product-info/ProductInfo'
 import ProductDescriptionTabs from '~/components/product/product-description/ProductDescriptionTabs'
 import ShippingAndPayment from '~/components/product/shipping-and-payment/ShippingAndPayment'
@@ -41,12 +41,10 @@ export default function ProductPage() {
 
   return (
     <div className="container">
-      <h2>Сторінка продукту</h2>
-      <h3>Product ID: {id}</h3>
       <div className={styles.productPageContent}>
         <Breadcrumbs categoryId={categoryId} productName={productName} />
         <div className={styles.galleryAndInfoContainer}>
-          <ProductGallery />
+          <ProductGallery product={product} />
           <div className={styles.infoAndPriceContainer}>
             <ProductInfo product={product} />
             <ProductPrice product={product} />

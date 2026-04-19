@@ -5,7 +5,6 @@ h3 {
 }
 .productPageContent {
   width: 100%;
-  border: solid 1px blue;
   padding: 10px;
 
   .galleryAndInfoContainer {
@@ -13,10 +12,9 @@ h3 {
     display: flex;
     justify-content: space-between;
 
-    .infoAndPriceContainer{
+    .infoAndPriceContainer {
       width: 70%;
+      margin-left: 30px;
     }
   }
-
-
 }

@@ -14,10 +14,12 @@ export default function useProduct(id) {
       setError(null)
       try {
         const { data } = await ApiClient.get(`/v1/products/${id}`)
+
         setProduct(data)
-      } catch (error) {
-        console.error('Error fetching product: ', error.message)
-        setError(err.message || 'Не вдалося завантажити продукт')
+      } catch (e) {
+        const errorMessage = e.message || 'Не вдалося завантажити продукт'
+        console.error('Error fetching product: ', errorMessage)
+        setError(errorMessage)
       } finally {
         setLoading(false)
       }
