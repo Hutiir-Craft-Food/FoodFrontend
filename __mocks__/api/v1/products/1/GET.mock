@@ -22,10 +22,28 @@ Content-Type: application/json
         {
             "position": 1,
             "links": {
-                "thumbnail": "https://images.unsplash.com/photo-1587336768918-ca17c127c2e5?w=500&auto=format&fit=crop&q=60",
-                "small": "https://images.unsplash.com/photo-1587336768918-ca17c127c2e5?w=500&auto=format&fit=crop&q=60",
-                "medium": "https://images.unsplash.com/photo-1587336768918-ca17c127c2e5?w=500&auto=format&fit=crop&q=60",
-                "large": "https://images.unsplash.com/photo-1587336768918-ca17c127c2e5?w=500&auto=format&fit=crop&q=60"
+                "thumbnail": "https://i.postimg.cc/bNYFKg1C/755-(1).png",
+                "small": "https://i.postimg.cc/bNYFKg1C/755-(1).png",
+                "medium": "https://i.postimg.cc/bNYFKg1C/755-(1).png",
+                "large": "https://i.postimg.cc/bNYFKg1C/755-(1).png"
+            }
+        },
+        { 
+            "position": 2,
+            "links": {
+                "thumbnail": "https://i.postimg.cc/y6DT9Ghw/Kurka-Tushka-(1).jpg",
+                "small": "https://i.postimg.cc/y6DT9Ghw/Kurka-Tushka-(1).jpg",
+                "medium": "https://i.postimg.cc/y6DT9Ghw/Kurka-Tushka-(1).jpg",
+                "large": "https://i.postimg.cc/y6DT9Ghw/Kurka-Tushka-(1).jpg"
+            }
+        },
+        {
+            "position": 3,
+            "links": {
+                "thumbnail": "https://i.postimg.cc/3wrXwfx7/uvjvnx08issj1ginv9n5wtnrtc2nu02k-(1).jpg",
+                "small": "https://i.postimg.cc/3wrXwfx7/uvjvnx08issj1ginv9n5wtnrtc2nu02k-(1).jpg",
+                "medium": "https://i.postimg.cc/3wrXwfx7/uvjvnx08issj1ginv9n5wtnrtc2nu02k-(1).jpg",
+                "large": "https://i.postimg.cc/3wrXwfx7/uvjvnx08issj1ginv9n5wtnrtc2nu02k-(1).jpg"
             }
         }
     ],
