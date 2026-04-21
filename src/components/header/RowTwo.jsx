@@ -29,7 +29,6 @@ export default function RowTwo({ isScrolled }) {
             <div
               id="login-button"
               role="button"
-              tabIndex="0"
               onClick={() => showAuthWidget()}
             >
               <img
@@ -42,7 +41,6 @@ export default function RowTwo({ isScrolled }) {
             <div
               id="login-button"
               role="button"
-              tabIndex="0"
               className={styles.iconWrapper}
               onClick={() => navigate('/userProfile')}
             >
@@ -55,7 +53,6 @@ export default function RowTwo({ isScrolled }) {
           <div
             id="favorites-button"
             role="button"
-            tabIndex="0"
             className={styles.iconWrapper}
             onClick={() => navigate('/favorites')}
           >
@@ -67,7 +64,6 @@ export default function RowTwo({ isScrolled }) {
           <div
             id="basket-button"
             role="button"
-            tabIndex="0"
             className={styles.iconWrapper}
             onClick={() => navigate('/basket')}
           >
