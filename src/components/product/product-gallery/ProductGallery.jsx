@@ -3,9 +3,8 @@ import styles from './ProductGallery.module.scss'
 import ThumbnailImages from './thumbnail-images/ThumbnailImages'
 import PreviewImage from './preview-image/PreviewImage'
 
-export default function ProductGallery({ product }) {
+export default function ProductGallery({ productImages }) {
   const maxSlides = 5
-  const productImages = product.images
   const [activeIndex, setActiveIndex] = useState(1)
   const slideCount = productImages.length
 

@@ -44,7 +44,7 @@ export default function ProductPage() {
       <div className={styles.productPageContent}>
         <Breadcrumbs categoryId={categoryId} productName={productName} />
         <div className={styles.galleryAndInfoContainer}>
-          <ProductGallery product={product} />
+          <ProductGallery productImages={product.images} />
           <div className={styles.infoAndPriceContainer}>
             <ProductInfo product={product} />
             <ProductPrice product={product} />
