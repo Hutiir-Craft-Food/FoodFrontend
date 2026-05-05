@@ -64,25 +64,25 @@ describe('ProductPage', () => {
   })
 
   describe('successful render', () => {
-    it('should resolve product id correctly and render top-level container', () => {
+    test('should resolve product id correctly and render top-level container', () => {
       useProduct.mockReturnValue({
         product: mockProductData,
         loading: false,
         error: null,
       })
 
-      const { container } = renderProductPage()
+      const { container: productPage } = renderProductPage()
 
       expect(useProduct).toHaveBeenCalledWith(mockId)
       expect(screen.getByText(`Product ID: ${mockId}`)).toBeInTheDocument()
 
-      const highestElement = container.firstChild
-      expect(highestElement).toHaveClass('container')
+      const container = productPage.firstChild
+      expect(container).toHaveClass('container')
     })
   })
 
   describe('fallback states', () => {
-    it('should render loading state correctly', () => {
+    test('should render loading state correctly', () => {
       useProduct.mockReturnValue({
         product: null,
         loading: true,
@@ -94,7 +94,7 @@ describe('ProductPage', () => {
       expect(screen.getByText('Завантаження продукту...')).toBeInTheDocument()
     })
 
-    it('should render error state correctly', () => {
+    test('should render error state correctly', () => {
       useProduct.mockReturnValue({
         product: null,
         loading: false,
@@ -107,7 +107,7 @@ describe('ProductPage', () => {
       expect(screen.getByText('API Error')).toBeInTheDocument()
     })
 
-    it('should render not found state when product does not exist', () => {
+    test('should render not found state when product does not exist', () => {
       useProduct.mockReturnValue({
         product: null,
         loading: false,
