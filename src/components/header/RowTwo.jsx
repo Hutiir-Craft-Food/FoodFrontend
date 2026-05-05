@@ -26,25 +26,49 @@ export default function RowTwo({ isScrolled }) {
       <div className={styles.iconsContainer}>
         <div className={styles.userIcon}>
           {!user && (
-            <img
-              src="/images/user-logout-default.svg"
-              alt="user logout icon"
+            <div
+              id="login-button"
+              role="button"
               onClick={() => showAuthWidget()}
-            />
+            >
+              <img
+                src="/images/user-logout-default.svg"
+                alt="user logout icon"
+              />
+            </div>
           )}
           {user && (
-            <img
-              src="/images/user-logIn-default.svg"
-              alt="user login icon"
+            <div
+              id="login-button"
+              role="button"
+              className={styles.iconWrapper}
               onClick={() => navigate('/userProfile')}
-            />
+            >
+              <img src="/images/user-logIn-default.svg" alt="user login icon" />
+            </div>
           )}
         </div>
+
         <div className={styles.heartIcon}>
-          <img src="/images/heartIcon-default.svg" alt="heart icon" />
+          <div
+            id="favorites-button"
+            role="button"
+            className={styles.iconWrapper}
+            onClick={() => navigate('/favorites')}
+          >
+            <img src="/images/heartIcon-default.svg" alt="heart icon" />
+          </div>
         </div>
+
         <div className={styles.basketIcon}>
-          <img src="/images/basket-default-noNotif.svg" alt="user icon" />
+          <div
+            id="basket-button"
+            role="button"
+            className={styles.iconWrapper}
+            onClick={() => navigate('/basket')}
+          >
+            <img src="/images/basket-default-noNotif.svg" alt="user icon" />
+          </div>
         </div>
       </div>
     </div>
