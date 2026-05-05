@@ -4,14 +4,14 @@ import { MemoryRouter, Route, Routes } from 'react-router-dom'
 import ProductPage from './ProductPage'
 import useProduct from '~/components/product/useProduct'
 
-jest.mock('~/components/product/useProduct')
+jest.mock('~/components/product/useProduct', () => jest.fn())
 
 jest.mock('~/components/product/breadcrumbs/Breadcrumbs', () => ({
   __esModule: true,
   default: () => <div data-testid="mock-breadcrumbs">Breadcrumbs</div>,
 }))
 
-jest.mock('~/components/product/productGallery/ProductGallery', () => ({
+jest.mock('~/components/product/product-gallery/ProductGallery', () => ({
   __esModule: true,
   default: () => <div data-testid="mock-gallery">ProductGallery</div>,
 }))
@@ -74,10 +74,13 @@ describe('ProductPage', () => {
       const { container: productPage } = renderProductPage()
 
       expect(useProduct).toHaveBeenCalledWith(mockId)
-      expect(screen.getByText(`Product ID: ${mockId}`)).toBeInTheDocument()
-
-      const container = productPage.firstChild
-      expect(container).toHaveClass('container')
+      expect(screen.getByTestId('mock-breadcrumbs')).toBeInTheDocument()
+      expect(screen.getByTestId('mock-gallery')).toBeInTheDocument()
+      expect(screen.getByTestId('mock-info')).toBeInTheDocument()
+      expect(screen.getByTestId('mock-tabs')).toBeInTheDocument()
+      expect(screen.getByTestId('mock-shipping')).toBeInTheDocument()
+      expect(screen.getByTestId('mock-price')).toBeInTheDocument()
+      expect(productPage.firstChild).toHaveClass('container')
     })
   })
 
