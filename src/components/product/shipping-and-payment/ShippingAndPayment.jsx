@@ -51,7 +51,7 @@ export default function ShippingAndPayment({ product }) {
           <li>
             <a href="#">
               <img src={bagIcon} alt="bag icon" />
-              Курє'рська доставка
+              Кур'єрська доставка
             </a>
           </li>
         </ul>
