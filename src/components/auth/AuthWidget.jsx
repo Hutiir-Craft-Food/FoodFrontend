@@ -9,7 +9,7 @@ function AuthWidget() {
   return (
     <div className={styles.authContainer}>
       <div className={styles.imageContainer}>
-        <img src="/images/sign-in.png" alt="food" />
+        <img src="/images/sign-in.png" alt="Fresh products" />
       </div>
       <div className={styles.formContainer}>
         {action === actions.LOGIN ? <SignInContainer /> : <SignUpContainer />}

@@ -23,7 +23,7 @@ export default function SearchBar() {
         <img
           className={styles.magnifyingGlass}
           src="/images/magnifying-glass.svg"
-          alt="magnifyingGlass"
+          alt="Search"
         />
       </button>
     </div>

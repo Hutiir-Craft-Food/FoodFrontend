@@ -8,7 +8,10 @@ export default function ShippingAndPayment({ product }) {
   return (
     <div className={styles.shippingContainer}>
       <div className={styles.banner}>
-        <img src="/images/banner_shipping.png" alt="banner" />
+        <img
+          src="/images/banner_shipping.png"
+          alt="Free delivery for Carpathian honey"
+        />
       </div>
       <div className={styles.shippingInfo}>
         <ul className={styles.infoList}>

@@ -13,7 +13,7 @@ export default function Footer() {
           <div className={styles.leftSide}>
             <div className={styles.logoCotainer}>
               <a href="/">
-                <img src="/images/logo-footer.png" alt="logo" />
+                <img src="/images/logo-footer.png" alt="Hutir craft logo" />
               </a>
             </div>
             <form className={styles.subscribeForm} onSubmit={handleSubmit}>

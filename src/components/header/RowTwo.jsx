@@ -15,7 +15,7 @@ export default function RowTwo({ isScrolled }) {
       <div>
         <button className={styles.catalogButton}>
           Каталог
-          <img src="/images/caret-down.svg" alt="CaretDown" />
+          <img src="/images/caret-down.svg" alt="Expand menu" />
         </button>
       </div>
 
@@ -31,10 +31,7 @@ export default function RowTwo({ isScrolled }) {
               role="button"
               onClick={() => showAuthWidget()}
             >
-              <img
-                src="/images/user-logout-default.svg"
-                alt="user logout icon"
-              />
+              <img src="/images/user-logout-default.svg" alt="Log out" />
             </div>
           )}
           {user && (
@@ -44,7 +41,7 @@ export default function RowTwo({ isScrolled }) {
               className={styles.iconWrapper}
               onClick={() => navigate('/userProfile')}
             >
-              <img src="/images/user-logIn-default.svg" alt="user login icon" />
+              <img src="/images/user-logIn-default.svg" alt="Login" />
             </div>
           )}
         </div>
@@ -56,7 +53,7 @@ export default function RowTwo({ isScrolled }) {
             className={styles.iconWrapper}
             onClick={() => navigate('/favorites')}
           >
-            <img src="/images/heartIcon-default.svg" alt="heart icon" />
+            <img src="/images/heartIcon-default.svg" alt="Wish list" />
           </div>
         </div>
 
@@ -67,7 +64,7 @@ export default function RowTwo({ isScrolled }) {
             className={styles.iconWrapper}
             onClick={() => navigate('/basket')}
           >
-            <img src="/images/basket-default-noNotif.svg" alt="user icon" />
+            <img src="/images/basket-default-noNotif.svg" alt="Shopping cart" />
           </div>
         </div>
       </div>
