@@ -3,9 +3,9 @@ import styles from './Logo.module.scss'
 
 export default function Logo() {
   return (
-    <Link to='/'>
+    <Link to="/">
       <div className={styles.logo}>
-        <img src='/images/logoHK-36@4x.svg' alt='logo' />
+        <img src="/images/logoHK-36@4x.svg" alt="logo" />
       </div>
     </Link>
   )

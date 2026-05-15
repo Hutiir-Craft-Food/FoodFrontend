@@ -29,7 +29,7 @@ const HeroCarousel = () => {
           <div className={styles.imageWrapper}>
             <img
               src="/images/woman.png"
-              alt="Дівчина"
+              alt="Farmer with fresh harvest"
               className={styles.image}
             />
           </div>
@@ -66,7 +66,7 @@ const HeroCarousel = () => {
           <SwiperSlide>
             <img
               src="/images/hero-Carousel_1.png"
-              alt="Смачні продукти"
+              alt="Free delivery"
               className={styles.slideImage}
             />
           </SwiperSlide>
@@ -74,7 +74,7 @@ const HeroCarousel = () => {
           <SwiperSlide>
             <img
               src="/images/hero-Carousel_2.png"
-              alt="Смачні продукти"
+              alt="Discount on seasoned lard"
               className={styles.slideImage}
             />
           </SwiperSlide>
@@ -82,7 +82,7 @@ const HeroCarousel = () => {
           <SwiperSlide>
             <img
               src="/images/hero-Carousel_3.png"
-              alt="Смачні продукти"
+              alt="inviting users to become brand ambassadors"
               className={styles.slideImage}
             />
           </SwiperSlide>
