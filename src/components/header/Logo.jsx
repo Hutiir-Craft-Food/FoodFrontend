@@ -5,7 +5,7 @@ export default function Logo() {
   return (
     <Link to="/">
       <div className={styles.logo}>
-        <img src="/images/logoHK-36@4x.svg" alt="Hutir craft logo" />
+        <img src="/images/logoHK-36@4x.svg" alt="logo" />
       </div>
     </Link>
   )
