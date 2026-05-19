@@ -1,5 +1,6 @@
 ﻿import { useState } from 'react'
 import styles from './SearchBar.module.scss'
+import searchIcon from '/src/icons/magnifying-glass.svg'
 
 export default function SearchBar() {
   const [searchText, setSearchItem] = useState('')
@@ -19,12 +20,9 @@ export default function SearchBar() {
         value={searchText}
         onChange={handleInputChange}
       />
+
       <button className={styles.magnifyingGlass} onClick={() => handleSearch()}>
-        <img
-          className={styles.magnifyingGlass}
-          src="/images/magnifying-glass.svg"
-          alt="Search"
-        />
+        <img className={styles.magnifyingGlass} src={searchIcon} alt="Search" />
       </button>
     </div>
   )
