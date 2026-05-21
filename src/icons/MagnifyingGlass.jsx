@@ -1,4 +1,4 @@
-export default function SearchIcon() {
+export default function MagnifyingGlass() {
   return (
     <svg
       width="21"
