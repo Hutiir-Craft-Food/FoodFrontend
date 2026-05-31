@@ -5,11 +5,13 @@ import ProductCard from '../product-card/ProductCard'
 import styles from './FeaturedProducts.module.scss'
 
 export default function FeaturedProducts() {
-  const { products, loading, loadMore, hasMore } = useFeaturedProducts({limit: 4})
+  const { products, loading, loadMore, hasMore } = useFeaturedProducts({
+    limit: 4,
+  })
 
   return (
     <div className="container">
-      <h2>Новинки</h2>
+      <h2>Акції місяця</h2>
       <div className="row">
         {products.length > 0 &&
           products.map((product) => {
@@ -28,14 +30,11 @@ export default function FeaturedProducts() {
       </div>
       <div className="d-flex justify-content-center">
         {hasMore ? (
-          <button
-            onClick={() => loadMore()}
-            className={styles.button}
-          >
+          <button onClick={() => loadMore()} className={styles.button}>
             Показати ще
             <ArrowIcon className={styles.arrow} />
           </button>
-          ) : (
+        ) : (
           <Link to="/catalog">
             <button className={styles.button}>
               Показати всі смаколики

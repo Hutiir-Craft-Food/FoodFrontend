@@ -2,7 +2,6 @@
 @import '~/styles/var.scss';
 @import '~/styles/base/_fonts.scss';
 
-
 body,
 html {
   margin: 0;
@@ -24,7 +23,7 @@ body {
   h2 {
     color: $primary-90;
     font-family: $brandFont;
-    font-size: 30px;
+    font-size: 48px;
     font-weight: 700;
     text-align: center;
     margin: 50px 0;
