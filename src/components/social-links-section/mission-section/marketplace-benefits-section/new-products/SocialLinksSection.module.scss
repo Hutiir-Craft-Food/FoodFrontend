@@ -1,0 +1,31 @@
+@import '~/styles/var.scss';
+
+nav {
+  display: flex;
+  justify-content: center;
+
+  ul {
+    padding: 0;
+    li {
+      margin-right: 15px;
+      display: inline-block;
+      cursor: pointer;
+
+      .socialLinksButton {
+        width: 40px;
+        height: 40px;
+        background: $primary-50;
+        border-radius: 8px;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      &:hover {
+        transform: scale(1.2);
+        transition: ease-in-out 0.25s;
+      }
+    }
+  }
+}
