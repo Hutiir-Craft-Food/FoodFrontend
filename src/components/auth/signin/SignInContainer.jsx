@@ -1,16 +1,16 @@
 import { useState } from 'react'
 import { useAuthStore } from '../store/AuthStore'
-import XCircle from '~/icons/XCircle.jsx'
-import ClosedEyeIcon from '~/icons/ClosedEyeIcon.jsx'
-import OpenEyeIcon from '~/icons/OpenEyeIcon.jsx'
+// import XCircle from '~/icons/XCircle.jsx'
+import PasswordField from '../passwordField/PasswordField.jsx'
+import EmailField from '../emailField/EmailField.jsx'
 import styles from './SignInContainer.module.scss'
 
 export default function SignInContainer() {
-  const { email, setEmail } = useAuthStore()
-  const { password, setPassword } = useAuthStore()
+  // const { email, setEmail } = useAuthStore()
+  // const { password, setPassword } = useAuthStore()
   const { switchToRegister } = useAuthStore()
   const { login } = useAuthStore()
-  const [isPasswordVisible, setIsPasswordVisible] = useState(false)
+  // const [isPasswordVisible, setIsPasswordVisible] = useState(false)
 
   const handleEyeButtonClick = (e) => {
     setIsPasswordVisible((prevValue) => !prevValue)
@@ -38,7 +38,7 @@ export default function SignInContainer() {
       <div className={styles.formContainer}>
         <h2>Вхід</h2>
         <form onSubmit={handleSubmit}>
-          <div className={styles.emailContainer}>
+          {/* <div className={styles.emailContainer}>
             <label htmlFor="email">E-mail</label>
             <br />
             <div className={styles.inputContainer}>
@@ -61,8 +61,8 @@ export default function SignInContainer() {
                 </button>
               )}
             </div>
-          </div>
-          <div className={styles.passwordContainer}>
+          </div> */}
+          {/* <div className={styles.passwordContainer}>
             <label htmlFor="password">Пароль</label>
             <div className={styles.inputContainer}>
               <input
@@ -85,7 +85,9 @@ export default function SignInContainer() {
                 {isPasswordVisible ? <OpenEyeIcon /> : <ClosedEyeIcon />}
               </button>
             </div>
-          </div>
+          </div> */}
+          <EmailField />
+          <PasswordField />
           <a className={styles.fogetPasswordLink} href="#">
             Забули пароль?
           </a>
