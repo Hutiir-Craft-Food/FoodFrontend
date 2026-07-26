@@ -1,0 +1,127 @@
+@import '@/styles/var.scss';
+
+.container {
+  width: 700px;
+  height: 580px;
+  display: flex;
+  flex-direction: column;
+  background: $white;
+  border-radius: 12px;
+  border: 1px solid $primary-20;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  overflow: hidden;
+  position: relative;
+}
+
+.header {
+  padding: 16px 20px;
+  border-bottom: 1px solid $primary-10;
+  background: transparent;
+}
+
+.title {
+  margin: 0;
+  font-family: $mainBoldFont;
+  font-size: 18px;
+  color: $primary-90;
+}
+
+.itemsArea {
+  padding: 16px;
+  overflow-y: auto;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  /* ensure totals area doesn't overlap content */
+  padding-bottom: 110px;
+}
+
+.sellerGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sellerHeading {
+  margin: 0;
+  font-family: $mainBoldFont;
+  font-size: 13px;
+  color: $primary-70;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.sellerItems {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.emptyState {
+  color: $primary-50;
+  font-family: $mainFont;
+  font-size: 14px;
+  padding: 24px;
+  text-align: center;
+}
+
+.totalsArea {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.98) 60%, $white 100%);
+  padding: 14px 20px;
+  box-shadow: 0 -6px 20px rgba(0,0,0,0.06);
+}
+
+.totalsInner {
+  max-width: 640px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+}
+
+.totalsLabel {
+  font-family: $mainFont;
+  font-size: 15px;
+  color: $primary-70;
+}
+
+.totalsValue {
+  font-family: $mainBoldFont;
+  font-size: 18px;
+  color: $primary-90;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .container {
+    width: calc(100% - 32px);
+    height: auto;
+    border-radius: 10px;
+  }
+
+  .itemsArea {
+    padding: 12px;
+    padding-bottom: 120px;
+  }
+
+  .totalsInner {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: calc(100% - 16px);
+    height: auto;
+    border-radius: 8px;
+  }
+
+  .title { font-size: 16px; }
+  .totalsValue { font-size: 16px; }
+}

@@ -6,6 +6,7 @@ import MissionSection from '~/components/mission-section/marketplace-benefits-se
 import ArticlesSection from '~/components/articles-section/marketplace-benefits-section/new-products/ArticlesSection'
 import SocialLinksSection from '~/components/social-links-section/mission-section/marketplace-benefits-section/new-products/SocialLinksSection'
 import styles from './HomePage.module.scss'
+import Cart from '~/components/cart/Cart'
 
 export default function HomePage() {
   return (
@@ -17,6 +18,7 @@ export default function HomePage() {
       <ArticlesSection />
       <MissionSection />
       <SocialLinksSection />
+      <Cart />
     </div>
   )
 }
