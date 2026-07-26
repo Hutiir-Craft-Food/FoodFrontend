@@ -1,4 +1,4 @@
-@import '@/styles/var.scss';
+@import '/src/styles/var.scss';
 
 .container {
   display: flex;
@@ -9,11 +9,6 @@
   border-radius: 8px;
   background-color: $white;
   width: fit-content;
-
-  @media (max-width: 576px) {
-    gap: 8px;
-    padding: 6px 10px;
-  }
 }
 
 .button {
@@ -54,12 +49,6 @@
       border-color: $primary-40;
     }
   }
-
-  @media (max-width: 576px) {
-    width: 28px;
-    height: 28px;
-    font-size: 16px;
-  }
 }
 
 .quantity {
@@ -69,9 +58,4 @@
   font-weight: 700;
   font-family: $mainBoldFont;
   color: $primary-90;
-
-  @media (max-width: 576px) {
-    min-width: 32px;
-    font-size: 14px;
-  }
 }

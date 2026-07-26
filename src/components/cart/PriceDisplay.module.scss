@@ -1,4 +1,4 @@
-@import '@/styles/var.scss';
+@import '/src/styles/var.scss';
 
 .container {
   display: flex;
@@ -6,11 +6,6 @@
   align-items: center;
   gap: 16px;
   padding: 12px 0;
-
-  @media (max-width: 576px) {
-    gap: 12px;
-    padding: 10px 0;
-  }
 }
 
 .label {
@@ -19,10 +14,6 @@
   font-family: $mainFont;
   color: $primary-50;
   flex: 1;
-
-  @media (max-width: 576px) {
-    font-size: 13px;
-  }
 }
 
 .price {
@@ -31,8 +22,4 @@
   font-family: $mainBoldFont;
   color: $primary-80;
   white-space: nowrap;
-
-  @media (max-width: 576px) {
-    font-size: 16px;
-  }
 }
