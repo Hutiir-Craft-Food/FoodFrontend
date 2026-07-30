@@ -12,7 +12,9 @@
     "preview": "vite preview",
     "test": "jest --coverage",
     "bump-coverage-thresholds": "jest-coverage-thresholds-bumper --config-path jest.config.js",
-    "mock-server": "cd __mocks__/api && camouflage -c ./config.yml"
+    "mock-server": "cd __mocks__/api && camouflage -c ./config.yml",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "axios": "^1.7.9",
@@ -54,6 +56,19 @@
     "jest-environment-jsdom": "~29.7.0",
     "jest-scss-transform": "~1.0.3",
     "jest-transformer-svg": "^2.0.2",
-    "vite": "^6.2.6"
+    "vite": "^6.2.6",
+    "storybook": "^10.5.5",
+    "@storybook/react-vite": "^10.5.5",
+    "@chromatic-com/storybook": "^5.2.1",
+    "@storybook/addon-vitest": "^10.5.5",
+    "@storybook/addon-a11y": "^10.5.5",
+    "@storybook/addon-docs": "^10.5.5",
+    "@storybook/addon-mcp": "^0.7.0",
+    "prop-types": "^15.8.1",
+    "eslint-plugin-storybook": "^10.5.5",
+    "vitest": "^4.1.10",
+    "playwright": "^1.62.1",
+    "@vitest/browser-playwright": "^4.1.10",
+    "@vitest/coverage-v8": "^4.1.10"
   }
 }

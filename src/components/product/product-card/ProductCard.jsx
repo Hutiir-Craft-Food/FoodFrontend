@@ -11,38 +11,42 @@ export default function ProductCard({ product }) {
   }
 
   return (
-    <div className='card'>
+    <div className="card">
       <div
         className={styles.heart}
         onClick={toggleFavorite}
         style={{ cursor: 'pointer' }}
       >
-        {isFavorite ? <FaHeart color='red' /> : <FaRegHeart color='grey' />}
+        {isFavorite ? <FaHeart color="red" /> : <FaRegHeart color="grey" />}
       </div>
       <Link to={`/product/${product.id}`}>
         <div className={`card-icon ${styles.cardImage}`}>
           <img
-            src={product.images[0].links.medium || `/images/image-not-found.png`}
-            alt='product image'
+            src={
+              product.images[0].links.medium || `/images/image-not-found.png`
+            }
+            alt="product image"
           />
           <h5 className={`card-title mt-3 ${styles.title}`}>{product.name}</h5>
         </div>
       </Link>
-      <div className='card-body'>
+      <div className="card-body">
         <div className={`card-text ${styles.text}`}>
           <a className={styles.manufacturerLink} href="#">
             {product.seller.sellerName}
           </a>
           <br />
-          <div className='d-flex justify-content-between mt-3'>
+          <div className="d-flex justify-content-between mt-3">
             <span className={styles.isAvailable}>
               {product.available ? 'В наявності' : 'Товар відсутній'}
             </span>
           </div>
-          <div className='d-flex justify-content-between'>
+          <div className="d-flex justify-content-between">
             <div>
               <span className={styles.regularPrice}>
-              {product?.prices?.[0]?.price ? `${product.prices[0].price} грн` : ''}
+                {product?.prices?.[0]?.price
+                  ? `${product.prices[0].price} грн`
+                  : ''}
               </span>
               <br />
             </div>

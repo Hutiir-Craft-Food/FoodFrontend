@@ -27,3 +27,6 @@ camouflage.log*
 
 **/*.log
 .idea/
+
+*storybook.log
+storybook-static
