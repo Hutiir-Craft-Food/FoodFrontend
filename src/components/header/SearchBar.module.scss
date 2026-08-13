@@ -10,6 +10,7 @@
   padding: 0px 8px 0px 16px;
   outline: none;
   border-radius: 8px;
+
   @include bordered(1px, $primary-20);
 
   input[type='search'] {
@@ -17,7 +18,9 @@
     width: 95%;
     gap: 8px;
     border: none;
+
     @extend .paragraph3;
+
     text-align: left;
   }
 
@@ -29,7 +32,21 @@
     float: left;
     right: 15px;
     top: 12px;
+
     border: none;
     background: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #343736;
+    cursor: pointer;
+
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #77a28d;
+    }
   }
 }

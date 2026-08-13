@@ -18,11 +18,17 @@
     align-items: center;
     justify-content: center;
     @extend .paragraph4;
+
     padding: 12px 32px;
     border-radius: 8px;
     border: none;
     gap: 8px;
+
     @include buttonPrimaryColor;
+
+    color: white;
+    cursor: pointer;
+
     .active {
       border: 1px solid $primary-50;
       border-radius: 8px;
@@ -39,7 +45,25 @@
     justify-content: center;
   }
 
-  .userIcon {
+  .userIcon,
+  .heartIcon,
+  .basketIcon {
+    color: #343736;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #77a28d;
+    }
+  }
+
+  .iconWrapper {
+    color: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }

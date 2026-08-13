@@ -4,25 +4,30 @@ import SearchBar from './SearchBar'
 import { useAuthStore } from '../auth/store/AuthStore'
 import styles from './RowTwo.module.scss'
 
+import CaretDownIcon from '~/icons/CaretDown'
+import UserLogoutIcon from '~/icons/UserLogout'
+import UserLoginIcon from '~/icons/UserLogin'
+import HeartIcon from '~/icons/Heart'
+import BasketIcon from '~/icons/Basket'
+
 export default function RowTwo({ isScrolled }) {
-  const { showAuthWidget, logout } = useAuthStore()
+  const { showAuthWidget } = useAuthStore()
   const { user } = useAuthStore()
   const navigate = useNavigate()
 
   return (
     <div className={styles.rowTwo}>
       {isScrolled && <Logo />}
+
       <div>
         <button className={styles.catalogButton}>
           Каталог
-          <img src="/images/caret-down.svg" alt="Expand menu" />
+          <CaretDownIcon />
         </button>
       </div>
 
-      {/* search bar */}
       <SearchBar />
 
-      {/* iconsContainer */}
       <div className={styles.iconsContainer}>
         <div className={styles.userIcon}>
           {!user && (
@@ -31,9 +36,10 @@ export default function RowTwo({ isScrolled }) {
               role="button"
               onClick={() => showAuthWidget()}
             >
-              <img src="/images/user-logout-default.svg" alt="Log out" />
+              <UserLogoutIcon />
             </div>
           )}
+
           {user && (
             <div
               id="login-button"
@@ -41,7 +47,7 @@ export default function RowTwo({ isScrolled }) {
               className={styles.iconWrapper}
               onClick={() => navigate('/userProfile')}
             >
-              <img src="/images/user-logIn-default.svg" alt="Login" />
+              <UserLoginIcon />
             </div>
           )}
         </div>
@@ -53,7 +59,7 @@ export default function RowTwo({ isScrolled }) {
             className={styles.iconWrapper}
             onClick={() => navigate('/favorites')}
           >
-            <img src="/images/heartIcon-default.svg" alt="Wish list" />
+            <HeartIcon />
           </div>
         </div>
 
@@ -64,7 +70,7 @@ export default function RowTwo({ isScrolled }) {
             className={styles.iconWrapper}
             onClick={() => navigate('/basket')}
           >
-            <img src="/images/basket-default-noNotif.svg" alt="Shopping cart" />
+            <BasketIcon />
           </div>
         </div>
       </div>
