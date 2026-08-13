@@ -1,4 +1,3 @@
-// src/icons/LogoIcon.jsx
 export default function LogoIcon(props) {
   return (
     <svg
