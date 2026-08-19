@@ -1,0 +1,61 @@
+@import '/src/styles/var.scss';
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  border: 1px solid $primary-30;
+  border-radius: 8px;
+  background-color: $white;
+  width: fit-content;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid $primary-40;
+  border-radius: 6px;
+  background-color: $primary-10;
+  color: $primary-80;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: $mainBoldFont;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+
+  &:hover {
+    background-color: $primary-40;
+    color: $white;
+    border-color: $primary-60;
+  }
+
+  &:active {
+    scale: 0.95;
+    transition: scale 0.1s ease-out;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: $primary-10;
+
+    &:hover {
+      background-color: $primary-10;
+      color: $primary-80;
+      border-color: $primary-40;
+    }
+  }
+}
+
+.quantity {
+  min-width: 40px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: $mainBoldFont;
+  color: $primary-90;
+}

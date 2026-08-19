@@ -1,0 +1,114 @@
+@import '/src/styles/var.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background-color: $white;
+  border: 1px solid $primary-20;
+  border-radius: 12px;
+  transition: box-shadow 0.2s ease-out;
+}
+
+.sellerName {
+  font-size: 13px;
+  font-weight: 400;
+  font-family: $mainFont;
+  color: $primary-50;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.content {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.productSection {
+  display: flex;
+  gap: 12px;
+  flex: 1;
+}
+
+.imageWrapper {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: $primary-10;
+}
+
+.imageLink {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease-out;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.productImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.imagePlaceholder {
+  width: 100%;
+  height: 100%;
+}
+
+.infoSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  min-width: 0;
+}
+
+.productInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.productName {
+  font-size: 15px;
+  font-weight: 700;
+  font-family: $mainBoldFont;
+  color: $primary-90;
+  line-height: 1.3;
+  word-break: break-word;
+}
+
+.unitName {
+  font-size: 13px;
+  font-weight: 400;
+  font-family: $mainFont;
+  color: $primary-50;
+  white-space: nowrap;
+}
+
+.controlsSection {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+.pricesWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: right;
+  white-space: nowrap;
+}

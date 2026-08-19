@@ -1,0 +1,25 @@
+@import '/src/styles/var.scss';
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 0;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 400;
+  font-family: $mainFont;
+  color: $primary-50;
+  flex: 1;
+}
+
+.price {
+  font-size: 18px;
+  font-weight: 700;
+  font-family: $mainBoldFont;
+  color: $primary-80;
+  white-space: nowrap;
+}
