@@ -22,7 +22,6 @@
 
 .signUpContainer {
   .contentContainer {
-    
     h2 {
       text-align: center;
       margin: 50px 0;
@@ -152,11 +151,12 @@
     .userAgreement {
       position: absolute;
       bottom: 20px;
-      font-size: 0.75rem;
+      font-size: 14px;
       font-family: Circe;
       font-style: normal;
       font-weight: 400;
       line-height: 120%;
+
       .userAgreementLink {
         color: $primary-50;
       }
