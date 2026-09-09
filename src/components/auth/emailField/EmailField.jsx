@@ -1,18 +1,10 @@
-import { useState } from 'react'
-import { useAuthStore } from '../store/AuthStore'
+import clsx from 'clsx'
+import { useAuthStore } from '~/components/auth/store/AuthStore'
 import XCircle from '~/icons/XCircle.jsx'
-// import ClosedEyeIcon from '~/icons/ClosedEyeIcon.jsx'
-// import OpenEyeIcon from '~/icons/OpenEyeIcon.jsx'
 import styles from './EmailField.module.scss'
 
-export default function EmailField() {
-  const { email, setEmail } = useAuthStore()
-  // const { password, setPassword } = useAuthStore()
-  // const [isPasswordVisible, setIsPasswordVisible] = useState(false)
-
-  // const handleEyeButtonClick = (e) => {
-  //   setIsPasswordVisible((prevValue) => !prevValue)
-  // }
+export default function EmailField({ emailValidation, validate = false }) {
+  const { email, setEmail, errors } = useAuthStore()
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value)
@@ -22,15 +14,16 @@ export default function EmailField() {
     setEmail('')
   }
 
-  // const handlePasswordChange = (e) => {
-  //   setPassword(e.target.value)
-  // }
-
   return (
     <div className={styles.emailContainer}>
       <label htmlFor="email">E-mail</label>
       <br />
-      <div className={styles.inputContainer}>
+      <div
+        className={clsx(
+          styles.inputContainer,
+          validate && errors?.email && styles.inputErrorClass
+        )}
+      >
         <input
           type="email"
           id="email"
@@ -38,6 +31,7 @@ export default function EmailField() {
           required
           value={email}
           onChange={handleEmailChange}
+          onBlur={emailValidation}
           autoFocus
         />
         {email && (
@@ -50,6 +44,9 @@ export default function EmailField() {
           </button>
         )}
       </div>
+      {validate && errors?.email && (
+        <div className={styles.errors}>{errors.email}</div>
+      )}
     </div>
   )
 }
