@@ -1,11 +1,15 @@
 import { useState } from 'react'
-import { useAuthStore } from '../store/AuthStore'
+import clsx from 'clsx'
+import { useAuthStore } from '~/components/auth/store/AuthStore'
 import ClosedEyeIcon from '~/icons/ClosedEyeIcon.jsx'
 import OpenEyeIcon from '~/icons/OpenEyeIcon.jsx'
 import styles from './PasswordField.module.scss'
 
-export default function PasswordField() {
-  const { password, setPassword } = useAuthStore()
+export default function PasswordField({
+  passwordValidation,
+  validate = false,
+}) {
+  const { password, setPassword, errors } = useAuthStore()
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
 
   const handleEyeButtonClick = (e) => {
@@ -19,14 +23,21 @@ export default function PasswordField() {
   return (
     <div className={styles.passwordContainer}>
       <label htmlFor="password">Пароль</label>
-      <div className={styles.inputContainer}>
+      <div
+        className={clsx(
+          styles.inputContainer,
+          validate && errors?.password && styles.inputErrorClass
+        )}
+      >
         <input
           type={isPasswordVisible ? 'text' : 'password'}
           id="password"
           name="password"
           value={password}
           required
+          placeholder="Введіть пароль"
           onChange={handlePasswordChange}
+          onBlur={passwordValidation}
         />
         <button
           type="button"
@@ -40,6 +51,14 @@ export default function PasswordField() {
           {isPasswordVisible ? <OpenEyeIcon /> : <ClosedEyeIcon />}
         </button>
       </div>
+      {validate &&
+        (errors?.password ? (
+          <div className={styles.errors}>{errors.password}</div>
+        ) : (
+          <div className={styles.hint}>
+            Щонайменше 8 символів: літери, цифри, символи
+          </div>
+        ))}
     </div>
   )
 }
