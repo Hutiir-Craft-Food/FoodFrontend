@@ -71,6 +71,7 @@ export default function SignUpSellerForm() {
             value={details.sellerName}
             onChange={handleSellerNameChange}
             onBlur={handleSellerNameValidation}
+            autoFocus
           />
           {details.sellerName && (
             <button
@@ -86,10 +87,16 @@ export default function SignUpSellerForm() {
           <div className={styles.errors}>{errors.sellerName}</div>
         )}
       </div>
-      <EmailField emailValidation={handleEmailValidation} validate={true} />
+      <EmailField
+        emailValidation={handleEmailValidation}
+        validate={true}
+        placeholder="e.g.example@gmail.com"
+      />
       <PasswordField
         passwordValidation={handlePasswordValidation}
         validate={true}
+        placeholder="Придумайте пароль"
+        minLength={8}
       />
     </div>
   )

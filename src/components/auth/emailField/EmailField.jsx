@@ -3,7 +3,12 @@ import { useAuthStore } from '~/components/auth/store/AuthStore'
 import XCircle from '~/icons/XCircle.jsx'
 import styles from './EmailField.module.scss'
 
-export default function EmailField({ emailValidation, validate = false }) {
+export default function EmailField({
+  emailValidation,
+  validate = false,
+  placeholder = '',
+  autofocus = false,
+}) {
   const { email, setEmail, errors } = useAuthStore()
 
   const handleEmailChange = (e) => {
@@ -32,7 +37,8 @@ export default function EmailField({ emailValidation, validate = false }) {
           value={email}
           onChange={handleEmailChange}
           onBlur={emailValidation}
-          autoFocus
+          autoFocus={autofocus}
+          placeholder={placeholder}
         />
         {email && (
           <button

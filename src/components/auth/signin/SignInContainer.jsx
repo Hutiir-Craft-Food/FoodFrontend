@@ -17,7 +17,7 @@ export default function SignInContainer() {
       <div className={styles.formContainer}>
         <h2>Вхід</h2>
         <form onSubmit={handleSubmit}>
-          <EmailField />
+          <EmailField autofocus={true} />
           <PasswordField />
           <a className={styles.fogetPasswordLink} href="#">
             Забули пароль?

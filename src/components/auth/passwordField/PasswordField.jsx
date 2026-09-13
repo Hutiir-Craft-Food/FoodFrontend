@@ -8,6 +8,8 @@ import styles from './PasswordField.module.scss'
 export default function PasswordField({
   passwordValidation,
   validate = false,
+  placeholder = '',
+  minLength = '',
 }) {
   const { password, setPassword, errors } = useAuthStore()
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
@@ -34,8 +36,9 @@ export default function PasswordField({
           id="password"
           name="password"
           value={password}
+          minLength={minLength}
           required
-          placeholder="Введіть пароль"
+          placeholder={placeholder}
           onChange={handlePasswordChange}
           onBlur={passwordValidation}
         />
