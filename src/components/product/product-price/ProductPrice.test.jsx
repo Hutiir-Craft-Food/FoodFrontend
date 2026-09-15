@@ -26,6 +26,18 @@ const productWithSinglePrice = {
   ],
 };
 
+const anotherProductWithMultiplePrices = {
+  id: 4,
+  prices: [
+    { unitId: 2, qty: 100, price: 20 },
+    { unitId: 1, qty: 2, price: 200 },
+  ],
+  units: [
+    { id: 1, name: 'кг' },
+    { id: 2, name: 'гр' },
+  ],
+};
+
 const productWithNoPrices = {
   id: 3,
   prices: [],
@@ -71,5 +83,21 @@ describe('ProductPrice', () => {
   test('shows single packaging button', () => {
     render(<ProductPrice product={productWithSinglePrice} />);
     expect(screen.getByText('1 кг')).toBeInTheDocument();
+  });
+
+  test('resets the selected price when the product changes', () => {
+    const { rerender } = render(
+      <ProductPrice product={productWithMultiplePrices} />
+    );
+
+    fireEvent.click(screen.getByText('500 гр'));
+    rerender(<ProductPrice product={anotherProductWithMultiplePrices} />);
+
+    expect(screen.getByText('20 грн')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: '100 гр' })).toHaveAttribute(
+      'aria-pressed',
+      'true'
+    );
+    expect(screen.queryByText('200 грн')).not.toBeInTheDocument();
   });
 });
