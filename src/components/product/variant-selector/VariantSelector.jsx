@@ -1,11 +1,7 @@
 import { useState } from 'react'
 import styles from './VariantSelector.module.scss'
 
-export default function VariantSelector({
-  prices = [],
-  units = [],
-  onSelect,
-}) {
+export default function VariantSelector({ prices = [], units = [], onSelect }) {
   const [selectedPriceIndex, setSelectedPriceIndex] = useState(0)
 
   const handleSelect = (price, index) => {
