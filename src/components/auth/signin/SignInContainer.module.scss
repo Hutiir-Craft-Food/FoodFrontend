@@ -15,58 +15,6 @@
     padding: 0 104px;
     gap: 24px;
 
-    label {
-      font-size: 16px;
-      line-height: 20px;
-      width: 296px;
-      height: 36px;
-      gap: 8px;
-    }
-
-    input {
-      height: 40px;
-      width: 100%;
-      border: none;
-      background: none;
-
-      &:focus-visible {
-        outline: none;
-        background: none;
-      }
-    }
-
-    .inputContainer {
-      display: flex;
-      outline: 1px solid $primary-30;
-      border-radius: 8px;
-      background: none;
-
-      &:focus-within {
-        outline: 2px solid $primary-40;
-        background: none;
-      }
-    }
-
-    .emailContainer {
-      margin-bottom: 20px;
-
-      .buttonXCircle {
-        border: none;
-        background: none;
-      }
-    }
-
-    .passwordContainer {
-      margin-top: 0.5rem;
-
-      .toggleEye {
-        width: 40px;
-        height: 40px;
-        border: none;
-        background: none;
-      }
-    }
-
     .fogetPasswordLink {
       display: block;
       text-align: right;

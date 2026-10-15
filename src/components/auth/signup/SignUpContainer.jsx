@@ -123,14 +123,12 @@ export default function SignUpContainer() {
         </div>
 
         <div className={styles.userAgreement}>
-          <p>
-            <span>
-              Підтверджуючи реєстрацію, я приймаю &nbsp;
-              <a href="#" className={styles.userAgreementLink}>
-                умови користувацької угоди
-              </a>
-            </span>
-          </p>
+          <span>
+            Підтверджуючи реєстрацію, я приймаю &nbsp;
+            <a href="#" className={styles.userAgreementLink}>
+              умови користувацької угоди
+            </a>
+          </span>
         </div>
       </div>
       {showConfirm && (
