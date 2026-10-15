@@ -6,10 +6,9 @@ import OpenEyeIcon from '~/icons/OpenEyeIcon.jsx'
 import styles from './PasswordField.module.scss'
 
 export default function PasswordField({
-  passwordValidation,
-  validate = false,
-  placeholder = '',
-  minLength = '',
+  passwordValidate,
+  shouldValidate = false,
+  ...rest
 }) {
   const { password, setPassword, errors } = useAuthStore()
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
@@ -28,19 +27,18 @@ export default function PasswordField({
       <div
         className={clsx(
           styles.inputContainer,
-          validate && errors?.password && styles.inputErrorClass
+          shouldValidate && errors?.password && styles.inputErrorClass
         )}
       >
         <input
+          {...rest}
           type={isPasswordVisible ? 'text' : 'password'}
           id="password"
           name="password"
           value={password}
-          minLength={minLength}
           required
-          placeholder={placeholder}
           onChange={handlePasswordChange}
-          onBlur={passwordValidation}
+          onBlur={passwordValidate}
         />
         <button
           type="button"
@@ -54,7 +52,7 @@ export default function PasswordField({
           {isPasswordVisible ? <OpenEyeIcon /> : <ClosedEyeIcon />}
         </button>
       </div>
-      {validate &&
+      {shouldValidate &&
         (errors?.password ? (
           <div className={styles.errors}>{errors.password}</div>
         ) : (

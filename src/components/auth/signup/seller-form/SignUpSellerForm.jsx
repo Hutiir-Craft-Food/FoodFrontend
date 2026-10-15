@@ -88,13 +88,13 @@ export default function SignUpSellerForm() {
         )}
       </div>
       <EmailField
-        emailValidation={handleEmailValidation}
-        validate={true}
+        emailValidate={handleEmailValidation}
+        shouldValidate
         placeholder="e.g.example@gmail.com"
       />
       <PasswordField
-        passwordValidation={handlePasswordValidation}
-        validate={true}
+        passwordValidate={handlePasswordValidation}
+        shouldValidate
         placeholder="Придумайте пароль"
         minLength={8}
       />

@@ -4,10 +4,9 @@ import XCircle from '~/icons/XCircle.jsx'
 import styles from './EmailField.module.scss'
 
 export default function EmailField({
-  emailValidation,
-  validate = false,
-  placeholder = '',
-  autofocus = false,
+  emailValidate,
+  shouldValidate = false,
+  ...rest
 }) {
   const { email, setEmail, errors } = useAuthStore()
 
@@ -15,7 +14,7 @@ export default function EmailField({
     setEmail(e.target.value)
   }
 
-  const handleEmailClear = (e) => {
+  const handleEmailClear = () => {
     setEmail('')
   }
 
@@ -26,19 +25,18 @@ export default function EmailField({
       <div
         className={clsx(
           styles.inputContainer,
-          validate && errors?.email && styles.inputErrorClass
+          shouldValidate && errors?.email && styles.inputErrorClass
         )}
       >
         <input
+          {...rest}
           type="email"
           id="email"
           name="email"
           required
           value={email}
           onChange={handleEmailChange}
-          onBlur={emailValidation}
-          autoFocus={autofocus}
-          placeholder={placeholder}
+          onBlur={emailValidate}
         />
         {email && (
           <button
@@ -50,7 +48,7 @@ export default function EmailField({
           </button>
         )}
       </div>
-      {validate && errors?.email && (
+      {shouldValidate && errors?.email && (
         <div className={styles.errors}>{errors.email}</div>
       )}
     </div>

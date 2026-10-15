@@ -53,14 +53,14 @@ export default function SignUpBuyerForm() {
   return (
     <div className={styles.formContainer}>
       <EmailField
-        emailValidation={handleEmailValidation}
-        validate={true}
-        autofocus={true}
+        emailValidate={handleEmailValidation}
+        shouldValidate
+        autoFocus
         placeholder="e.g.example@gmail.com"
       />
       <PasswordField
-        passwordValidation={handlePasswordValidation}
-        validate={true}
+        passwordValidate={handlePasswordValidation}
+        shouldValidate
         placeholder="Придумайте пароль"
         minLength={8}
       />
